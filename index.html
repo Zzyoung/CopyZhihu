@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>知乎 - 与世界分享你的知识、经验和见解</title>
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="styles/reset.css">
+	<link rel="stylesheet" href="styles/login.css">
+</head>
+<body ng-app="zhihu">
+<div>
+	<div class="top">
+		<div class="inner-wrapper">
+			<div class="form-wrapper">
+				<div class="logo"></div>
+				<div class="sign-flow clearfix">
+					<div ng-view></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bottom">
+		<div class="inner-wrapper">
+			<div class="stories clearfix" ng-controller="StoryController">
+				<div class="reps clearfix">
+					<a target="_blank" href="{{story.profile}}" class="rep current" ng-repeat="story in stories">
+						<span class="info-card">{{story.name}}</span>
+						<img ng-src='{{story.photo}}' alt="MrToyy" />
+					</a>
+				</div>
+				<div class="single-story">
+					<i class="icon-sign icon-sign-spike visible"></i>
+					<div class="single-story-inner">
+						<img class="avatar avatar-m" alt="MrToyy" src="images/1.jpg" />
+						<div  class="story-title">
+							<div>
+								<a class="name" href="/people/MrToyy" target="_blank">MrToyy</a><span>吴桐，数联铭品CFO。招才。</span>
+							</div>
+							<div>在知乎回答了 424 个问题，198535 人关注他。</div>
+						</div>
+						<div class="sep"></div>
+						<div class="story-content">
+							<div class="story-content-answer">
+								<span class="vote">1475</span>
+								<p><a target="_blank" href="/question/20949243#answer-2053454">「四大」到底为何吸引学生？</a></p>
+							</div>
+							<div class="story-content-answer">
+								<span  class="vote">1160</span>
+								<p><a class="question_link" target="_blank" href="/question/20688855#answer-1473360">人们为什么选会计专业？真的有喜欢会计的人吗？</a></p>
+							</div>
+							<div class="story-content-answer">
+								<span class="vote">1040</span>
+								<p><a class="question_link" target="_blank" href="/question/20173940#answer-809744">如果房价一夜之间暴跌，会引发哪些连锁反应？</a></p>
+							</div>
+						</div>
+						<div class="sep"></div>
+						<div class="story-end">MrToyy 在 <a href="/people/MrToyy/topic/19564876/answers" target="_blank">财务</a>、<a href="/people/MrToyy/topic/19552981/answers" target="_blank">经济</a>、<a href="/people/MrToyy/topic/19609455/answers" target="_blank">金融</a> 等话题下获得了 23855 个赞同
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="links">
+			<div><span>&copy; 2015 知乎</span>
+				<span class="dot">·</span>
+				<a target="_blank" href="/roundtable">知乎圆桌</a>
+				<span class="dot">·</span>
+				<a target="_blank" href="/explore">发现</a>
+				<span class="dot">·</span>
+				<a target="_blank" href="/app">移动应用</a>
+				<span class="dot">·</span>
+				<a target="_blank" href="/careers">来知乎工作</a>
+			</div>
+			<div>
+				<a href="#" target="_blank">京 ICP 备 13052560 号</a>
+				<span>·</span>
+				<span>京公网安备 11010802010035 号</span>
+			</div>
+		</div>
+		<a title="下载知乎 iPhone 客户端" target="_blank" href="#" class="icon-sign-ios"></a>
+		<a title="下载知乎 Android 客户端" target="_blank" href="#" class="icon-sign-android"></a>
+	</div>
+</div>
+
+	<script src="vendor/jquery-2.0.3.min.js"></script>
+    <script src="vendor/angular.js"></script>
+    <script src="vendor/angular-route.js"></script>
+    <script src="vendor/angular-cookies.js"></script>
+
+    <script type="text/javascript" src="app.js"></script>
+    <!-- services -->
+    <script src="services/authentication.service.js"></script>
+	<script type="text/javascript" src="services/flash.service.js"></script>
+	<script src="services/user.service.js"></script>
+    <script type="text/javascript" src="services/story.service.js"></script>
+
+    <!-- controllers -->
+    <script src="login/login.controller.js"></script>
+    <script src="register/register.controller.js"></script>
+
+    <script type="text/javascript" src="controllers/story.controller.js"></script>
+
+</body>
+</html>
