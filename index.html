@@ -23,10 +23,7 @@
 		<div class="inner-wrapper">
 			<div class="stories clearfix" ng-controller="StoryController">
 				<div class="reps clearfix">
-					<a target="_blank" href="{{story.profile}}" class="rep current" ng-repeat="story in stories">
-						<span class="info-card">{{story.name}}</span>
-						<img ng-src='{{story.photo}}' alt="MrToyy" />
-					</a>
+					<story></story>
 				</div>
 				<div class="single-story">
 					<i class="icon-sign icon-sign-spike visible"></i>
@@ -101,6 +98,8 @@
     <script src="register/register.controller.js"></script>
 
     <script type="text/javascript" src="controllers/story.controller.js"></script>
-
+	
+	<!-- directives -->
+	<script type="text/javascript" src="directives/story.js"></script>
 </body>
 </html>
