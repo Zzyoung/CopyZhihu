@@ -1,0 +1,43 @@
+<div class="view view-signup selected">
+	<form ng-submit="vm.register()" id="sign-form-1" autocomplete="off">
+		<input type="password" hidden> 
+		<div class="title">
+			<a class="singin-switch" href="#/login">登录<i class="icon-sign-arrow"></i></a>
+			<a><i></i><span>注册帐号</span></a>
+		</div>
+		<div class="input-wrapper">
+			<input type="text" name="fullname" ng-model="vm.user.name" placeholder="姓名">
+		</div>
+		<div class="input-wrapper">
+			<input type="text" name="account" ng-model="vm.user.loginName" placeholder="手机号或邮箱">
+		</div>
+		<div class="input-wrapper">
+			<input type="password" name="password" ng-model="vm.user.password" placeholder="密码（不少于 6 位）">
+		</div>
+		<div class="captcha-wrapper">
+			<div>
+				<div>
+					<input id="captcha" name="captcha" placeholder="验证码" ng-model="vm.user.captcha">
+				</div>
+				<p class="input-wrapper-captcha">
+					<span>看不清？</span> <a href="#">换一张</a>
+					<img src="images/captcha.gif" width="120" height="30" />
+				</p>
+			</div>
+		</div>
+		<div id="summary" class="failure"  ng-show='prompts.length>0'>
+			<ul>
+				<prompt></prompt>
+			</ul>
+		</div>
+		<div class="button-wrapper">
+			<button type="submit">注册知乎</button>
+		</div>
+		<div class="community-signup">
+			社交帐号登录 &nbsp;
+			<a href="#"><i class="icon-sign-wechat"></i></a>
+			<a href="#"><i class="icon-sign-sina"></i></a>
+			<a href="#"><i class="icon-sign-qq"></i></a>
+		</div>
+	</form>
+</div>

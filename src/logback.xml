@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true" scanPeriod="30 seconds">
+
+	<!-- 日志存放的路径 ,默认为tomcat下面的logs -->
+	<!-- <property name="USER_HOME" value="${catalina.base}" /> -->
+
+	<!-- 输出到窗口 -->
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 输出到文件 -->
+	<!-- <appender name="logfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			按天分文件夹存放 ，并压缩
+			<fileNamePattern>${USER_HOME}/zhi_logs/%d{yyyy-MM-dd}/log.%i.txt</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				每个文件的最大值 5MB,超过则编号,生成新文件
+				<maxFileSize>5MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			例如，假设每天滚动，且 maxHistory 是 6，则只 保留最近 6 天的归档文件，删除之前的文件。
+			<maxHistory>6</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n
+			</pattern>
+		</encoder>
+	</appender> -->
+
+	<logger name="com.zhihu"/>
+	
+	<root level="DEBUG">
+		<appender-ref ref="stdout" />
+		<appender-ref ref="logfile" />
+	</root>
+</configuration>

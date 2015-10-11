@@ -1,0 +1,22 @@
+(function(){
+	angular.module('zhihu').factory('ConstantService',ConstantService);
+	
+	function ConstantService(){
+		var service = {};
+		
+		service.messages = {
+			invalidName:'姓名需在 2-10 个汉字之间',
+			invalidPhone:'请输入正确的手机号',
+			invalidPassword:'请输入 6-128 位的密码',
+			invalidCaptcha:'验证码有误',
+			invalidEmail:'邮箱地址不正确',
+			emptyName:'请填写姓名',
+			emptyPassword:'请填写密码',
+			emptyLoginName:'请填写手机号或邮箱',
+			emptyCaptcha:'请填写验证码',
+			errorCaptcha:'请提交正确的验证码:('
+		};
+		
+		return service;
+	}
+})();
