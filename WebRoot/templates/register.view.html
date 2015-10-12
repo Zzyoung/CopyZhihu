@@ -1,6 +1,5 @@
 <div class="view view-signup selected">
 	<form ng-submit="vm.register()" id="sign-form-1" autocomplete="off">
-		<input type="password" hidden> 
 		<div class="title">
 			<a class="singin-switch" href="#/login">登录<i class="icon-sign-arrow"></i></a>
 			<a><i></i><span>注册帐号</span></a>
@@ -25,7 +24,7 @@
 				</p>
 			</div>
 		</div>
-		<div id="summary" class="failure"  ng-show='prompts.length>0'>
+		<div class="failure"  ng-show='prompts.length>0'>
 			<ul>
 				<prompt></prompt>
 			</ul>

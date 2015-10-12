@@ -6,4 +6,8 @@
 		INSERT INTO USER (NAME,LOGIN_NAME,PASSWORD) VALUES (#{name},#{loginName},#{password})
 	</insert>
 	
+	<select id="getByLoginName" parameterType="com.zhihu.pojo.User" resultType="com.zhihu.pojo.User">
+		SELECT NAME,LOGIN_NAME AS loginName, PASSWORD FROM USER 
+		WHERE LOGIN_NAME = #{loginName}
+	</select>
 </mapper>

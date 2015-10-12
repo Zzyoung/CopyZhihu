@@ -16,4 +16,12 @@ public class UserServiceImpl implements UserService {
 		return userDao.insertUser(user);
 	}
 
+	@Override
+	public User getByLoginName(String loginName) throws Exception {
+		User user = new User();
+		user.setLoginName(loginName);
+		
+		return userDao.getByLoginName(user);
+	}
+
 }

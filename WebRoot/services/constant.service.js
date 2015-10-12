@@ -17,6 +17,11 @@
 			errorCaptcha:'请提交正确的验证码:('
 		};
 		
+		service.constant = {
+			UNKNOWN_LOGINNAME : 1,
+			ERROR_PASSWORD_LOGINNAME : 2
+		};
+		
 		return service;
 	}
 })();
