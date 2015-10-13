@@ -6,4 +6,6 @@ public interface UserService {
 	int insertUser(User user) throws Exception;
 
 	User getByLoginName(String loginName) throws Exception;
+
+	int findUserByLoginName(User newUser);
 }

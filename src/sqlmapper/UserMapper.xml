@@ -10,4 +10,9 @@
 		SELECT NAME,LOGIN_NAME AS loginName, PASSWORD FROM USER 
 		WHERE LOGIN_NAME = #{loginName}
 	</select>
+	
+	<select id="findUserByLoginName" parameterType="com.zhihu.pojo.User" resultType="int">
+		SELECT COUNT(*) FROM USER 
+		WHERE LOGIN_NAME = #{loginName}
+	</select>
 </mapper>

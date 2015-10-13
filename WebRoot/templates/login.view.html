@@ -5,15 +5,15 @@
 			<a><i></i><span>登录知乎</span></a>
 		</div>
 		<div class="input-wrapper">
-			<input type="text" name="account" placeholder="手机号或邮箱" ng-model="vm.user.loginName">
+			<input type="text" name="loginName" auto-focus="focus.type" prompts="prompts" placeholder="手机号或邮箱" ng-model="vm.user.loginName">
 		</div>
 		<div class="input-wrapper">
-			<input type="password" name="password" placeholder="密码" ng-model="vm.user.password">
+			<input type="password" name="password" auto-focus="focus.type" prompts="prompts" placeholder="密码" ng-model="vm.user.password">
 		</div>
 		<div class="captcha-wrapper">
 			<div>
 				<div>
-					<input id="captcha" name="captcha" placeholder="验证码" ng-model="vm.user.captcha">
+					<input id="captcha" name="captcha" auto-focus="focus.type" prompts="prompts" placeholder="验证码" ng-model="vm.user.captcha">
 				</div>
 				<p class="input-wrapper-captcha">
 					<span>看不清？</span> <a href="#">换一张</a><img src="images/captcha.gif" width="120" height="30" />

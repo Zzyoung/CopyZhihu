@@ -19,7 +19,8 @@
 		
 		service.constant = {
 			UNKNOWN_LOGINNAME : 1,
-			ERROR_PASSWORD_LOGINNAME : 2
+			ERROR_PASSWORD_LOGINNAME : 2,
+			ERROR_USER_EXIST :3
 		};
 		
 		return service;

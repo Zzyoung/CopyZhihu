@@ -27,7 +27,7 @@
 				headers : {
 					'Content-Type' : 'application/x-www-form-urlencoded'
 				}
-			}).success(callback);
+			}).then(callback);
 		};
 
 		service.setCredentials = function(loginName, password){

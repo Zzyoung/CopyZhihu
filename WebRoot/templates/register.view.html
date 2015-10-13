@@ -5,18 +5,18 @@
 			<a><i></i><span>注册帐号</span></a>
 		</div>
 		<div class="input-wrapper">
-			<input type="text" name="fullname" ng-model="vm.user.name" placeholder="姓名">
+			<input type="text" name="name" auto-focus="focus.type" prompts="prompts" ng-model="vm.user.name" placeholder="姓名">
 		</div>
 		<div class="input-wrapper">
-			<input type="text" name="account" ng-model="vm.user.loginName" placeholder="手机号或邮箱">
+			<input type="text" name="loginName" auto-focus="focus.type" prompts="prompts" ng-model="vm.user.loginName" placeholder="手机号或邮箱">
 		</div>
 		<div class="input-wrapper">
-			<input type="password" name="password" ng-model="vm.user.password" placeholder="密码（不少于 6 位）">
+			<input type="password" name="password" auto-focus="focus.type" removePromptByType="removePromptByType" ng-focus="vm.removePromptByType(prompts,'password')" ng-model="vm.user.password" placeholder="密码（不少于 6 位）">
 		</div>
 		<div class="captcha-wrapper">
 			<div>
 				<div>
-					<input id="captcha" name="captcha" placeholder="验证码" ng-model="vm.user.captcha">
+					<input id="captcha" name="captcha" auto-focus="focus.type" prompts="prompts" placeholder="验证码" ng-model="vm.user.captcha">
 				</div>
 				<p class="input-wrapper-captcha">
 					<span>看不清？</span> <a href="#">换一张</a>

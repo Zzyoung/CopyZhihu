@@ -28,24 +28,25 @@
             };
         }
 		
-		function addToPrompts(prompts, message) {
+		function addToPrompts(prompts, message, type) {
 			prompts.push({
+				type : type,
 				msg : message
 			});
 		}
 		
 		function validateLoginName(loginName,loginNameLen,prompts,messages){
 			if (loginNameLen === 0) {
-				addToPrompts(prompts, messages.emptyLoginName);
+				addToPrompts(prompts, messages.emptyLoginName ,'loginName');
 			} else {
 				// 如果包含@字符则认为输入的是邮箱格式
 				if (UtilsService.containStr(loginName, '@')) {
 					if (!UtilsService.isEmail(loginName)) {
-						addToPrompts(prompts, messages.invalidEmail);
+						addToPrompts(prompts, messages.invalidEmail,'loginName');
 					}
 				} else {
 					if (loginNameLen !== 11) {
-						addToPrompts(prompts, messages.invalidPhone);
+						addToPrompts(prompts, messages.invalidPhone,'loginName');
 					}
 				}
 			}
@@ -53,15 +54,15 @@
 		
 		function validatePassword(passwordLen,prompts,messages){
 			if (passwordLen === 0) {
-				addToPrompts(prompts, messages.emptyPassword);
+				addToPrompts(prompts, messages.emptyPassword,'password');
 			} else if (passwordLen < 6 || passwordLen > 128) {
-				addToPrompts(prompts, messages.invalidPassword);
+				addToPrompts(prompts, messages.invalidPassword,'password');
 			}
 		}
 		
 		function validateCaptcha(captchaLen,prompts,messages){
 			if (captchaLen === 0) {
-				addToPrompts(prompts, messages.emptyCaptcha);
+				addToPrompts(prompts, messages.emptyCaptcha,'captcha');
 			}
 		}
 		
@@ -76,9 +77,9 @@
 			if (isRegister){
 				nameLen = user.name ? trim(user.name).length : 0;
 				if (nameLen === 0) {
-					addToPrompts(prompts, messages.emptyName);
+					addToPrompts(prompts, messages.emptyName,'name');
 				} else if (nameLen < 2 || nameLen > 10) {
-					addToPrompts(prompts, messages.invalidName);
+					addToPrompts(prompts, messages.invalidName,'name');
 				}
 			}
 			
@@ -95,7 +96,25 @@
 
 			return prompts;
 		};
-
+		
+		service.removePrompt  = function(prompts,index,type,focus){
+			//将光标移入和被点击的错误提示有关的输入框中
+			focus.type = type;
+			//将被点击的li去掉
+			prompts.splice(index,1);
+		};
+		
+		service.removePromptByType = function(prompts,type){
+			if(prompts && prompts.length > 0){
+				for(var i = 0;i<prompts.length;i++){
+					if(prompts[i].type === type){
+						prompts.splice(i,1);
+						return;
+					}
+				}
+			}
+		};
+		
 		return service;
 
 	}

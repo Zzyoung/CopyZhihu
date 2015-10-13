@@ -24,4 +24,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.getByLoginName(user);
 	}
 
+	@Override
+	public int findUserByLoginName(User newUser) {
+		return userDao.findUserByLoginName(newUser);
+	}
+
 }

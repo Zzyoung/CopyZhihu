@@ -6,4 +6,6 @@ public interface UserDao {
 	int insertUser(User user) throws Exception;
 
 	User getByLoginName(User user) throws Exception;
+
+	int findUserByLoginName(User newUser);
 }
