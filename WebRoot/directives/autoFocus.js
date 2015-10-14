@@ -4,7 +4,7 @@
 			restrict:'A',
 			scope:{
 				autoFocus:'=',
-				removePromptByType:'&',
+				remove:'&',
 				prompts:'='
 			},
 			controller:function($scope){
@@ -17,10 +17,6 @@
 							element[0].focus();
 						});
 					}
-				});
-				element.on('focus',function(){
-//					console.log($scope.removePromptByType);
-					$scope.removePromptByType($scope.prompts,attribute.name);
 				});
 			}
 		};

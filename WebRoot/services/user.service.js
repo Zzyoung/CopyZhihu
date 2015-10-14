@@ -98,13 +98,13 @@
 		};
 		
 		service.removePrompt  = function(prompts,index,type,focus){
-			//将光标移入和被点击的错误提示有关的输入框中
 			focus.type = type;
 			//将被点击的li去掉
 			prompts.splice(index,1);
 		};
 		
 		service.removePromptByType = function(prompts,type){
+			//将光标移入和被点击的错误提示有关的输入框中,去掉提示
 			if(prompts && prompts.length > 0){
 				for(var i = 0;i<prompts.length;i++){
 					if(prompts[i].type === type){
