@@ -19,8 +19,8 @@
 					<input id="captcha" name="captcha" data-auto-focus="focus.type" ng-focus="removePromptByType(prompts,'captcha')" placeholder="验证码" ng-model="vm.user.captcha">
 				</div>
 				<p class="input-wrapper-captcha">
-					<span>看不清？</span> <a href="#">换一张</a>
-					<img src="images/captcha.gif" width="120" height="30" />
+					<a href="#">看不清？换一张</a>
+					<img ng-src="/Zhihu/captcha?r={{123456}}" width="120" height="30" />
 				</p>
 			</div>
 		</div>

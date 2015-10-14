@@ -5,22 +5,22 @@
 			<a><i></i><span>登录知乎</span></a>
 		</div>
 		<div class="input-wrapper">
-			<input type="text" name="loginName" ng-focus="removePromptByType(prompts,'loginName')" placeholder="手机号或邮箱" ng-model="vm.user.loginName">
+			<input type="text" name="loginName" data-auto-focus="focus.type" ng-focus="removePromptByType(prompts,'loginName')" placeholder="手机号或邮箱" ng-model="vm.user.loginName">
 		</div>
 		<div class="input-wrapper">
-			<input type="password" name="password" ng-focus="removePromptByType(prompts,'password')" placeholder="密码" ng-model="vm.user.password">
+			<input type="password" name="password" data-auto-focus="focus.type" ng-focus="removePromptByType(prompts,'password')" placeholder="密码" ng-model="vm.user.password">
 		</div>
 		<div class="captcha-wrapper">
 			<div>
 				<div>
-					<input id="captcha" name="captcha" ng-focus="removePromptByType(prompts,'captcha')" placeholder="验证码" ng-model="vm.user.captcha">
+					<input id="captcha" name="captcha" data-auto-focus="focus.type" ng-focus="removePromptByType(prompts,'captcha')" placeholder="验证码" ng-model="vm.user.captcha">
 				</div>
 				<p class="input-wrapper-captcha">
-					<span>看不清？</span> <a href="#">换一张</a><img src="images/captcha.gif" width="120" height="30" />
+					<a href="#">看不清？换一张</a><img src="/Zhihu/captcha?r={{123456}}" width="120" height="30" />
 				</p>
 			</div>
 		</div>
-		<div class="failure"  ng-show='prompts.length>0'>
+		<div class="failure" ng-show='prompts.length>0'>
 			<ul>
 				<prompt></prompt>
 			</ul>

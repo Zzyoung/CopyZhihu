@@ -23,7 +23,7 @@
 					console.log(response);
 					if(response.status>=200 && response.status < 300){
 						if(response.data.errorCode === ConstantService.constant.ERROR_USER_EXIST){
-							$scope.prompts = [{type : 'loginName',msg:'该邮箱已注册'}];
+							$scope.prompts = [{type : 'loginName',msg:'该帐号已注册'}];
 						}else{
 							prompts.push({
 								msg : "注册成功！"

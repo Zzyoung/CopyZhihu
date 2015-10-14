@@ -3,9 +3,7 @@
 		return {
 			restrict:'A',
 			scope:{
-				autoFocus:'=',
-				remove:'&',
-				prompts:'='
+				autoFocus:'='
 			},
 			controller:function($scope){
 				
