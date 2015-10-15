@@ -1,0 +1,3250 @@
+<!DOCTYPE html>
+<html lang="en" class="js flexbox no-touch cssanimations csstransforms csstransitions no-mobile">
+<head>
+	<meta charset="UTF-8">
+	<title>首页 - 知乎</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="styles/reset.css">
+	<link rel="stylesheet" href="styles/index.css">
+	<!-- <script type="text/javascript" src="index.js"></script>
+	<script type="text/javascript" src="Utils.js"></script> -->
+</head>
+<body class="zhi">
+	<div role="navigation" class="zu-top">
+		<div class="zg-wrap modal-shifting" id="zh-top-inner">
+			<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+			<div class="top-nav-profile">
+				<a href="/people/zhang-yang-07-01" class="zu-top-nav-userinfo ">
+					<span class="name">张阳</span>
+					<img class="avatar avatar-s" alt="张阳" src="images/touxiang.jpg"/>
+					<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count" data-count="0">2</span>
+				</a>
+				<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+					<li>
+						<a href="/people/zhang-yang-07-01">
+						<i class="zg-icon zg-icon-dd-home"></i>我的主页
+						</a>
+					</li>
+
+					<li>
+						<a href="/inbox">
+							<i class="zg-icon zg-icon-dd-pm"></i>私信
+							<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+							style="visibility:hidden" data-count="0">
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="/settings">
+							<i class="zg-icon zg-icon-dd-settings"></i>设置
+						</a>
+					</li>
+					<li>
+						<a href="/logout">
+							<i class="zg-icon zg-icon-dd-logout"></i>退出
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div role="search" id="zh-top-search" class="zu-top-search">
+				<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+					<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+					<input type="hidden" name="type" value="question" />
+					<label for="q" class="hide-text">知乎搜索</label>
+					<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+				</form>
+				<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+			</div>
+			<div id="zg-top-nav" class="zu-top-nav">
+				<ul class="zu-top-nav-ul zg-clear">
+					<li class="zu-top-nav-li current" id="zh-top-nav-home">
+						<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+					</li>
+					<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-topic">
+						<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+					</li>
+					<li class="zu-top-nav-li " id="zh-top-nav-explore">
+						<a class="zu-top-nav-link" href="/explore">发现</a>
+					</li>
+					<li class="top-nav-noti zu-top-nav-li">
+						<a class="zu-top-nav-link" href="" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+					</li>
+				</ul>
+				<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+					<div class="zu-top-nav-live-inner zg-r5px">
+						<div class="zu-top-live-icon">&nbsp;</div>
+						<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+							<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+								<button class="zm-noti7-popup-tab-item message current">
+									<span class="icon">消息</span>
+								</button>
+								<button class="zm-noti7-popup-tab-item user">
+									<span class="icon">用户</span>
+								</button>
+								<button class="zm-noti7-popup-tab-item thanks">
+									<span class="icon">赞同和感谢</span>
+								</button>
+							</div>
+						</div>
+						<div class="zm-noti7-frame-border top"></div>
+						<div class="zm-noti7-frame">
+							<div class="zm-noti7-content zh-sroller">
+								<div class="zh-scroller-inner">
+									<div class="zh-scroller-content">
+										<div class="zm-noti7-content-inner">
+											<div class="zm-noti7-popup-refresh">
+												<img src="images/spinner2.gif" alt="" class="noti-spinner">
+											</div>
+											<div class="zm-noti7-content-body">
+												<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
+													<span class="author-list">
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="张云龙">张云龙</a>
+														</span>
+														回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">前端实习做了个坦克大战的项目够吗？</a>
+													</span>
+												</div>
+												<div class="zm-noti7-content-item unread" data-notigroupname="ANSWER">
+													<span class="author-list">
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="丹尼尔">丹尼尔</a>
+														</span>
+														回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">富人的思考方式是什么？</a>
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
+													<span class="author-list">
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="子柳">子柳</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="李运华">李运华</a>
+														</span>
+														回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">怎么成为一个优秀的程序员，而不是一个优秀的码农？</a>
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
+													<span class="author-list">
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="探歌">探歌</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="风兄">风兄</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="徐卫卫">徐卫卫</a>
+														</span>
+														回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">一个人的周末可以做些什么？</a>
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
+													<span class="author-list">
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="子柳">子柳</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="李运华">李运华</a>
+														</span>
+														回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">怎么成为一个优秀的程序员，而不是一个优秀的码农？</a>
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
+													<span class="author-list">
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="探歌">探歌</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="风兄">风兄</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="徐卫卫">徐卫卫</a>
+														</span>
+														回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">一个人的周末可以做些什么？</a>
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
+													<span class="author-list">
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="探歌">探歌</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="风兄">风兄</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="徐卫卫">徐卫卫</a>
+														</span>
+														回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">一个人的周末可以做些什么？</a>
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
+													<span class="author-list">
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="探歌">探歌</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="风兄">风兄</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="徐卫卫">徐卫卫</a>
+														</span>
+														回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">一个人的周末可以做些什么？</a>
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
+													<span class="author-list">
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="探歌">探歌</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="风兄">风兄</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="徐卫卫">徐卫卫</a>
+														</span>
+														回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">一个人的周末可以做些什么？</a>
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
+													<span class="author-list">
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="子柳">子柳</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="李运华">李运华</a>
+														</span>
+														回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">怎么成为一个优秀的程序员，而不是一个优秀的码农？</a>
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
+													<span class="author-list">
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="子柳">子柳</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="李运华">李运华</a>
+														</span>
+														回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">怎么成为一个优秀的程序员，而不是一个优秀的码农？</a>
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
+													<span class="author-list">
+														<span class="user-block">匿名用户</span>
+														回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">怎么成为一个优秀的程序员，而不是一个优秀的码农？</a>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="zh-scroller-bar-container">
+									<div style=""></div>
+								</div>
+								<div class="zh-scroller-bar"></div>
+							</div>
+							<div class="zm-noti7-content zh-sroller">
+								<div class="zh-scroller-inner">
+									<div class="zh-scroller-content">
+										<div class="zm-noti7-content-inner">
+											<div class="zm-noti7-popup-refresh">
+												<img src="images/spinner2.gif" alt="" class="noti-spinner">
+											</div>
+											<div class="zm-noti7-content-body">
+												<div class="zm-noti-content-body">
+													<div class="zm-noti7-content-head-item">
+														<span class="zg-gray-normal">这些人最近关注了你</span>
+													</div>
+													<div class="zm-noti7-content-item" data-notigroupname="FOLLOW">
+														<div class="zm-profile-section-item zg-clear no-hovercard">
+															<div class="zg-right">
+																<a href="" id="pf-65489132165498" class="zg-follow" data-follow="m:links">关注</a>
+															</div>
+															<a href="/people" class="zm-item-link-avatar" title="人名">
+																<img src="images/172039268a15b62905e14f6c18f3cc9a_m.jpg" alt="" class="zm-item-img-avatar">
+															</a>
+															<div class="zm-list-content-medium">
+																<a href="http://www.zhihu.com/people/guairen" class="zg-link">怪人WEIRDO哦</a>
+																<div class="zg-gray-normal">
+																	<span></span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="zm-noti7-content-item" data-notigroupname="FOLLOW">
+														<div class="zm-profile-section-item zg-clear no-hovercard">
+															<div class="zg-right">
+																<a href="" id="pf-65489132165498" class="zg-follow" data-follow="m:links">关注</a>
+															</div>
+															<a href="/people" class="zm-item-link-avatar" title="人名">
+																<img src="images/172039268a15b62905e14f6c18f3cc9a_m.jpg" alt="" class="zm-item-img-avatar">
+															</a>
+															<div class="zm-list-content-medium">
+																<a href="http://www.zhihu.com/people/guairen" class="zg-link">Aloys寒风</a>
+																<div class="zg-gray-normal">
+																	<span>地质狗/程序猿</span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="zm-noti7-content-item" data-notigroupname="FOLLOW">
+														<div class="zm-profile-section-item zg-clear no-hovercard">
+															<div class="zg-right">
+																<a href="" id="pf-65489132165498" class="zg-follow" data-follow="m:links">关注</a>
+															</div>
+															<a href="/people" class="zm-item-link-avatar" title="人名">
+																<img src="images/172039268a15b62905e14f6c18f3cc9a_m.jpg" alt="" class="zm-item-img-avatar">
+															</a>
+															<div class="zm-list-content-medium">
+																<a href="http://www.zhihu.com/people/guairen" class="zg-link">刘思敏</a>
+																<div class="zg-gray-normal">
+																	<span></span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="zm-noti7-content-item" data-notigroupname="FOLLOW">
+														<div class="zm-profile-section-item zg-clear no-hovercard">
+															<div class="zg-right">
+																<a href="" id="pf-65489132165498" class="zg-unfollow" data-follow="m:links">取消关注</a>
+															</div>
+															<a href="/people" class="zm-item-link-avatar" title="人名">
+																<img src="images/172039268a15b62905e14f6c18f3cc9a_m.jpg" alt="" class="zm-item-img-avatar">
+															</a>
+															<div class="zm-list-content-medium">
+																<a href="http://www.zhihu.com/people/guairen" class="zg-link">Alex Liao</a>
+																<div class="zg-gray-normal">
+																	<span>我是签名</span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="zm-noti7-content-item" data-notigroupname="FOLLOW">
+														<div class="zm-profile-section-item zg-clear no-hovercard">
+															<div class="zg-right">
+																<a href="" id="pf-65489132165498" class="zg-unfollow" data-follow="m:links">取消关注</a>
+															</div>
+															<a href="/people" class="zm-item-link-avatar" title="人名">
+																<img src="images/172039268a15b62905e14f6c18f3cc9a_m.jpg" alt="" class="zm-item-img-avatar">
+															</a>
+															<div class="zm-list-content-medium">
+																<a href="http://www.zhihu.com/people/guairen" class="zg-link">Alex Liao</a>
+																<div class="zg-gray-normal">
+																	<span>我是签名</span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="zm-noti7-content-item" data-notigroupname="FOLLOW">
+														<div class="zm-profile-section-item zg-clear no-hovercard">
+															<div class="zg-right">
+																<a href="" id="pf-65489132165498" class="zg-unfollow" data-follow="m:links">取消关注</a>
+															</div>
+															<a href="/people" class="zm-item-link-avatar" title="人名">
+																<img src="images/172039268a15b62905e14f6c18f3cc9a_m.jpg" alt="" class="zm-item-img-avatar">
+															</a>
+															<div class="zm-list-content-medium">
+																<a href="http://www.zhihu.com/people/guairen" class="zg-link">Alex Liao</a>
+																<div class="zg-gray-normal">
+																	<span>我是签名</span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="zh-scroller-bar-container">
+									<div></div>
+								</div>
+								<div class="zh-scroller-bar"></div>
+							</div>
+							<div class="zm-noti7-content zh-sroller">
+								<div class="zh-scroller-inner">
+									<div class="zh-scroller-content">
+										<div class="zm-noti7-content-inner">
+											<div class="zm-noti7-popup-refresh">
+												<img src="images/spinner2.gif" alt="" class="noti-spinner">
+											</div>
+											<div class="zm-noti7-content-body">
+												<div class="zm-noti7-content-item" data-notigroupname="VOTE_THANK" data-type="upvote" data-count="10">
+													获得 8 次赞同 / 2 次感谢：
+													<a href="/question" class="question_link">如何靠打游戏赚钱？</a> 来自
+													<span class="author-list">
+														<span class="user-block">
+															<a href="" class="zg-link">张三</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="" class="zg-link">路遥知马力</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="" class="zg-link">李四</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="" class="zg-link">leo</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="" class="zg-link">魑魅魍魉</a>
+														</span>
+														等 9 人
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="ACOMMENT_LIKE">
+													<span class="author-list">
+														<span class="user-block">
+															<a href="http://www.zhihu.com/people/fdas" class="zg-link" title="李子木">李子木</a>
+														</span>
+														觉得你在
+														<a href="/question/12321321/answer/451325?group_id=513215#comment-71654861s" class="question_link">如何评价全国人大代表陈伟才「你不能占用了国家最优秀的教育资源，最终又离开了培养你的国家」这个观点？</a> 中 
+														<a href="#" class="zg-link" title="唐潮">唐潮</a>
+														 的答案下评论很赞
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="VOTE_THANK" data-type="upvote" data-count="1">
+													获得 1 次赞同：
+													<a href="#" class="question_link">如何靠打游戏赚钱？</a> 来自
+													<span class="author-list">
+														<span class="user-block">
+															<a href="#" class="zg-link" title="张三">张三</a>
+														</span>
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="VOTE_THANK" data-type="upvote" data-count="2">
+													获得 2 次感谢：
+													<a href="#" class="question_link">如何靠打游戏赚钱？</a> 来自
+													<span class="author-list">
+														<span class="user-block">
+															<a href="#" class="zg-link" title="李四">李四</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="#" class="zg-link" title="王武">王武</a>
+														</span>
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="VOTE_THANK" data-type="upvote" data-count="2">
+													获得 2 次感谢：
+													<a href="#" class="question_link">如何靠打游戏赚钱？</a> 来自
+													<span class="author-list">
+														<span class="user-block">
+															<a href="#" class="zg-link" title="李四">李四</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="#" class="zg-link" title="王武">王武</a>
+														</span>
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="VOTE_THANK" data-type="upvote" data-count="2">
+													获得 2 次感谢：
+													<a href="#" class="question_link">如何靠打游戏赚钱？</a> 来自
+													<span class="author-list">
+														<span class="user-block">
+															<a href="#" class="zg-link" title="李四">李四</a>
+															、
+														</span>
+														<span class="user-block">
+															<a href="#" class="zg-link" title="王武">王武</a>
+														</span>
+													</span>
+												</div>
+												<div class="zm-noti7-content-item" data-notigroupname="VOTE_THANK" data-type="upvote" data-count="1">
+													获得 1 次感谢：
+													<a href="#" class="question_link">如何靠打游戏赚钱？</a> 来自
+													<span class="author-list">
+														<span class="user-block">
+															<a href="#" class="zg-link" title="李四">吴弘</a>
+														</span>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="zh-scroller-bar-container">
+									<div></div>
+								</div>
+								<div class="zh-scroller-bar"></div>
+							</div>
+						</div>
+						<div class="zm-noti7-frame-border bottom"></div>
+						<div class="zm-noti7-popup-footer">
+							<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+							<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="icon zg-icon-settings"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="zg-wrap zu-main clearfix">
+		<div class="zu-main-content">
+			<div class="zu-main-content-inner">
+				<div class="zg-section" id="zh-home-list-title">
+					<i class="zg-icon zg-icon-feedlist"></i> 最新动态
+					<input type="hidden" id="is-topstory2">
+					<span class="zg-right zm-noti-cleaner-setting">
+						<a href="/setting/filter" class="zg-link-gray-normal">
+							<i class="zg-icon zg-icon-settings"></i>设置
+						</a>
+					</span>
+				</div>
+				<div class="zu-main-feed-con navigable" id="zh-question-list">
+					<a href="javascript:;" class="zu-main-feed-fresh-button" id="zh-main-feed-fresh-button" style="display:none;"></a>
+					<div id="js-home-feed-list" class="zh-general-list topstory2 clearfix" data-init="{&quot;params&quot;: {}, &quot;nodename&quot;: &quot;TopStory2FeedList&quot;}">
+					<div class="feed-item folding feed-item-hook feed-item-1 " feed-item-a data-type="a" id="feed-1">
+						<meta itemprop="answer-id" content="20868648">
+						<meta itemprop="answer-url-token" content="63635224">
+						<meta itemprop="ZReactor" data-id="20868648" data-meta="{&quot;source_type&quot;: &quot;member_answer_question&quot;, &quot;voteups&quot;: 0, &quot;comments&quot;: 0, &quot;source&quot;: [[&quot;member&quot;, &quot;8366575cfc9846f14d3fb919baedbd19&quot;]]}" >
+						<div class="feed-item-inner">
+							<div class="avatar">
+								<a title="小爝" sdata-tip="p$t$xiao-jue-83" class="zm-item-link-avatar" href="/people/xiao-jue-83">
+									<img src="images/173df7a79b5a5f003fd5445bf72da99d_m.jpg" class="zm-item-img-avatar">
+								</a>
+							</div>
+							<div class="feed-main">
+								<div class="source">
+									<a data-tip="p$t$xiao-jue-83" href="http://www.zhihu.com/people/xiao-jue-83" target="_blank" class="zg-link" title="小爝">小爝</a> 回答了问题
+									<span class="zg-bull">•</span>
+									<span class="time" data-timestamp="1442232402000">57 分钟前</span>
+								</div>
+								<div class="content">
+									<h2>
+										<a class="question_link" target="_blank" href="/question/35323603#answer-20868648">如何在前端技术面试中回答“你遇到过最有挑战的技术问题”？</a>
+									</h2>
+									<div class="feed-question-detail-item">
+										<a href="#" name="expandQuestionDetail" class="toggle-expand btn-toggle-question-detail ellipsis">
+											平时没遇到过很有挑战的技术问题？想一想，...&nbsp;&nbsp;<span>显示问题详情</span>
+										</a>
+										<div class="question-description zm-editable-content">
+											平时没遇到过很有挑战的技术问题？想一想，google一下，stackoverflow一下基本就解决了。所以每次都会打“没有遇到过什么有挑战的问题”。不知道怎么回答比较好。请各位大牛指点一下。谢谢＼(*T▽T*)／
+										</div>
+									</div>
+									<div class="entry-body "
+									data-aid="20868648"
+									data-atoken="63635224"
+									data-collapsed="False"
+									data-created="1442232402"
+									data-deleted="0"
+									data-isowner="0"
+									data-helpful="1"
+									data-score="0"
+									data-copyable="1"
+									>
+
+									<div class="zm-item-vote">
+										<a name="expand" class="zm-item-vote-count" href="javascript:;" data-votecount="0">0</a>
+									</div>
+									<div class="zm-votebar">
+										<button class="up ">
+											<i class="icon vote-arrow"></i>
+											<span class="label">赞同</span>
+											<span class="count">0</span>
+										</button>
+										<button class="down ">
+											<i class="icon vote-arrow"></i>
+											<span class="label">反对</span>
+										</button>
+									</div>
+									<div class="zm-item-answer-detail">
+										<div class="zm-item-answer-author-info">
+											<h3 class="zm-item-answer-author-wrap">
+												<a data-tip="p$t$xiao-jue-83" href="/people/xiao-jue-83">小爝</a>，<strong title="www.tuer.me" class="zu-question-my-bio"><a href="http://www.tuer.me" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">tuer.me</span><span class="invisible"></span><i class="icon-external"></i></a></strong>
+											</h3>
+										</div>
+										<div class="zm-item-vote-info empty" data-votecount="0">
+										</div>
+										<div class="zm-item-rich-text" data-resourceid="6336040" data-action="/answer/content">
+											<textarea class="content hidden">
+												解决了 不一定是最优解。说实话现在对于工程师来说这么难吗。
+												<span class="answer-date-link-wrap">
+													<a class="answer-date-link meta-item" target="_blank" href="/question/35323603/answer/63635224">发布于 20:06</a>
+												</span>
+											</textarea>
+											<div class="zh-summary summary clearfix">
+
+												解决了 不一定是最优解。说实话现在对于工程师来说这么难吗。
+
+											</div>
+
+										</div>
+									</div>
+								</div>
+								<div class="feed-meta">
+									<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+										<div class="zm-meta-panel">
+											<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-6336040">
+												<i class="z-icon-follow"></i>关注问题
+											</a>
+											<a href="#" name="addcomment" class=" meta-item toggle-comment">
+												<i class="z-icon-comment"></i>添加评论
+											</a>
+											<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false">
+												<i class="z-icon-thank"></i>感谢
+											</a>
+											<a href="#" class="meta-item zu-autohide" name="share">
+												<i class="z-icon-share"></i>分享
+											</a>
+											<a href="#" class="meta-item zu-autohide" name="favo">
+												<i class="z-icon-collect"></i>收藏
+											</a>
+											<span class="zg-bull zu-autohide">&bull;</span>
+											<a href="#" name="nohelp" class="meta-item zu-autohide">
+												没有帮助
+											</a>
+											<span class="zg-bull zu-autohide">&bull;</span>
+											<a href="#" name="report" class="meta-item zu-autohide">
+												举报
+											</a>
+											<span class="zg-bull">&bull;</span>
+											<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+											<a href="#" name="collapse" class="collapse meta-item zg-right">
+												<i class="z-icon-fold"></i>收起
+											</a>
+										</div>
+										<!-- <div class="zm-comment-box" data-count="31">
+											<i class="icon icon-spike zm-comment-bubble" style="display:inline;left:102px;"></i>
+											<a href="" name="comment-0" class="zg-anchor-hidden"></a>
+											<div class="zm-comment-list">
+												<div class="zm-item-comment" data-id="94886451">
+													<a class="zg-anchor-hidden" name="comment-94886451"></a>
+													<a title="七个柚子多少钱" data-tip="p$t$penny-lu-82" class="zm-item-link-avatar" href="/people/penny-lu-82">
+														<img src="images/20a52613d2af2feb4eeaf58629383725_s.jpg" class="zm-item-img-avatar">
+													</a>
+													<div class="zm-comment-content-wrap">
+														<div class="zm-comment-hd">
+															<a data-tip="p$t$penny-lu-82" href="http://www.zhihu.com/people/penny-lu-82" class="zg-link" title="七个柚子多少钱">七个柚子多少钱</a>
+														</div>
+														<div class="zm-comment-content">
+															印象深刻
+														</div>
+														<div class="zm-comment-ft">
+															<span class="date">2015-09-17</span>
+															<a href="#" class="reply zm-comment-op-link" name="reply_comment">
+																<i class="zg-icon zg-icon-comment-reply"></i>回复
+															</a>
+															<a href="#" class="like zm-comment-op-link " name="like_comment">
+																<i class="zg-icon zg-icon-comment-like"></i>赞
+															</a>
+															<span class="like-num  " data-tip="s$r$1 人觉得这个很赞">
+																<em>1</em> <span>赞</span>
+															</span>
+															<a href="#" name="report" class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button" role="button" aria-expanded="false" tabindex="0" aria-haspopup="true" style="-webkit-user-select: none;">
+																<div class="goog-inline-block goog-menu-button-outer-box">
+																	<div class="goog-inline-block goog-menu-button-inner-box">
+																		<div class="goog-inline-block goog-menu-button-caption">
+																			<i class="zg-icon z-icon-no-help"></i>举报
+																		</div>
+																		<div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div>
+																	</div>
+																</div>
+															</a>
+														</div>
+													</div>
+												</div>
+												<div class="zm-item-comment" data-id="94886451">
+													<a class="zg-anchor-hidden" name="comment-94886451"></a>
+													<a title="骑驴看花" data-tip="p$t$penny-lu-82" class="zm-item-link-avatar" href="/people/penny-lu-82">
+														<img src="images/20a52613d2af2feb4eeaf58629383725_s.jpg" class="zm-item-img-avatar">
+													</a>
+													<div class="zm-comment-content-wrap">
+														<div class="zm-comment-hd">
+															<a data-tip="p$t$penny-lu-82" href="http://www.zhihu.com/people/penny-lu-82" class="zg-link" title="骑驴看花">骑驴看花</a>
+														</div>
+														<div class="zm-comment-content">
+														印象深刻
+														</div>
+														<div class="zm-comment-ft">
+															<span class="date">2015-09-17</span>
+															<a href="#" class="reply zm-comment-op-link" name="reply_comment">
+																<i class="zg-icon zg-icon-comment-reply"></i>回复
+															</a>
+															<a href="#" class="like zm-comment-op-link " name="like_comment">
+																<i class="zg-icon zg-icon-comment-like"></i>赞
+															</a>
+															<span class="like-num  " data-tip="s$r$1 人觉得这个很赞">
+																<em>1</em> <span>赞</span>
+															</span>
+															<a href="#" name="report" class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button" role="button" aria-expanded="false" tabindex="0" aria-haspopup="true" style="-webkit-user-select: none;">
+																<i class="zg-icon z-icon-no-help"></i>举报
+															</a>
+														</div>
+													</div>
+												</div>
+												<a href="javascript:;" class="load-more" name="load-more">
+													<span class="text">显示全部评论<img src="http://static.zhihu.com/static/img/spinner2.gif" class="spinner"></span>
+												</a>
+											</div>
+											<div class="zm-comment-form zm-comment-box-ft">
+												<div class="zm-comment-editable editable" aria-label="写下你的评论…" contenteditable="true"><p style="color:#999">写下你的评论…</p></div>
+												<div class="zm-command zg-clear">
+													<a href="#" name="addnew" class="zg-right zg-btn-blue">评论</a>
+													<a href="#" name="closeform" class="zm-command-cancel">取消</a>
+												</div>
+												<div class="zm-comment-info">
+
+												</div>
+											</div>
+										</div> -->
+									</div>
+									<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+								</div>
+							</div>
+							</div>
+						</div>
+						<div class="undo-dislike-options" data-item_id="1">
+						此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+						<a href="#" class="ignore zu-autohide close"></a>
+						</div>
+					</div>
+
+					<div class="feed-item folding feed-item-hook feed-item-2
+					 
+
+					"
+					feed-item-a data-type="a"
+					id="feed-2">
+					<meta itemprop="answer-id" content="20868217">
+					<meta itemprop="answer-url-token" content="63634141">
+					<meta itemprop="ZReactor" data-id="20868217" data-meta="{&quot;source_type&quot;: &quot;member_answer_question&quot;, &quot;voteups&quot;: 1, &quot;comments&quot;: 0, &quot;source&quot;: [[&quot;member&quot;, &quot;8366575cfc9846f14d3fb919baedbd19&quot;]]}" >
+					<div class="feed-item-inner">
+					<div class="avatar">
+					<a title="小爝"
+					data-tip="p$t$xiao-jue-83"
+					class="zm-item-link-avatar"
+					href="/people/xiao-jue-83">
+					<img src="images/173df7a79b5a5f003fd5445bf72da99d_m.jpg" class="zm-item-img-avatar">
+					</a>
+					</div>
+					<div class="feed-main">
+					<div class="source">
+					<a data-tip="p$t$xiao-jue-83" href="http://www.zhihu.com/people/xiao-jue-83" target="_blank" class="zg-link" title="小爝">小爝</a> 回答了问题
+
+					<span class="zg-bull">•</span>
+					<span class="time" data-timestamp="1442231803000">1 小时前</span>
+
+					</div>
+					<div class="content">
+					<h2><a class="question_link" target="_blank" href="/question/35040143#answer-20868217">你所管理的手下是一群技术牛人，你如果给到压力他们反正也不怕找不到工作，觉得不爽就走，离职率暴涨怎么办？</a></h2>
+					<div class="feed-question-detail-item">
+
+					<a href="#" name="expandQuestionDetail" class="toggle-expand btn-toggle-question-detail ellipsis">看到大家很多的认为这里所说的压力是工作压...&nbsp;&nbsp;<span>显示问题详情</span></a>
+					<div class="question-description zm-editable-content">
+					看到大家很多的认为这里所说的压力是工作压力，或者是因为工资跟工作不匹配等等的原因，其实这里所说的压力并不是指这个，也不仅仅是管理上给到的压力，不知道大伙对itil是否了解，了解应该知道，itil在最起初实施的时候总是给人增加麻烦的感觉，所以有一些技术的牛人觉得给他们增加了麻烦，感觉内心不爽而产生离职的想法。
+					</div>
+
+					</div>
+					<div class="entry-body "
+					data-aid="20868217"
+					data-atoken="63634141"
+					data-collapsed="False"
+					data-created="1442231803"
+					data-deleted="0"
+					data-isowner="0"
+					data-helpful="1"
+					data-score="0"
+					data-copyable="1"
+					>
+
+					<div class="zm-item-vote">
+					<a name="expand" class="zm-item-vote-count" href="javascript:;" data-votecount="1">1</a>
+					</div>
+					<div class="zm-votebar">
+					<button class="up ">
+					<i class="icon vote-arrow"></i>
+					<span class="label">赞同</span>
+					<span class="count">1</span>
+					</button>
+					<button class="down ">
+					<i class="icon vote-arrow"></i>
+					<span class="label">反对</span>
+					</button>
+					</div>
+
+					<div class="zm-item-answer-detail">
+
+					<div class="zm-item-answer-author-info">
+					<h3 class="zm-item-answer-author-wrap">
+
+
+					<a data-tip="p$t$xiao-jue-83" href="/people/xiao-jue-83">小爝</a>，<strong title="www.tuer.me" class="zu-question-my-bio"><a href="http://www.tuer.me" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">tuer.me</span><span class="invisible"></span><i class="icon-external"></i></a></strong>
+
+					</h3>
+					<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+					</div>
+
+					<div class="zm-item-vote-info " data-votecount="1">
+
+					<span class="voters">
+					<span class="user-block"><a data-tip="p$t$guo-wu-xin" href="http://www.zhihu.com/people/guo-wu-xin" class="zg-link" title="郭无心">郭无心</a></span>
+					</span>
+
+
+					<span>赞同</span>
+
+
+					</div>
+					<div class="zm-item-rich-text" data-resourceid="6222654" data-action="/answer/content">
+
+					<textarea class="content hidden">
+					团队组成不合理，全是牛人根本无法干活…真的。
+
+
+					<span class="answer-date-link-wrap">
+					<a class="answer-date-link meta-item" target="_blank" href="/question/35040143/answer/63634141">发布于 19:56</a>
+					</span>
+
+					</textarea>
+					<div class="zh-summary summary clearfix">
+
+					团队组成不合理，全是牛人根本无法干活…真的。
+
+					</div>
+
+					</div>
+					</div>
+					</div>
+					<div class="feed-meta">
+					<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+					<div class="zm-meta-panel">
+
+						<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-6222654"><i class="z-icon-follow"></i>关注问题</a>
+
+						<a href="#" name="addcomment" class=" meta-item toggle-comment">
+						<i class="z-icon-comment"></i>添加评论</a>
+
+
+						<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+						<a href="#" class="meta-item zu-autohide" name="share">
+						<i class="z-icon-share"></i>分享</a>
+						<a href="#" class="meta-item zu-autohide" name="favo">
+						<i class="z-icon-collect"></i>收藏</a>
+						<span class="zg-bull zu-autohide">&bull;</span>
+
+						<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+						<span class="zg-bull zu-autohide">&bull;</span>
+						<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+						<span class="zg-bull">&bull;</span>
+
+						<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+						<a href="#" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+					</div>
+
+					</div>
+					<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+					</div>
+					</div>
+					</div>
+					</div>
+					<div class="undo-dislike-options" data-item_id="2">
+					此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+					<a href="#" class="ignore zu-autohide close"></a>
+					</div>
+					</div>
+
+					<div class="feed-item folding feed-item-hook feed-item-3" feed-item-a data-type="a" id="feed-3">
+						<meta itemprop="answer-id" content="8510644">
+						<meta itemprop="answer-url-token" content="32810404">
+						<meta itemprop="ZReactor" data-id="8510644" data-meta="{&quot;source_type&quot;: &quot;promotion_answer&quot;, &quot;voteups&quot;: 1904, &quot;comments&quot;: 43, &quot;source&quot;: []}" >
+						<div class="feed-item-inner">
+							<div class="avatar">
+								<a title="Roc Lee" data-tip="p$t$roc_lee" class="zm-item-link-avatar" href="/people/roc_lee">
+									<img src="images/a10e881801e4b057446928ef723dbe88_m.jpg" class="zm-item-img-avatar">
+								</a>
+							</div>
+							<div class="feed-main">
+								<div class="source">
+									热门回答，来自 <a href="/topic/19550429" data-tip="t$b$19550429" data-token="19550429" data-topicid="68">电影</a> <a data-follow="t:link" href="javascript:;" class="zg-follow zu-autohide follow-topic zu-edit-button" data-id="68">关注话题</a>
+
+								</div>
+								<div class="content">
+								<h2><a class="question_link" target="_blank" href="/question/26296574#answer-8510644">为什么几乎所有好莱坞动画片的口型都与台词一致？</a></h2>
+									<div class="feed-question-detail-item">
+										<a href="#" name="expandQuestionDetail" class="toggle-expand btn-toggle-question-detail ellipsis">这个问题我已经发现很久了，应该是我看19...&nbsp;&nbsp;<span>显示问题详情</span></a>
+										<div class="question-description zm-editable-content">
+											这个问题我已经发现很久了，应该是我看1995年拍摄的Toy Story时偶然间静音了几秒之后。接下来我只要看动画片就比较关注这个，然后我翻了一些的老一点动画片，例如小美人鱼，发现那个时代的动画片也是口型和台词一致的，也就是说如果读得懂英文唇语，就能知道台词了。一开始我也仅仅认为是好莱坞的工匠作风，连动画片的口型都一丝不苟，但是后来我想，这种做法是不是便于听觉障碍的人也能顺利读懂动画片的台词。 然而种作风我看个别欧陆的动画片也在这么做，所以我想了解一下这背后的意义，是有什么法律法规强制执行或是好莱坞制定过行业规章，让几乎所有的动画片厂都一致采用这种做法？还有这种做法是不是应该推广到中国，毕竟中国是万年的张嘴闭嘴式啊！
+										</div>
+									</div>
+									<div class="entry-body"data-aid="8510644" data-atoken="32810404" data-collapsed="False" data-created="1414913963" data-deleted="0" data-isowner="0" data-helpful="1" data-score="0" data-copyable="1">
+										<div class="zm-item-vote">
+											<a name="expand" class="zm-item-vote-count" href="javascript:;" data-votecount="1904">1904</a>
+										</div>
+										<div class="zm-votebar">
+											<button class="up ">
+											<i class="icon vote-arrow"></i>
+											<span class="label">赞同</span>
+											<span class="count">1904</span>
+											</button>
+											<button class="down ">
+											<i class="icon vote-arrow"></i>
+											<span class="label">反对</span>
+											</button>
+										</div>
+										<div class="zm-item-answer-detail">
+											<div class="zm-item-answer-author-info">
+												<h3 class="zm-item-answer-author-wrap">
+													<a data-tip="p$t$roc_lee" href="/people/roc_lee">Roc Lee</a>，<strong title="微信公众号 anotherroclee" class="zu-question-my-bio">微信公众号 anotherroclee</strong>
+												</h3>
+												<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+											</div>
+											<div class="zm-item-vote-info " data-votecount="1904">
+												<span class="voters">
+												<span class="user-block"><a data-tip="p$t$qing-jiu-jiu-73-10" href="http://www.zhihu.com/people/qing-jiu-jiu-73-10" class="zg-link" title="成成成成成">成成成成成</a>、</span><span class="user-block"><a data-tip="p$t$wang-long-91-64" href="http://www.zhihu.com/people/wang-long-91-64" class="zg-link" title="王龙">王龙</a>、</span><span class="user-block"><a data-tip="p$t$chen-chen-li-99" href="http://www.zhihu.com/people/chen-chen-li-99" class="zg-link" title="陈尘粒">陈尘粒</a></span>
+												</span>
+												<a href="javascript:;" class="more"> 等人赞同</a>
+											</div>
+											<div class="zm-item-rich-text" data-resourceid="2701601" data-action="/answer/content">
+												<textarea class="content hidden">
+													希望知乎日报可以让作者选择自己的文字是否开放评论。那样的话，Magasa先生也会把回答授权给日报吧。&lt;br&gt;&lt;br&gt;-&lt;br&gt;&lt;br&gt;与其说好莱坞在一开始就「选择」了严谨的风格，我更相信是在动画片发展的初期，那些先驱没有想过「对不上的口型」也是一种可选的解决方案。&lt;br&gt;&lt;br&gt;Magasa先生说的Max Fleischer也好，直接启发沃尔特·迪士尼的Eadweard Muybridge也好，他们在时代的最前面琢磨动画的时候，还在玩转描机的时候，脑海里首先是把这种新事物定位成动态照片、早期电影的新形态。动画片的雏形，也就是把摇篮里的电影进行漫画化的过程。&lt;br&gt;&lt;br&gt;当有声电影兴起的时候，因为电影里的角色是对得上口型的，所以早期的动画师也会默认动画片里的角色也应该对得上口型。&lt;br&gt;&lt;br&gt;他们不是放弃了「不对口型」的选择，而是一开始就不知道这个选项存在过。等到精益求精成了行业标准，想退步都难了。&lt;br&gt;&lt;br&gt;-&lt;br&gt;&lt;br&gt;在中国、日本流行的「不对口型」风格，当然不能用「东方写意」来文过饰非。「写意」和「对口型」之间是完全没有冲突的。&lt;br&gt;&lt;br&gt;中国的「不对口型」，当然是从日本学来的。但是日本人的动画片，又是受了中国人的动画片影响而发展起来的。&lt;br&gt;&lt;br&gt;真是相爱相杀。&lt;br&gt;&lt;br&gt;先说激励了手冢治虫的万氏兄弟作品《铁扇公主》。&lt;br&gt;&lt;br&gt;&lt;img src=&quot;images/f88ba0d7c24221cc8fa4f3712bbec79f_b.jpg&quot; data-rawwidth=&quot;720&quot; data-rawheight=&quot;576&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;720&quot; data-original=&quot;images/f88ba0d7c24221cc8fa4f3712bbec79f_r.jpg&quot;&gt;&lt;br&gt;《铁扇公主》其实是认真做了口型的，风格和好莱坞动画片一样，口型对到了每一个音节。这在唐僧、铁扇公主等人类角色身上特别明显。留意看唐僧的嘴唇，你会发现作者连撮口、合口的细节都做得很细心。&lt;br&gt;&lt;br&gt;但是如果不留意，你不太能意识到这部动画片是对了口型的，因为，音频和画面对不上。&lt;br&gt;&lt;br&gt;抱着科学严谨的态度，我在视频编辑软件里把视频和音频错开，用各种方法尝试左右微调，证明了这片子确实在制作初期就是音频与画面口型对不上。&lt;br&gt;&lt;br&gt;《铁扇公主》的很多画面，是实拍了京剧视频以后，再转绘而成的。而后期的配音，用的不是实拍京剧时的录音，所以，是先做好了口型画面，再叫配音演员去对。考虑到那是1941年的中国，在这样一部先驱级的动画片里，配音演员对不上口型实在是很可理解的。&lt;br&gt;&lt;br&gt;经过二十年的发展后，万氏兄弟在制作《大闹天宫》时对这个问题已经做了设计上的改进。这个改进，倒不是去努力对好口型，而是一种打太极般的东方智慧。考虑到时间成本、资金成本和人才能力的制约，在明知不太可能把对口型做到完美的情况下，《大闹天宫》采取了「关键帧对口型」的办法。&lt;br&gt;&lt;br&gt;具体操作方法，就是把台词里口型夸张的部分做出来，把其它部分含糊带过。比如说，「吃俺老孙一棒」这句台词：在「俺」字上做又大又圆的口型；在「老」字上收一点；后面的「孙一」二字只是口型小即可，是圆是扁，合口齐齿，都不用计较；然后在「棒」字上再来一个又大又圆的口型。&lt;br&gt;&lt;br&gt;做过配音的朋友都会明白，这种解决方案多么巧妙。配音的时候，只要口型的「关键帧」对上了，普通观众是看不出蹊跷的。&lt;br&gt;&lt;br&gt;就像我把「you think you're better than me」翻译成「你觉得你比我牛逼」来配音，细拆来看口型根本不对，但是这一串嘴形小的音节里，只要「better」的「be-」和「比」字、「me」和「逼」字的双唇音对上了（特别是最后一个音节口型一样），普通观众就完全不会产生「口型没对上」的感觉。&lt;br&gt;&lt;br&gt;当然，最后《大闹天宫》的口型还是没对上，因为后期配音还是很写意。&lt;br&gt;&lt;br&gt;-&lt;br&gt;&lt;br&gt;这些不太成功的努力启发了手冢治虫，让日本人看到了一条新的出路。&lt;br&gt;&lt;br&gt;原来，口型对不好的动画片，也可以取得成功。日本人索性把口型扔在一旁，瞬间把制作成本省了一大笔，产业门槛被大幅拉低，日本动画也跟着新漫画一起，噌噌地发展起来了。&lt;br&gt;&lt;br&gt;我看过的一本普及级别的电影书籍里（忘了是哪本，刚刚在书架上翻了半天没找到，也许是大学时在图书馆看的），花了极大的篇幅来讲解对口型的重要性。里面有很多危言耸听的话语，大意就是，如果你的片子里口型对不上，你这辈子就别想在电影产业里混出半点名堂。&lt;br&gt;&lt;br&gt;这书的作者当然是美国人。&lt;br&gt;&lt;br&gt;关于对口型这个问题，我觉得作者应该去采访一下徐克……&lt;br&gt;&lt;br&gt;不管怎样，作为在动漫领域唯一能与美国抗衡的国家，日本确实在很大程度上仰仗了「不对口型」这架过墙梯。能让一种缺陷变成一种风格——正是这种制定标准的霸气，让我们在观看《千与千寻》时完全忘记角色的嘴巴与台词的声音之间的不和谐，而完全沉入到宫崎骏打造的魔幻与温情的世界里。&lt;br&gt;&lt;br&gt;-
+													<span class="answer-date-link-wrap">
+													<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-11-02" target="_blank" href="/question/26296574/answer/32810404">编辑于 2014-11-14</a>
+													</span>
+												</textarea>
+												<div class="zh-summary summary clearfix">
+													<img src="images/e874105000d90d227ba5aee55255157a_xld.jpg" data-rawwidth="720" data-rawheight="576" class="origin_image inline-img zh-lightbox-thumb" data-original="images/e874105000d90d227ba5aee55255157a_xld.jpg">
+													希望知乎日报可以让作者选择自己的文字是否开放评论。那样的话，Magasa先生也会把回答授权给日报吧。-与其说好莱坞在一开始就「选择」了严谨的风格，我更相信是在动画片发展的初期，那些先驱没有想过「对不上的口型」也是一种可选的解决方案。Magasa先生说…
+													<a href="/question/26296574/answer/32810404" class="toggle-expand">显示全部</a>
+												</div>
+
+											</div>
+										</div>
+									</div>
+									<div class="feed-meta">
+										<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+											<div class="zm-meta-panel">
+												<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-2701601"><i class="z-icon-follow"></i>关注问题</a>
+												<a href="#" name="addcomment" class=" meta-item toggle-comment">
+												<i class="z-icon-comment"></i>43 条评论</a>
+												<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+												<a href="#" class="meta-item zu-autohide" name="share">
+												<i class="z-icon-share"></i>分享</a>
+												<a href="#" class="meta-item zu-autohide" name="favo">
+												<i class="z-icon-collect"></i>收藏</a>
+												<span class="zg-bull zu-autohide">&bull;</span>
+												<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+												<span class="zg-bull zu-autohide">&bull;</span>
+												<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+												<span class="zg-bull">&bull;</span>
+												<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+												<a href="#" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+											</div>
+										</div>
+										<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="undo-dislike-options" data-item_id="3">
+							此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+							<a href="#" class="ignore zu-autohide close"></a>
+						</div>
+					</div>
+
+<div class="feed-item folding feed-item-hook feed-item-4
+ 
+
+"
+feed-item-a data-type="a"
+id="feed-4">
+<meta itemprop="answer-id" content="20842012">
+<meta itemprop="answer-url-token" content="63569057">
+<meta itemprop="ZReactor" data-id="20842012" data-meta="{&quot;source_type&quot;: &quot;member_voteup_answer&quot;, &quot;voteups&quot;: 180, &quot;comments&quot;: 12, &quot;source&quot;: [[&quot;member&quot;, &quot;2b81947c2821e9d2f47907a51b15e6f8&quot;]]}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="恶魔的奶爸Sam"
+data-tip="p$t$e-mo-de-nai-ba"
+class="zm-item-link-avatar"
+href="/people/e-mo-de-nai-ba">
+<img src="images/a71e0ad8f6fbe604a9c60ea4aad7ff1f_m.png" class="zm-item-img-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+<a data-tip="p$t$e-mo-de-nai-ba" href="http://www.zhihu.com/people/e-mo-de-nai-ba" target="_blank" class="zg-link" title="恶魔的奶爸Sam">恶魔的奶爸Sam</a> 赞同了回答
+
+<span class="zg-bull">•</span>
+<span class="time" data-timestamp="1442231795000">1 小时前</span>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/35567152#answer-20842012">BAT 中哪家公司消失对中国人影响最小？</a></h2>
+<div class="feed-question-detail-item">
+
+<a href="#" name="expandQuestionDetail" class="toggle-expand btn-toggle-question-detail ellipsis">我是在世界三巨头微软谷歌苹果后想到这个姊...&nbsp;&nbsp;<span>显示问题详情</span></a>
+<div class="question-description zm-editable-content">
+我是在世界三巨头微软谷歌苹果后想到这个姊妹题的，我感觉他们仨的中国地位就像世界上的微软谷歌苹果，哪个对中国的“控制”“支撑”程度更深？
+</div>
+
+</div>
+<div class="entry-body "
+data-aid="20842012"
+data-atoken="63569057"
+data-collapsed="False"
+data-created="1442201943"
+data-deleted="0"
+data-isowner="0"
+data-helpful="1"
+data-score="0"
+data-copyable="1"
+>
+
+<div class="zm-item-vote">
+<a name="expand" class="zm-item-vote-count" href="javascript:;" data-votecount="180">180</a>
+</div>
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">180</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+<div class="zm-item-answer-detail">
+
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$lu-ren-jia-71-43" href="/people/lu-ren-jia-71-43">陆仁贾</a>，<strong title="算我半个大V吧...三分之一也行... 六分之一？成交！" class="zu-question-my-bio">算我半个大V吧...三分之一也行... 六分之…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+<div class="zm-item-vote-info " data-votecount="180">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$kao-la-bu-kao-shi" href="http://www.zhihu.com/people/kao-la-bu-kao-shi" class="zg-link" title="考拉不考试">考拉不考试</a>、</span><span class="user-block"><a data-tip="p$t$mojiaxiaoju" href="http://www.zhihu.com/people/mojiaxiaoju" class="zg-link" title="龙纹身的谢广坤">龙纹身的谢广坤</a>、</span><span class="user-block"><a data-tip="p$t$hu-luo-bu-niu-rou-tang" href="http://www.zhihu.com/people/hu-luo-bu-niu-rou-tang" class="zg-link" title="胡萝卜牛肉汤">胡萝卜牛肉汤</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+<div class="zm-item-rich-text" data-resourceid="6433526" data-action="/answer/content">
+
+<textarea class="content hidden">
+阿里巴巴：掌握了中国大半的电子商务&lt;br&gt;如果消失，对中国互联网经济的冲击巨大。&lt;br&gt;&lt;br&gt;腾讯：即时通讯巨头，游戏巨头，互联网社交媒体巨头&lt;br&gt;如果消失，对中国这几大领域的影响也是空前绝后。&lt;br&gt;&lt;br&gt;百度&lt;br&gt;如果消失，影响大于前两者之和。&lt;br&gt;&lt;br&gt;大部分人下载软件不会再被安装百度全家；&lt;br&gt;搜索东西再不会被引导到竞价的骗子网站；&lt;br&gt;浏览器主页再不会被强制设置成hao123；&lt;br&gt;千千静听说不定能回归独立；&lt;br&gt;中国中老年人电脑的卡顿与反应迟钝现象得到极大缓解。&lt;br&gt;&lt;br&gt;到时候好多人（包括我）做梦都会笑醒，互联网体验大幅提升，国民幸福指数跨越式发展...
+
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 11:39" target="_blank" href="/question/35567152/answer/63569057">编辑于 20:19</a>
+</span>
+
+</textarea>
+<div class="zh-summary summary clearfix">
+
+阿里巴巴：掌握了中国大半的电子商务如果消失，对中国互联网经济的冲击巨大。腾讯：即时通讯巨头，游戏巨头，互联网社交媒体巨头如果消失，对中国这几大领域的影响也是空前绝后。百度如果消失，影响大于前两者之和。大部分人下载软件不会再被安装百度全家；…
+
+<a href="/question/35567152/answer/63569057" class="toggle-expand">显示全部</a>
+
+</div>
+
+</div>
+</div>
+</div>
+<div class="feed-meta">
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-6433526"><i class="z-icon-follow"></i>关注问题</a>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>12 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="zg-bull">&bull;</span>
+
+<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+<a href="#" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="4">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+<div class="feed-item folding feed-item-hook feed-item-5
+ 
+
+"
+feed-item-q data-type="q"
+id="feed-5">
+<meta itemprop="question-id" content="6358254">
+<meta itemprop="question-url-token" content="35379163">
+<meta itemprop="ZReactor" data-id="6358254" data-meta="{&quot;source&quot;: [[&quot;topic&quot;, 3479]], &quot;source_type&quot;: &quot;topic_popular_question&quot;, &quot;answers&quot;: 9, &quot;comments&quot;: 0, &quot;follows&quot;: 119}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="职业规划" data-tip="t$t$19560641"
+class="zm-item-link-avatar"
+href="/topic/19560641">
+<img src="images/1abb11bdd_m.jpg" alt="职业规划" class="side-topic-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+来自 <a href="/topic/19560641" data-tip="t$b$19560641" data-token="19560641" data-topicid="3479">职业规划</a>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/35379163">刚毕业，无处可逃无从下手?</a></h2>
+
+
+<div class="feed-meta">
+<div class="zm-item-meta meta clearfix">
+<div class="zm-meta-panel">
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-6358254"><i class="z-icon-follow"></i>关注问题</a>
+<a href="#" name="toggle-comment" class="meta-item toggle-comment" >
+<i class="z-icon-comment"></i>添加评论</a>
+<span class="zg-bull">&bull;</span> <a href="/question/35379163" class="meta-item" target="_blank">9 个回答</a>
+<a href="javascript:;" name="collapse" class="meta-item collapse"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="5">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+<div class="feed-item folding feed-item-hook feed-item-6
+ 
+
+"
+feed-item-a data-type="a"
+id="feed-6">
+<meta itemprop="answer-id" content="20860621">
+<meta itemprop="answer-url-token" content="63615319">
+<meta itemprop="ZReactor" data-id="20860621" data-meta="{&quot;source_type&quot;: &quot;topic_acknowledged_answer&quot;, &quot;voteups&quot;: 6, &quot;comments&quot;: 9, &quot;source&quot;: [[&quot;topic&quot;, 2057], [&quot;topic&quot;, 2250]]}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="两性关系" data-tip="t$t$19556421"
+class="zm-item-link-avatar"
+href="/topic/19556421">
+<img src="images/a77af6b1c79b56c415125a2a1b185b83_m.jpg" alt="两性关系" class="side-topic-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+来自 <a href="/topic/19556421" data-tip="t$b$19556421" data-token="19556421" data-topicid="2057">两性关系</a>、<a href="/topic/19556945" data-tip="t$b$19556945" data-token="19556945" data-topicid="2250">女性</a>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/28125073#answer-20860621">为什么部分女人总喜欢说男人幼稚？</a></h2>
+<div class="feed-question-detail-item">
+
+<a href="#" name="expandQuestionDetail" class="toggle-expand btn-toggle-question-detail ellipsis">我只知道女人多了半条染色体，其它的真不知...&nbsp;&nbsp;<span>显示问题详情</span></a>
+<div class="question-description zm-editable-content">
+我只知道女人多了半条染色体，其它的真不知道。<br>所以我认为没有任何根据表明男性比女性幼稚。<br>我所感受到的男女差异主要在于：<br>大多数情况，<br>女性往往很确切地以自身的、眼前的短期利益为中心，对过分纠结对错反感；<br>男性往往有很明确的是非观、以大局或长远利益为重，对行为不守逻辑反感。<br><br>而且，很多时候女人指责男人幼稚的原因总是那么说不过去。<br>例如：<br>我不过就跟前男友聊得开了点，男朋友就看不下去了他怎么这么幼稚?<br>今天在咖啡厅面试了个男的，结账的时候竟然要AA他怎么这么幼稚？<br>男朋友跟我相处了这么长时间，连我不喜欢帮人取快递都不知道，不会自己安排时间啊，非让我帮你取，怎么可以这么幼稚？<br>虽然我肤白貌美温柔贤惠，但却一直没找到我的王子，男人们总是对小婊砸趋之若鹜，怎么全都这么幼稚？<br><br>但很有趣的一点是，女性对男性的声讨总会包含“幼稚”这个词，<br>而男性却的确很少说女性幼稚，男性声讨女性时往往跟“自私”有关。<br><br>那么问题来了，<br>为什么一个群体看待另一个群体会出现如此雷同的认识呢？<br><br><br>-------------------------------------------------------------------------------------------------------------------------<br>那几个例子，其实吧……<br>1是以前知乎上一个女生问的问题的内容，遭到回答者的大举围攻<br>2是过去的一条微博，女HR不在自己公司面试却约到了咖啡厅，付账后很不满<br>3是我的亲身经历，我自己换成对第三方的口吻复述了一遍<br>4是社交网络看到的日常吐槽<br>我只是恰巧发现这些来源不同的内容巧合性的跟“幼稚”有关。故有此问。<br><br>另外我的问题中关于性别差异的描述的确存在主观倾向，所以我说了是“我所感受到的”。<br>如果让部分人感到反感或不适，我向各位道歉。<br><br>不过还有一点我很诧异：1、2两个例子的链接时间太久，我都找不到了，但是记忆中网络评价都是一边倒得批评甚至攻击当事人的。为什么在这个问题的答案中这些做法却普遍被说得理所当然呢？（是我的描述方式误导了各位答主了么= =|||）
+</div>
+
+</div>
+<div class="entry-body "
+data-aid="20860621"
+data-atoken="63615319"
+data-collapsed="False"
+data-created="1442222205"
+data-deleted="0"
+data-isowner="0"
+data-helpful="1"
+data-score="0"
+data-copyable="1"
+>
+
+<div class="zm-item-vote">
+<a name="expand" class="zm-item-vote-count" href="javascript:;" data-votecount="6">6</a>
+</div>
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">6</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+<div class="zm-item-answer-detail">
+
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ni-zhi-dao-wo-bu-zhi-dao-96" href="/people/ni-zhi-dao-wo-bu-zhi-dao-96">花吃了那女孩</a>，<strong title="渣渣大学汪，汪汪考研狗。" class="zu-question-my-bio">渣渣大学汪，汪汪考研狗。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+<div class="zm-item-vote-info " data-votecount="6">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wu-kai-94-66" href="http://www.zhihu.com/people/wu-kai-94-66" class="zg-link" title="吴元駃">吴元駃</a>、</span><span class="user-block"><a data-tip="p$t$wan-shu-juan" href="http://www.zhihu.com/people/wan-shu-juan" class="zg-link" title="万淑娟">万淑娟</a>、</span><span class="user-block"><a data-tip="p$t$fang-xuan-25-2" href="http://www.zhihu.com/people/fang-xuan-25-2" class="zg-link" title="Sybil">Sybil</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+<div class="zm-item-rich-text" data-resourceid="3432594" data-action="/answer/content">
+
+<textarea class="content hidden">
+不要说你身边的男生都是这样幼稚。&lt;br&gt;也许他在另一个女生眼中是成熟的，也许你自以为你是成熟的，其实在别人眼里却是幼稚，而自己却你不知。评判一个人的性格带有太多主观意向。&lt;br&gt;&lt;br&gt;&lt;br&gt;所以会有这么多上学并没有什么卵用的言论，无外乎幸存者偏差。99%钻研学业的走上人生巅峰，似乎并没有被人所熟知，唯有那1%辍学下海奋斗并且成功的被写进励志故事，被大肆宣扬，他们的故事让你读起来舒服，然后成为你不好好学习的借口。&lt;br&gt;&lt;br&gt;&lt;br&gt;一叶障目、以偏概全。可是为什么有这么多人持有这种思考方式呢？&lt;br&gt;因为对你有利，转发天津爆炸事件并且为其祈福的空间朋友圈动态，你看，别人会觉得你善良；把《南山南》挂在嘴边，别人会觉得你文艺；口口声声评论说那人太幼稚了，别人会觉得你成熟。这种无成本的利好，以人类趋利避害的天性，何乐而不为？ 可是你真的有真正关心天灾？你真的能听懂《南山南》文艺在何处？你真的有足够了解那个所谓幼稚的人？ 可怕的是，以别人痛苦为自己牟利。&lt;br&gt;&lt;br&gt;不少男生都被冠之以“幼稚”和“没有安全感”吧？这是多么好的借口啊，一切矛头指向对方，将自己置于高高在上的圣坛，一副圣母玛利亚的模样。殊不知伤害的是一颗善良炽热的心。当发现对她来说所谓成熟富有安全感的另一半甚至根本不具备那些特质的时候，会发现“幼稚”这个词真的很可笑。&lt;br&gt;女生看到这的时候，面红耳赤，怒斥道“你这些偏见也不是幸存者偏差？”&lt;br&gt;或许我说错了，又或许说到你们心里了。
+
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/28125073/answer/63615319">发布于 17:16</a>
+</span>
+
+</textarea>
+<div class="zh-summary summary clearfix">
+
+不要说你身边的男生都是这样幼稚。也许他在另一个女生眼中是成熟的，也许你自以为你是成熟的，其实在别人眼里却是幼稚，而自己却你不知。评判一个人的性格带有太多主观意向。所以会有这么多上学并没有什么卵用的言论，无外乎幸存者偏差。99%钻研学业的走上…
+
+<a href="/question/28125073/answer/63615319" class="toggle-expand">显示全部</a>
+
+</div>
+
+</div>
+</div>
+</div>
+<div class="feed-meta">
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-3432594"><i class="z-icon-follow"></i>关注问题</a>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>9 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="zg-bull">&bull;</span>
+
+<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+<a href="#" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="6">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+<div class="feed-item folding feed-item-hook feed-item-7
+ 
+
+"
+feed-item-a data-type="a"
+id="feed-7">
+<meta itemprop="answer-id" content="20852536">
+<meta itemprop="answer-url-token" content="63595300">
+<meta itemprop="ZReactor" data-id="20852536" data-meta="{&quot;source_type&quot;: &quot;topic_acknowledged_answer&quot;, &quot;voteups&quot;: 3, &quot;comments&quot;: 1, &quot;source&quot;: [[&quot;topic&quot;, 922]]}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="经济" data-tip="t$t$19552981"
+class="zm-item-link-avatar"
+href="/topic/19552981">
+<img src="images/8186aa168_m.jpg" alt="经济" class="side-topic-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+来自 <a href="/topic/19552981" data-tip="t$b$19552981" data-token="19552981" data-topicid="922">经济</a>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/35564934#answer-20852536">你期待的盛世是什么样子的？</a></h2>
+<div class="feed-question-detail-item">
+
+<div class="question-description-plain zm-editable-content">
+
+</div>
+
+</div>
+<div class="entry-body "
+data-aid="20852536"
+data-atoken="63595300"
+data-collapsed="False"
+data-created="1442214151"
+data-deleted="0"
+data-isowner="0"
+data-helpful="1"
+data-score="0"
+data-copyable="1"
+>
+
+<div class="zm-item-vote">
+<a name="expand" class="zm-item-vote-count" href="javascript:;" data-votecount="3">3</a>
+</div>
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+<div class="zm-item-answer-detail">
+
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$jamesxxu" href="/people/jamesxxu">james xu</a>，<strong title="不务正业的石油工程师、前职业德州扑克牌手" class="zu-question-my-bio">不务正业的石油工程师、前职业德州扑克牌手</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$miroky" href="http://www.zhihu.com/people/miroky" class="zg-link" title="miroky">miroky</a>、</span><span class="user-block"><a data-tip="p$t$walkerinchaos" href="http://www.zhihu.com/people/walkerinchaos" class="zg-link" title="洪荒行者">洪荒行者</a>、</span><span class="user-block"><a data-tip="p$t$setsail-sun" href="http://www.zhihu.com/people/setsail-sun" class="zg-link" title="setsail sun">setsail sun</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+<div class="zm-item-rich-text" data-resourceid="6432627" data-action="/answer/content">
+
+<textarea class="content hidden">
+Everybody care about their own fking business, cuz we trust our leader gonna always make the right choice. &lt;br&gt;&lt;br&gt;So kids plz,&lt;br&gt;&lt;br&gt; It's not that complicated.
+
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 15:02" target="_blank" href="/question/35564934/answer/63595300">编辑于 20:46</a>
+</span>
+
+</textarea>
+<div class="zh-summary summary clearfix">
+
+Everybody care about their own fking business, cuz we trust our leader gonna always make the right choice. So kids plz, It's not that complicated.
+
+</div>
+
+</div>
+</div>
+</div>
+<div class="feed-meta">
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-6432627"><i class="z-icon-follow"></i>关注问题</a>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="zg-bull">&bull;</span>
+
+<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+<a href="#" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="7">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+<div class="feed-item folding feed-item-hook feed-item-8
+ 
+
+"
+feed-item-q data-type="q"
+id="feed-8">
+<meta itemprop="question-id" content="6423565">
+<meta itemprop="question-url-token" content="35542218">
+<meta itemprop="ZReactor" data-id="6423565" data-meta="{&quot;source&quot;: [[&quot;topic&quot;, 2566]], &quot;source_type&quot;: &quot;topic_popular_question&quot;, &quot;answers&quot;: 12, &quot;comments&quot;: 0, &quot;follows&quot;: 40}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="职场" data-tip="t$t$19557876"
+class="zm-item-link-avatar"
+href="/topic/19557876">
+<img src="images/386dc566a_m.jpg" alt="职场" class="side-topic-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+来自 <a href="/topic/19557876" data-tip="t$b$19557876" data-token="19557876" data-topicid="2566">职场</a>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/35542218">我到底要不要辞公务员？</a></h2>
+
+
+<div class="feed-meta">
+<div class="zm-item-meta meta clearfix">
+<div class="zm-meta-panel">
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-6423565"><i class="z-icon-follow"></i>关注问题</a>
+<a href="#" name="toggle-comment" class="meta-item toggle-comment" >
+<i class="z-icon-comment"></i>添加评论</a>
+<span class="zg-bull">&bull;</span> <a href="/question/35542218" class="meta-item" target="_blank">12 个回答</a>
+<a href="javascript:;" name="collapse" class="meta-item collapse"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="8">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+<div class="feed-item folding feed-item-hook feed-item-9
+ 
+
+"
+feed-item-a data-type="a"
+id="feed-9">
+<meta itemprop="answer-id" content="20788543">
+<meta itemprop="answer-url-token" content="63435517">
+<meta itemprop="ZReactor" data-id="20788543" data-meta="{&quot;source_type&quot;: &quot;topic_acknowledged_answer&quot;, &quot;voteups&quot;: 3, &quot;comments&quot;: 18, &quot;source&quot;: [[&quot;topic&quot;, 6058]]}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="人文" data-tip="t$t$19568349"
+class="zm-item-link-avatar"
+href="/topic/19568349">
+<img src="images/e6dafdb34_m.jpg" alt="人文" class="side-topic-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+来自 <a href="/topic/19568349" data-tip="t$b$19568349" data-token="19568349" data-topicid="6058">人文</a>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/30277318#answer-20788543">中国真的有很多穷人吗？</a></h2>
+<div class="feed-question-detail-item">
+
+<a href="#" name="expandQuestionDetail" class="toggle-expand btn-toggle-question-detail ellipsis">26 岁了，三观也正常，但是长到现在从学...&nbsp;&nbsp;<span>显示问题详情</span></a>
+<div class="question-description zm-editable-content">
+26 岁了，三观也正常，但是长到现在从学校到社会，在从朋友圈子到陌生人，也没有真正的看到过几次真正的穷困人家，求解疑。<br>———————————————————————————————————————————<br>穷人的相关官方定义：<br><ol><li>经济合作与发展组织在1976年组织了对其成员国的一次大规模调查后提出了一个贫困标准，即<b>以一个国家或地区社会中位收入或平均收入的50%作为这个国家或地区的贫困线</b>，这就是后来被广泛运用的国际贫困标准。<br></li><li>世界银行 2008 年颁布的贫困线标准为<b>每人每天消费 1.25 美元</b><br></li><li>在我国，<b>年收入在 2300 元以下的人群（折合约1.017美元/日）</b>，将被算作贫困人口。<br></li></ol>相关报道：<br><a href="http://finance.qq.com/a/20111130/001503.htm" class=" wrap external" target="_blank" rel="nofollow noreferrer">贫困线上调至2300元 贫困人口将过亿<i class="icon-external"></i></a><br><a href="http://www.chinanews.com/cj/2011/11-29/3495569.shtml" class=" wrap external" target="_blank" rel="nofollow noreferrer">中国贫困线上调接近世行名义标准――中新网<i class="icon-external"></i></a><br><a href="http://money.163.com/11/1130/02/7K2S6UCE00253B0H.html" class=" wrap external" target="_blank" rel="nofollow noreferrer">年收入2300元成贫困线新标准<i class="icon-external"></i></a>
+</div>
+
+</div>
+<div class="entry-body "
+data-aid="20788543"
+data-atoken="63435517"
+data-collapsed="False"
+data-created="1442107713"
+data-deleted="0"
+data-isowner="0"
+data-helpful="1"
+data-score="0"
+data-copyable="1"
+>
+
+<div class="zm-item-vote">
+<a name="expand" class="zm-item-vote-count" href="javascript:;" data-votecount="3">3</a>
+</div>
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+<div class="zm-item-answer-detail">
+
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$teng-feng-wu" href="http://www.zhihu.com/people/teng-feng-wu" class="zg-link" title="小舞同志">小舞同志</a>、</span><span class="user-block"><a data-tip="p$t$xi-xi-ha-ha-14-7" href="http://www.zhihu.com/people/xi-xi-ha-ha-14-7" class="zg-link" title="嘻嘻哈哈">嘻嘻哈哈</a>、</span><span class="user-block"><a data-tip="p$t$liu-kai-10" href="http://www.zhihu.com/people/liu-kai-10" class="zg-link" title="刘恺">刘恺</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+<div class="zm-item-rich-text" data-resourceid="4293206" data-action="/answer/content">
+
+<textarea class="content hidden">
+上小学六年级的时候，家里出了变故，爸爸生意失败，我从一个上学放学有专车接送的小公主变成了连学费都交不起的穷孩子（那时学费一个学期才500块），整个初中我印象最深的就是每次交学费的时候，我都会想出各种借口拖延，印象最深的一次拖了一周多，我跟我妈说再交不上学费我不去读书了，第二天我一早醒来看见我妈头发一夜之间白了一大半，真的一点也不夸张，还看见放在我枕头边的学费，瞬间我眼泪就下来了。后来家里一直在还债中度过，大学第一年考上了我放弃了，但是第二年爸爸不知从哪借来的钱非要让我复读，复读后考了一个211大学，学费依然是大问题，我记得很清楚，我入学时老爸把我送到火车站那一刻跟我说，车票太贵了，我就不送你了，我相信你自己能搞定（车程是大连到长沙，没有直达火车，要辗转30个小时才能到），我自己真的就搞定了，入学第一件事是找助学贷款处，别人在憧憬美好的大学，我在为大学四年的学费担忧。那时很自卑，有人追也不敢谈恋爱，同学约着一起去旅游也会找借口推掉，曾经在全程无座的情况下站了30多个小时回家，只带一瓶矿泉水和两根棒棒糖…
+
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/30277318/answer/63435517">发布于 昨天 09:28</a>
+</span>
+
+</textarea>
+<div class="zh-summary summary clearfix">
+
+上小学六年级的时候，家里出了变故，爸爸生意失败，我从一个上学放学有专车接送的小公主变成了连学费都交不起的穷孩子（那时学费一个学期才500块），整个初中我印象最深的就是每次交学费的时候，我都会想出各种借口拖延，印象最深的一次拖了一周多，我跟我…
+
+<a href="/question/30277318/answer/63435517" class="toggle-expand">显示全部</a>
+
+</div>
+
+</div>
+</div>
+</div>
+<div class="feed-meta">
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-4293206"><i class="z-icon-follow"></i>关注问题</a>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>18 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="zg-bull">&bull;</span>
+
+<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+<a href="#" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="9">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+
+
+<div class="feed-item folding feed-item-hook feed-item-11
+ 
+
+"
+feed-item-a data-type="a"
+id="feed-11">
+<meta itemprop="answer-id" content="20845100">
+<meta itemprop="answer-url-token" content="63576758">
+<meta itemprop="ZReactor" data-id="20845100" data-meta="{&quot;source_type&quot;: &quot;topic_acknowledged_answer&quot;, &quot;voteups&quot;: 3, &quot;comments&quot;: 2, &quot;source&quot;: [[&quot;topic&quot;, 113]]}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="阅读" data-tip="t$t$19550564"
+class="zm-item-link-avatar"
+href="/topic/19550564">
+<img src="images/3f30afdfc_m.jpg" alt="阅读" class="side-topic-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+来自 <a href="/topic/19550564" data-tip="t$b$19550564" data-token="19550564" data-topicid="113">阅读</a>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/35509863#answer-20845100">有哪些书的结尾让你印象深刻？</a></h2>
+<div class="feed-question-detail-item">
+
+<a href="#" name="expandQuestionDetail" class="toggle-expand btn-toggle-question-detail ellipsis">我先说一个，金庸的《神雕侠侣》： 其实明...&nbsp;&nbsp;<span>显示问题详情</span></a>
+<div class="question-description zm-editable-content">
+我先说一个，金庸的《神雕侠侣》：<blockquote>       其实明月在天，清风吹叶，树巅乌鸦啊啊而鸣，郭襄再也忍耐不住，泪珠夺眶而出。正是：“秋风消，秋月明；落叶聚还散，寒鸦栖复惊。相思相见知何日，此时此夜难为情。”</blockquote>       第一次读完神雕时正值夜深，万籁俱静，全书在这里戛然而止，说不出的惆怅，辗转反侧，难以入眠。
+</div>
+
+</div>
+<div class="entry-body "
+data-aid="20845100"
+data-atoken="63576758"
+data-collapsed="False"
+data-created="1442205742"
+data-deleted="0"
+data-isowner="0"
+data-helpful="1"
+data-score="0"
+data-copyable="1"
+>
+
+<div class="zm-item-vote">
+<a name="expand" class="zm-item-vote-count" href="javascript:;" data-votecount="3">3</a>
+</div>
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+<div class="zm-item-answer-detail">
+
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$cokecasper" href="/people/cokecasper">Coke</a>，<strong title="以前是文科生的码农" class="zu-question-my-bio">以前是文科生的码农</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$luo-min-32-26" href="http://www.zhihu.com/people/luo-min-32-26" class="zg-link" title="骆敏">骆敏</a>、</span><span class="user-block"><a data-tip="p$t$li-bo-tou" href="http://www.zhihu.com/people/li-bo-tou" class="zg-link" title="李博头">李博头</a>、</span><span class="user-block"><a data-tip="p$t$ju-xiao-bo-55" href="http://www.zhihu.com/people/ju-xiao-bo-55" class="zg-link" title="居晓波">居晓波</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+<div class="zm-item-rich-text" data-resourceid="6410598" data-action="/answer/content">
+
+<textarea class="content hidden">
+&lt;blockquote&gt;天渐渐黑了，道路开始急转弯爬高。&lt;br&gt;&lt;br&gt;    他们来到镇上径直开到旅馆。特丽莎和托马斯从未到过这里。他们下到地下室，找到了酒吧、舞厅以及几张桌子。有一位大概六十来岁的人在弹着钢琴，年纪与他差不多的一位妇人拉着小提琴。演奏的名曲已有四十年历史了。有五、六对舞伴飘在舞池的地板上。&lt;br&gt;&lt;br&gt;    “这里没有人跟我跳。”小伙子朝四周扫了一眼，立即邀特丽莎跳舞。&lt;br&gt;&lt;br&gt;    集体农庄主席和托马斯坐在一张空桌旁边，要了一瓶葡萄酒。&lt;br&gt;&lt;br&gt;    “我不能喝，”托马斯提醒他，“我要开车。”&lt;br&gt;&lt;br&gt;    “别傻，”他说，“我们在这里过夜。”他起身去服务台，订两个房间。&lt;br&gt;&lt;br&gt;    特丽莎与小伙子从舞池里归来，主席接着邀她，最后才轮到托马斯。&lt;br&gt;&lt;br&gt;    “托马斯，”她在舞池里对他说，“你生活中的一切，都是我的错。由于我的错，你的句号打在这里，低得不可能再低了。”&lt;br&gt;&lt;br&gt;    “低？你说什么？”&lt;br&gt;&lt;br&gt;    “要是我们呆在苏黎世，你仍然会是一位外科医生。”&lt;br&gt;&lt;br&gt;    “你会是一位摄影师。”&lt;br&gt;&lt;br&gt;    “这是作一种愚蠢的比较，”特丽莎说，“你的工作对你来说意昧着一切；我不在乎我干什么，我什么都能干。我只失去了一样东西，你失去了所有的东西。”&lt;br&gt;&lt;br&gt;    “你没注意到我在这里很快乐？特丽莎？”托马斯说。&lt;br&gt;&lt;br&gt;    “外科是你的事业。”她说。&lt;br&gt;&lt;br&gt;    “追求事业是愚蠢的，特丽莎，我没有事业。任何人也没有。认识到你是自由的，不被所有的事业束缚，这才是一种极度的解脱。”&lt;br&gt;&lt;br&gt;    他坦率的声音不容怀疑。特丽莎回想起几个小时前他修理卡车时的一幕，想起自己亲眼看到他如此老态。她已经达到了自己的目标：一直希望他变得老一些。她再次回想起自己儿时的房间里那只紧紧贴着自己面颊的小兔。&lt;br&gt;&lt;br&gt;    变成一只兔子意味着什么？这意昧着丧失所有的力量，意昧着一个人比任何人都虚弱。&lt;br&gt;&lt;br&gt;    他们随着钢琴和小提琴的旋律翩翩飘舞。特丽莎把头靠着托马斯的肩膀，正如他们在飞机中一起飞过浓浓雨云时一样。她体验到奇异的快乐和同样奇异的悲凉。悲凉意昧着：我们处在最后一站。快乐意味着：我们在一起。悲凉是形式，快乐是内容。快乐注入在悲凉之中。&lt;br&gt;&lt;br&gt;    他们回到桌边。特丽莎又同集体农庄主席和小伙子跳了两三轮，小伙子喝得太多，以至同她一起摔倒在舞池中。&lt;br&gt;&lt;br&gt;    接着，他们上楼去，找到了他们那两间分开了的房间。&lt;br&gt;&lt;br&gt;    托马斯转动钥匙，扭开了吊灯。特丽莎看见两张床并排挨在一起，其中一张靠着一张小桌和一盏灯。灯罩下的一只巨大的蝴蝶，被头顶的光吓得一惊，扑扑飞起，开始在夜晚的房间里盘旋。钢琴和小提琴的旋律依稀可闻，从楼下丝丝缕缕地升上来。&lt;/blockquote&gt;
+
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/35509863/answer/63576758">发布于 12:42</a>
+</span>
+
+</textarea>
+<div class="zh-summary summary clearfix">
+
+天渐渐黑了，道路开始急转弯爬高。 他们来到镇上径直开到旅馆。特丽莎和托马斯从未到过这里。他们下到地下室，找到了酒吧、舞厅以及几张桌子。有一位大概六十来岁的人在弹着钢琴，年纪与他差不多的一位妇人拉着小提琴。演奏的名曲已有四十年历史了。有五、…
+
+<a href="/question/35509863/answer/63576758" class="toggle-expand">显示全部</a>
+
+</div>
+
+</div>
+</div>
+</div>
+<div class="feed-meta">
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-6410598"><i class="z-icon-follow"></i>关注问题</a>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="zg-bull">&bull;</span>
+
+<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+<a href="#" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="11">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+<div class="feed-item folding feed-item-hook feed-item-12
+ 
+
+"
+feed-item-a data-type="a"
+id="feed-12">
+<meta itemprop="answer-id" content="20798653">
+<meta itemprop="answer-url-token" content="63460518">
+<meta itemprop="ZReactor" data-id="20798653" data-meta="{&quot;source_type&quot;: &quot;topic_acknowledged_answer&quot;, &quot;voteups&quot;: 4, &quot;comments&quot;: 2, &quot;source&quot;: [[&quot;topic&quot;, 186]]}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="电子商务" data-tip="t$t$19550780"
+class="zm-item-link-avatar"
+href="/topic/19550780">
+<img src="images/07af95234_m.jpg" alt="电子商务" class="side-topic-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+来自 <a href="/topic/19550780" data-tip="t$b$19550780" data-token="19550780" data-topicid="186">电子商务</a>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/35471660#answer-20798653">中国这几年，电商对实体店的冲击有多大？</a></h2>
+<div class="feed-question-detail-item">
+
+<a href="#" name="expandQuestionDetail" class="toggle-expand btn-toggle-question-detail ellipsis">中国这两三年，淘宝等电商的发展可谓是突飞...&nbsp;&nbsp;<span>显示问题详情</span></a>
+<div class="question-description zm-editable-content">
+中国这两三年，淘宝等电商的发展可谓是突飞猛进，那么电商对实体店的冲击有多大呢？可从生活所见，经济，市场等进行探讨。
+</div>
+
+</div>
+<div class="entry-body "
+data-aid="20798653"
+data-atoken="63460518"
+data-collapsed="False"
+data-created="1442122820"
+data-deleted="0"
+data-isowner="0"
+data-helpful="1"
+data-score="0"
+data-copyable="1"
+>
+
+<div class="zm-item-vote">
+<a name="expand" class="zm-item-vote-count" href="javascript:;" data-votecount="4">4</a>
+</div>
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">4</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+<div class="zm-item-answer-detail">
+
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$hu-xiong-shenzhen" href="/people/hu-xiong-shenzhen">胡兄</a>，<strong title="深圳一站式户外/户外用品租赁/户外店/户外俱乐部/特色农家乐/企业户外活动定制" class="zu-question-my-bio">深圳一站式户外/户外用品租赁/户外店/户…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+<div class="zm-item-vote-info " data-votecount="4">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xiao-shuang-34" href="http://www.zhihu.com/people/xiao-shuang-34" class="zg-link" title="小双">小双</a>、</span><span class="user-block"><a data-tip="p$t$dukabong" href="http://www.zhihu.com/people/dukabong" class="zg-link" title="那路好堵">那路好堵</a>、</span><span class="user-block"><a data-tip="p$t$tin-tin-11" href="http://www.zhihu.com/people/tin-tin-11" class="zg-link" title="Tin Tin">Tin Tin</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+<div class="zm-item-rich-text" data-resourceid="6395298" data-action="/answer/content">
+
+<textarea class="content hidden">
+电商对实体店的冲击在一线城市，大中型城市表现特别明显。慢慢地会延续到下面的城市。&lt;br&gt;很多商场被迫搞起来了常年打折的活动，一倍换三倍四倍五倍的都出来了，以前感觉电商是常见的清库存的地盘，现在实体店也是被迫卷入，深圳的商场如果说搞一个促销，才打个五折，那基本上可以死翘翘，怎么着也都得三折起。不过下面的中小城市商场生意还是不错，可能跟常年的习惯有关系，比如茂业在深圳的店常年打折扣，消费者已经麻木了，但是他们在河北某个城市的店，生意非常火爆，还是八折。这个和黄金位置，竞争对手，市场规模，消费习惯都有一些关系。&lt;br&gt;言归正传，从周边的情况聊一下电商对实体的冲击。&lt;br&gt;时间久的商场还没有特别大的冲击，新的空白区域新建的商场影响很大。比如某深圳本土百货，他在龙岗店以及在宝安店，生意都比较一般。听说现在在走资本市场，可眼下资本市场也有点冷，股市也震荡不止。不知道他如何解决眼下商户的退租潮。&lt;br&gt;超市这块，更是竞争白热化。一号店，天猫超市等这些让我们这些年轻人开始了鼠标购物的过程，与此同时，线下超市之间的竞争也趋向白热化。新开的大型楼盘都匹配了超市，一条街几十米有几家超市，还有N多家美宜佳等便利店，还有一些社区的卖水果的店，卖蔬菜的店，菜市场，真不知道怎么够分的。龙岗中心城附近有三家以上的沃尔玛超市，几公里范围内而已。龙岗COCOPARK一家山姆会员店，宝能有一家沃尔玛，龙平东路有家沃尔玛，相聚才一点点距离。华润万家在沃尔玛布局的这些范围内，估计又有十几家超市，感觉大家都是疯了。租金那么贵，人工那么贵的，电商在冲击，周边的商户也在冲击，不知道怎么来盈利。更可怕的是，新开的楼盘都在招超市入驻。一些小的超市已经经营不下去了，都在转行。卖水果可能利润比较高，一条街不知道多少家开始卖水果了，各种招数，问题是人只有这么多，大家都在辛苦和煎熬。&lt;br&gt;类似的情况太多了，我分析一下现在路边商铺的属性，大多数改为了本地化服务属性。比如吃饭，比如剪头发等等，那些卖衣服的，越来越少。想想都可怕，现在淘宝上一件T恤，9块9包邮，某段时间还出现了5块钱全国包邮，一件T恤。当电商都在亏的时候，实体怎么赚钱。你可能说不卖便宜的，当然可以，可是这么多便宜货在你眼前，你也会习惯最多花几十买一件T恤或者POLO或衬衫。&lt;br&gt;本质上来说，消费者因为电商是获利的。从长远来说，都是在伤害。越来越单薄的利润，使得社会的每个环节都在极其恐怖地控制成本，大家会偏向于价格更低更低更更低，最后拿到的就是很差的产品质量，很不好的服务。大家都不能获利，最后变成了人人都是受害者。&lt;br&gt;当然了，社会肯定是要往前发展，不能因为电商现在的问题而否定电商。电商只有充分的尊重产品的价值，整个社会的经济才会更健康。好的毛利的产品，可以通过电商销售，也可以通过线下的O2O提供更好的服务，消费者也开心，厂家也开心，最终会有利润进行更好的产品开发，才可以实现良性循环。
+
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/35471660/answer/63460518">发布于 昨天 13:40</a>
+</span>
+
+</textarea>
+<div class="zh-summary summary clearfix">
+
+电商对实体店的冲击在一线城市，大中型城市表现特别明显。慢慢地会延续到下面的城市。很多商场被迫搞起来了常年打折的活动，一倍换三倍四倍五倍的都出来了，以前感觉电商是常见的清库存的地盘，现在实体店也是被迫卷入，深圳的商场如果说搞一个促销，才打个…
+
+<a href="/question/35471660/answer/63460518" class="toggle-expand">显示全部</a>
+
+</div>
+
+</div>
+</div>
+</div>
+<div class="feed-meta">
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-6395298"><i class="z-icon-follow"></i>关注问题</a>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="zg-bull">&bull;</span>
+
+<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+<a href="#" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="12">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+<div class="feed-item folding feed-item-hook feed-item-13
+ 
+
+"
+feed-item-q data-type="q"
+id="feed-13">
+<meta itemprop="question-id" content="6337408">
+<meta itemprop="question-url-token" content="35327017">
+<meta itemprop="ZReactor" data-id="6337408" data-meta="{&quot;source&quot;: [[&quot;topic&quot;, 658]], &quot;source_type&quot;: &quot;topic_popular_question&quot;, &quot;answers&quot;: 9, &quot;comments&quot;: 0, &quot;follows&quot;: 140}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="健身" data-tip="t$t$19552192"
+class="zm-item-link-avatar"
+href="/topic/19552192">
+<img src="images/5bda61313f8e3767edaa6134941e207b_m.jpg" alt="健身" class="side-topic-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+来自 <a href="/topic/19552192" data-tip="t$b$19552192" data-token="19552192" data-topicid="658">健身</a>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/35327017">成年人的肩膀可以练的更宽吗？</a></h2>
+
+
+<div class="feed-meta">
+<div class="zm-item-meta meta clearfix">
+<div class="zm-meta-panel">
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-6337408"><i class="z-icon-follow"></i>关注问题</a>
+<a href="#" name="toggle-comment" class="meta-item toggle-comment" >
+<i class="z-icon-comment"></i>添加评论</a>
+<span class="zg-bull">&bull;</span> <a href="/question/35327017" class="meta-item" target="_blank">9 个回答</a>
+<a href="javascript:;" name="collapse" class="meta-item collapse"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="13">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+<div class="feed-item folding feed-item-hook feed-item-14
+ 
+
+"
+feed-item-a data-type="a"
+id="feed-14">
+<meta itemprop="answer-id" content="20764652">
+<meta itemprop="answer-url-token" content="63376256">
+<meta itemprop="ZReactor" data-id="20764652" data-meta="{&quot;source_type&quot;: &quot;topic_acknowledged_answer&quot;, &quot;voteups&quot;: 4, &quot;comments&quot;: 1, &quot;source&quot;: [[&quot;topic&quot;, 1045]]}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="游戏开发" data-tip="t$t$19553361"
+class="zm-item-link-avatar"
+href="/topic/19553361">
+<img src="images/130887c7689dc9631634a26a5f3df106_m.jpg" alt="游戏开发" class="side-topic-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+来自 <a href="/topic/19553361" data-tip="t$b$19553361" data-token="19553361" data-topicid="1045">游戏开发</a>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/35355241#answer-20764652">游戏设计方面有哪些权威的思想或著作？或者说游戏设计没有权威，怎么设计好玩就怎么设计？</a></h2>
+<div class="feed-question-detail-item">
+
+<a href="#" name="expandQuestionDetail" class="toggle-expand btn-toggle-question-detail ellipsis">玩了不少网游或单机了，发现最近的大型网络...&nbsp;&nbsp;<span>显示问题详情</span></a>
+<div class="question-description zm-editable-content">
+玩了不少网游或单机了，发现最近的大型网络游戏如剑灵、天谕、天刀等投了上亿的钱去开发，尽管画面很不错，但这些游戏感觉没有灵魂，就是不好玩。而有些独立游戏开发者或小团队做出来的游戏，像骑马与砍杀、Minecraft、机械迷城、侠客风云传却很好玩。于是我在思考游戏设计是否没有权威，没有指导思想，这些大公司做游戏怎么感觉在碰运气，而没有明确的方向。那学游戏设计有什么用，不如多亲身实践，发掘内心最深层的需求，像乔布斯做苹果那样做游戏，这样反而能做出好游戏。
+</div>
+
+</div>
+<div class="entry-body "
+data-aid="20764652"
+data-atoken="63376256"
+data-collapsed="False"
+data-created="1442052781"
+data-deleted="0"
+data-isowner="0"
+data-helpful="1"
+data-score="0"
+data-copyable="1"
+>
+
+<div class="zm-item-vote">
+<a name="expand" class="zm-item-vote-count" href="javascript:;" data-votecount="4">4</a>
+</div>
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">4</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+<div class="zm-item-answer-detail">
+
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$lao-tu-zi-79" href="/people/lao-tu-zi-79">兔子先生</a>，<strong title="策划一枚，前程序，目标独立游戏" class="zu-question-my-bio">策划一枚，前程序，目标独立游戏</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+<div class="zm-item-vote-info " data-votecount="4">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$liu-bing-49-79" href="http://www.zhihu.com/people/liu-bing-49-79" class="zg-link" title="流冰">流冰</a>、</span><span class="user-block"><a data-tip="p$t$yue-zhen-77" href="http://www.zhihu.com/people/yue-zhen-77" class="zg-link" title="岳振">岳振</a>、</span><span class="user-block"><a data-tip="p$t$ken07" href="http://www.zhihu.com/people/ken07" class="zg-link" title="ken hu">ken hu</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+<div class="zm-item-rich-text" data-resourceid="6348673" data-action="/answer/content">
+
+<textarea class="content hidden">
+我认为确实是有一些规律可循的。&lt;br&gt;&lt;br&gt;游戏的目的是为使用者带来各种情绪，而带来各种情绪的方式是有一套系统的理论的，这方面在国内很欠缺，但传统媒体方向仍然有许多可参考的资料……别问我有哪些我也是刚开始找。&lt;br&gt;&lt;br&gt;另外在软件开发过程中还有各种定规，包括开发的模式，界面交互的模式，美术表达的模式，这些都是比较成体系的思想。
+
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/35355241/answer/63376256">发布于 2015-09-12</a>
+</span>
+
+</textarea>
+<div class="zh-summary summary clearfix">
+
+我认为确实是有一些规律可循的。游戏的目的是为使用者带来各种情绪，而带来各种情绪的方式是有一套系统的理论的，这方面在国内很欠缺，但传统媒体方向仍然有许多可参考的资料……别问我有哪些我也是刚开始找。另外在软件开发过程中还有各种定规，包括开发的…
+
+<a href="/question/35355241/answer/63376256" class="toggle-expand">显示全部</a>
+
+</div>
+
+</div>
+</div>
+</div>
+<div class="feed-meta">
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-6348673"><i class="z-icon-follow"></i>关注问题</a>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="zg-bull">&bull;</span>
+
+<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+<a href="#" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="14">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+<div class="feed-item folding feed-item-hook feed-item-15
+ 
+
+"
+feed-item-a data-type="a"
+id="feed-15">
+<meta itemprop="answer-id" content="20842292">
+<meta itemprop="answer-url-token" content="63569750">
+<meta itemprop="ZReactor" data-id="20842292" data-meta="{&quot;source_type&quot;: &quot;topic_acknowledged_answer&quot;, &quot;voteups&quot;: 2, &quot;comments&quot;: 0, &quot;source&quot;: [[&quot;topic&quot;, 3479]]}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="职业规划" data-tip="t$t$19560641"
+class="zm-item-link-avatar"
+href="/topic/19560641">
+<img src="images/1abb11bdd_m.jpg" alt="职业规划" class="side-topic-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+来自 <a href="/topic/19560641" data-tip="t$b$19560641" data-token="19560641" data-topicid="3479">职业规划</a>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/27880108#answer-20842292">投资者关系职业发展前景如何？</a></h2>
+<div class="feed-question-detail-item">
+
+<a href="#" name="expandQuestionDetail" class="toggle-expand btn-toggle-question-detail ellipsis">本人现在香港某外资公关公司做财经公关工作...&nbsp;&nbsp;<span>显示问题详情</span></a>
+<div class="question-description zm-editable-content">
+本人现在香港某外资公关公司做财经公关工作，工作主要内容偏投资者关系（Investor Relations)。目前IR越来越为世人所认识，而且对于一个上市公司而言，好的IR重要性非同小可，相信未来是朝阳的行业。<br><br>但其实一直以来个人兴趣是在marketing和social media的strategy方面，作为非业内人士来看用一个时髦的话讲是觉得这个领域比较“酷炫”，做的事情好像比较有趣，但实际如何也不晓得。目前在思考未来的发展方向，因为这两条路截然不同，如果坚定IR方面后面可能会开始CFA的准备了。想请教大神们分析下利弊。
+</div>
+
+</div>
+<div class="entry-body "
+data-aid="20842292"
+data-atoken="63569750"
+data-collapsed="False"
+data-created="1442202251"
+data-deleted="0"
+data-isowner="0"
+data-helpful="1"
+data-score="0"
+data-copyable="1"
+>
+
+<div class="zm-item-vote">
+<a name="expand" class="zm-item-vote-count" href="javascript:;" data-votecount="2">2</a>
+</div>
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+<div class="zm-item-answer-detail">
+
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$gavenzhang" href="/people/gavenzhang">盖文张</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$de-sen-68" href="http://www.zhihu.com/people/de-sen-68" class="zg-link" title="德森">德森</a>、</span><span class="user-block"><a data-tip="p$t$xiao-yi-jing-87" href="http://www.zhihu.com/people/xiao-yi-jing-87" class="zg-link" title="肖夷静">肖夷静</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+<div class="zm-item-rich-text" data-resourceid="3334900" data-action="/answer/content">
+
+<textarea class="content hidden">
+social media 和 marketing 领域，的确是你所谓地看起来「炫酷」，但由于人员缺口大，入行门槛低，导致起薪就不太高（当然高级人才是例外，任何行业都是如此）。另外，以后的营销，人为的影响越来越不明显，数据和算法会代替大量低阶职位的工作，至于消费者洞察、创意能力、展现技巧……哈，说实话你如果在这个领域达到极致，不做营销也大有可为，比如罗永浩 ：）&lt;br&gt;&lt;br&gt;IR 有一定的门槛，英语水平、商业常识、财务知识起码要有一个基础，稍加积累之后找机会进入企业内部就会相对稳定和有前景，我在腾讯跟 IR 部门接触的心得是，IR 人员的发展核心是要懂业务，要学着去了解业务，不管你是进入了快速消费品、移动互联网、智能硬件类或者任意要在 A 股吹泡泡的公司，还是 BAT 这样的大型美股上市公司。
+
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/27880108/answer/63569750">发布于 11:44</a>
+</span>
+
+</textarea>
+<div class="zh-summary summary clearfix">
+
+social media 和 marketing 领域，的确是你所谓地看起来「炫酷」，但由于人员缺口大，入行门槛低，导致起薪就不太高（当然高级人才是例外，任何行业都是如此）。另外，以后的营销，人为的影响越来越不明显，数据和算法会代替大量低阶职位的工作，至于消费者…
+
+<a href="/question/27880108/answer/63569750" class="toggle-expand">显示全部</a>
+
+</div>
+
+</div>
+</div>
+</div>
+<div class="feed-meta">
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-3334900"><i class="z-icon-follow"></i>关注问题</a>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="zg-bull">&bull;</span>
+
+<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+<a href="#" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="15">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+<div class="feed-item folding feed-item-hook feed-item-16
+ 
+
+"
+feed-item-a data-type="a"
+id="feed-16">
+<meta itemprop="answer-id" content="20824408">
+<meta itemprop="answer-url-token" content="63524922">
+<meta itemprop="ZReactor" data-id="20824408" data-meta="{&quot;source_type&quot;: &quot;topic_acknowledged_answer&quot;, &quot;voteups&quot;: 2, &quot;comments&quot;: 8, &quot;source&quot;: [[&quot;topic&quot;, 3479]]}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="职业规划" data-tip="t$t$19560641"
+class="zm-item-link-avatar"
+href="/topic/19560641">
+<img src="images/1abb11bdd_m.jpg" alt="职业规划" class="side-topic-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+来自 <a href="/topic/19560641" data-tip="t$b$19560641" data-token="19560641" data-topicid="3479">职业规划</a>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/28412742#answer-20824408">为什么那么多人要去读研究生？</a></h2>
+<div class="feed-question-detail-item">
+
+<a href="#" name="expandQuestionDetail" class="toggle-expand btn-toggle-question-detail ellipsis">物理女一枚，稀里糊涂被保研了，可是认真想...&nbsp;&nbsp;<span>显示问题详情</span></a>
+<div class="question-description zm-editable-content">
+物理女一枚，稀里糊涂被保研了，可是认真想想，自己明明不喜欢科研，又觉得老爸赚钱好辛苦，想直接去找工作了？真的不知道为什么那么多人要去读研究生，求过来人指点迷津。。。
+</div>
+
+</div>
+<div class="entry-body "
+data-aid="20824408"
+data-atoken="63524922"
+data-collapsed="False"
+data-created="1442159404"
+data-deleted="0"
+data-isowner="0"
+data-helpful="1"
+data-score="0"
+data-copyable="1"
+>
+
+<div class="zm-item-vote">
+<a name="expand" class="zm-item-vote-count" href="javascript:;" data-votecount="2">2</a>
+</div>
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+<div class="zm-item-answer-detail">
+
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$sun-qi-qi-61-73" href="/people/sun-qi-qi-61-73">孙琪琪</a>，<strong title="哈哈哈" class="zu-question-my-bio">哈哈哈</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$tacit-13" href="http://www.zhihu.com/people/tacit-13" class="zg-link" title="Tacit">Tacit</a>、</span><span class="user-block"><a data-tip="p$t$liu-xing-bu-mie" href="http://www.zhihu.com/people/liu-xing-bu-mie" class="zg-link" title="流星不灭">流星不灭</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+<div class="zm-item-rich-text" data-resourceid="3547714" data-action="/answer/content">
+
+<textarea class="content hidden">
+嗯…这个问题…追溯到1年前…啊不，应该是2013年的4.5月份…已经报了考研班的我，心血来潮参加了来学校招实习生的招聘会，当时发了个填数字游戏题目，玩玩的想法就做了，然后就有了面试…糊里糊涂就中了，然后当时有个师兄说找到好工作就不用考研了…前提是好工作啊……然后暑假就去魔都实习了，决心放弃考研。在过了一个月的水深火热实习生活之后，毅然决然买了回学校的飞机票…虽然距离考研还有3个月还是决定考研了……现在回过头想想，当时为何那么决绝的想考研呢…&lt;br&gt;1.一直呆在象牙塔里没长大，初入社会体验到在外打拼的艰辛，吃不消。&lt;br&gt;其实当时公司的条件还是不错的，早上10点上班，有班车接送，午饭有饭票，鱼肉管饱，就在楼下的小食堂。夏天的魔都虽然无敌热，办公室空调开的还是挺足。但相比大学4年除了考试之前突击学习的一点小苦，平时上课看心情，没课的时候到处晃，反差极大…&lt;br&gt;2.对于以后工作的重新规划。&lt;br&gt;忘了说，我是学计算机的，实习工作是某略知名erp的技术顾问，也就是以后转正了要去到甲方公司工作，意味着地点不稳定，我又是一个爱安稳的人，所以对于这份工作的不满意也促使了我回去考研。&lt;br&gt;当然也有部分家里的原因…家里特别不同意我放弃考研，总觉得读书越多越好。&lt;br&gt;现在我研2在读，也不能说读研究生就是为了拿那个证，那个文凭，但跟哪个导师真的是非常重要，不只是他的项目，还有他的人品。还有就是想学东西还是要靠自己，嗯…
+
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/28412742/answer/63524922">发布于 昨天 23:50</a>
+</span>
+
+</textarea>
+<div class="zh-summary summary clearfix">
+
+嗯…这个问题…追溯到1年前…啊不，应该是2013年的4.5月份…已经报了考研班的我，心血来潮参加了来学校招实习生的招聘会，当时发了个填数字游戏题目，玩玩的想法就做了，然后就有了面试…糊里糊涂就中了，然后当时有个师兄说找到好工作就不用考研了…前提是…
+
+<a href="/question/28412742/answer/63524922" class="toggle-expand">显示全部</a>
+
+</div>
+
+</div>
+</div>
+</div>
+<div class="feed-meta">
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-3547714"><i class="z-icon-follow"></i>关注问题</a>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>8 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="zg-bull">&bull;</span>
+
+<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+<a href="#" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="16">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+<div class="feed-item folding feed-item-hook feed-item-17
+ 
+
+"
+feed-item-q data-type="q"
+id="feed-17">
+<meta itemprop="question-id" content="6443665">
+<meta itemprop="question-url-token" content="35592528">
+<meta itemprop="ZReactor" data-id="6443665" data-meta="{&quot;source&quot;: [[&quot;topic&quot;, 622]], &quot;source_type&quot;: &quot;topic_popular_question&quot;, &quot;answers&quot;: 7, &quot;comments&quot;: 0, &quot;follows&quot;: 34}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="面试" data-tip="t$t$19552079"
+class="zm-item-link-avatar"
+href="/topic/19552079">
+<img src="images/a7b1cfd75_m.jpg" alt="面试" class="side-topic-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+来自 <a href="/topic/19552079" data-tip="t$b$19552079" data-token="19552079" data-topicid="622">面试</a>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/35592528">面试的时候，觉得简历上已经全有了，还要你作自我介绍的时候怎么办？</a></h2>
+
+
+<div class="feed-meta">
+<div class="zm-item-meta meta clearfix">
+<div class="zm-meta-panel">
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-6443665"><i class="z-icon-follow"></i>关注问题</a>
+<a href="#" name="toggle-comment" class="meta-item toggle-comment" >
+<i class="z-icon-comment"></i>添加评论</a>
+<span class="zg-bull">&bull;</span> <a href="/question/35592528" class="meta-item" target="_blank">7 个回答</a>
+<a href="javascript:;" name="collapse" class="meta-item collapse"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="17">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+<div class="feed-item folding feed-item-hook feed-item-18
+ 
+
+"
+feed-item-a data-type="a"
+id="feed-18">
+<meta itemprop="answer-id" content="20500434">
+<meta itemprop="answer-url-token" content="62716903">
+<meta itemprop="ZReactor" data-id="20500434" data-meta="{&quot;source_type&quot;: &quot;topic_acknowledged_answer&quot;, &quot;voteups&quot;: 13, &quot;comments&quot;: 11, &quot;source&quot;: [[&quot;topic&quot;, 13908]]}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="动漫" data-tip="t$t$19591985"
+class="zm-item-link-avatar"
+href="/topic/19591985">
+<img src="images/65655995f2b6118b1d2c366422c8308e_m.jpg" alt="动漫" class="side-topic-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+来自 <a href="/topic/19591985" data-tip="t$b$19591985" data-token="19591985" data-topicid="13908">动漫</a>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/31326510#answer-20500434">日本动画，你最喜欢的声优是谁？</a></h2>
+<div class="feed-question-detail-item">
+
+<div class="question-description-plain zm-editable-content">
+
+</div>
+
+</div>
+<div class="entry-body "
+data-aid="20500434"
+data-atoken="62716903"
+data-collapsed="False"
+data-created="1441629841"
+data-deleted="0"
+data-isowner="0"
+data-helpful="1"
+data-score="0"
+data-copyable="1"
+>
+
+<div class="zm-item-vote">
+<a name="expand" class="zm-item-vote-count" href="javascript:;" data-votecount="13">13</a>
+</div>
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">13</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+<div class="zm-item-answer-detail">
+
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhao-xiao-5" href="/people/zhao-xiao-5">赵潇</a>，<strong title="聪敏的人好学，愚蠢的人好为人师！" class="zu-question-my-bio">聪敏的人好学，愚蠢的人好为人师！</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+<div class="zm-item-vote-info " data-votecount="13">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$song-ying-3-25" href="http://www.zhihu.com/people/song-ying-3-25" class="zg-link" title="松颖">松颖</a>、</span><span class="user-block"><a data-tip="p$t$he-yun-zhan" href="http://www.zhihu.com/people/he-yun-zhan" class="zg-link" title="鹤云瞻">鹤云瞻</a>、</span><span class="user-block"><a data-tip="p$t$du-gu-ming-han" href="http://www.zhihu.com/people/du-gu-ming-han" class="zg-link" title="独孤明寒">独孤明寒</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+<div class="zm-item-rich-text" data-resourceid="4727943" data-action="/answer/content">
+
+<textarea class="content hidden">
+cv &lt;b&gt;花泽香菜&lt;/b&gt;&lt;br&gt;&lt;img src=&quot;images/cbdbc7c04704590f78ee51e1a8c9d016_b.jpg&quot; data-rawwidth=&quot;580&quot; data-rawheight=&quot;665&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;580&quot; data-original=&quot;images/cbdbc7c04704590f78ee51e1a8c9d016_r.jpg&quot;&gt;《自新世界》 秋月真理亚&lt;br&gt;&lt;a class=&quot;video-box&quot; href=&quot;http://www.tudou.com/programs/view/9Tax3i437wk&quot; target=&quot;_blank&quot;&gt;              &lt;img class=&quot;thumbnail&quot; src=&quot;http://i2.tdimg.com/187/853/581/p.jpg&quot;&gt;&lt;div class=&quot;content&quot;&gt;                &lt;div class=&quot;title&quot;&gt;《自新世界》 雪に咲く花&lt;span class=&quot;z-ico-extern-gray&quot;&gt;&lt;/span&gt;&lt;span class=&quot;z-ico-extern-blue&quot;&gt;&lt;/span&gt;&lt;/div&gt;                &lt;div class=&quot;url&quot;&gt;&lt;span class=&quot;z-ico-video&quot;&gt;&lt;/span&gt;http://www.tudou.com/programs/view/9Tax3i437wk&lt;/div&gt;              &lt;/div&gt;            &lt;/a&gt;&lt;br&gt;花泽香菜 - 雪に咲く花&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;images/934d316cc3a6ba2975578cfa710790d0_b.jpg&quot; data-rawwidth=&quot;220&quot; data-rawheight=&quot;124&quot; class=&quot;content_image&quot; width=&quot;220&quot;&gt;&lt;img src=&quot;images/b33e776c779df845b9203eeaba77cada_b.jpg&quot; data-rawwidth=&quot;320&quot; data-rawheight=&quot;181&quot; class=&quot;content_image&quot; width=&quot;320&quot;&gt;《文学少女》天野远子&lt;br&gt;声音软软的，让人忍不住爱怜的感觉。&lt;br&gt;&lt;br&gt;&lt;img src=&quot;images/4bfbfebb9b702075c541dc1bd24f9681_b.jpg&quot; data-rawwidth=&quot;157&quot; data-rawheight=&quot;220&quot; class=&quot;content_image&quot; width=&quot;157&quot;&gt;《化物语》千石抚子&lt;br&gt;&lt;a class=&quot;video-box&quot; href=&quot;http://www.iqiyi.com/w_19rqzifcep.html#vfrm=2-3-0-1&quot; target=&quot;_blank&quot;&gt;              &lt;img class=&quot;thumbnail&quot; src=&quot;http://u5.qiyipic.com/image/20140917/6a/d0/uv_560971931_m_601_m2.jpg&quot;&gt;&lt;div class=&quot;content&quot;&gt;                &lt;div class=&quot;title&quot;&gt;恋爱サーキュレーション 化物语OP4 中日字幕&lt;span class=&quot;z-ico-extern-gray&quot;&gt;&lt;/span&gt;&lt;span class=&quot;z-ico-extern-blue&quot;&gt;&lt;/span&gt;&lt;/div&gt;                &lt;div class=&quot;url&quot;&gt;&lt;span class=&quot;z-ico-video&quot;&gt;&lt;/span&gt;http://www.iqiyi.com/w_19rqzifcep.html#vfrm=2-3-0-1&lt;/div&gt;              &lt;/div&gt;            &lt;/a&gt;花泽香菜 - 恋爱サーキュレーション&lt;br&gt;&lt;br&gt;&lt;img src=&quot;images/638112c29e7b43a01a39f8b58c969fc6_b.jpg&quot; data-rawwidth=&quot;220&quot; data-rawheight=&quot;123&quot; class=&quot;content_image&quot; width=&quot;220&quot;&gt;《命运石之门》椎名真由理&lt;br&gt;嘟嘟噜&lt;br&gt;&lt;br&gt;&lt;img src=&quot;images/51a7e8118e48c6ce5f56c630e0dbfb86_b.jpg&quot; data-rawwidth=&quot;580&quot; data-rawheight=&quot;460&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;580&quot; data-original=&quot;images/51a7e8118e48c6ce5f56c630e0dbfb86_r.jpg&quot;&gt;《绝园的暴风雨》不破爱花&lt;br&gt;&lt;a class=&quot;video-box&quot; href=&quot;http://www.tudou.com/programs/view/WNS_9DQX5Hw&quot; target=&quot;_blank&quot;&gt;              &lt;img class=&quot;thumbnail&quot; src=&quot;http://i1.tdimg.com/219/363/040/p.jpg&quot;&gt;&lt;div class=&quot;content&quot;&gt;                &lt;div class=&quot;title&quot;&gt;花泽香菜 happy ending&lt;span class=&quot;z-ico-extern-gray&quot;&gt;&lt;/span&gt;&lt;span class=&quot;z-ico-extern-blue&quot;&gt;&lt;/span&gt;&lt;/div&gt;                &lt;div class=&quot;url&quot;&gt;&lt;span class=&quot;z-ico-video&quot;&gt;&lt;/span&gt;http://www.tudou.com/programs/view/WNS_9DQX5Hw&lt;/div&gt;              &lt;/div&gt;            &lt;/a&gt;花泽香菜 - Happy Endings&lt;br&gt;&lt;br&gt;&lt;br&gt;以上，这些角色都是因为香菜而变得出彩。&lt;br&gt;&lt;br&gt;cv：&lt;b&gt;能登麻美子&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;images/b0a145b6e55e0ce0becd75780d870eff_b.jpg&quot; data-rawwidth=&quot;220&quot; data-rawheight=&quot;120&quot; class=&quot;content_image&quot; width=&quot;220&quot;&gt;《地狱少女》阎魔爱&lt;br&gt;&lt;br&gt;&lt;a class=&quot;video-box&quot; href=&quot;http://www.iqiyi.com/w_19rqye1g91.html#vfrm=2-3-0-1&quot; target=&quot;_blank&quot;&gt;              &lt;img class=&quot;thumbnail&quot; src=&quot;http://u2.qiyipic.com/image/20140914/53/32/uv_556680198_m_601_m2.jpg&quot;&gt;&lt;div class=&quot;content&quot;&gt;                &lt;div class=&quot;title&quot;&gt;狭间 (かりぬい) 地狱少女第一季EP&lt;span class=&quot;z-ico-extern-gray&quot;&gt;&lt;/span&gt;&lt;span class=&quot;z-ico-extern-blue&quot;&gt;&lt;/span&gt;&lt;/div&gt;                &lt;div class=&quot;url&quot;&gt;&lt;span class=&quot;z-ico-video&quot;&gt;&lt;/span&gt;http://www.iqiyi.com/w_19rqye1g91.html#vfrm=2-3-0-1&lt;/div&gt;              &lt;/div&gt;            &lt;/a&gt;能登麻美子 - かりぬい&lt;br&gt;&lt;img src=&quot;images/f4a7e762dde8d516f6bdd714920f800d_b.jpg&quot; data-rawwidth=&quot;220&quot; data-rawheight=&quot;123&quot; class=&quot;content_image&quot; width=&quot;220&quot;&gt;《Sola》 四方茉莉&lt;br&gt;&lt;br&gt;能登麻美子的声音略显沙哑，也是一大特色，给阎魔爱的配音简直一绝。&lt;br&gt;&lt;br&gt;cv：&lt;b&gt;田村由加莉&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;img src=&quot;images/4275b8b3c0d5b7f4e4989690effac1b7_b.jpg&quot; data-rawwidth=&quot;235&quot; data-rawheight=&quot;176&quot; class=&quot;content_image&quot; width=&quot;235&quot;&gt;《初音岛》芳乃樱&lt;br&gt;《初音岛》中塑造的最感人的角色&lt;br&gt;&lt;br&gt;&lt;img src=&quot;images/142236fbc8a30be2def844e87b1737ec_b.png&quot; data-rawwidth=&quot;268&quot; data-rawheight=&quot;626&quot; class=&quot;content_image&quot; width=&quot;268&quot;&gt;&lt;br&gt;《我女友与青梅竹马的惨烈修罗场》夏川真凉&lt;br&gt;角色平平，不过傲娇是一大特色&lt;br&gt;&lt;br&gt;&lt;img src=&quot;images/74e4b74646e633f8fa5fa99fa3d5718d_b.jpg&quot; data-rawwidth=&quot;577&quot; data-rawheight=&quot;361&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;577&quot; data-original=&quot;images/74e4b74646e633f8fa5fa99fa3d5718d_r.jpg&quot;&gt;《关于完全听不懂老公在说什么的事》佐村薰炭&lt;br&gt;&lt;a class=&quot;video-box&quot; href=&quot;http://v.youku.com/v_show/id_XODE2MjU5NTY4.html&quot; target=&quot;_blank&quot;&gt;              &lt;img class=&quot;thumbnail&quot; src=&quot;http://r1.ykimg.com/054204085454604C6A0A4B0450D6ABFC&quot;&gt;&lt;div class=&quot;content&quot;&gt;                &lt;div class=&quot;title&quot;&gt;完全不懂老公在说什么的事 主题曲完整版 ／ カオルとハジメ(CV田村ゆかり＆鈴村健一)—在线播放—优酷网，视频高清在线观看&lt;span class=&quot;z-ico-extern-gray&quot;&gt;&lt;/span&gt;&lt;span class=&quot;z-ico-extern-blue&quot;&gt;&lt;/span&gt;&lt;/div&gt;                &lt;div class=&quot;url&quot;&gt;&lt;span class=&quot;z-ico-video&quot;&gt;&lt;/span&gt;http://v.youku.com/v_show/id_XODE2MjU5NTY4.html&lt;/div&gt;              &lt;/div&gt;            &lt;/a&gt;田村ゆかり、铃村健一 - いいかげんにして、あなた&lt;br&gt;&lt;br&gt;田村由加莉的声音也是一大特色，和花泽香菜一样，都是听了一遍就很容易辨别出来，听多了很容易爱上这种声音。
+
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/31326510/answer/62716903">发布于 2015-09-07</a>
+</span>
+
+</textarea>
+<div class="zh-summary summary clearfix">
+cv <b>花泽香菜</b>《自新世界》 秋月真理亚花泽香菜 - 雪に咲く花《文学少女》天野远子声音软软的，让人忍不住爱怜的感觉。《化物语》千石抚子花泽香菜 - 恋爱サーキュレーション《命运石之门》椎名真由理嘟嘟噜《绝园的暴风雨》不破爱花花泽香菜 - Happy Endings…
+
+<a href="/question/31326510/answer/62716903" class="toggle-expand">显示全部</a>
+
+</div>
+
+</div>
+</div>
+</div>
+<div class="feed-meta">
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-4727943"><i class="z-icon-follow"></i>关注问题</a>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>11 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="zg-bull">&bull;</span>
+
+<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+<a href="#" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="18">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+<div class="feed-item folding feed-item-hook feed-item-19
+ 
+
+"
+feed-item-a data-type="a"
+id="feed-19">
+<meta itemprop="answer-id" content="20535935">
+<meta itemprop="answer-url-token" content="62805732">
+<meta itemprop="ZReactor" data-id="20535935" data-meta="{&quot;source_type&quot;: &quot;topic_acknowledged_answer&quot;, &quot;voteups&quot;: 3, &quot;comments&quot;: 4, &quot;source&quot;: [[&quot;topic&quot;, 13908]]}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="动漫" data-tip="t$t$19591985"
+class="zm-item-link-avatar"
+href="/topic/19591985">
+<img src="images/65655995f2b6118b1d2c366422c8308e_m.jpg" alt="动漫" class="side-topic-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+来自 <a href="/topic/19591985" data-tip="t$b$19591985" data-token="19591985" data-topicid="13908">动漫</a>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/35409023#answer-20535935">如何评价一拳超人动画化试映第一集？</a></h2>
+<div class="feed-question-detail-item">
+
+<a href="#" name="expandQuestionDetail" class="toggle-expand btn-toggle-question-detail ellipsis">想知道，先行版的作画及分镜大概是个什么水...&nbsp;&nbsp;<span>显示问题详情</span></a>
+<div class="question-description zm-editable-content">
+想知道，先行版的作画及分镜大概是个什么水准呢？特别是最后的几分钟...小白白在次先道声多谢了！多谢！
+</div>
+
+</div>
+<div class="entry-body "
+data-aid="20535935"
+data-atoken="62805732"
+data-collapsed="False"
+data-created="1441690174"
+data-deleted="0"
+data-isowner="0"
+data-helpful="1"
+data-score="0"
+data-copyable="1"
+>
+
+<div class="zm-item-vote">
+<a name="expand" class="zm-item-vote-count" href="javascript:;" data-votecount="3">3</a>
+</div>
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+<div class="zm-item-answer-detail">
+
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$0xD09E" href="/people/0xD09E">硅基汪</a>，<strong title="吐槽膜绅" class="zu-question-my-bio">吐槽膜绅</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xie-zi-yu-54" href="http://www.zhihu.com/people/xie-zi-yu-54" class="zg-link" title="叶子羽">叶子羽</a>、</span><span class="user-block"><a data-tip="p$t$negajiang" href="http://www.zhihu.com/people/negajiang" class="zg-link" title="nega酱">nega酱</a>、</span><span class="user-block"><a data-tip="p$t$zhang-hao-han-32" href="http://www.zhihu.com/people/zhang-hao-han-32" class="zg-link" title="张浩瀚">张浩瀚</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+<div class="zm-item-rich-text" data-resourceid="6370227" data-action="/answer/content">
+
+<textarea class="content hidden">
+首先画质很良心，不过导演明显是搞热血漫的，战斗画面无可挑剔，故事衔接也很赞，但搞笑部分的笑点被拉到好低。&lt;br&gt;&lt;br&gt;经典的萝莉倒地蹲姿出场被改得好烂啊，原本漫画是一副「我就静静地看着你装比（克）」，现在却变成了中二式的「哼哼，看我英雄大人出场了」，埼玉老师面对哔克这种小角色根本不用认真战斗的气氛好嘛，而且下一句就是「当英雄只是爱好」什么的是在打自己脸么！&lt;br&gt;&lt;br&gt;我知道导演应该是想用反差萌突出笑点啦，但是这种光头角色谁都知道他肯定是个搞笑角色啊，傻变认真才是反差所在，认真变傻是什么鬼！&lt;br&gt;&lt;br&gt;再加上紧接着三年前的故事也是属于认真变傻，角色心理重叠了啊啊啊啊啊，反而觉得有点枯燥呢。&lt;br&gt;&lt;br&gt;另外螃蟹怪这个角色除了声优之外已经被毁到面目全非了，作为 hentai 被冷眼相对的尴尬和那种因为原本是人类而难以对人类痛下杀手的心理居然真的被改成「因为很相似才不杀你了」！漫画里那只是个借口好嘛！还有埼玉准备见死不救时的背后杀去哪了！眼前那可是你的画乳仇人啊！你的暗黑气场呢！
+
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2015-09-08" target="_blank" href="/question/35409023/answer/62805732">编辑于 2015-09-08</a>
+</span>
+
+</textarea>
+<div class="zh-summary summary clearfix">
+
+首先画质很良心，不过导演明显是搞热血漫的，战斗画面无可挑剔，故事衔接也很赞，但搞笑部分的笑点被拉到好低。经典的萝莉倒地蹲姿出场被改得好烂啊，原本漫画是一副「我就静静地看着你装比（克）」，现在却变成了中二式的「哼哼，看我英雄大人出场了」，埼…
+
+<a href="/question/35409023/answer/62805732" class="toggle-expand">显示全部</a>
+
+</div>
+
+</div>
+</div>
+</div>
+<div class="feed-meta">
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-6370227"><i class="z-icon-follow"></i>关注问题</a>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="zg-bull">&bull;</span>
+
+<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+<a href="#" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="19">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+<div class="feed-item folding feed-item-hook feed-item-20
+ 
+
+"
+feed-item-a data-type="a"
+id="feed-20">
+<meta itemprop="answer-id" content="20720219">
+<meta itemprop="answer-url-token" content="63265247">
+<meta itemprop="ZReactor" data-id="20720219" data-meta="{&quot;source_type&quot;: &quot;topic_acknowledged_answer&quot;, &quot;voteups&quot;: 7, &quot;comments&quot;: 0, &quot;source&quot;: [[&quot;topic&quot;, 2057]]}" >
+<div class="feed-item-inner">
+<div class="avatar">
+<a title="两性关系" data-tip="t$t$19556421"
+class="zm-item-link-avatar"
+href="/topic/19556421">
+<img src="images/a77af6b1c79b56c415125a2a1b185b83_m.jpg" alt="两性关系" class="side-topic-avatar">
+</a>
+</div>
+<div class="feed-main">
+<div class="source">
+来自 <a href="/topic/19556421" data-tip="t$b$19556421" data-token="19556421" data-topicid="2057">两性关系</a>
+
+</div>
+<div class="content">
+<h2><a class="question_link" target="_blank" href="/question/35503899#answer-20720219">前女友找回我，但我总觉得她已经脏了怎么办？</a></h2>
+<div class="feed-question-detail-item">
+
+<a href="#" name="expandQuestionDetail" class="toggle-expand btn-toggle-question-detail ellipsis">更新一下 健身不是重点，我只是想换一种生...&nbsp;&nbsp;<span>显示问题详情</span></a>
+<div class="question-description zm-editable-content">
+更新一下<br>健身不是重点，我只是想换一种生活方式才是重点，或者说我只是想变得更好。或许就像别人说的，也许我已经有了个模糊的答案吧，只是还没能真正放下，不管怎样，还是谢谢你们，知乎教了我很多。<br><br><br>————————分割线—————————<br>可能是我疑神疑鬼的性格，又或者是因为当初和她好的时候很快发生了关系，所以总觉得她在我们分手的时间里，大概三个月，大学暑假，就已经和别的男人好过了，我是不是想得太多了？因为我那时候真的对我们的分手受到好大的刺激，想了很多，后来觉得自己不够强大竟然会受到这样的伤害就去了健身，换了一种生活方式。但我觉得我对她的感情还是有的，即使已经变得很淡了，她找回我，我也答应了。之前分手我已经找过她无数次，全部都是拉黑处理，让我死心的那种处理，所以我就没有再去主动找她了。<br><br>我想问一下知友们，我这种心态属于正常么？不要跟我说分手了别人去百人斩都不关我事的说法了，我只是觉得如果她曾经和别的男的好过，我就再也不想找回她了。是因为我太保守？还是因为什么？
+</div>
+
+</div>
+<div class="entry-body "
+data-aid="20720219"
+data-atoken="63265247"
+data-collapsed="False"
+data-created="1441968883"
+data-deleted="0"
+data-isowner="0"
+data-helpful="1"
+data-score="0"
+data-copyable="1"
+>
+
+<div class="zm-item-vote">
+<a name="expand" class="zm-item-vote-count" href="javascript:;" data-votecount="7">7</a>
+</div>
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">7</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+<div class="zm-item-answer-detail">
+
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$kong-zhou-34" href="/people/kong-zhou-34">空舟</a>，<strong title="来自小行星B612。" class="zu-question-my-bio">来自小行星B612。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+<div class="zm-item-vote-info " data-votecount="7">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$ren-xu-jiao" href="http://www.zhihu.com/people/ren-xu-jiao" class="zg-link" title="小峤">小峤</a>、</span><span class="user-block"><a data-tip="p$t$hua-gu-niang-93" href="http://www.zhihu.com/people/hua-gu-niang-93" class="zg-link" title="华姑娘">华姑娘</a>、</span><span class="user-block"><a data-tip="p$t$e-tong-63" href="http://www.zhihu.com/people/e-tong-63" class="zg-link" title="恶童">恶童</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+<div class="zm-item-rich-text" data-resourceid="6408207" data-action="/answer/content">
+
+<textarea class="content hidden">
+    记得高中的时候，突然有一段时间，整个班里都排挤我们的班长（女生），一开始的时候，是几个女生在说她的坏话，后来演变成全班都在排挤她，大家都说她在外面和男人乱搞，不干净，后来我问过那些说她坏话的几个女生，谁也没确切的听过见过，但是大家都半信半疑的认同了，都一起排斥这个“不干净的女人”。&lt;br&gt;      还是高中的时候，一个关系挺好的哥们和我聊天的时候说，他的女朋友不是处女，他说总觉得心里有个疙瘩，憋的难受。&lt;br&gt;    以前我还在贴吧的时候也常常看到贴吧里有些网友讽刺有些女生不是处女，也就没有理由要求男人对她一心一意之类的。后来来了知乎，发现这里对于女生不是处女很是不在意，认为这是女性追求独立自由。&lt;br&gt;    我也曾经对女生不是处女有些排斥（比如高中时排斥我们的班长，其实并没有任何证据，只是几个和她不和的女生造谣），后来我仔细想过，有些（其实在我看来中国有相当大一部分）人，认为女生不是处女就是“不干净”，其实并不是所谓的“追随完美”和“爱一个人就是想要完全自私的占有”，而是他们没有把女人当做一个完全独立平等的个体，&lt;b&gt;他们思想里面还残存着几千年来中国男尊女卑的封建思想，认为女人是男人的附属物，他们之所以觉得女人脏，是他们觉得本该属于自己的女人被别人艹了，他们（潜意识里）并不认同做爱是双方都感到愉悦的事，是双方共同的享受，而是认为女人是男人泄欲的工具，他们只会说我上了我女友，而不是说我们一起享受了一个美妙的夜晚。&lt;/b&gt;&lt;br&gt;    题主这种思想，回到几百年前的封建社会还是比较适合的。
+
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/35503899/answer/63265247">发布于 2015-09-11</a>
+</span>
+
+</textarea>
+<div class="zh-summary summary clearfix">
+
+记得高中的时候，突然有一段时间，整个班里都排挤我们的班长（女生），一开始的时候，是几个女生在说她的坏话，后来演变成全班都在排挤她，大家都说她在外面和男人乱搞，不干净，后来我问过那些说她坏话的几个女生，谁也没确切的听过见过，但是大家都半信半…
+
+<a href="/question/35503899/answer/63265247" class="toggle-expand">显示全部</a>
+
+</div>
+
+</div>
+</div>
+</div>
+<div class="feed-meta">
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<a data-follow="q:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-6408207"><i class="z-icon-follow"></i>关注问题</a>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="zg-bull">&bull;</span>
+
+<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+
+
+<a href="#" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+
+</div>
+<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="undo-dislike-options" data-item_id="20">
+此内容将不会在动态中再次显示 <span class="zg-bull">&bull;</span> <a href="#" class="meta-item revert">撤销</a>
+<a href="#" class="ignore zu-autohide close"></a>
+</div>
+</div>
+
+
+</div>
+                    <a href="javascript:;" id="zh-load-more" class="zg-btn-white zg-r3px zu-button-more">更多</a>
+				</div>
+			</div>
+		</div>
+		<div class="zu-main-sidebar">
+			<div class="zm-side-section shameimaru-section" id="shameimaru-home-up">
+				<div class="zm-side-section-inner">
+					<div class="zh-shameimaru">
+						<a href="/" target="_blank" rel="nofollow" class="shameimaru-link"></a>
+						<a class="shameimaru-close z-ico-shameimaru-close" data-tip="s$b$不再显示" rel="nofollow"></a>
+					</div>
+				</div>
+			</div>
+				<div class="zm-side-section">
+				<div class="zm-side-section-inner">
+				<div class="zm-side-nav-group">
+				<ul class="zm-side-nav" id="zg-sidebar-nav">
+				<li class="zm-side-nav-li">
+				<a class="zm-side-nav-link" href="/draft">
+				<i class="zg-icon zg-icon-sidenav-draft"></i>
+				我的草稿
+
+				</a>
+				</li>
+				<li class="zm-side-nav-li">
+				<a class="zm-side-nav-link" href="/collections">
+				<i class="zg-icon zg-icon-sidenav-fav"></i>
+				我的收藏
+
+				</a>
+				</li>
+				<li class="zm-side-nav-li">
+				<a class="zm-side-nav-link" href="/question/following">
+				<i class="zg-icon zg-icon-sidenav-follow"></i>
+				我关注的问题
+				</a>
+				</li>
+				<li class="zm-side-nav-li">
+				<a class="zm-side-nav-link" href="/question/invited">
+				<i class="zg-icon zg-icon-sidenav-invite"></i>
+				邀请我回答的问题
+
+				</a>
+				</li>
+				</ul>
+				</div>
+				<div class="zm-side-nav-group">
+				<ul class="zm-side-nav">
+				<li class="zm-side-nav-li">
+				<a class="zm-side-nav-link" href="/log/questions">
+				<i class="zg-icon zg-icon-sidenav-all"></i>
+				所有问题
+				</a>
+				</li>
+				<li class="zm-side-nav-li">
+				<a class="zm-side-nav-link" href="/topics">
+				<i class="zg-icon zg-icon-sidenav-plaza"></i>
+				话题广场
+				</a>
+				</li>
+				<li class="zm-side-nav-li rq3-publiceditlink" id="rq3-sidenav-link">
+				<a class="zm-side-nav-link" href="/watch">
+				<i class="zg-icon zg-icon-sidenav-publicedit"></i>
+				公共编辑动态
+				<span class="zg-num hidden">0</span>
+				</a>
+				</li>
+				<li class="zm-side-nav-li">
+				<a class="zm-side-nav-link z-ico-container" href="/community">
+				<i class="z-ico-community"></i>
+				社区服务中心
+				</a>
+				</li>
+				</ul>
+				</div>
+
+
+
+
+				</div>
+				</div>
+				<div class="zm-side-section zm-side-list-content zm-side-pinned-topics zm-side-latest-roundtable">
+					<h3><a href="/roundtable" class="zg-link-litblue zg-right">查看全部 »</a>知乎圆桌</h3>
+					<ul class="zm-side-nav">
+
+					<li class="zm-side-nav-li zm-side-nav-roundtable">
+					<a class="photo zm-side-nav-link" href="/roundtable/anime">
+					<img class="avatar avatar-s" alt="动画电影动画人" data-tip="r$b$anime" src="images/80d998fcfa116c2b200bb9aa617d5064_s.png" srcset="images/80d998fcfa116c2b200bb9aa617d5064_xs.png 2x">
+					<span data-tip="r$t$anime">
+					动画电影动画人
+					</span>
+
+					<span class="zg-right side-roundtable-hint">还有 15 小时开始</span>
+
+					</a>
+
+					<a data-follow="rt:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-anime"><i class="z-icon-follow"></i>关注圆桌</a>
+
+					</li>
+
+					<li class="zm-side-nav-li zm-side-nav-roundtable">
+					<a class="photo zm-side-nav-link" href="/roundtable/urbanization">
+					<img class="avatar avatar-s" alt="离不开城市" data-tip="r$t$urbanization" src="images/00a7c1f7321a57fb0a5a069256494da7_s.png" srcset="images/00a7c1f7321a57fb0a5a069256494da7_xs.png 2x">
+					<span data-tip="r$b$urbanization">
+					离不开城市
+					</span>
+
+					<span class="zg-right side-roundtable-hint">还有 3 天结束</span>
+
+					</a>
+
+					<a data-follow="rt:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-urbanization"><i class="z-icon-follow"></i>关注圆桌</a>
+
+					</li>
+
+					<li class="zm-side-nav-li zm-side-nav-roundtable">
+					<a class="photo zm-side-nav-link" href="/roundtable/family">
+					<img class="avatar avatar-s" alt="以家的名义" data-tip="r$b$family" src="images/b9fc5eaea083bab81273f89f878adac5_s.png" srcset="images/b9fc5eaea083bab81273f89f878adac5_xs.png 2x">
+					<span data-tip="r$t$family">
+					以家的名义
+					</span>
+
+					<span class="zg-right side-roundtable-hint">还有 3 天结束</span>
+
+					</a>
+
+					<a data-follow="rt:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-family"><i class="z-icon-follow"></i>关注圆桌</a>
+
+					</li>
+
+					</ul>
+					</div>
+				<!---->
+					<div class="zm-side-section zm-side-list-content hidden">
+						<h3 class="zu-trending-title"><a href="/lookup/people" class="zg-link-litblue zg-right">更多推荐 »</a>你可能感兴趣的人</h3>
+						<div id="zh-trendings" class="zh-trendings"><ul></ul></div>
+					</div>
+				<!---->
+                    <div class="zm-side-section shameimaru-section" id="shameimaru-home-bottom-5aeee4c1b" data-location="home_bottom" data-id="5aeee4c1b">
+						<div class="zm-side-section-inner">
+							<div class="zg-clear zh-shameimaru-5aeee4c1b">
+							    <a class="shameimaru-link" target="_blank" rel="nofollow" href="/shameimaru/click?id=5aeee4c1b&amp;location=home_bottom"></a>
+							    <a class="shameimaru-close zg-icon" data-tip="s$b$不再显示" rel="nofollow"></a>
+							<img src="http://tracking.ad-survey.com/impression?420;1;2015;7829;;;;0;;%0D%0A" class="shameimaru-abs" alt="Advertisement"></div>
+						</div>
+					</div>
+				<!---->
+					<div id="zh-footer" class="zh-footer">
+						<div class="zg-wrap clearfix">
+						<ul>
+							<li><a href="https://liukanshan.zhihu.com" target="_blank">刘看山</a></li>
+
+							<li><a href="/question/19581624" target="_blank">知乎指南</a></li>
+							<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+							<li><a href="/app" target="_blank">移动应用</a></li>
+							<li><a href="/careers">加入知乎</a></li>
+							<li><a href="/terms" target="_blank">知乎协议</a></li>
+							<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+						</ul>
+						<span class="copy">© 2015 知乎</span>
+						</div>
+					</div>	
+			
+		</div>
+	</div>
+	<div class="zh-backtotop" style="opacity:1;">
+		<a href="javascript:;" class="btn-backtotop btn-action">
+			<div class="arrow"></div>
+			<div class="stick"></div>
+		</a>
+	</div>
+	<div id="zh-tooltip" class="goog-hovercard popover top" style="visibility:hidden;left:125px;top:231px;display:none;">
+		<div class="popover-content no-hovercard">
+			<div class="zh-profile-card topic">
+				<div class="upper">
+					<a href="/" class="avatar-link">
+						<span class="name">职业规划</span>
+						<img src="images/1abb11bdd_m.jpg" alt="" class="avatar avatar-xs">
+					</a>
+					<div class="tagline">职业规划=职业+规划：职业就是有收入的合法工作；规划就是按照职业发展的规律去做计划。职业规…</div>
+				</div>
+				<div class="lower clearfix">
+					<div class="meta">
+						<a href="/" class="item">
+							<span class="value">46K</span>
+							<span class="key">问题</span>
+						</a>
+						<a href="/" class="item">
+							<span class="value">999</span>
+							<span class="key">精华</span>
+						</a>
+						<a href="/" class="item">
+							<span class="value">177K</span>
+							<span class="key">关注者</span>
+						</a>
+					</div>
+					<div class="operation">
+						<button class="zg-btn zg-btn-unfollow zm-rich-follow-btn">取消关注</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="arrow" style="left:89px;"></div>
+		<div class="arrow2" style="left:89px;"></div>
+	</div>
+	<div class="modal-dialog-bg" aria-hidden="true"></div>
+	<div class="modal-wrapper" style="display:none;">
+		<div class="modal-dialog absolute-position" style="width:550px;">
+			<div class="modal-dialog-title">
+				<span class="modal-dialog-title-text">提问</span>
+				<span class="modal-dialog-title-close"></span>
+			</div>
+			<div class="modal-dialog-content">
+				<div class="zh-add-question-form">
+					<div class="js-add-question-splash add-question-splash-page">
+						<p>知乎是一个真诚、友善、认真、互助的社区<br>我们希望每一个疑惑都有解答，好的问题更容易得到好答案 <a href="//www.zhihu.com/question/19555761">如何提一个好问题？</a></p>
+						<p><b>提问应遵循真实、客观、简洁、明确、规范的原则</b><br>1、提问应尽可能简洁明了，避免「请问」「有谁知道」「谢谢！」等与问题本身无关的附加语。<br>2、应避免使用「为神马」「童鞋」「肿么办」等网络用语。<br>3、基于个人判断或传言的问题，在提问时应在补充说明里详细说明原由<br>4、避免太宽泛问题，如调查性的问题容易变成每个人都可以发表观点，但对其他人没有价值。<br></p>
+						<p><b>知乎禁止这些提问</b><br>1、和已有问题完全重复的问题，<b>为避免重复，提问前可以先进行搜索</b><br>2、招聘 / 求职、交易 / 合作、寻人 / 征友、召集 / 赠送、求码类内容<br>3、投票类问题。例如：你支持方舟子还是韩寒？<br>4、作业或其他希望代为完成个人任务类的内容，以及针对个人具体病情的求医问药类问题<br>完整的提问建议可查看 <a href="//www.zhihu.com/question/19806261">知乎的提问规范有哪些？</a><br></p>
+						<div class="before-ask-form">
+							<b>提问前请先搜索</b>
+							<div style="position:relative;margin-top:18px;">
+								<input type="text" class="zg-form-text-input" id="js-before-ask" placeholder="请输入你的问题" aria-haspopup="false" autocomplete="off" role="combobox" aria-autocomplete="list">
+								<div class="ac-renderer" role="listbox" id=":3a" style="-webkit-user-select: none; display: none;"></div>
+							</div>
+						</div>
+					</div>
+					<form action="" class="js-add-question-form"></form>
+				</div>
+			</div>
+			<div class="modal-dialog-buttons" style="display:none;"></div>
+		</div>
+	</div>
+</body>
+</html>

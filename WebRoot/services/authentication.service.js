@@ -10,12 +10,6 @@
 		var service = {};
 
 		service.login = function(loginName, password,captcha, callback) {
-//			$http.post('/Zhihu/login', {
-//				loginName : loginName,
-//				password : password
-//			}).success(function(response) {
-//				callback(response);
-//			});
 			console.log(loginName, password);
 			$http({
 				method : 'POST',
