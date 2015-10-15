@@ -115,6 +115,11 @@
 			}
 		};
 		
+		service.refresh = function(vm,event){
+			vm.timeStamp = +new Date();
+			event.preventDefault();
+		};
+		
 		return service;
 
 	}

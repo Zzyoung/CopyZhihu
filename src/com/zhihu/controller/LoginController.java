@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.zhihu.pojo.User;
 import com.zhihu.service.UserService;
+import com.zhihu.utils.Constant;
 
 @Controller("loginController")
 @RequestMapping(value = "/")
@@ -38,7 +39,8 @@ public class LoginController {
 		String name = request.getParameter("name");
 		String loginName = request.getParameter("loginName");
 		String password = request.getParameter("password");
-		
+		String captcha = request.getParameter("captcha");
+		HttpSession session = request.getSession();
 		logger.info("用户["+name+"]进行了注册");
 		
 		newUser.setLoginName(loginName);
@@ -46,9 +48,14 @@ public class LoginController {
 		newUser.setPassword(password);
 		
 		try {
+			if(!validateCaptcha(captcha, session)){
+				logger.info("验证码错误");
+				response.getWriter().write("{\"errorCode\":"+Constant.ERROR_CAPTCHA+",\"msg\":\"error captcha\"}");
+				return;
+			}
 			if(userService.findUserByLoginName(newUser) > 0){
 				logger.warn("登录名["+loginName+"]已经注册过了");
-				response.getWriter().write("{\"errorCode\":3,\"msg\":\"error password or loginName\"}");
+				response.getWriter().write("{\"errorCode\":"+Constant.ERROR_USER_EXIST+",\"msg\":\"error password or loginName\"}");
 			}else{
 				userService.insertUser(newUser);
 				response.getWriter().write("{\"msg\":\"register success\"}");
@@ -65,23 +72,39 @@ public class LoginController {
 		}
 	}
 	
+	private boolean validateCaptcha(String captcha,HttpSession session){
+		logger.info(captcha);
+		logger.info(session.getAttribute("captcha").toString());
+		if(captcha==null || !captcha.toLowerCase().equals(session.getAttribute("captcha").toString().toLowerCase())){
+			return false;
+		}
+		return true;
+	}
+	
 	@RequestMapping(value="login",method = RequestMethod.POST)
 	public void login(HttpServletRequest request,HttpServletResponse response){
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		String loginName = request.getParameter("loginName");
 		String password = request.getParameter("password");
+		String captcha = request.getParameter("captcha");
+		HttpSession session = request.getSession();
 		logger.info("password:"+password);
 		logger.info("帐号为["+loginName+"]的用户进行了登录操作");
 		
 		try {
+			if(!validateCaptcha(captcha, session)){
+				logger.info("验证码错误");
+				response.getWriter().write("{\"errorCode\":"+Constant.ERROR_CAPTCHA+",\"msg\":\"error captcha\"}");
+				return;
+			}
 			User user = userService.getByLoginName(loginName);
 			if(user == null){
-				response.getWriter().write("{\"errorCode\":1,\"msg\":\"unknown loginName\"}");
+				response.getWriter().write("{\"errorCode\":"+Constant.UNKNOWN_LOGINNAME+",\"msg\":\"unknown loginName\"}");
 			}else{
 				if(password.equals(user.getPassword())){
 					response.getWriter().write("{\"msg\":\"login success\"}");
 				}else{
-					response.getWriter().write("{\"errorCode\":2,\"msg\":\"error password or loginName\"}");
+					response.getWriter().write("{\"errorCode\":"+Constant.ERROR_PASSWORD_LOGINNAME+",\"msg\":\"error password or loginName\"}");
 				}
 			}
 		} catch (Exception e) {
@@ -97,8 +120,7 @@ public class LoginController {
 	
 	@RequestMapping(value="/captcha",method = RequestMethod.GET)
 	public void createCaptcha(HttpServletRequest request,HttpServletResponse response){
-		String random2 = request.getParameter("r");
-		System.out.println("==================="+random2);
+//		String random2 = request.getParameter("r"); 
 		response.setContentType("image/jpeg");
         response.setHeader("Pragma", "No-cache");
         response.setHeader("Cache-Control", "no-cache");
@@ -162,7 +184,7 @@ public class LoginController {
  
         }
         // 将认证码存入SESSION
-        session.setAttribute("rand", sRand);
+        session.setAttribute("captcha", sRand);
         // 图象生效
         g.dispose();
         ServletOutputStream responseOutputStream = null;

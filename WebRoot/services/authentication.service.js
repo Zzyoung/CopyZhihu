@@ -9,7 +9,7 @@
 			UserService) {
 		var service = {};
 
-		service.login = function(loginName, password, callback) {
+		service.login = function(loginName, password,captcha, callback) {
 //			$http.post('/Zhihu/login', {
 //				loginName : loginName,
 //				password : password
@@ -22,7 +22,8 @@
 				url : '/Zhihu/login/',
 				data : $.param({
 					loginName : loginName,
-					password : password
+					password : password,
+					captcha : captcha
 				}),
 				headers : {
 					'Content-Type' : 'application/x-www-form-urlencoded'

@@ -1,7 +1,7 @@
 <div class="view view-signin">
 	<form ng-submit="vm.login()">
 		<div class="title">
-			<a class="singin-switch" href="#/register">注册<i class="icon-sign-arrow"></i></a>
+			<a class="singin-switch" signin-switch href="#/register">注册<i class="icon-sign-arrow"></i></a>
 			<a><i></i><span>登录知乎</span></a>
 		</div>
 		<div class="input-wrapper">
@@ -16,7 +16,8 @@
 					<input id="captcha" name="captcha" data-auto-focus="focus.type" ng-focus="removePromptByType(prompts,'captcha')" placeholder="验证码" ng-model="vm.user.captcha">
 				</div>
 				<p class="input-wrapper-captcha">
-					<a href="#">看不清？换一张</a><img src="/Zhihu/captcha?r={{123456}}" width="120" height="30" />
+					<a href="#" ng-click="refresh(vm,$event)">看不清？换一张</a>
+					<img src="/Zhihu/captcha?r={{vm.timeStamp}}" width="120" height="30" />
 				</p>
 			</div>
 		</div>

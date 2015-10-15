@@ -11,9 +11,13 @@
 		
 		vm.removePrompt = UserService.removePrompt;
 		
+		vm.timeStamp = +new Date();
+		
 		$scope.removePromptByType = UserService.removePromptByType;
 		
 		$scope.focus = {};
+		
+		$scope.refresh = UserService.refresh;
 		
 		vm.register = function() {
 			prompts = UserService.validate(vm.user,true);
@@ -24,7 +28,9 @@
 					if(response.status>=200 && response.status < 300){
 						if(response.data.errorCode === ConstantService.constant.ERROR_USER_EXIST){
 							$scope.prompts = [{type : 'loginName',msg:'该帐号已注册'}];
-						}else{
+						}else if (response.data.errorCode === ConstantService.constant.ERROR_CAPTCHA){
+	                		$scope.prompts = [{type : 'captcha',msg:'请输入正确的验证码'}];
+	                	}else{
 							prompts.push({
 								msg : "注册成功！"
 							},{
