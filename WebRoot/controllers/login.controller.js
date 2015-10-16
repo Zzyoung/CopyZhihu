@@ -24,7 +24,6 @@
 			if (prompts.length === 0) {
 				console.log(vm.user.loginName, vm.user.password);
 				AuthenticationService.login(vm.user.loginName, vm.user.password,vm.user.captcha, function (response) {
-					console.log(response);
 	                if (response.status>=200 && response.status < 300) {
 	                	if(response.data.errorCode === ConstantService.constant.UNKNOWN_LOGINNAME){
 	                		$scope.prompts = [{type : 'loginName',msg:'该帐号尚未注册知乎'}];
@@ -33,10 +32,10 @@
 	                	}else if (response.data.errorCode === ConstantService.constant.ERROR_CAPTCHA){
 	                		$scope.prompts = [{type : 'captcha',msg:'请输入正确的验证码'}];
 	                	}else{
-	                		console.log("login success");
+	                		var location = window.location;
+	                		AuthenticationService.setCredentials(vm.username, vm.password);
+	                		window.location = location.origin + location.pathname + "main.html";
 	                	}
-//	                    AuthenticationService.setCredentials(vm.username, vm.password);
-//	                    $location.path('/');
 	                } else {
 	                	
 	                }
