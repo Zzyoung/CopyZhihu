@@ -80,9 +80,6 @@ a:link{
 	float: left;
 	text-indent: -9999px;
 }
-#top-nav-profile-dropdown{
-	display: none;
-}
 .top-nav-profile{
 	position: absolute;
 	right: 0;
@@ -96,10 +93,10 @@ a:link{
 	z-index: 10;
 }
 .top-nav-profile a{
-	display: block;
-	width: 120px;
-	font-size: 14px;
-	text-shadow:0 1px 1px rgba(0,0,0,.12);
+	display:block;
+	width:120px;
+	background-color:#095fb3;
+	font-size:14px;
 }
 .zu-top-nav-userinfo{
 	 position: relative; 
@@ -219,7 +216,7 @@ a:link{
 	height: 32px;
 	line-height: 30px;
 	text-align: center;
-	text-shadow:0 1px 1px rgba(0,0,0,.12);
+	/* text-shadow:0 1px 1px rgba(0,0,0,.12); */
 	cursor: pointer;
 	border: 1px solid #045BB2;
 	border-radius: 4px;
@@ -255,7 +252,7 @@ a:link{
 	font-size: 14px;
 	color: #f2f4f5;
 }
-/*--------涓嬫媺妗�----------*/
+/*--------下拉框-----------*/
 .zu-top-nav-live{
 	position: absolute;
 	z-index: 9;
@@ -371,7 +368,7 @@ a:link{
 	margin-right: 1px;
 	vertical-align: -5px;
 }
-/*娑堟伅鎻愮ず妗嗘牱寮�/
+/*消息提示框样式*/
 .zm-noti7-frame{
 	width: 100%;
 	height: 300px;
@@ -506,7 +503,7 @@ a:link{
 	height: 70px;
 	background-color: #000;
 }
-/*涓诲唴瀹瑰尯*/
+/*主内容区*/
 .zg-wrap{
 	width: 960px;
 	margin: 0 auto;
@@ -955,7 +952,7 @@ a.external>.icon-external{
 .zm-side-section.shameimaru-section{
 	margin-bottom: 20px;
 }
-/*骞垮憡鏍峰紡*/
+/*广告样式*/
 .zh-shameimaru {
     display: block;
     position: relative;
@@ -1317,7 +1314,7 @@ html.modal-doc-overflow{
 html.modal-open{
 	overflow: hidden;
 }
-/*瑙ｅ喅寮瑰嚭鎻愰棶妗嗭紝瀵艰埅鏍忓彸绉荤殑闂*/
+/*解决弹出提问框，导航栏右移的问题*/
 html.modal-doc-overflow .modal-shifting{
 	position: relative;
 	right: 8.5px;
@@ -1326,7 +1323,7 @@ html.no-touch .zh-summary:hover a.toggle-expand{
 	text-decoration: none;
 	background-color: #eff6fa;
 }
-/*鏄剧ず鎰熻阿銆佸垎浜�鏀惰棌銆佹病鏈夊府鍔┿�涓炬姤*/
+/*显示感谢、分享、收藏、没有帮助、举报*/
 html.no-touch .zm-profile-answer-page .zm-item:hover .zu-autohide, html.no-touch .feed-item:hover .zu-autohide{
 	display: inline-block;
 }
@@ -1555,7 +1552,7 @@ img.avatar.avatar-xs{
 	background: #eff6fa;
 }
 
-/*璇勮鍒楄〃*/
+/*评论列表*/
 .zm-comment-box{
 	margin: 10px 0 35px;
 	background: #fff;
@@ -1714,7 +1711,7 @@ html.no-touch .zm-comment-op-link:hover{
 	margin-right: 15px;
 	cursor: pointer;
 }
-/*鏄剧ず鍙栨秷銆佽瘎璁烘寜閽�/
+/*显示取消、评论按钮*/
 .zm-comment-form.expanded .zm-command{
 	display: block;
 	line-height: 33px;
@@ -1722,4 +1719,99 @@ html.no-touch .zm-comment-op-link:hover{
 .zm-comment-form .zm-command{
 	display: none;
 	padding-bottom: 0;
+}
+.top-nav-profile .zu-top-nav-userinfo{
+	
+}
+.open .top-nav-dropdown, html.no-touch .top-nav-profile:hover .top-nav-dropdown{
+	display:block;
+}
+.top-nav-dropdown{
+	display:none;
+	margin:0;
+	position:absolute;
+	left:0;
+}
+.zu-top-nav-userinfo.selected, html.no-touch .top-nav-profile:hover .zu-top-nav-userinfo{
+	height: 46px;
+	background-color:#075fb6;
+	background-image:-webkit-linear-gradient(top,#055fb8,#095fb3);
+	background-repeat:repeat-x;
+	box-shadow:inset 0 0 2px rgba(0,0,0,.12);
+}
+.top-nav-profile .top-nav-dropdown{
+	top: 46px;
+}
+.top-nav-dropdown li{
+	margin:0;
+	list-style:none;
+}
+.top-nav-dropdown li:first-child>a{
+	border-top:0;
+}
+.top-nav-profile .top-nav-dropdown a{
+	width:120px;
+}
+
+.top-nav-dropdown li a{
+	display:block;
+	width:145px;
+	height:40px;
+	line-height:40px;
+	color:#fff;
+	text-decoration:none;
+	border-top:1px solid #0d5aa5;
+	box-shadow:0 1px 1px rgba(0,0,0,.4);
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	over-flow:hidden;
+	cursor:pointer;
+}
+.top-nav-profile .zu-top-nav-userinfo{
+	background:transparent;
+}
+html.no-touch .top-nav-dropdown a:hover{
+	background-color:#0267cc;
+}
+.top-nav-dropdown .zg-icon{
+	width:20px;
+	height:20px;
+	margin:0 11px 0 15px;
+	vertical-align: -7px;
+}
+.zg-icon-dd-home{
+	background-position:-6px -7px;
+}
+.zg-icon-dd-pm{
+	background-position:-6px -34px;
+}
+.zg-icon-dd-settings{
+	background-position:-6px -60px;
+}
+.zg-icon-dd-logout{
+	background-position:-6px -87px;
+}
+/*--消息提示--*/
+.zu-top-nav-count{
+	left:31px;
+}
+.zu-top-nav-count, .zu-top-nav-userinfo .zu-top-nav-pm-count{
+	z-index:12px;
+	top:5px;
+	position:absolute;
+}
+.zg-noti-number{
+	background:#bf1031;
+	border:1px solid #b11331;
+	color:#fff;
+	display:inline-block;
+	font-size:11px;
+	font-weight:700;
+	padding:0 5px;
+	height:16px;
+	line-height:16px;
+	border-radius:16px;
+	text-indent:0;
+	text-align:center;
+	text-decoration:none;
 }
