@@ -1,4 +1,4 @@
-<div role="navigation" class="zu-top">
+<div ng-controller="NavigationController" role="navigation" class="zu-top">
 	<div class="zg-wrap modal-shifting" id="zh-top-inner">
 		<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
 		<div class="top-nav-profile">
@@ -54,29 +54,29 @@
 				<li class="zu-top-nav-li " id="zh-top-nav-explore">
 					<a class="zu-top-nav-link" href="/explore">发现</a>
 				</li>
-				<li class="top-nav-noti zu-top-nav-li">
+				<li class="top-nav-noti zu-top-nav-li" ng-click="ctrl.toggle()">
 					<a class="zu-top-nav-link" href="" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息<span id="zh-top-nav-count" class="zu-top-nav-count zg-noti-number">1</span></a>
 				</li>
 			</ul>
-			<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+			<div ng-show="ctrl.popup.showTopNavLive" class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
 				<div class="zu-top-nav-live-inner zg-r5px">
 					<div class="zu-top-live-icon">&nbsp;</div>
 					<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
 						<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
-							<button class="zm-noti7-popup-tab-item message current">
+							<button ng-click="ctrl.clickTab(0)" ng-class="ctrl.getTabClass(0)">
 								<span class="icon">消息</span>
 							</button>
-							<button class="zm-noti7-popup-tab-item user">
+							<button ng-click="ctrl.clickTab(1)" ng-class="ctrl.getTabClass(1)">
 								<span class="icon">用户</span>
 							</button>
-							<button class="zm-noti7-popup-tab-item thanks">
+							<button ng-click="ctrl.clickTab(2)" ng-class="ctrl.getTabClass(2)">
 								<span class="icon">赞同和感谢</span>
 							</button>
 						</div>
 					</div>
 					<div class="zm-noti7-frame-border top"></div>
 					<div class="zm-noti7-frame">
-						<div class="zm-noti7-content zh-sroller">
+						<div ng-show="ctrl.isShowContent(0)" class="zm-noti7-content zh-sroller">
 							<div class="zh-scroller-inner">
 								<div class="zh-scroller-content">
 									<div class="zm-noti7-content-inner">
@@ -84,156 +84,7 @@
 											<img src="images/spinner2.gif" alt="" class="noti-spinner">
 										</div>
 										<div class="zm-noti7-content-body">
-											<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
-												<span class="author-list">
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="张云龙">张云龙</a>
-													</span>
-													回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">前端实习做了个坦克大战的项目够吗？</a>
-												</span>
-											</div>
-											<div class="zm-noti7-content-item unread" data-notigroupname="ANSWER">
-												<span class="author-list">
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="丹尼尔">丹尼尔</a>
-													</span>
-													回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">富人的思考方式是什么？</a>
-												</span>
-											</div>
-											<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
-												<span class="author-list">
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="子柳">子柳</a>
-														、
-													</span>
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="李运华">李运华</a>
-													</span>
-													回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">怎么成为一个优秀的程序员，而不是一个优秀的码农？</a>
-												</span>
-											</div>
-											<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
-												<span class="author-list">
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="探歌">探歌</a>
-														、
-													</span>
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="风兄">风兄</a>
-														、
-													</span>
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="徐卫卫">徐卫卫</a>
-													</span>
-													回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">一个人的周末可以做些什么？</a>
-												</span>
-											</div>
-											<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
-												<span class="author-list">
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="子柳">子柳</a>
-														、
-													</span>
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="李运华">李运华</a>
-													</span>
-													回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">怎么成为一个优秀的程序员，而不是一个优秀的码农？</a>
-												</span>
-											</div>
-											<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
-												<span class="author-list">
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="探歌">探歌</a>
-														、
-													</span>
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="风兄">风兄</a>
-														、
-													</span>
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="徐卫卫">徐卫卫</a>
-													</span>
-													回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">一个人的周末可以做些什么？</a>
-												</span>
-											</div>
-											<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
-												<span class="author-list">
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="探歌">探歌</a>
-														、
-													</span>
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="风兄">风兄</a>
-														、
-													</span>
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="徐卫卫">徐卫卫</a>
-													</span>
-													回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">一个人的周末可以做些什么？</a>
-												</span>
-											</div>
-											<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
-												<span class="author-list">
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="探歌">探歌</a>
-														、
-													</span>
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="风兄">风兄</a>
-														、
-													</span>
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="徐卫卫">徐卫卫</a>
-													</span>
-													回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">一个人的周末可以做些什么？</a>
-												</span>
-											</div>
-											<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
-												<span class="author-list">
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="探歌">探歌</a>
-														、
-													</span>
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="风兄">风兄</a>
-														、
-													</span>
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="徐卫卫">徐卫卫</a>
-													</span>
-													回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">一个人的周末可以做些什么？</a>
-												</span>
-											</div>
-											<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
-												<span class="author-list">
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="子柳">子柳</a>
-														、
-													</span>
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="李运华">李运华</a>
-													</span>
-													回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">怎么成为一个优秀的程序员，而不是一个优秀的码农？</a>
-												</span>
-											</div>
-											<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
-												<span class="author-list">
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="子柳">子柳</a>
-														、
-													</span>
-													<span class="user-block">
-														<a href="http://www.zhihu.com/people/fouber" class="zg-link" title="李运华">李运华</a>
-													</span>
-													回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">怎么成为一个优秀的程序员，而不是一个优秀的码农？</a>
-												</span>
-											</div>
-											<div class="zm-noti7-content-item" data-notigroupname="ANSWER">
-												<span class="author-list">
-													<span class="user-block">匿名用户</span>
-													回答了问题 <a href="/question/31224639/answer/63117495?group_id=123" class="question_link">怎么成为一个优秀的程序员，而不是一个优秀的码农？</a>
-												</span>
-											</div>
+											<msg-content></msg-content>
 										</div>
 									</div>
 								</div>
@@ -243,7 +94,7 @@
 							</div>
 							<div class="zh-scroller-bar"></div>
 						</div>
-						<div class="zm-noti7-content zh-sroller">
+						<div ng-show="ctrl.isShowContent(1)" class="zm-noti7-content zh-sroller">
 							<div class="zh-scroller-inner">
 								<div class="zh-scroller-content">
 									<div class="zm-noti7-content-inner">
@@ -361,7 +212,7 @@
 							</div>
 							<div class="zh-scroller-bar"></div>
 						</div>
-						<div class="zm-noti7-content zh-sroller">
+						<div ng-show="ctrl.isShowContent(2)" class="zm-noti7-content zh-sroller">
 							<div class="zh-scroller-inner">
 								<div class="zh-scroller-content">
 									<div class="zm-noti7-content-inner">
