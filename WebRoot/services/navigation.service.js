@@ -154,7 +154,7 @@
 			followed:true
 		}];
 		
-		service.thanksContent = [{
+		service.thanksContents = [{
 			users:[{
 				name:'张三',
 				link:'http://www.zhihu.com/people/guairen'

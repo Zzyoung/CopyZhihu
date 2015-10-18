@@ -1197,6 +1197,20 @@ img.avatar.avatar-s{
 .zh-footer li{
 	list-style: none;
 }
+.zh-footer li+li:before{
+	margin-right:3px;
+	content:'•';
+	padding:0 3px;
+	color:#BBB;
+	font-family:Arial;
+}
+/*由于换行，不需要加'•' */
+.zu-main-sidebar .zh-footer li:nth-child(5):before{
+	content:'';
+	margin:0;
+	padding:0;
+	display:block;
+}
 .zu-main-sidebar .zh-footer .copy{
 	margin-left: 1px;
 	float: none;

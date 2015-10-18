@@ -44,6 +44,7 @@
 		
 		ctrl.userContents = NavigationSerivce.userContents;
 		
-		ctrl.thanksContents = NavigationSerivce.thanksContent;
+		ctrl.thanksContents = NavigationSerivce.thanksContents;
+		
 	};
 })();
