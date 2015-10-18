@@ -1,0 +1,22 @@
+<div class="zm-noti7-content-item" ng-repeat="thanks in ctrl.thanksContents" data-notigroupname="VOTE_THANK" data-type="upvote" data-count="10">
+	<span ng-if="thanks.type == 'VOTE_THANK'">{{ thanks.voteThanksCount | voteThank}}:
+		<a href="{{thanks.questionUrl}}" class="question_link">{{thanks.question}}</a> 来自
+		<span class="author-list">
+			<span class="user-block" ng-repeat="user in thanks.users">
+				<a href="{{user.link}}" class="zg-link">{{user.name}}</a>
+				<span ng-hide="$last">、</span>
+			</span>
+			等 {{thanks.users.length}} 人
+		</span>
+	</span>
+	<span ng-if="thanks.type == 'ACOMMENT_LIKE'" class="author-list">
+		<span class="user-block" ng-repeat="user in thanks.users">
+			<a href="{{user.link}}" class="zg-link">{{user.name}}</a>
+			<span ng-hide="$last">、</span>
+		</span>
+		觉得你在
+		<a href="{{thanks.questionUrl}}" class="question_link">{{thanks.question}}</a> 中 
+		<a href="{{thanks.answerLink}}" class="zg-link" title="唐潮">{{thanks.answer}}</a>
+		 的答案下评论很赞
+	</span>
+</div>

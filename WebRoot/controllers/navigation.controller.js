@@ -42,5 +42,8 @@
 		
 		ctrl.msgContents = NavigationSerivce.msgContents;
 		
+		ctrl.userContents = NavigationSerivce.userContents;
+		
+		ctrl.thanksContents = NavigationSerivce.thanksContent;
 	};
 })();
