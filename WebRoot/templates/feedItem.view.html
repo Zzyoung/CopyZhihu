@@ -1,4 +1,4 @@
-<div ng-repeat="feed in mainCtr.feeds" class="feed-item folding feed-item-hook" data-type="a">
+<div ng-repeat="feed in mainCtrl.feeds" class="feed-item folding feed-item-hook" data-type="a">
 	<div class="feed-item-inner">
 		<div class="avatar">
 			<a title="小爝" class="zm-item-link-avatar" href="/people/xiao-jue-83"> <img ng-src="{{feed.avatarPicture}}" class="zm-item-img-avatar"> </a>
@@ -16,10 +16,9 @@
 				<h2>
 					<a class="question_link" target="_blank" href="{{feed.questionUrl}}">{{feed.question}}</a>
 				</h2>
-				<div ng-if="!feed.withoutAnswer" class="feed-question-detail-item">
-					<a href="#" name="expandQuestionDetail"
-						class="toggle-expand btn-toggle-question-detail ellipsis">
-						平时没遇到过很有挑战的技术问题？想一想，...&nbsp;&nbsp;<span>显示问题详情</span> </a>
+				<div ng-show="!feed.withoutAnswer" class="feed-question-detail-item">
+					<a ng-show="feed.answerExpanded" href="#" ng-click="" class="toggle-expand btn-toggle-question-detail ellipsis">
+						{{feed.questionDesc | formatContent:'questionDesc'}}<span>显示问题详情</span> </a>
 					<div class="question-description zm-editable-content">
 						{{feed.questionDesc}}
 					</div>
@@ -49,69 +48,78 @@
 							<h3 ng-if="feed.unnamed" class="zm-item-answer-author-wrap">
 								<span >匿名用户</span>
 							</h3>
+							<a href="#" ng-show="feed.answerExpanded && feed.answer.length>=800" ng-click="mainCtrl.hideAnswer(feed)" class="collapse meta-item zg-right">
+								<i class="z-icon-fold"></i>收起 
+							</a>
 						</div>
 						<div ng-if="feed.voters.length === 0" class="zm-item-vote-info empty" data-votecount="0"></div>
-						<div ng-if="feed.voters.length > 0" class="zm-item-vote-info " data-votecount="4">
+						<div ng-if="feed.voters.length > 0 && feed.answerExpanded" class="zm-item-vote-info " data-votecount="4">
 							<span class="voters">
 								<span ng-repeat="voter in feed.voters" class="user-block"><a data-tip="p$t$song-ying-3-25" href="{{voter.link}}" class="zg-link" title="松颖">{{voter.name}}</a><span ng-hide="$last">、</span></span>
 							</span>
 							<a href="javascript:;" class="more"> 等人赞同</a>
 						</div>
-						<div class="zm-item-rich-text" data-resourceid="6336040"
-							data-action="/answer/content">
-							<textarea class="content hidden">
-												{{feed.answer}}
+						<div formated-answer ng-click="mainCtrl.expandAnswer(feed)" class="zm-item-rich-text" data-resourceid="6336040" data-action="/answer/content">
+							<!-- <div ng-show="feed.answerExpanded" class="zm-editable-content">
+								{{feed.answer}}
+								<span class="answer-date-link-wrap">
+									<a class="answer-date-link meta-item" target="_blank" href="/question/21321123/answer/68448516">发布于 20:10</a>
+								</span>
+							</div> -->
+							<textarea class="content hidden">{{feed.answer}}
 								<span class="answer-date-link-wrap">
 									<a class="answer-date-link meta-item" target="_blank" href="/question/35323603/answer/63635224">发布于 20:06</a>
 								</span>
 							</textarea>
-							<div class="zh-summary summary clearfix">
-								{{feed.answer | formatAnswer}}
+							<div ng-hide="feed.answerExpanded" class="zh-summary summary clearfix">
+								{{feed.answer | formatContent:'answer'}}
 								<a ng-if="feed.answer.length >= 145" href="/question/35471660/answer/63460518" class="toggle-expand">显示全部</a>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="feed-meta">
-					<div
-						class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+					<div class="zm-item-meta clearfix">
 						<div ng-if="feed.withoutAnswer != true" class="zm-meta-panel">
-							<a data-follow="q:link" class="follow-link zg-follow meta-item"
-								href="javascript:;" id="sfb-6336040"> <i
-								class="z-icon-follow"></i>关注问题 </a>
-							 <a href="#" name="addcomment"
-								class=" meta-item toggle-comment"> <i class="z-icon-comment"></i>{{feed.comments.length | showComment}}
+							<a data-follow="q:link" class="follow-link zg-follow meta-item"	href="javascript:;" id="sfb-6336040"> 
+								<i class="z-icon-follow"></i>关注问题 
+							</a>
+							<a href="#" ng-click="mainCtrl.toggleComments(feed)" class=" meta-item toggle-comment"> 
+								<i class="z-icon-comment"></i>{{feed.comments.length | showComment:feed.isShowComments}}
 							</a> 
-							<a href="#" class="meta-item zu-autohide" name="thanks"
-								data-thanked="false"> <i class="z-icon-thank"></i>感谢 </a> 
-							<a href="#" class="meta-item zu-autohide" name="share"> <i
-								class="z-icon-share"></i>分享 </a> 
-							<a href="#"
-								class="meta-item zu-autohide" name="favo"> <i
-								class="z-icon-collect"></i>收藏 </a> 
-							<span class="zg-bull zu-autohide">&bull;</span>
-							<a href="#" name="nohelp" class="meta-item zu-autohide"> 没有帮助
-							</a> <span class="zg-bull zu-autohide">&bull;</span> 
-							<a href="#"
-								name="report" class="meta-item zu-autohide"> 举报 </a> <span
-								class="zg-bull">&bull;</span> 
-							<a href="/terms#sec-licence-1"
-								target="_blank" class="meta-item copyright"> 作者保留权利 </a> <a
-								href="#" name="collapse" class="collapse meta-item zg-right">
-								<i class="z-icon-fold"></i>收起 </a>
+							<a href="#" ng-class="feed.answerExpanded?'meta-item':'meta-item zu-autohide'" name="thanks" data-thanked="false"> 
+								<i class="z-icon-thank"></i>感谢 
+							</a> 
+							<a href="#" ng-class="feed.answerExpanded?'meta-item':'meta-item zu-autohide'" name="share"> 
+								<i class="z-icon-share"></i>分享 
+							</a> 
+							<a href="#" ng-class="feed.answerExpanded?'meta-item':'meta-item zu-autohide'" name="favo"> 
+								<i class="z-icon-collect"></i>收藏 
+							</a> 
+							<span ng-class="feed.answerExpanded?'zg-bull':'zg-bull zu-autohide'">&bull;</span>
+							<a href="#" ng-class="feed.answerExpanded?'meta-item':'meta-item zu-autohide'"> 没有帮助</a> 
+							<span ng-class="feed.answerExpanded?'zg-bull':'zg-bull zu-autohide'">&bull;</span> 
+							<a href="#" ng-class="feed.answerExpanded?'meta-item':'meta-item zu-autohide'"> 举报 </a> 
+							<span class="zg-bull">&bull;</span> 
+							<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a> 
+							<a href="#" ng-show="feed.answerExpanded" ng-click="mainCtrl.hideAnswer(feed)" class="collapse meta-item zg-right">
+								<i class="z-icon-fold"></i>收起 
+							</a>
 						</div>
 						<div ng-if="feed.withoutAnswer == true" class="zm-meta-panel">
 							<a data-follow="q:link" class="follow-link zg-follow meta-item"
 								href="javascript:;" id="sfb-6358254"><i
 								class="z-icon-follow"></i>关注问题</a> <a href="#" name="toggle-comment"
-								class="meta-item toggle-comment"> <i class="z-icon-comment"></i>{{feed.comments.length | showComment}}</a>
-							<span class="zg-bull">&bull;</span> <a href="/question/35379163"
-								class="meta-item" target="_blank">{{feed.answerCount}} 个回答</a> <a
-								href="javascript:;" name="collapse" class="meta-item collapse">
-								<i
-								class="z-icon-fold"></i>收起</a>
+								class="meta-item toggle-comment"> 
+								<i class="z-icon-comment"></i>{{feed.comments.length | showComment}}
+							</a>
+							<span class="zg-bull">&bull;</span> 
+							<a href="/question/35379163" class="meta-item" target="_blank">{{feed.answerCount}} 个回答</a> 
+							<a href="#" ng-show="feed.answerExpanded" ng-click="mainCtrl.hideAnswer(feed)" class="collapse meta-item zg-right">
+								<i class="z-icon-fold"></i>收起 
+							</a>
 						</div>
-						<div class="zm-comment-box" data-count="31" style="display:none;">
+						<div class="zm-comment-box" data-count="31" ng-show="feed.isShowComments">
 							<i class="icon icon-spike zm-comment-bubble"
 								style="display:inline;left:102px;"></i> <a href=""
 								name="comment-0" class="zg-anchor-hidden"></a>
@@ -130,73 +138,53 @@
 										</div>
 										<div class="zm-comment-content">印象深刻</div>
 										<div class="zm-comment-ft">
-											<span class="date">2015-09-17</span> <a href="#"
-												class="reply zm-comment-op-link" name="reply_comment"> <i
-												class="zg-icon zg-icon-comment-reply"></i>回复 </a> <a href="#"
-												class="like zm-comment-op-link " name="like_comment"> <i
-												class="zg-icon zg-icon-comment-like"></i>赞 </a> <span
-												class="like-num  " data-tip="s$r$1 人觉得这个很赞"> <em>1</em>
-												<span>赞</span> </span> <a href="#" name="report"
-												class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button"
-												role="button" aria-expanded="false" tabindex="0"
-												aria-haspopup="true" style="-webkit-user-select: none;">
-												<div class="goog-inline-block goog-menu-button-outer-box">
-													<div class="goog-inline-block goog-menu-button-inner-box">
-														<div class="goog-inline-block goog-menu-button-caption">
-															<i class="zg-icon z-icon-no-help"></i>举报
-														</div>
-														<div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div>
-													</div>
-												</div> </a>
+											<span class="date">2015-09-17</span> 
+											<a href="#" class="reply zm-comment-op-link" name="reply_comment"> 
+												<i class="zg-icon zg-icon-comment-reply"></i>回复 
+											</a> 
+											<a href="#" class="like zm-comment-op-link " name="like_comment"> 
+												<i class="zg-icon zg-icon-comment-like"></i>赞 
+											</a> <span class="like-num  " data-tip="s$r$1 人觉得这个很赞"> <em>1</em>	<span>赞</span> </span> 
+											<a href="#" name="report" class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button" style="-webkit-user-select: none;">
+												<i class="zg-icon z-icon-no-help"></i>举报 
+											</a>
 										</div>
 									</div>
 								</div>
 								<div class="zm-item-comment" data-id="94886451">
-									<a class="zg-anchor-hidden" name="comment-94886451"></a> <a
-										title="骑驴看花" data-tip="p$t$penny-lu-82"
-										class="zm-item-link-avatar" href="/people/penny-lu-82"> <img
-										src="images/20a52613d2af2feb4eeaf58629383725_s.jpg"
-										class="zm-item-img-avatar"> </a>
+									<a class="zg-anchor-hidden" name="comment-94886451"></a> <a	title="骑驴看花" data-tip="p$t$penny-lu-82"	class="zm-item-link-avatar" href="/people/penny-lu-82"> <img src="images/20a52613d2af2feb4eeaf58629383725_s.jpg" class="zm-item-img-avatar"> </a>
 									<div class="zm-comment-content-wrap">
 										<div class="zm-comment-hd">
-											<a data-tip="p$t$penny-lu-82"
-												href="http://www.zhihu.com/people/penny-lu-82"
-												class="zg-link" title="骑驴看花">骑驴看花</a>
+											<a data-tip="p$t$penny-lu-82" href="http://www.zhihu.com/people/penny-lu-82" class="zg-link" title="骑驴看花">骑驴看花</a>
 										</div>
 										<div class="zm-comment-content">印象深刻</div>
 										<div class="zm-comment-ft">
-											<span class="date">2015-09-17</span> <a href="#"
-												class="reply zm-comment-op-link" name="reply_comment"> <i
-												class="zg-icon zg-icon-comment-reply"></i>回复 </a> <a href="#"
-												class="like zm-comment-op-link " name="like_comment"> <i
-												class="zg-icon zg-icon-comment-like"></i>赞 </a> <span
-												class="like-num  " data-tip="s$r$1 人觉得这个很赞"> <em>1</em>
-												<span>赞</span> </span> <a href="#" name="report"
-												class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button"
-												role="button" aria-expanded="false" tabindex="0"
-												aria-haspopup="true" style="-webkit-user-select: none;">
-												<i class="zg-icon z-icon-no-help"></i>举报 </a>
+											<span class="date">2015-09-17</span> 
+											<a href="#" class="reply zm-comment-op-link" name="reply_comment"> 
+												<i class="zg-icon zg-icon-comment-reply"></i>回复 
+											</a> 
+											<a href="#" class="like zm-comment-op-link " name="like_comment"> 
+												<i class="zg-icon zg-icon-comment-like"></i>赞 
+											</a> <span class="like-num  " data-tip="s$r$1 人觉得这个很赞"> <em>1</em>	<span>赞</span> </span> 
+											<a href="#" name="report" class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button" style="-webkit-user-select: none;">
+												<i class="zg-icon z-icon-no-help"></i>举报 
+											</a>
 										</div>
 									</div>
 								</div>
-								<a href="javascript:;" class="load-more" name="load-more"> <span
-									class="text">显示全部评论<img
-										src="http://static.zhihu.com/static/img/spinner2.gif"
-										class="spinner">
+								<a href="javascript:;" class="load-more" name="load-more"> <span class="text">显示全部评论<img src="http://static.zhihu.com/static/img/spinner2.gif" class="spinner">
 								</span> </a>
 							</div>
 							<div class="zm-comment-form zm-comment-box-ft">
 								<div class="zm-comment-editable editable" contenteditable="true"><p style="color:#999">写下你的评论…</p></div>
 								<div class="zm-command zg-clear">
-									<a href="#" name="addnew" class="zg-right zg-btn-blue">评论</a> <a
-										href="#" name="closeform" class="zm-command-cancel">取消</a>
+									<a href="#" name="addnew" class="zg-right zg-btn-blue">评论</a> <a href="#" name="closeform" class="zm-command-cancel">取消</a>
 								</div>
 								<div class="zm-comment-info"></div>
 							</div>
 						</div>
 					</div>
-					<a href="#" class="ignore zu-autohide" name="dislike"
-						data-tip="s$b$不感兴趣"></a>
+					<a href="#" class="ignore zu-autohide" name="dislike" data-tip="s$b$不感兴趣"></a>
 				</div>
 			</div>
 		</div>

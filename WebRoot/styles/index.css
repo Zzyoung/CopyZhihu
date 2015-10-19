@@ -605,7 +605,6 @@ a:link{
 }
 .toggle-expand.btn-toggle-question-detail{
 	padding: 0;
-	display: none;
 }
 a.toggle-expand.btn-toggle-question-detail{
 	margin-bottom: 5px;
@@ -739,10 +738,7 @@ a>.invisible{
 html.no-touch .zm-item-vote-info a:hover{
 	color: #698ebf;
 }
-.entry-body .zm-item-vote-info, .entry-body .full-content, .zm-item-answer .zm-votebar, .zm-item-feed .zm-votebar, .zm-item-answer .zm-item-vote-info, .zm-item-feed .zm-item-vote-info{
-	display: none;
-}
-.zm-editable-content{
+.entry-body .full-content, .zm-item-answer .zm-votebar, .zm-item-feed .zm-votebar, .zm-item-answer .zm-item-vote-info, .zm-item-feed .zm-item-vote-info{
 	display: none;
 }
 .zm-editable-content .answer-date-link-wrap{
@@ -862,12 +858,6 @@ i[class^=z-icon-], i[class*=" z-icon-"]{
 .zu-autohide{
 	display: none;
 }
-.zm-meta-panel a.collapse{
-	visibility: hidden;
-}
-.zm-item-meta .zm-meta-panel a.collapse{
-	visibility: visible;
-}
 .z-icon-fold{
 	width: 8px;
 	height: 9px;
@@ -897,7 +887,6 @@ i[class^=z-icon-], i[class*=" z-icon-"]{
 }
 .feed-item .collapse{
 	float: right;
-	display: none;
 }
 .zm-item-answer-author-info a.collapse{
 	margin-left: 10px;
