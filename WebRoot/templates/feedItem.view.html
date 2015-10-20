@@ -17,9 +17,9 @@
 					<a class="question_link" target="_blank" href="{{feed.questionUrl}}">{{feed.question}}</a>
 				</h2>
 				<div ng-show="!feed.withoutAnswer" class="feed-question-detail-item">
-					<a ng-show="feed.answerExpanded" href="#" ng-click="" class="toggle-expand btn-toggle-question-detail ellipsis">
-						{{feed.questionDesc | formatContent:'questionDesc'}}<span>显示问题详情</span> </a>
-					<div class="question-description zm-editable-content">
+					<a ng-show="feed.answerExpanded && feed.hideQuestionDesc" href="#" ng-click="mainCtrl.expandQuestionDesc(feed,$event)" class="toggle-expand btn-toggle-question-detail ellipsis">
+						{{feed.questionDesc | formatContent:'questionDesc'}}<span ng-if="feed.hideQuestionDesc">显示问题详情</span> </a>
+					<div formated-content ng-hide="feed.hideQuestionDesc" class="question-description zm-editable-content">
 						{{feed.questionDesc}}
 					</div>
 				</div>
@@ -27,14 +27,14 @@
 					data-collapsed="False" data-created="1442232402" data-deleted="0"
 					data-isowner="0" data-helpful="1" data-score="0" data-copyable="1">
 
-					<div class="zm-item-vote">
+					<div ng-click="mainCtrl.expandAnswer(feed)" class="zm-item-vote" ng-hide="feed.answerExpanded">
 						<a name="expand" class="zm-item-vote-count" href="javascript:;"
 							data-votecount="0">{{feed.voteCount}}</a>
 					</div>
-					<div class="zm-votebar">
+					<div class="zm-votebar" ng-show="feed.answerExpanded">
 						<button class="up ">
 							<i class="icon vote-arrow"></i> <span class="label">赞同</span> <span
-								class="count">0</span>
+								class="count">{{feed.voteCount}}</span>
 						</button>
 						<button class="down ">
 							<i class="icon vote-arrow"></i> <span class="label">反对</span>
@@ -59,13 +59,8 @@
 							</span>
 							<a href="javascript:;" class="more"> 等人赞同</a>
 						</div>
-						<div formated-answer ng-click="mainCtrl.expandAnswer(feed)" class="zm-item-rich-text" data-resourceid="6336040" data-action="/answer/content">
-							<!-- <div ng-show="feed.answerExpanded" class="zm-editable-content">
-								{{feed.answer}}
-								<span class="answer-date-link-wrap">
-									<a class="answer-date-link meta-item" target="_blank" href="/question/21321123/answer/68448516">发布于 20:10</a>
-								</span>
-							</div> -->
+						<div ng-click="mainCtrl.expandAnswer(feed)" class="zm-item-rich-text" data-resourceid="6336040" data-action="/answer/content">
+							<div formated-content ng-show="feed.answerExpanded" class="zm-editable-content">{{feed.answer}}</div>
 							<textarea class="content hidden">{{feed.answer}}
 								<span class="answer-date-link-wrap">
 									<a class="answer-date-link meta-item" target="_blank" href="/question/35323603/answer/63635224">发布于 20:06</a>
@@ -87,19 +82,19 @@
 							<a href="#" ng-click="mainCtrl.toggleComments(feed)" class=" meta-item toggle-comment"> 
 								<i class="z-icon-comment"></i>{{feed.comments.length | showComment:feed.isShowComments}}
 							</a> 
-							<a href="#" ng-class="feed.answerExpanded?'meta-item':'meta-item zu-autohide'" name="thanks" data-thanked="false"> 
+							<a href="#" ng-class="feed.answerExpanded || feed.isShowComments?'meta-item':'meta-item zu-autohide'" name="thanks" data-thanked="false"> 
 								<i class="z-icon-thank"></i>感谢 
 							</a> 
-							<a href="#" ng-class="feed.answerExpanded?'meta-item':'meta-item zu-autohide'" name="share"> 
+							<a href="#" ng-class="feed.answerExpanded || feed.isShowComments?'meta-item':'meta-item zu-autohide'" name="share"> 
 								<i class="z-icon-share"></i>分享 
 							</a> 
-							<a href="#" ng-class="feed.answerExpanded?'meta-item':'meta-item zu-autohide'" name="favo"> 
+							<a href="#" ng-class="feed.answerExpanded || feed.isShowComments?'meta-item':'meta-item zu-autohide'" name="favo"> 
 								<i class="z-icon-collect"></i>收藏 
 							</a> 
-							<span ng-class="feed.answerExpanded?'zg-bull':'zg-bull zu-autohide'">&bull;</span>
-							<a href="#" ng-class="feed.answerExpanded?'meta-item':'meta-item zu-autohide'"> 没有帮助</a> 
-							<span ng-class="feed.answerExpanded?'zg-bull':'zg-bull zu-autohide'">&bull;</span> 
-							<a href="#" ng-class="feed.answerExpanded?'meta-item':'meta-item zu-autohide'"> 举报 </a> 
+							<span ng-class="feed.answerExpanded || feed.isShowComments?'zg-bull':'zg-bull zu-autohide'">&bull;</span>
+							<a href="#" ng-class="feed.answerExpanded || feed.isShowComments?'meta-item':'meta-item zu-autohide'"> 没有帮助</a> 
+							<span ng-class="feed.answerExpanded || feed.isShowComments?'zg-bull':'zg-bull zu-autohide'">&bull;</span> 
+							<a href="#" ng-class="feed.answerExpanded || feed.isShowComments?'meta-item':'meta-item zu-autohide'"> 举报 </a> 
 							<span class="zg-bull">&bull;</span> 
 							<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a> 
 							<a href="#" ng-show="feed.answerExpanded" ng-click="mainCtrl.hideAnswer(feed)" class="collapse meta-item zg-right">
@@ -175,10 +170,10 @@
 								<a href="javascript:;" class="load-more" name="load-more"> <span class="text">显示全部评论<img src="http://static.zhihu.com/static/img/spinner2.gif" class="spinner">
 								</span> </a>
 							</div>
-							<div class="zm-comment-form zm-comment-box-ft">
-								<div class="zm-comment-editable editable" contenteditable="true"><p style="color:#999">写下你的评论…</p></div>
-								<div class="zm-command zg-clear">
-									<a href="#" name="addnew" class="zg-right zg-btn-blue">评论</a> <a href="#" name="closeform" class="zm-command-cancel">取消</a>
+							<div ng-click="feed.isAddingComment = true" ng-class="feed.isAddingComment?'zm-comment-form zm-comment-box-ft expanded':'zm-comment-form zm-comment-box-ft'">
+								<div class="zm-comment-editable editable" contenteditable="true"><p ng-if="!feed.isAddingComment" style="color:#999">写下你的评论…</p></div>
+								<div class="zm-command zg-clear" ng-show="feed.isAddingComment">
+									<a href="#" name="addnew" class="zg-right zg-btn-blue">评论</a> <a href="#" ng-click="mainCtrl.closeForm(feed,$event)" class="zm-command-cancel">取消</a>
 								</div>
 								<div class="zm-comment-info"></div>
 							</div>

@@ -19,13 +19,23 @@
 		};
 		
 		mainCtrl.expandAnswer = function(feed){
-			if(!feed.answerExpanded){
-				feed.answerExpanded = true;
-			}
+			feed.answerExpanded = true;
 		};
 		
 		mainCtrl.hideAnswer = function(feed){
 			feed.answerExpanded = false;
+			feed.hideQuestionDesc = true;
+		};
+		
+		mainCtrl.expandQuestionDesc = function(feed,$event){
+			feed.hideQuestionDesc = false;
+			$event.preventDefault();
+		};
+		
+		mainCtrl.closeForm = function(feed,$event){
+			feed.isAddingComment = false;
+			$event.stopPropagation();
+			$event.preventDefault();
 		};
 		
 	}

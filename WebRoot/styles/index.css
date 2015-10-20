@@ -619,7 +619,6 @@ a.toggle-expand.btn-toggle-question-detail span{
 	border-radius: 2px;
 }
 .feed-item .question-description{
-	display: none;
 	padding-bottom: 6px;
 }
 .feed-item .entry-body{
@@ -656,11 +655,20 @@ a.toggle-expand.btn-toggle-question-detail span{
 }
 .feed-item .zm-votebar{
 	margin-top: -1px;
-	display: none;
 }
 .zm-votebar{
 	float: left;
 	margin-left: -48px;
+}
+html.no-touch .zm-item-vote-count:hover{
+	background: #698ebf;
+	color: #fff;
+	text-decoration: none;
+}
+.zm-votebar .up:hover,.zm-votebar .down:hover{
+	background: #698ebf;
+	color: #fff;
+	text-decoration: none;
 }
 .zm-votebar .up,.zm-votebar .down{
 	position: relative;
@@ -674,6 +682,18 @@ a.toggle-expand.btn-toggle-question-detail span{
 	cursor: pointer;
 	background: #eff6fa;
 	font-weight: 500;
+}
+.zm-votebar .up .vote-arrow{
+	background-position:0 -229px;
+	border-top-width:0;
+	border-bottom-color:#698ebf;
+	border-top-stype:solid;
+}
+.zm-votebar .up:hover .vote-arrow{
+	border-bottom-color:#fff;
+}
+.zm-votebar .down:hover .vote-arrow{
+	border-top-color:#fff;
 }
 .zm-votebar .up{
 	height: 44px;
@@ -738,7 +758,7 @@ a>.invisible{
 html.no-touch .zm-item-vote-info a:hover{
 	color: #698ebf;
 }
-.entry-body .full-content, .zm-item-answer .zm-votebar, .zm-item-feed .zm-votebar, .zm-item-answer .zm-item-vote-info, .zm-item-feed .zm-item-vote-info{
+.entry-body .full-content, .zm-item-answer .zm-item-vote-info, .zm-item-feed .zm-item-vote-info{
 	display: none;
 }
 .zm-editable-content .answer-date-link-wrap{
@@ -1328,11 +1348,6 @@ html.no-touch .zh-summary:hover a.toggle-expand{
 /*显示感谢、分享、收藏、没有帮助、举报*/
 html.no-touch .zm-profile-answer-page .zm-item:hover .zu-autohide, html.no-touch .feed-item:hover .zu-autohide{
 	display: inline-block;
-}
-html.no-touch .zm-item-vote-count:hover{
-	background: #698ebf;
-	color: #fff;
-	text-decoration: none;
 }
 html.no-touch .meta-item:hover{
 	color: #698ebf;
