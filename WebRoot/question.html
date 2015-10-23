@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en"
-	class="js flexbox no-touch cssanimations csstransforms csstransitions no-mobile">
+<html lang="en" class="js flexbox no-touch cssanimations csstransforms csstransitions no-mobile"  ng-app="zhihu">
 <head>
 <meta charset="UTF-8">
-<title>首页 - 知乎</title>
+<title>最近有哪些好看的动漫新番？</title>
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="styles/reset.css">
-<link rel="stylesheet" href="styles/question.css">
+<link rel="stylesheet" href="styles/index.css">
 </head>
-<body class="zhi" ng-app="zhihu">
+<body class="zhi">
 	<navigation></navigation>
 	<div class="zg-wrap zu-main question-page" itemscope
 		itemtype="http://schema.org/Question" id="zh-single-question-page"
@@ -55,7 +54,7 @@
 							class="toggle-comment meta-item"> <i class="z-icon-comment"></i>添加评论
 						</a> <a href="#" name="share" class="share meta-item"> <i
 							class="z-icon-share"></i>分享 </a> <span class="zg-bull">&bull;</span>
-						<a href="#" name="invite" class="meta-item">邀请回答</a> <span
+						<a href="#" name="invite" class="meta-item">收起邀请</a> <span
 							class="zg-bull">&bull;</span> <a href="#" name="remove"
 							class="meta-item">删除问题</a>
 
@@ -82,7 +81,7 @@
 									<li class="person"><a title="陈冯"
 										data-tip="p$t$chen-feng-47-65-6" class="zm-item-link-avatar"
 										href="/people/chen-feng-47-65-6"> <img
-											src="images/touxiang.jpg"
+											src="images/0a0c041d2047f75e9ed5709dc6f89ec8_is.jpg"
 											class="zm-item-img-avatar"> </a>
 										<div class="content">
 
@@ -106,7 +105,7 @@
 									<li class="person"><a title="王昊"
 										data-tip="p$t$xie-luo-99-67" class="zm-item-link-avatar"
 										href="/people/xie-luo-99-67"> <img
-											src="images/touxiang.jpg"
+											src="images/5b35a64aaa807dc2065d42bf24dc9d18_is.jpg"
 											class="zm-item-img-avatar"> </a>
 										<div class="content">
 
@@ -130,7 +129,7 @@
 									<li class="person"><a data-tip="p$t$kagamichan"
 										class="zm-item-link-avatar" href="/people/kagamichan"
 										data-original_title="明镜止水"> <img
-											src="images/touxiang.jpg"
+											src="images/379c55be0527f1eec3185fa5ef665ffa_is.jpg"
 											class="zm-item-img-avatar"> </a>
 										<div class="content">
 
@@ -154,7 +153,7 @@
 									<li class="person"><a title="花菌子"
 										data-tip="p$t$hua-jun-zi-27" class="zm-item-link-avatar"
 										href="/people/hua-jun-zi-27"> <img
-											src="images/touxiang.jpg"
+											src="images/cca2c5f6670035553534903c4bc9ebed_is.jpg"
 											class="zm-item-img-avatar"> </a>
 										<div class="content">
 
@@ -178,7 +177,7 @@
 									<li class="person"><a title="孟德尔"
 										data-tip="p$t$meng-de-er" class="zm-item-link-avatar"
 										href="/people/meng-de-er"> <img
-											src="images/touxiang.jpg"
+											src="images/8a0f51296_is.jpg"
 											class="zm-item-img-avatar"> </a>
 										<div class="content">
 
@@ -569,7 +568,7 @@
 					</div>
 				</div>
 
-				<div class="first-question-tip">
+				<div class="first-question-tip" style="display: none;">
 					<h4>欢迎在知乎写下你的疑问，你的问题已经成功提交。</h4>
 					在知乎，一个表意清晰、说明完整的问题得到首个回答的平均时间是 12 分钟。为让问题更快获得精彩的回答，你可以：
 					<ul>
@@ -577,9 +576,6 @@
 						<li><strong>改进问题：</strong>具体地描述问题背景和提问原因，分享你在试图解决这个问题的过程中已经收集到的信息，都有助于其他用户更准更快了解你的疑惑、写下他们的回答。</li>
 					</ul>
 				</div>
-
-
-
 				<div class="zh-question-answer-summary-wrap zm-item-rich-text"
 					id="zh-question-answer-summary-wrap" style="display:none;">
 					<h3>
@@ -595,15 +591,15 @@
 					</div>
 				</div>
 
-				<div id="zh-question-answer-wrap" data-pagesize="50"
-					class="zh-question-answer-wrapper" data-widget="navigable"
-					data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}"
-					data-init="{&quot;params&quot;: {&quot;url_token&quot;: 36767166, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}">
+				<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap" style="display:none;">
+					<div class="zm-editable-tip zu-answer-form-disabled-wrap">添加回答：<a href="javascript:;" name="answer_my_question">回答自己的提问</a></div>
+					<div class="zm-editable-content" style="display: none;"><a href="javascript:;" class="zu-edit-button" name="edit"><i class="zu-edit-button-icon"></i>修改</a></div>
+				</div>
+				<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper navigable" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;>.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 36767166, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}">
 
 
 
 				</div>
-
 
 				<div id="zh-question-collapsed-link"
 					class="zu-question-collap-title" style="display:none">
@@ -616,14 +612,10 @@
 				<div id="zh-question-collapsed-wrap"
 					class="zh-question-answer-wrapper" style="display:none"></div>
 				<a name="draft"></a>
-				<div id="zh-question-answer-form-wrap"
-					class="zh-question-answer-form-wrap">
-					<div class="zm-editable-tip"></div>
-					<div class="zm-editable-content"></div>
+				<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+					<div class="zm-editable-tip zu-answer-form-disabled-wrap" style="display: none;">undefined</div><div class="question-tip-box-bottom" style="display: none;">确定想要回答你自己提出的问题吗？<br>如果需要对问题做出更多的解释和说明，请编辑问题描述。 如果需要对其他回答做出回应，请在相应回答下通过评论发布。<br><div class="zg-clear"><a href="javascript:;" class="zg-right zg-btn zg-btn-blue" name="confirm">确定</a><a href="javascript:;" class="zg-right zg-link-gray " name="cancel">取消</a></div></div>
+					<div class="zm-editable-content" style="display: none;"><a href="javascript:;" class="zu-edit-button" name="edit"><i class="zu-edit-button-icon"></i>修改</a></div><div class="zm-editable-editor-wrap" style=""><div class="zh-answer-form clearfix"><a href="/people/zhang-yang-07-01" title="张阳" class="zm-item-link-avatar" data-tip="p$t$zhang-yang-07-01"><img src="images/touxiang.jpg" class="zm-list-avatar"></a><div><div class="zu-answer-form-title"><a href="/people/zhang-yang-07-01" title="张阳" data-tip="p$t$zhang-yang-07-01">张阳</a><span>，前端新手<a name="edit_bio" class="zu-edit-button" href="javascript:;"><i class="zu-edit-button-icon"></i>修改话题经验</a></span></div></div></div><div class="zm-editable-editor-outer"><div class="zm-editable-toolbar-container goog-scrollfloater"><div class="goog-toolbar goog-toolbar-horizontal" role="toolbar" tabindex="-1" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button" title="写作模式" role="button" id="toggleFullScreen" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-outer-box" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-inner-box" style="-webkit-user-select: none;"><div class="tr-icon tr-max" style="-webkit-user-select: none;"></div></div></div></div><div class="goog-inline-block goog-toolbar-button" title="粗体 (ctrl+b)" role="button" aria-pressed="false" id="+bold" aria-disabled="false" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-outer-box" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-inner-box" style="-webkit-user-select: none;"><div class="tr-icon tr-bold" style="-webkit-user-select: none;"></div></div></div></div><div class="goog-inline-block goog-toolbar-button" title="斜体 (ctrl+i)" role="button" aria-pressed="false" id="+italic" aria-disabled="false" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-outer-box" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-inner-box" style="-webkit-user-select: none;"><div class="tr-icon tr-italic" style="-webkit-user-select: none;"></div></div></div></div><div class="goog-inline-block goog-toolbar-button" title="下划线 (ctrl+u)" role="button" aria-pressed="false" id="+underline" aria-disabled="false" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-outer-box" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-inner-box" style="-webkit-user-select: none;"><div class="tr-icon tr-underline" style="-webkit-user-select: none;"></div></div></div></div><div class="goog-toolbar-separator goog-toolbar-separator-disabled goog-inline-block" aria-disabled="true" role="separator" id=":k" style="-webkit-user-select: none;">&nbsp;</div><div class="goog-inline-block goog-toolbar-button" title="引用内容" role="button" aria-pressed="false" id="+blockquote" aria-disabled="false" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-outer-box" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-inner-box" style="-webkit-user-select: none;"><div class="tr-icon tr-blockquote" style="-webkit-user-select: none;"></div></div></div></div><div class="goog-inline-block goog-toolbar-button" title="插入代码" role="button" aria-pressed="false" id="+code" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-outer-box" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-inner-box" style="-webkit-user-select: none;"><div class="tr-icon tr-code" style="-webkit-user-select: none;"></div></div></div></div><div class="goog-inline-block goog-toolbar-button" title="有序列表" role="button" aria-pressed="false" id="+insertOrderedList" aria-disabled="false" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-outer-box" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-inner-box" style="-webkit-user-select: none;"><div class="tr-icon tr-insertOrderedList" style="-webkit-user-select: none;"></div></div></div></div><div class="goog-inline-block goog-toolbar-button" title="无序列表" role="button" aria-pressed="false" id="+insertUnorderedList" aria-disabled="false" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-outer-box" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-inner-box" style="-webkit-user-select: none;"><div class="tr-icon tr-insertUnorderedList" style="-webkit-user-select: none;"></div></div></div></div><div class="goog-inline-block goog-toolbar-button" title="插入公式" role="button" id="+equation" aria-disabled="false" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-outer-box" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-inner-box" style="-webkit-user-select: none;"><div class="tr-icon tr-equation" style="-webkit-user-select: none;"></div></div></div></div><div class="goog-toolbar-separator goog-toolbar-separator-disabled goog-inline-block" aria-disabled="true" role="separator" id=":l" style="-webkit-user-select: none;">&nbsp;</div><div class="goog-inline-block goog-toolbar-button" title="插入图片" role="button" id="image" aria-disabled="false" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-outer-box" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-inner-box" style="-webkit-user-select: none;"><div class="tr-icon tr-image" style="-webkit-user-select: none;"></div></div></div></div><div class="goog-inline-block goog-toolbar-button" title="插入视频" role="button" id="video" aria-disabled="false" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-outer-box" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-inner-box" style="-webkit-user-select: none;"><div class="tr-icon tr-video" style="-webkit-user-select: none;"></div></div></div></div><div class="goog-toolbar-separator goog-toolbar-separator-disabled goog-inline-block" aria-disabled="true" role="separator" id=":m" style="-webkit-user-select: none;">&nbsp;</div><div class="goog-inline-block goog-toolbar-button" title="清除格式" role="button" id="+removeFormat" aria-disabled="false" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-outer-box" style="-webkit-user-select: none;"><div class="goog-inline-block goog-toolbar-button-inner-box" style="-webkit-user-select: none;"><div class="tr-icon tr-removeFormat" style="-webkit-user-select: none;"></div></div></div></div><div class="tr-spinner spinner-gray" style="display: none;"></div></div></div><div class="zm-editable-editor-field-wrap"><div id="mock:i" class="zm-editable-editor-field-element editable" g_editable="true" role="textbox" contenteditable="true"><br></div><div class="editable-dropzone"><div class="row"><div class="cell"><div>拖拽至此处上传</div></div></div></div></div><div class="mention-popup" style="display: none;"><div class="writing-bg"><input aria-haspopup="true" autocomplete="off"></div><div class="tip">想用 @ 提到谁？</div></div></div><div class="zm-command clearfix"><label class="zg-left anno-box" style="-webkit-user-select: none;"><input name="anno-checkbox" type="checkbox" style="-webkit-user-select: none;"> 匿名 <span style="-webkit-user-select: none;">&nbsp;</span></label> <label class="zg-left copyright-box"><input name="copyright-checkbox" type="checkbox">未经许可，禁止转载<a href="/terms#sec-licence-6" target="_blank"><i class="zg-icon zg-icon-question-mark" style="margin-left: 5px;" id="copyright_question_mark" data-copyright-demo="true"></i></a></label> <span class=" zg-right"><a class="submit-button zg-btn-blue" name="save" href="javascript:;">发布回答</a></span><div class="draft-controls zg-right "><span class="draft-saved-info" style="display: none;"><a class="draft-clear-button goog-inline-block" href="#" data-tip="s$b$删除草稿"><i class="zg-icon zg-icon-bin"></i><span class="hide-text">清除草稿</span></a><span class="draft-saved-time">已保存</span></span></div></div></div>
 				</div>
-				<div class="shameimaru-placeholder"
-					data-class="QuestionBottomShameimaruV2"
-					data-params='{&quot;token&quot;:36767166}'></div>
 				<!-- end of content -->
 			</div>
 		</div>
@@ -662,9 +654,14 @@
 				</div>
 			</div>
 
-			<div class="shameimaru-placeholder"
-				data-class="QuestionUpShameimaruV2"
-				data-params='{&quot;token&quot;:36767166}'></div>
+			<div class="zm-side-section shameimaru-section" id="shameimaru-question-up-e68c0213f" data-location="question_up" data-id="e68c0213f">
+					<div class="zm-side-section-inner">
+						<div class="zh-shameimaru">
+						    <a class="shameimaru-link" target="_blank" rel="nofollow" href="/shameimaru/click?id=e68c0213f&amp;location=question_up"></a>
+						    <a class="shameimaru-close z-ico-shameimaru-close" data-tip="s$b$不再显示" rel="nofollow"></a>
+						</div>
+					</div>
+				</div>
 			<div class="zm-side-section">
 				<div class="zm-side-section-inner">
 					<div id="zh-question-related-questions"
@@ -720,9 +717,6 @@
 					</div>
 				</div>
 			</div>
-			<div class="shameimaru-placeholder"
-				data-class="QuestionDownShameimaruV2"
-				data-params='{&quot;token&quot;:36767166}'></div>
 		</div>
 		<div class="zg-clear"></div>
 		<!-- 版权演示 -->
