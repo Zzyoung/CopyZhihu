@@ -5,10 +5,14 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.zhihu.pojo.User;
 import com.zhihu.service.UserService;
 import com.zhihu.utils.Constant;
+import com.zhihu.utils.Utils;
 
 @Controller("loginController")
 @RequestMapping(value = "/")
@@ -90,6 +95,7 @@ public class LoginController {
 		HttpSession session = request.getSession();
 		logger.info("password:"+password);
 		logger.info("帐号为["+loginName+"]的用户进行了登录操作");
+		logger.info("验证码为:"+captcha);
 		
 		try {
 			if(!validateCaptcha(captcha, session)){
@@ -102,7 +108,8 @@ public class LoginController {
 				response.getWriter().write("{\"errorCode\":"+Constant.UNKNOWN_LOGINNAME+",\"msg\":\"unknown loginName\"}");
 			}else{
 				if(password.equals(user.getPassword())){
-					response.getWriter().write("{\"msg\":\"login success\"}");
+					//登录成功
+					logger.info(loginName+" 登录成功");
 				}else{
 					response.getWriter().write("{\"errorCode\":"+Constant.ERROR_PASSWORD_LOGINNAME+",\"msg\":\"error password or loginName\"}");
 				}
@@ -116,6 +123,54 @@ public class LoginController {
 				logger.error("关闭输出流失败",e);
 			}
 		}
+	}
+	
+	@RequestMapping(value="/index",method = RequestMethod.GET)
+	public void redirectToMain(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		//判断cookie
+		Cookie[] cookies = request.getCookies();
+		String cookieLoginName = null;
+		String cookiePassword = null;
+		if(cookies==null || cookies.length==0){
+			logger.info("cookie为空，跳转到登录界面...");
+			response.sendRedirect(request.getContextPath()+"/index.html");
+			return;
+		}
+		logger.info(request.getContextPath()+"=======");
+		for (int i = 0; i < cookies.length; i++) {
+			if(cookies[i].getName().equals("loginName")){
+				cookieLoginName = URLDecoder.decode(cookies[i].getValue(),"UTF-8");
+				logger.info("cookie中的登录名为："+cookieLoginName);
+			}
+			if(cookies[i].getName().equals("password")){
+				cookiePassword = URLDecoder.decode(cookies[i].getValue(),"UTF-8");
+				logger.info("cookie中的密码为："+cookiePassword);
+			}
+		}
+		if(Utils.isEmpty(cookieLoginName) || Utils.isEmpty(cookiePassword)){
+			response.sendRedirect(request.getContextPath()+"/index.html");
+			return;
+		}
+		
+		//去掉值两端的双引号
+		cookieLoginName = cookieLoginName.replace("\"", "");
+		cookiePassword = cookiePassword.replace("\"", "");
+		
+		User user = userService.getByLoginName(cookieLoginName);
+		if(user != null && cookiePassword.equals(user.getPassword())){
+			request.getRequestDispatcher("/WEB-INF/view/main.html").forward(request, response);
+		}else{
+			logger.info("cookie中的密码"+cookiePassword+"与数据库中的密码不同...");
+			response.sendRedirect(request.getContextPath()+"/index.html");
+		}
+		
+	}
+	
+	@RequestMapping(value="/logout",method = RequestMethod.GET)
+	public void logout(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		//do something here
+		
+		response.sendRedirect(request.getContextPath()+"/index.html");
 	}
 	
 	@RequestMapping(value="/captcha",method = RequestMethod.GET)

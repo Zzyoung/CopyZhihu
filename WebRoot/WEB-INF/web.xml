@@ -27,7 +27,7 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
+	
 	<!-- 加载spring -->
 	<listener>
 		<description>spring监听器</description>
@@ -58,6 +58,7 @@
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
+    
 	<servlet-mapping>  
             <servlet-name>default</servlet-name>  
             <url-pattern>*.css</url-pattern>  

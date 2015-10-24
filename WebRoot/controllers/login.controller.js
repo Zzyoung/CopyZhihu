@@ -33,8 +33,8 @@
 	                		$scope.prompts = [{type : 'captcha',msg:'请输入正确的验证码'}];
 	                	}else{
 	                		var location = window.location;
-	                		AuthenticationService.setCredentials(vm.username, vm.password);
-	                		window.location = location.origin + location.pathname + "main.html";
+	                		AuthenticationService.setCredentials(vm.user.loginName, vm.user.password);
+	                		window.location = location.origin + ConstantService.ContextPath + "index";
 	                	}
 	                } else {
 	                	

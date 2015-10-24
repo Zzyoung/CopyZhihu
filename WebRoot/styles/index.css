@@ -1599,10 +1599,6 @@ img.avatar.avatar-xs{
 	margin: 0 12px;
 	padding: 8px 0;
 }
-.zm-item-comment>.zm-item-link-avatar{
-	float: left;
-	margin:4px 0 0;
-}
 .zm-item-comment .zm-item-img-avatar{
 	width: 25px;
 	height: 25px;
@@ -2518,4 +2514,20 @@ input[type=checkbox]{
 }
 .zh-question-answer-form-wrap .submit-button{
 	margin-left: 1em;
+}
+/*答案样式*/
+.zm-item-answer, .zm-item{
+	position: relative;
+	padding:0;
+	outline:0;
+}
+.zm-item-expanded .zm-votebar, .zh-question-answer-wrapper .zm-votebar, .zh-question-answer-wrapper .zm-item-vote-info, .zm-item-expanded .zm-item-vote-info, .zm-item-expanded .zm-item-meta, .zm-item-expanded a.collapse, .zm-item-expanded .full-content{
+	display: block;
+}
+.zm-item-expanded .zu-autohide, .navigable-focusin .zu-autohide, .focusin .zu-autohide, html.no-touch .zm-item-answer:hover .zu-autohide, html.no-touch .zm-item:hover .zu-autohide{
+	display: inline-block;
+}
+.zm-item-comment>.zm-item-link-avatar{
+	float: left;
+	margin:4px 0 0;
 }

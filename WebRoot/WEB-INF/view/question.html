@@ -9,8 +9,7 @@
 </head>
 <body class="zhi">
 	<navigation></navigation>
-	<div class="zg-wrap zu-main question-page" itemscope
-		itemtype="http://schema.org/Question" id="zh-single-question-page"
+	<div ng-controller="QuestionController" class="zg-wrap zu-main question-page" id="zh-single-question-page"
 		data-urltoken="36767166">
 		<meta itemprop="isTopQuestion" content="false" />
 		<meta itemprop="visitsCount" content="1" />
@@ -54,14 +53,11 @@
 							class="toggle-comment meta-item"> <i class="z-icon-comment"></i>添加评论
 						</a> <a href="#" name="share" class="share meta-item"> <i
 							class="z-icon-share"></i>分享 </a> <span class="zg-bull">&bull;</span>
-						<a href="#" name="invite" class="meta-item">收起邀请</a> <span
+						<a href="#" name="invite" class="meta-item" ng-click="ctrl.toggleInvitePanel()">{{ctrl.showInvitePanel?'收起邀请':'邀请回答'}}</a> <span
 							class="zg-bull">&bull;</span> <a href="#" name="remove"
 							class="meta-item">删除问题</a>
-
-
-
 					</div>
-					<div class="panel-container">
+					<div class="panel-container" ng-show="ctrl.showInvitePanel">
 						<div class="question-invite-panel" id="question-invite-panel"
 							data-showsearch="true" style="display: block;">
 							<i class="icon icon-spike"></i>
@@ -596,11 +592,10 @@
 					<div class="zm-editable-content" style="display: none;"><a href="javascript:;" class="zu-edit-button" name="edit"><i class="zu-edit-button-icon"></i>修改</a></div>
 				</div>
 				<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper navigable" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;>.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 36767166, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}">
-
-
-
+					<answer></answer>
 				</div>
 
+				<a aria-role="button" class="zg-btn-white zu-button-more" style="display: none;">更多</a>
 				<div id="zh-question-collapsed-link"
 					class="zu-question-collap-title" style="display:none">
 					<a href="javascript:;" name="expand" class="zg-link-gray"
@@ -748,12 +743,14 @@
 	<!-- services -->
 	<script type="text/javascript" src="services/utils.service.js"></script>
 	<script type="text/javascript" src="services/navigation.service.js"></script>
+	<script type="text/javascript" src="services/question.service.js"></script>
 
 	<!-- controllers -->
-	<script type="text/javascript"
-		src="controllers/navigation.controller.js"></script>
-
+	<script type="text/javascript" src="controllers/navigation.controller.js"></script>
+	<script type="text/javascript" src="controllers/question.controller.js"></script>
+	
 	<!-- directives -->
 	<script type="text/javascript" src="directives/navigation.js"></script>
+	<script type="text/javascript" src="directives/answer.js"></script>
 </body>
 </html>

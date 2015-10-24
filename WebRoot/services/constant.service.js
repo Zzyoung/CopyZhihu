@@ -4,6 +4,8 @@
 	function ConstantService(){
 		var service = {};
 		
+		service.ContextPath = "/Zhihu/";
+		
 		service.messages = {
 			invalidName:'姓名需在 2-10 个汉字之间',
 			invalidPhone:'请输入正确的手机号',

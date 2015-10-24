@@ -1,9 +1,9 @@
 (function(){
 	angular.module('zhihu').controller('NavigationController',NavigationController);
 	
-	NavigationController.$inject = ['$scope' ,'NavigationSerivce'];
+	NavigationController.$inject = ['$scope' ,'NavigationSerivce', 'AuthenticationService' ,'ConstantService'];
 	
-	function NavigationController($scope ,NavigationSerivce){
+	function NavigationController($scope, NavigationSerivce, AuthenticationService, ConstantService){
 		$scope.ctrl = {};
 		
 		var ctrl = $scope.ctrl, i, len;
@@ -46,5 +46,11 @@
 		
 		ctrl.thanksContents = NavigationSerivce.thanksContents;
 		
+		ctrl.logout =function($event){
+			//清除cookie中的用户信息
+			AuthenticationService.clearCredentials();
+			var location = window.location;
+    		window.location = location.origin + ConstantService.ContextPath + 'logout';
+		};
 	};
 })();
