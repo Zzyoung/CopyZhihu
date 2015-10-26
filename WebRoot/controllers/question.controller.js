@@ -1,3 +1,4 @@
+//问题界面控制器
 (function(){
 	angular.module('zhihu').controller('QuestionController',MainContentController);
 	

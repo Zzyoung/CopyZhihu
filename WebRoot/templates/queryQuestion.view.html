@@ -1,0 +1,7 @@
+<div ng-repeat="question in addQuestionCtrl.queryQuestion.results" ng-class="addQuestionCtrl.getQueryQuestionCls($first)" style="-webkit-user-select: none;">
+	<b ng-if="$first" style="-webkit-user-select: none;">{{question.name}}</b>
+	<a ng-if="$middle" class="zippy-indicator" style="-webkit-user-select: none;"><i style="-webkit-user-select: none;"></i></a>
+	<a ng-if="$middle" style="color: rgb(34, 34, 34); -webkit-user-select: none;" href="/question/35019702?q=%E6%80%8E%E4%B9%88%E8%BF%9BBAT">{{question.name}}</a>
+	<span ng-if="$middle" class="zm-ac-gray" style="-webkit-user-select: none;">{{question.answerCount==0?'还没有回答':question.answerCount+' 个回答'}}</span>
+	<a ng-if="$last && addQuestionCtrl.queryQuestion.firstAsk" href="#" add-new-question style="-webkit-user-select: none;">{{question.name}}</a>
+</div>

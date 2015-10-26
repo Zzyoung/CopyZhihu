@@ -20,7 +20,27 @@
 				name:'陈启明'
 			}]
 		}];
+		service.queryQuestion = {};
+		service.queryQuestion.query = function(queryString){
+			console.log(queryString);
+			service.queryQuestion.results = [{
+				name:'你想问的是不是：'
+			},{
+				name:'怎么进入BAT的安全部门？',
+				answerCount:1
+			},{
+				name:'文科生，校招想进BAT需要什么样的水平？',
+				answerCount:0
+			},{
+				name:'不是，我要提一个新问题 »'
+			}];
+		};
 		
+		service.queryQuestion.results = [];
+		
+		service.queryQuestion.firstAsk = true;
+		
+		service.queryQuestion.queryString = '';
 		return service;
 	}
 })();

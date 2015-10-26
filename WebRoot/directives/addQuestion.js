@@ -1,3 +1,4 @@
+//弹出提问框
 (function(){
 	angular.module('zhihu').directive('addQuestion',['UtilsService',function(UtilsService){
 		return {
