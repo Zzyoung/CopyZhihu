@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhihu.dao.QuestionMapper" >
+	<select id="selectQuestionsLikeName" parameterType="String" resultType="com.zhihu.pojo.Question">
+		select id,name,authod_id as authorId,followed,description,topic_ids as topicIds, unnamed
+		from question WHERE NAME LIKE '%${name}%'
+	</select>
+</mapper>
