@@ -2531,3 +2531,47 @@ input[type=checkbox]{
 	float: left;
 	margin:4px 0 0;
 }
+/*搜索话题列表框*/
+.zm-tag-editor-command-buttons-wrap>.ac-renderer{
+	width:235px;
+	top:33px;
+	left:1px;
+}
+.zh-add-question-form .zm-item-img-avatar{
+	margin:-2px 10px 0 0;
+}
+.ac-row .zm-item-img-avatar{
+	margin:2px 10px 0 0;
+	width:25px;
+	height:25px;
+}
+.zm-item-img-avatar{
+	border-radius:2px;
+}
+.zu-autocomplete-row-name{
+	margin:0 0 1px 35px;
+	display: block;
+	line-height:1.2;
+	height:1.2em;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.zu-autocomplete-row-description{
+	color:#999;
+	display:block;
+	font-size:12px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	line-height:14px;
+	height:14px;
+	zoom:1;
+}
+#dropdwon-topic .ac-row:hover{
+	background-color:#D6E9F8;
+}
+.zm-tag-editor-remove-button:hover{
+	background-position: -264px -103px;
+	background-color: #259;
+}

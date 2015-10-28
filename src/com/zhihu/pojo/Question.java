@@ -8,6 +8,7 @@ public class Question {
 	private String description;
 	private String topicIds;
 	private boolean unnamed;
+	private Integer answerCount;
 	public int getId() {
 		return id;
 	}
@@ -50,4 +51,11 @@ public class Question {
 	public void setUnnamed(boolean unnamed) {
 		this.unnamed = unnamed;
 	}
+	public Integer getAnswerCount() {
+		return answerCount;
+	}
+	public void setAnswerCount(Integer answerCount) {
+		this.answerCount = answerCount;
+	}
+	
 }

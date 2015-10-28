@@ -1,9 +1,9 @@
 (function(){
 	angular.module('zhihu').factory('QuestionService',QuestionService);
 	
-	QuestionService.$inject = ['UtilsService'];
+	QuestionService.$inject = ['UtilsService','$http'];
 	
-	function QuestionService(UtilsService){
+	function QuestionService(UtilsService,$http){
 		var service = {};
 		
 		service.answers = [{
@@ -20,20 +20,33 @@
 				name:'陈启明'
 			}]
 		}];
+		
+		
+		function querySuccess(response){
+			var results = response.data;
+			if(response.data.length!=0 && response.data != 'error'){
+				results.unshift({name:'你想问的是不是：'});
+				results.push({name:'不是，我要提一个新问题 »'});
+				service.queryQuestion.results = results;
+			}else{
+				service.queryQuestion.results = [];
+			}
+		}
+		
+		function queryError(){
+			console.log('query error');
+		}
+		
 		service.queryQuestion = {};
 		service.queryQuestion.query = function(queryString){
-			console.log(queryString);
-			service.queryQuestion.results = [{
-				name:'你想问的是不是：'
-			},{
-				name:'怎么进入BAT的安全部门？',
-				answerCount:1
-			},{
-				name:'文科生，校招想进BAT需要什么样的水平？',
-				answerCount:0
-			},{
-				name:'不是，我要提一个新问题 »'
-			}];
+			$http({
+				method : 'GET',
+				url : '/Zhihu/getQuestionNames',
+				params:{'name':queryString},
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			}).then(querySuccess,queryError);
 		};
 		
 		service.queryQuestion.results = [];

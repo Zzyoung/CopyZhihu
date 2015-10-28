@@ -232,12 +232,12 @@
 		<div class="arrow" style="left:89px;"></div>
 		<div class="arrow2" style="left:89px;"></div>
 	</div>
-	<div class="modal-dialog-bg" aria-hidden="true"></div>
+	<div class="modal-dialog-bg"></div>
 	<div ng-controller="AddQuestionController" class="modal-wrapper" style="display:none;">
 		<div class="modal-dialog absolute-position" style="width:550px;">
 			<div class="modal-dialog-title">
 				<span class="modal-dialog-title-text">提问</span>
-				<span  close-modal class="modal-dialog-title-close"></span>
+				<span close-modal class="modal-dialog-title-close"></span>
 			</div>
 			<div class="modal-dialog-content">
 				<div class="zh-add-question-form">
@@ -249,7 +249,7 @@
 							<b>提问前请先搜索</b>
 							<div style="position:relative;margin-top:18px;">
 								<input ng-change="addQuestionCtrl.queryQuestion.query(addQuestionCtrl.queryQuestion.queryString)" ng-model="addQuestionCtrl.queryQuestion.queryString" type="text" class="zg-form-text-input" id="js-before-ask" placeholder="请输入你的问题" autocomplete="off">
-								<div class="ac-renderer" id=":3a" style="-webkit-user-select: none; display: none;"></div>
+								<div class="ac-renderer" style="-webkit-user-select: none; display: none;"></div>
 								<query-question-result></query-question-result>
 							</div>
 						</div>
@@ -272,7 +272,7 @@
 							</div>
 							<span id="js-title-length-err-msg" class="title-length-err-msg zg-right"></span>
 							<div id="zh-question-suggest-ac-wrap" class="question-suggest-ac-wrap">
-								<div class="ac-renderer" role="listbox" id=":7n" style="-webkit-user-select: none;">
+								<div ng-show="$rootScope.showDropdownTopic" class="ac-renderer" role="listbox" id=":7n" style="-webkit-user-select: none;">
 									<query-question-result></query-question-result>
 								</div>
 							</div>
@@ -468,75 +468,17 @@
 								<span class="zg-gray zg-right hidden-phone">话题越精准，越容易让相关领域专业人士看到你的问题</span>选择话题：<span
 									id="zh-question-form-tag-err" style="display: none;"></span>
 							</div>
-							<div id="zh-question-suggest-topic-container"
-								class="zm-tag-editor zg-section">
-								<div class="zm-tag-editor-labels" style="display: none;">
-									<a data-tip="t$b$招聘" class="zm-item-tag" href="/topic/招聘">招聘</a><a
-										href="javascript:;" class="zu-edit-button" name="edit"><i
-										class="zu-edit-button-icon"></i>修改</a>
-								</div>
+							<div id="zh-question-suggest-topic-container" class="zm-tag-editor zg-section">
 								<div class="zm-tag-editor-editor zg-clear">
-									<div class="zg-inline">
-										<div class="zm-tag-editor-edit-item">
-											<span>招聘</span><a id="rmid-9500" href="#"
-												class="zg-r3px zm-tag-editor-remove-button" name="remove"></a>
-										</div>
-									</div>
+									<selected-query-top></selected-query-top>
 									<div class="zm-tag-editor-command-buttons-wrap zg-left">
-										<label for="topic" class="zg-icon icon-magnify"></label><input
-											class="zu-question-suggest-topic-input label-input-label"
-											type="text" aria-haspopup="false" aria-label="搜索话题"
-											placeholder="搜索话题" role="combobox" aria-autocomplete="list"><a
-											class="zg-mr15 zg-btn-blue" href="#" name="add"
-											style="display: none;">添加</a><a href="#" name="close"
-											style="display: none;">完成</a><label class="err-tip"
-											style="display:none;">最多添加五个话题</label>
-										<div class="ac-renderer" role="listbox" id=":7o"
-											style="-webkit-user-select: none; display: none;">
-											<div class="ac-row ac-active active" id=":9k" role="option"
-												style="-webkit-user-select: none;">
-												<img class="zm-item-img-avatar zg-left"
-													src="http://pic3.zhimg.com/d57a38b96_s.jpg"
-													style="-webkit-user-select: none;"><span
-													class="zu-autocomplete-row-name" title="招聘"
-													style="-webkit-user-select: none;">招聘</span><span
-													class="zg-gray-normal zu-autocomplete-row-description"
-													style="-webkit-user-select: none;">&nbsp;</span>
-											</div>
-											<div class="ac-row" id=":9l" role="option"
-												style="-webkit-user-select: none;">
-												<img class="zm-item-img-avatar zg-left"
-													src="http://pic4.zhimg.com/cc81c7562e2a7111e7a8e06bf8844ed3_s.jpg"
-													style="-webkit-user-select: none;"><span
-													class="zu-autocomplete-row-name" title="招聘技巧"
-													style="-webkit-user-select: none;">招聘技巧</span><span
-													class="zg-gray-normal zu-autocomplete-row-description"
-													style="-webkit-user-select: none;">&nbsp;</span>
-											</div>
-											<div class="ac-row" id=":9m" role="option"
-												style="-webkit-user-select: none;">
-												<img class="zm-item-img-avatar zg-left"
-													src="http://pic4.zhimg.com/e69da5323_s.jpg"
-													style="-webkit-user-select: none;"><span
-													class="zu-autocomplete-row-name" title="招聘网站"
-													style="-webkit-user-select: none;">招聘网站</span><span
-													class="zg-gray-normal zu-autocomplete-row-description"
-													style="-webkit-user-select: none;">&nbsp;</span>
-											</div>
-											<div class="ac-row" id=":9n" role="option"
-												style="-webkit-user-select: none;">
-												<span class="zu-autocomplete-row-name" title="招聘行业"
-													style="-webkit-user-select: none;">招聘行业</span><span
-													class="zg-gray-normal zu-autocomplete-row-description"
-													style="-webkit-user-select: none;">&nbsp;</span>
-											</div>
-											<div class="ac-row" id=":9o" role="option"
-												style="-webkit-user-select: none;">
-												<span class="zu-autocomplete-row-name" title="招聘要求"
-													style="-webkit-user-select: none;">招聘要求</span><span
-													class="zg-gray-normal zu-autocomplete-row-description"
-													style="-webkit-user-select: none;">&nbsp;</span>
-											</div>
+										<label for="topic" class="zg-icon icon-magnify"></label>
+										<input ng-model="addQuestionCtrl.queryTopic.queryString" ng-change="addQuestionCtrl.queryTopic.query(addQuestionCtrl.queryTopic.queryString)" class="zu-question-suggest-topic-input label-input-label" type="text" placeholder="搜索话题">
+										<a class="zg-mr15 zg-btn-blue" href="#" style="display: none;">添加</a>
+										<a href="#" style="display: none;">完成</a>
+										<label class="err-tip" style="display:none;">最多添加五个话题</label>
+										<div class="ac-renderer" id="dropdwon-topic" style="-webkit-user-select: none;">
+											<query-topic></query-topic>
 										</div>
 									</div>
 									<div class="zm-tag-editor-maxcount zg-section"
@@ -585,6 +527,7 @@
     <script type="text/javascript" src="services/user.service.js"></script>
 	<script type="text/javascript" src="services/constant.service.js"></script>
 	<script type="text/javascript" src="services/question.service.js"></script>
+	<script type="text/javascript" src="services/topic.service.js"></script>
 	    
     <!-- controllers -->
     <script type="text/javascript" src="controllers/navigation.controller.js"></script>
@@ -602,6 +545,8 @@
 	<script type="text/javascript" src="directives/closeModal.js"></script>
 	<script type="text/javascript" src="directives/addNewQuestion.js"></script>
 	<script type="text/javascript" src="directives/queryQuestionResult.js"></script>
+	<script type="text/javascript" src="directives/queryTopic.js"></script>
+	<script type="text/javascript" src="directives/selectedQueryTopic.js"></script>
 	<!-- filters -->
 	<script type="text/javascript" src="filters/voteThank.filter.js"></script>
 	<script type="text/javascript" src="filters/formatContent.filter.js"></script>

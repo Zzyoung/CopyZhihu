@@ -2,14 +2,20 @@
 (function(){
 	angular.module('zhihu').controller('AddQuestionController',AddQuestionController);
 	
-	AddQuestionController.$inject = ['$scope', 'QuestionService'];
+	AddQuestionController.$inject = ['$scope', 'QuestionService','TopicService'];
 	
-	function AddQuestionController($scope, QuestionService){
+	function AddQuestionController($scope, QuestionService, TopicService){
 		$scope.addQuestionCtrl = {};
 		
 		var addQuestionCtrl = $scope.addQuestionCtrl;
 		
 		addQuestionCtrl.queryQuestion = QuestionService.queryQuestion;
+		
+		addQuestionCtrl.queryTopic = TopicService.queryTopic;
+		
+		addQuestionCtrl.selectTopic = TopicService.selectTopic;
+		
+		addQuestionCtrl.unselectTopic = TopicService.unselectTopic;
 		
 		addQuestionCtrl.getQueryQuestionCls = function($first){
 			if($first){

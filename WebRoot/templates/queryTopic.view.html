@@ -1,0 +1,5 @@
+<div ng-repeat="topic in addQuestionCtrl.queryTopic.results" ng-click="addQuestionCtrl.selectTopic(topic.name)" class="ac-row" id=":9k" style="-webkit-user-select: none;">
+	<img ng-if="topic.imageUrl" class="zm-item-img-avatar zg-left" ng-src="{{topic.imageUrl}}" style="-webkit-user-select: none;">
+	<span class="zu-autocomplete-row-name" title="{{topic.name}}"	style="-webkit-user-select: none;">{{topic.name}}</span>
+	<span class="zg-gray-normal zu-autocomplete-row-description" style="-webkit-user-select: none;">&nbsp;</span>
+</div>

@@ -7,7 +7,6 @@
 		var service = {};
 
 		service.Create = function(user) {
-			// .then(handleSuccess, handleError('Errorcreating user'));
 			return $http({
 				method : 'POST',
 				url : '/Zhihu/register/',
