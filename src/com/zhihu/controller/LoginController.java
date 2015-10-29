@@ -127,6 +127,7 @@ public class LoginController {
 	
 	@RequestMapping(value="/index",method = RequestMethod.GET)
 	public void redirectToMain(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("UTF-8");
 		//判断cookie
 		Cookie[] cookies = request.getCookies();
 		String cookieLoginName = null;
@@ -140,10 +141,14 @@ public class LoginController {
 		for (int i = 0; i < cookies.length; i++) {
 			if(cookies[i].getName().equals("loginName")){
 				cookieLoginName = URLDecoder.decode(cookies[i].getValue(),"UTF-8");
+				cookieLoginName = cookieLoginName.replace("%40", "@");
+				//去掉值两端的双引号
+				cookieLoginName = cookieLoginName.replace("\"", "");
 				logger.info("cookie中的登录名为："+cookieLoginName);
 			}
 			if(cookies[i].getName().equals("password")){
 				cookiePassword = URLDecoder.decode(cookies[i].getValue(),"UTF-8");
+				cookiePassword = cookiePassword.replace("\"", "");
 				logger.info("cookie中的密码为："+cookiePassword);
 			}
 		}
@@ -152,13 +157,12 @@ public class LoginController {
 			return;
 		}
 		
-		//去掉值两端的双引号
-		cookieLoginName = cookieLoginName.replace("\"", "");
-		cookiePassword = cookiePassword.replace("\"", "");
-		
 		User user = userService.getByLoginName(cookieLoginName);
 		if(user != null && cookiePassword.equals(user.getPassword())){
-			request.getRequestDispatcher("/WEB-INF/view/main.html").forward(request, response);
+			request.setAttribute("id", user.getId());
+			request.setAttribute("photoUrl", user.getPhotoUrl());
+			request.setAttribute("userName", user.getName());
+			request.getRequestDispatcher("/WEB-INF/view/main.jsp").forward(request, response);
 		}else{
 			logger.info("cookie中的密码"+cookiePassword+"与数据库中的密码不同...");
 			response.sendRedirect(request.getContextPath()+"/index.html");

@@ -3,40 +3,49 @@
 	
 	TopicService.$inject = ['UtilsService','$http'];
 	
-	function TopicService(UtilsService,$http){
+	function TopicService(UtilsService, $http){
 		var service = {};
 		service.queryTopic = {};
 		
-		service.queryTopic.queryString ="";
+		service.queryTopic.topicName ='';
 		
 		service.queryTopic.results = [];
 		
-		service.queryTopic.selectedTopics=[{
-			name:'招聘'
-		},{
-			name:'前端入门'
-		}];
+		service.queryTopic.selectedTopics=[];
 		
-		service.queryTopic.query = function(queryString){
-			console.log(queryString);
-			this.results = [{
-					name:'招聘',
-					imageUrl:'images/d57a38b96_s.jpg'
-				},{
-					name:'招聘技巧',
-					imageUrl:'images/cc81c7562e2a7111e7a8e06bf8844ed3_s.jpg'
-				},{
-					name:'招聘网站',
-					imageUrl:'images/e69da5323_s.jpg'
-				},{
-					name:'招聘行业'
-				},{
-					name:'招聘要求'
-				}];
+		service.queryTopic.selectedTopicNames=[];
+		
+		function querySuccess(response){
+			var results = response.data;
+			if(results.length!=0 && results != 'error'){
+				service.queryTopic.results = results;
+			}else{
+				service.queryTopic.results = [];
+			}
+		}
+		
+		function queryError(){
+			console.log('query error');
+		}
+		
+		service.queryTopic.query = function(topicName){
+			for ( var i = 0, len = this.selectedTopics.length; i < len; i++) {
+				this.selectedTopicNames.push(this.selectedTopics[i].name);
+			}
+			$http({
+				method : 'GET',
+				url : '/Zhihu/getTopicNameAndPhoto',
+				params:{'name':topicName,'selected':this.selectedTopicNames.join(',')},
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			}).then(querySuccess,queryError);
 		};
 		
 		service.selectTopic = function(name){
 			this.queryTopic.selectedTopics.push({'name':name});
+			this.queryTopic.results = [];
+			this.queryTopic.topicName = '';
 		};
 		
 		service.unselectTopic = function(index){

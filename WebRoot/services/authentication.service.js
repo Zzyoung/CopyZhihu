@@ -28,8 +28,8 @@
 		service.setCredentials = function(loginName, password){
 			var expireDate = new Date();
 			expireDate.setMinutes(expireDate.getMinutes() + 30);
-            $cookieStore.put('loginName', loginName);
-            $cookieStore.put('password', password);
+            $cookieStore.put('loginName', encodeURIComponent(loginName));
+            $cookieStore.put('password', encodeURIComponent(password));
 		};
 		
 		service.clearCredentials = function(){

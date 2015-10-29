@@ -7,7 +7,7 @@
 				element.bind('click',function(){
 					QuestionService.queryQuestion.firstAsk = false;
 					QuestionService.queryQuestion.results = [];
-					QuestionService.queryQuestion.queryString = '';
+					QuestionService.queryQuestion.questionName = '';
 					$('.add-question-splash-page')[0].style.display = "none";
 					$('.js-add-question-form')[0].style.display = "block";
 				});

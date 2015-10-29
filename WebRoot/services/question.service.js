@@ -1,9 +1,9 @@
 (function(){
 	angular.module('zhihu').factory('QuestionService',QuestionService);
 	
-	QuestionService.$inject = ['UtilsService','$http'];
+	QuestionService.$inject = ['UtilsService', '$http', 'TopicService'];
 	
-	function QuestionService(UtilsService,$http){
+	function QuestionService(UtilsService, $http, TopicService){
 		var service = {};
 		
 		service.answers = [{
@@ -24,7 +24,7 @@
 		
 		function querySuccess(response){
 			var results = response.data;
-			if(response.data.length!=0 && response.data != 'error'){
+			if(results.length!=0 && results != 'error'){
 				results.unshift({name:'你想问的是不是：'});
 				results.push({name:'不是，我要提一个新问题 »'});
 				service.queryQuestion.results = results;
@@ -38,11 +38,11 @@
 		}
 		
 		service.queryQuestion = {};
-		service.queryQuestion.query = function(queryString){
+		service.queryQuestion.query = function(questionName){
 			$http({
 				method : 'GET',
 				url : '/Zhihu/getQuestionNames',
-				params:{'name':queryString},
+				params:{'name':questionName},
 				headers : {
 					'Content-Type' : 'application/x-www-form-urlencoded'
 				}
@@ -53,7 +53,17 @@
 		
 		service.queryQuestion.firstAsk = true;
 		
-		service.queryQuestion.queryString = '';
+		service.queryQuestion.questionName = '';
+		
+		service.addQuestion = {};
+		
+		service.addQuestion.questionDesc = '';
+		
+		service.addQuestion.insert = function(){
+			console.log(this.questionDesc);
+			console.log(service.queryQuestion.questionName);
+			console.log(TopicService.queryTopic.selectedTopicNames.join());
+		};
 		return service;
 	}
 })();

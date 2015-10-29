@@ -1,10 +1,11 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
 <div ng-controller="NavigationController" class="zu-top">
 	<div class="zg-wrap modal-shifting" id="zh-top-inner">
 		<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
 		<div class="top-nav-profile">
 			<a href="/people/zhang-yang-07-01" class="zu-top-nav-userinfo ">
-				<span class="name">张阳</span>
-				<img class="avatar avatar-s" alt="张阳" src="images/touxiang.jpg"/>
+				<span class="name"><%=request.getAttribute("userName") %></span>
+				<img class="avatar avatar-s" alt="<%=request.getAttribute("userName") %>" src="<%=request.getAttribute("photoUrl") %>"/>
 				<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count" data-count="0">2</span>
 			</a>
 			<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">

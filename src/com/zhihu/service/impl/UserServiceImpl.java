@@ -3,17 +3,17 @@ package com.zhihu.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.zhihu.dao.UserDao;
+import com.zhihu.dao.UserMapper;
 import com.zhihu.pojo.User;
 import com.zhihu.service.UserService;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 	@Autowired
-	private UserDao userDao;
+	private UserMapper userMapper;
 	
 	@Override
 	public int insertUser(User user) throws Exception {
-		return userDao.insertUser(user);
+		return userMapper.insertUser(user);
 	}
 
 	@Override
@@ -21,12 +21,12 @@ public class UserServiceImpl implements UserService {
 		User user = new User();
 		user.setLoginName(loginName);
 		
-		return userDao.getByLoginName(user);
+		return userMapper.getByLoginName(user);
 	}
 
 	@Override
 	public int findUserByLoginName(User newUser) {
-		return userDao.findUserByLoginName(newUser);
+		return userMapper.findUserByLoginName(newUser);
 	}
 
 }

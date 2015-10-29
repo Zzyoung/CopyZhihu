@@ -1,3 +1,4 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" class="js flexbox no-touch cssanimations csstransforms csstransitions no-mobile">
 <head>
@@ -8,7 +9,7 @@
 	<link rel="stylesheet" href="styles/index.css">
 </head>
 <body class="zhi" ng-app="zhihu">
-	<navigation></navigation>
+	<%@ include file="navigation.jsp" %>
 	<div ng-controller="MainContentController" class="zg-wrap zu-main clearfix">
 		<div class="zu-main-content">
 			<div class="zu-main-content-inner">
@@ -248,7 +249,7 @@
 						<div class="before-ask-form" >
 							<b>提问前请先搜索</b>
 							<div style="position:relative;margin-top:18px;">
-								<input ng-change="addQuestionCtrl.queryQuestion.query(addQuestionCtrl.queryQuestion.queryString)" ng-model="addQuestionCtrl.queryQuestion.queryString" type="text" class="zg-form-text-input" id="js-before-ask" placeholder="请输入你的问题" autocomplete="off">
+								<input ng-change="addQuestionCtrl.queryQuestion.query(addQuestionCtrl.queryQuestion.questionName)" ng-model="addQuestionCtrl.queryQuestion.questionName" type="text" class="zg-form-text-input" id="js-before-ask" placeholder="请输入你的问题" autocomplete="off">
 								<div class="ac-renderer" style="-webkit-user-select: none; display: none;"></div>
 								<query-question-result></query-question-result>
 							</div>
@@ -257,18 +258,13 @@
 					<form class="js-add-question-form" style="display: none;">
 						<div class="zg-section-big clearfix">
 							<div id="zm-modal-dialog-info-wrapper"></div>
-							<div style="display: none;position: relative;"
-								id="zm-modal-dialog-warnmsg-wrapper">
-								<div
-									class="zm-modal-dialog-warnmsg zm-modal-dialog-guide-warn-message zg-r5px"></div>
-								<a name="close" title="关闭" href="javascript:;"
-									class="zu-global-notify-close" style="display:none">x</a><span
-									class="zm-modal-dialog-guide-title-msg"></span>
+							<div style="display: none;position: relative;" id="zm-modal-dialog-warnmsg-wrapper">
+								<div class="zm-modal-dialog-warnmsg zm-modal-dialog-guide-warn-message zg-r5px"></div>
+								<a title="关闭" href="javascript:;" class="zu-global-notify-close" style="display:none">x</a><span class="zm-modal-dialog-guide-title-msg"></span>
 							</div>
 							<div class="zg-form-text-input add-question-title-form" style="position: relative;">
-								<textarea ng-change="addQuestionCtrl.queryQuestion.query(addQuestionCtrl.queryQuestion.queryString)" ng-model="addQuestionCtrl.queryQuestion.queryString" class="zg-editor-input zu-seamless-input-origin-element"
-									title="在这里输入问题" id="zh-question-suggest-title-content" placeholder="写下你的问题" aria-haspopup="true"
-									autocomplete="off" style="white-space: pre-wrap; height: 22px; min-height: 22px;"></textarea>
+								<textarea ng-change="addQuestionCtrl.queryQuestion.query(addQuestionCtrl.queryQuestion.questionName)" ng-model="addQuestionCtrl.queryQuestion.questionName" class="zg-editor-input zu-seamless-input-origin-element"
+									title="在这里输入问题" id="zh-question-suggest-title-content" placeholder="写下你的问题" autocomplete="off" style="white-space: pre-wrap; height: 22px; min-height: 22px;"></textarea>
 							</div>
 							<span id="js-title-length-err-msg" class="title-length-err-msg zg-right"></span>
 							<div id="zh-question-suggest-ac-wrap" class="question-suggest-ac-wrap">
@@ -444,9 +440,7 @@
 											</div>
 										</div>
 										<div class="zm-editable-editor-field-wrap">
-											<div id="mock:7j" class="zm-editable-editor-field-element editable" g_editable="true" role="textbox" contenteditable="true">
-												<br>
-											</div>
+											<textarea ng-model="addQuestionCtrl.addQuestion.questionDesc" class="zm-editable-editor-field-element editable" placeholder="问题背景、条件等详细信息"></textarea>
 											<div class="editable-dropzone">
 												<div class="row">
 													<div class="cell">
@@ -473,7 +467,7 @@
 									<selected-query-top></selected-query-top>
 									<div class="zm-tag-editor-command-buttons-wrap zg-left">
 										<label for="topic" class="zg-icon icon-magnify"></label>
-										<input ng-model="addQuestionCtrl.queryTopic.queryString" ng-change="addQuestionCtrl.queryTopic.query(addQuestionCtrl.queryTopic.queryString)" class="zu-question-suggest-topic-input label-input-label" type="text" placeholder="搜索话题">
+										<input ng-model="addQuestionCtrl.queryTopic.topicName" ng-change="addQuestionCtrl.queryTopic.query(addQuestionCtrl.queryTopic.topicName)" class="zu-question-suggest-topic-input label-input-label" type="text" placeholder="搜索话题">
 										<a class="zg-mr15 zg-btn-blue" href="#" style="display: none;">添加</a>
 										<a href="#" style="display: none;">完成</a>
 										<label class="err-tip" style="display:none;">最多添加五个话题</label>
@@ -500,8 +494,7 @@
 							<label class="zm-question-form-hide-in-about-question-el zg-left"><input
 								type="checkbox" value="1" class="zg-addq-isanon">匿名</label><a
 								href="javascript:;" close-modal class="zm-command-cancel">取消</a><a
-								href="javascript:;" name="addq"
-								class="zg-r5px zu-question-form-add zg-btn-blue">发布</a><a
+								href="javascript:;" ng-click="addQuestionCtrl.addQuestion.insert()" class="zg-r5px zu-question-form-add zg-btn-blue">发布</a><a
 								name="jumpq" class="zg-r5px zg-btn-blue zu-question-form-jump"
 								style="display:none;">查看问题</a>
 						</div>
@@ -535,7 +528,6 @@
     <script type="text/javascript" src="controllers/addQuestion.controller.js"></script>
     
 	<!-- directives -->
-	<script type="text/javascript" src="directives/navigation.js"></script>
 	<script type="text/javascript" src="directives/msgContent.js"></script>
 	<script type="text/javascript" src="directives/userContent.js"></script>
 	<script type="text/javascript" src="directives/thanksContent.js"></script>

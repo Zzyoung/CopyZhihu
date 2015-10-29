@@ -17,6 +17,8 @@
 		
 		addQuestionCtrl.unselectTopic = TopicService.unselectTopic;
 		
+		addQuestionCtrl.addQuestion = QuestionService.addQuestion;
+		
 		addQuestionCtrl.getQueryQuestionCls = function($first){
 			if($first){
 				if(this.queryQuestion.firstAsk){

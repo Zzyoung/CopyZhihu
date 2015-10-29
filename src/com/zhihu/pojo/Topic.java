@@ -7,6 +7,14 @@ public class Topic {
 	private String parentIds;
 	private String childIds;
 	private String bestAnswers;
+	private String photoUrl;
+	
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
 	public Integer getId() {
 		return id;
 	}
