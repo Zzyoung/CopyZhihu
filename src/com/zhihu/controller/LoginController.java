@@ -137,7 +137,6 @@ public class LoginController {
 			response.sendRedirect(request.getContextPath()+"/index.html");
 			return;
 		}
-		logger.info(request.getContextPath()+"=======");
 		for (int i = 0; i < cookies.length; i++) {
 			if(cookies[i].getName().equals("loginName")){
 				cookieLoginName = URLDecoder.decode(cookies[i].getValue(),"UTF-8");
@@ -162,6 +161,9 @@ public class LoginController {
 			request.setAttribute("id", user.getId());
 			request.setAttribute("photoUrl", user.getPhotoUrl());
 			request.setAttribute("userName", user.getName());
+			request.getSession().setAttribute("id", user.getId());
+			request.getSession().setAttribute("photoUrl", user.getPhotoUrl());
+			request.getSession().setAttribute("userName", user.getName());
 			request.getRequestDispatcher("/WEB-INF/view/main.jsp").forward(request, response);
 		}else{
 			logger.info("cookie中的密码"+cookiePassword+"与数据库中的密码不同...");

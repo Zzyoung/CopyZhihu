@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <div ng-controller="NavigationController" class="zu-top">
 	<div class="zg-wrap modal-shifting" id="zh-top-inner">
-		<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+		<a href="/Zhihu/index" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
 		<div class="top-nav-profile">
 			<a href="/people/zhang-yang-07-01" class="zu-top-nav-userinfo ">
 				<span class="name"><%=request.getAttribute("userName") %></span>
@@ -14,7 +14,6 @@
 					<i class="zg-icon zg-icon-dd-home"></i>我的主页
 					</a>
 				</li>
-
 				<li>
 					<a href="/inbox">
 						<i class="zg-icon zg-icon-dd-pm"></i>私信
@@ -35,7 +34,7 @@
 				</li>
 			</ul>
 		</div>
-		<div role="search" id="zh-top-search" class="zu-top-search">
+		<div id="zh-top-search" class="zu-top-search">
 			<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
 				<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
 				<input type="hidden" name="type" value="question" />

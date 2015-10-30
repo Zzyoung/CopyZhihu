@@ -12,7 +12,7 @@
 			peopleDesc:'http://www.tuer.me',
 			answerTime:'57 分钟前',
 			question:'如何在前端技术面试中回答“你遇到过最有挑战的技术问题”？',
-			questionUrl:'/question',
+			questionUrl:'/Zhihu/question?id=22',
 			questionDesc:'平时没遇到过很有挑战的技术问题？想一想，google一下，stackoverflow一下基本就解决了。所以每次都会打“没有遇到过什么有挑战的问题”。不知道怎么回答比较好。请各位大牛指点一下。谢谢＼(*T▽T*)／',
 			voteCount:2,
 			unnamed:false,

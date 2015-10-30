@@ -1,3 +1,4 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" class="js flexbox no-touch cssanimations csstransforms csstransitions no-mobile"  ng-app="zhihu">
 <head>
@@ -8,7 +9,7 @@
 <link rel="stylesheet" href="styles/index.css">
 </head>
 <body class="zhi">
-	<navigation></navigation>
+	<%@ include file="navigation.jsp" %>
 	<div ng-controller="QuestionController" class="zg-wrap zu-main question-page" id="zh-single-question-page"
 		data-urltoken="36767166">
 		<meta itemprop="isTopQuestion" content="false" />
@@ -716,6 +717,7 @@
 		<div class="zg-clear"></div>
 		<!-- 版权演示 -->
 	</div>
+	<%@ include file="addQuestionPanel.jsp" %>
 	<div id="zh-footer" class="zh-footer">
 		<div class="zg-wrap clearfix">
 			<ul>
@@ -739,18 +741,52 @@
 	<script src="vendor/angular-route.js"></script>
 	<script src="vendor/angular-cookies.js"></script>
 
-	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript">
+            (function(){
+				angular.module('zhihu',['ngRoute','ngCookies']).config(config).run(run);
+				
+				config.$inject = ['$routeProvider','$locationProvider'];
+				
+				function config($routeProvider,$locationProvider){
+					
+				}
+				
+				run.$inject = ['$rootScope','$location','$cookieStore','$http'];
+				
+				function run($rootScope, $location, $cookieStore, $http){
+					$rootScope.globals = {
+		                currentUser: {
+		                    id: <%= request.getAttribute("id")%>,
+		                    username: '<%= request.getAttribute("userName")%>'
+		                },
+		                currentQuestion:{
+		                	id:<%= request.getAttribute("questionId")%>
+		                }
+		            };
+				}
+			})();
+	</script>
 	<!-- services -->
 	<script type="text/javascript" src="services/utils.service.js"></script>
+ 	<script type="text/javascript" src="services/authentication.service.js"></script>
+ 	<script type="text/javascript" src="services/user.service.js"></script>
+ 	<script type="text/javascript" src="services/constant.service.js"></script>	
 	<script type="text/javascript" src="services/navigation.service.js"></script>
 	<script type="text/javascript" src="services/question.service.js"></script>
+	<script type="text/javascript" src="services/question.service.js"></script>
+	<script type="text/javascript" src="services/topic.service.js"></script>
 
 	<!-- controllers -->
 	<script type="text/javascript" src="controllers/navigation.controller.js"></script>
 	<script type="text/javascript" src="controllers/question.controller.js"></script>
+	<script type="text/javascript" src="controllers/addQuestion.controller.js"></script>
 	
 	<!-- directives -->
-	<script type="text/javascript" src="directives/navigation.js"></script>
 	<script type="text/javascript" src="directives/answer.js"></script>
+	<script type="text/javascript" src="directives/addQuestion.js"></script>
+	<script type="text/javascript" src="directives/closeModal.js"></script>
+	<script type="text/javascript" src="directives/queryQuestionResult.js"></script>
+	<script type="text/javascript" src="directives/queryTopic.js"></script>
+	<script type="text/javascript" src="directives/selectedQueryTopic.js"></script>
 </body>
 </html>

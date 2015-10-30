@@ -29,5 +29,16 @@ public class QuestionServiceImpl implements QuestionService {
 		ArrayList<Question> questions = questionMapper.selectQuestionNamesAndAnswerCounts(question);
 		return JSON.toJSONString(questions);
 	}
+
+	@Override
+	public int insertQuestion(Question question) {
+		try {
+			questionMapper.insertQuestion(question);
+			return question.getId(); 
+		} catch (Exception e) {
+			logger.error("添加问题失败",e);
+			return -1;
+		}
+	}
 	
 }

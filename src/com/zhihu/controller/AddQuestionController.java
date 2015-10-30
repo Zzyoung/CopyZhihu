@@ -1,7 +1,6 @@
 package com.zhihu.controller;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.zhihu.pojo.Question;
 import com.zhihu.service.QuestionService;
 import com.zhihu.service.TopicService;
 import com.zhihu.utils.Utils;
@@ -76,4 +76,40 @@ public class AddQuestionController {
 		}
 		
 	}
+
+	@RequestMapping(value="addQuestion",method = RequestMethod.POST)
+	public void addQuestion(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception {
+		response.setContentType("text/html");
+		request.setCharacterEncoding("UTF-8");
+		String questionName = request.getParameter("name")==null ? "" : request.getParameter("name");
+		String questionDesc = request.getParameter("questionDesc")==null ? "" : request.getParameter("questionDesc");
+		String selectedTopicNames = request.getParameter("selected")==null ? "" : request.getParameter("selected");
+		String authorId = request.getParameter("id");
+		boolean unnamed = Boolean.valueOf(request.getParameter("unnamed"));
+		questionName = new String(questionName.getBytes("ISO8859-1"),"UTF-8");
+		questionDesc = new String(questionDesc.getBytes("ISO8859-1"),"UTF-8");
+		selectedTopicNames = new String(selectedTopicNames.getBytes("ISO8859-1"),"UTF-8");
+		
+		Question question = new Question();
+		question.setName(questionName);
+		question.setAuthorId(Integer.parseInt(authorId));
+		question.setDescription(questionDesc);
+		question.setTopicNames(selectedTopicNames);
+		question.setUnnamed(unnamed);
+		
+		int questionId = questionService.insertQuestion(question);
+		logger.info("新添加的问题的id为："+questionId);
+		if(questionId == -1){
+			logger.error("添加问题失败");
+		}else{
+			question.setId(questionId);
+			request.setAttribute("question", question);
+			logger.info("跳转到问题页面...");
+//			response.sendRedirect(request.getContextPath()+"/question?id="+questionId);
+			response.getWriter().write("{\"id\":"+questionId+"}");
+			return;
+		}
+		
+	}
+
 }

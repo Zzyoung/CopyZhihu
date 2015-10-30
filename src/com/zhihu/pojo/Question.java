@@ -3,10 +3,10 @@ package com.zhihu.pojo;
 public class Question {
 	private int id;
 	private String name;
-	private String authorId;
+	private Integer authorId;
 	private String followed;
 	private String description;
-	private String topicIds;
+	private String topicNames;
 	private boolean unnamed;
 	private Integer answerCount;
 	public int getId() {
@@ -21,10 +21,10 @@ public class Question {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAuthorId() {
+	public Integer getAuthorId() {
 		return authorId;
 	}
-	public void setAuthorId(String authorId) {
+	public void setAuthorId(Integer authorId) {
 		this.authorId = authorId;
 	}
 	public String getFollowed() {
@@ -39,11 +39,11 @@ public class Question {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getTopicIds() {
-		return topicIds;
+	public String getTopicNames() {
+		return topicNames;
 	}
-	public void setTopicIds(String topicIds) {
-		this.topicIds = topicIds;
+	public void setTopicNames(String topicNames) {
+		this.topicNames = topicNames;
 	}
 	public boolean isUnnamed() {
 		return unnamed;

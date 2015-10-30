@@ -32,7 +32,7 @@
 
 	<logger name="com.zhihu"/>
 	
-	<root level="DEBUG">
+	<root level="INFO">
 		<appender-ref ref="stdout" />
 		<appender-ref ref="logfile" />
 	</root>

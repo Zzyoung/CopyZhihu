@@ -1,9 +1,9 @@
 (function(){
 	angular.module('zhihu').factory('QuestionService',QuestionService);
 	
-	QuestionService.$inject = ['UtilsService', '$http', 'TopicService'];
+	QuestionService.$inject = ['UtilsService', '$http', 'TopicService', '$rootScope' ,'ConstantService'];
 	
-	function QuestionService(UtilsService, $http, TopicService){
+	function QuestionService(UtilsService, $http, TopicService, $rootScope, ConstantService){
 		var service = {};
 		
 		service.answers = [{
@@ -37,33 +37,62 @@
 			console.log('query error');
 		}
 		
-		service.queryQuestion = {};
-		service.queryQuestion.query = function(questionName){
-			$http({
-				method : 'GET',
-				url : '/Zhihu/getQuestionNames',
-				params:{'name':questionName},
-				headers : {
-					'Content-Type' : 'application/x-www-form-urlencoded'
+		service.queryQuestion = {
+			query : function(questionName) {
+				$http({
+					method : 'GET',
+					url : '/Zhihu/getQuestionNames',
+					params : {
+						'name' : questionName
+					},
+					headers : {
+						'Content-Type' : 'application/x-www-form-urlencoded'
+					}
+				}).then(querySuccess, queryError);
+			},
+			results : [],
+			firstAsk : true,
+			questionName : '',
+			changePanel:function(){
+				this.firstAsk = false;
+				this.results = [];
+				this.questionName = '';
+			}
+		};
+		
+		function addSuccess(response){
+			//跳转到问题页面
+			service.showQuestion(response.data.id);
+		}
+		
+		function addError(){
+			//do something when add failed
+		}
+		
+		service.addQuestion = {
+				questionDesc : '',
+				inset : function(){
+					$http({
+						method : 'POST',
+						url : '/Zhihu/addQuestion',
+						params : {
+							'id' : $rootScope.globals.currentUser.id,
+							'name' : service.queryQuestion.questionName,
+							'questionDesc' : this.questionDesc,
+							'selected' : TopicService.queryTopic.selectedTopicNames
+						},
+						headers : {
+							'Content-Type' : 'application/x-www-form-urlencoded'
+						}
+					}).then(addSuccess,addError);
 				}
-			}).then(querySuccess,queryError);
 		};
 		
-		service.queryQuestion.results = [];
-		
-		service.queryQuestion.firstAsk = true;
-		
-		service.queryQuestion.questionName = '';
-		
-		service.addQuestion = {};
-		
-		service.addQuestion.questionDesc = '';
-		
-		service.addQuestion.insert = function(){
-			console.log(this.questionDesc);
-			console.log(service.queryQuestion.questionName);
-			console.log(TopicService.queryTopic.selectedTopicNames.join());
+		service.showQuestion = function(id){
+			var location = window.location;
+			window.location = location.origin + ConstantService.ContextPath + "question?id="+id;
 		};
+		
 		return service;
 	}
 })();

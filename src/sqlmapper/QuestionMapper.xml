@@ -10,4 +10,9 @@
 		SELECT NAME,ifnull(answer_count,0) AS answerCount FROM question   
 		WHERE name LIKE '%${name}%'
 	</select>
+	
+	<insert id="insertQuestion" useGeneratedKeys="true" keyProperty="id" parameterType="com.zhihu.pojo.Question">
+		INSERT INTO question (NAME,AUTHOR_ID,TOPIC_NAMES,DESCRIPTION,UNNAMED) 
+		VALUES (#{name},#{authorId},#{topicNames},#{description},#{unnamed})
+	</insert>
 </mapper>

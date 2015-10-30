@@ -5,15 +5,18 @@
 	
 	function TopicService(UtilsService, $http){
 		var service = {};
-		service.queryTopic = {};
-		
-		service.queryTopic.topicName ='';
-		
-		service.queryTopic.results = [];
-		
-		service.queryTopic.selectedTopics=[];
-		
-		service.queryTopic.selectedTopicNames=[];
+		service.queryTopic = {
+				topicName:'',//查询字符串
+				results:[],//查询话题的结果集
+				selectedTopics:[],//已选择的话题
+				get selectedTopicNames(){//已选择的话题的名字
+					var temp = [];
+					for ( var i = 0, len = this.selectedTopics.length; i < len; i++) {
+						temp.push(this.selectedTopics[i].name);
+					}
+					return temp.join();
+				}
+		};
 		
 		function querySuccess(response){
 			var results = response.data;
@@ -29,13 +32,10 @@
 		}
 		
 		service.queryTopic.query = function(topicName){
-			for ( var i = 0, len = this.selectedTopics.length; i < len; i++) {
-				this.selectedTopicNames.push(this.selectedTopics[i].name);
-			}
 			$http({
 				method : 'GET',
 				url : '/Zhihu/getTopicNameAndPhoto',
-				params:{'name':topicName,'selected':this.selectedTopicNames.join(',')},
+				params:{'name':topicName,'selected':this.selectedTopicNames},
 				headers : {
 					'Content-Type' : 'application/x-www-form-urlencoded'
 				}
