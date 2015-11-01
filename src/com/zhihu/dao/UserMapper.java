@@ -8,4 +8,6 @@ public interface UserMapper {
 	User getByLoginName(User user) throws Exception;
 
 	int findUserByLoginName(User newUser);
+
+	User getUserById(int id) throws Exception;
 }

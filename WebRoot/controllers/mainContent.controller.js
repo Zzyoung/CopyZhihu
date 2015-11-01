@@ -9,8 +9,22 @@
 		var mainCtrl = $scope.mainCtrl;
 		
 		mainCtrl.compile = $compile;
+		mainCtrl.feeds = [];
+		mainCtrl.isLoading = false;
+		function loadMainContents(){
+			MainContentService.loadMainContents().then(function(feeds){
+				mainCtrl.feeds = feeds;
+			});
+		}
+		loadMainContents();
 		
-		mainCtrl.feeds = MainContentService.feeds;
+		mainCtrl.loadMoreContents = function(){
+			mainCtrl.isLoading = true;
+			MainContentService.loadMainContents().then(function(feeds){
+				mainCtrl.feeds = mainCtrl.feeds.concat(feeds);
+				mainCtrl.isLoading = false;
+			});
+		};
 		
 		mainCtrl.isShowComments = false;
 		

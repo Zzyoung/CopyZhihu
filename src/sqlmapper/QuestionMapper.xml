@@ -23,8 +23,8 @@
 	</select>
 	
 	<select id="selectHotterQuestion" parameterType="java.util.HashMap" resultType="com.zhihu.pojo.Question">
-		select id,name,author_id as authorId,followed,description,topic_names as topicNames,answer_count as answerCount
+		select id,name,description,topic_names as topicNames,answer_count as answerCount
 		from question
-		BETWEEN 1 AND 20 ORDER BY hotter
+		ORDER BY RAND(),hotter DESC LIMIT 20
 	</select>
 </mapper>

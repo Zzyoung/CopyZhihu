@@ -6,7 +6,21 @@ public class User {
 	private String loginName;
 	private String password;
 	private String photoUrl;
+	private String description;
+	private String summary;
 	
+	public String getSummary() {
+		return summary;
+	}
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public String getPhotoUrl() {
 		return photoUrl;
 	}

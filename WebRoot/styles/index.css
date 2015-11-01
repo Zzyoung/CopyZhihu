@@ -2612,3 +2612,12 @@ input[type=checkbox]{
 	color:#c33;
 	font-weight: 400;
 }
+.spinner-gray{
+	display:inline-block;
+	margin:0 5px;
+	width:14px;
+	height:15px;
+	vertical-align:-3px;
+	background: url(../images/spinner2.gif) no-repeat;
+	background-size:14px 15px;
+}

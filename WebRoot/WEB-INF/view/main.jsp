@@ -27,7 +27,8 @@
 					<div id="js-home-feed-list" class="zh-general-list topstory2 clearfix" data-init="{&quot;params&quot;: {}, &quot;nodename&quot;: &quot;TopStory2FeedList&quot;}">
 						<feed-item></feed-item>
 					</div>
-                    <a href="javascript:;" id="zh-load-more" class="zg-btn-white zg-r3px zu-button-more">更多</a>
+                    <a href="javascript:;" load-more-feeds ng-hide="mainCtrl.isLoading" ng-click="mainCtrl.loadMoreContents()" class="zg-btn-white zg-r3px zu-button-more">更多</a>
+					<a href="javascript:;" ng-show="mainCtrl.isLoading" data-method="next" class="zg-btn-white zg-r3px zu-button-more" style=""><i class="spinner-gray"></i>正在加载</a>                   
 				</div>
 			</div>
 		</div>
@@ -250,9 +251,9 @@
 					
 				}
 				
-				run.$inject = ['$rootScope','$location','$cookieStore','$http'];
+				run.$inject = ['$rootScope','$location','$cookieStore','$http','MainContentService'];
 				
-				function run($rootScope, $location, $cookieStore, $http){
+				function run($rootScope, $location, $cookieStore, $http, MainContentService){
 					$rootScope.globals = {
 		                currentUser: {
 		                    id: <%= request.getAttribute("id")%>,
@@ -288,6 +289,8 @@
 	<script type="text/javascript" src="directives/queryQuestionResult.js"></script>
 	<script type="text/javascript" src="directives/queryTopic.js"></script>
 	<script type="text/javascript" src="directives/selectedQueryTopic.js"></script>
+	<script type="text/javascript" src="directives/loadMoreFeeds.js"></script>
+	
 	<!-- filters -->
 	<script type="text/javascript" src="filters/voteThank.filter.js"></script>
 	<script type="text/javascript" src="filters/formatContent.filter.js"></script>

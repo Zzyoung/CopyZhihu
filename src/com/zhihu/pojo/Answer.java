@@ -8,10 +8,18 @@ public class Answer {
 	private String content;
 	private Date answerTime;
 	private Integer questionId;
-	private String votes;
+	private Integer votes;
 	private String thanks;
 	private String oppose;
 	private String unhelpful;
+	private boolean unnamed;
+	
+	public boolean isUnnamed() {
+		return unnamed;
+	}
+	public void setUnnamed(boolean unnamed) {
+		this.unnamed = unnamed;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -42,10 +50,10 @@ public class Answer {
 	public void setQuestionId(Integer questionId) {
 		this.questionId = questionId;
 	}
-	public String getVotes() {
+	public Integer getVotes() {
 		return votes;
 	}
-	public void setVotes(String votes) {
+	public void setVotes(Integer votes) {
 		this.votes = votes;
 	}
 	public String getThanks() {

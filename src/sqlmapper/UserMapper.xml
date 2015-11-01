@@ -15,4 +15,9 @@
 		SELECT COUNT(*) FROM USER 
 		WHERE LOGIN_NAME = '${loginName}'
 	</select>
+	
+	<select id="getUserById" resultType="com.zhihu.pojo.User" parameterType="int">
+		SELECT id,NAME,LOGIN_NAME AS loginName, PASSWORD, photo_url as photoUrl, summary FROM USER 
+		where id = #{id}
+	</select>
 </mapper>

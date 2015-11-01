@@ -7,4 +7,5 @@ public class Constant {
 	public static final int ERROR_USER_EXIST = 3;
 	public static final int ERROR_CAPTCHA = 4;
 	
+	public static final String APP_CONTEXT = "/Zhihu";
 }

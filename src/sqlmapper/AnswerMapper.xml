@@ -2,4 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zhihu.dao.AnswerMapper" >
 
+	<select id="selectAnswerByQuestionId" parameterType="com.zhihu.pojo.Question" resultType="com.zhihu.pojo.Answer">
+		select id, author_id as authorId, content, answer_time as answerTime, question_id as questionId, MAX(votes) AS votes 
+		FROM answer
+		where question_id = #{id}
+	</select>
 </mapper>

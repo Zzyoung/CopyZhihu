@@ -3,6 +3,7 @@ package com.zhihu.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.zhihu.pojo.Question;
 
@@ -13,5 +14,7 @@ public interface QuestionMapper {
 	
 	int insertQuestion(Question question) throws Exception;
 
-	Question selectQuestionById(HashMap<String,String> param);
+	Question selectQuestionById(HashMap<String,String> param) throws Exception;
+	
+	List<Question> selectHotterQuestion() throws Exception;
 }

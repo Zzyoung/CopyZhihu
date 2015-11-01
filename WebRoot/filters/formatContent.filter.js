@@ -9,9 +9,9 @@
 					maxLength = 24;
 				}
 				if(content.length>maxLength){
-					return content.replace(/<br>|<blockquote>/g,'').substr(0,maxLength)+'...';
+					return content.replace(/<br>|<blockquote>|<\/blockquote>/g,'').substr(0,maxLength)+'...';
 				}else{
-					return content;
+					return content.replace(/<br>|<blockquote>|<\/blockquote>/g,'');
 				}
 			}
 		};
