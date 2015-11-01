@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
 import com.zhihu.dao.AnswerMapper;
+import com.zhihu.dao.CommentMapper;
 import com.zhihu.dao.QuestionMapper;
 import com.zhihu.dao.UserMapper;
 import com.zhihu.pojo.Answer;
@@ -32,6 +33,9 @@ public class QuestionServiceImpl implements QuestionService {
 	
 	@Autowired
 	private UserMapper userMapper;
+	
+	@Autowired
+	private CommentMapper commentMapper;
 	
 	private final static Logger logger = LoggerFactory.getLogger(QuestionServiceImpl.class);
 	
@@ -89,8 +93,10 @@ public class QuestionServiceImpl implements QuestionService {
 			source.setType("people");
 			source.setAvatarPicture(user.getPhotoUrl());
 			feed.setSource(source);
-			List<Comment> comments = new ArrayList<Comment>();
-			feed.setComments(comments);
+			List<Comment> comments = commentMapper.getCommentsByAnswerId(answer.getId());
+			if (comments != null && comments.size() > 0) {
+				feed.setComments(comments);
+			}
 			mainContents.add(feed);
 		}
 		return mainContents;

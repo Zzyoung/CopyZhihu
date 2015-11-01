@@ -7,13 +7,12 @@
 		var service = {};
 		
 		service.mainContents = {};
-		console.log('run');
         function querySuccess(response){
         	return response.data;
 		};
 		
 		function queryError(){
-			console.log('请求失败，再次发送请求');
+			console.log('请求失败');
 		}
 		
 		service.loadMainContents = function (){
