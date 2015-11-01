@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.zhihu.pojo.Question;
 import com.zhihu.service.QuestionService;
 import com.zhihu.service.TopicService;
 import com.zhihu.utils.Utils;
@@ -37,8 +38,8 @@ public class ShowQuestionController {
 		if(Utils.isEmpty(questionId)){
 			response.sendRedirect(request.getContextPath()+"/404.html");
 		}else{
-			
-			request.setAttribute("questionId", questionId);
+			Question question = questionService.selectQuestionById(questionId);
+			request.setAttribute("question", question);
 			request.getRequestDispatcher("/WEB-INF/view/question.jsp").forward(request, response);
 		}
 		

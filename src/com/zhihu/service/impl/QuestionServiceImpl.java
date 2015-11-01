@@ -1,6 +1,7 @@
 package com.zhihu.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +40,13 @@ public class QuestionServiceImpl implements QuestionService {
 			logger.error("添加问题失败",e);
 			return -1;
 		}
+	}
+
+	@Override
+	public Question selectQuestionById(String questionId) throws Exception {
+		HashMap<String, String> param = new HashMap<String,String>();
+		param.put("id", questionId);
+		return questionMapper.selectQuestionById(param);
 	}
 	
 }

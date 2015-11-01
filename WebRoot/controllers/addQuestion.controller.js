@@ -13,7 +13,11 @@
 		
 		addQuestionCtrl.queryTopic = TopicService.queryTopic;
 		
-		addQuestionCtrl.selectTopic = TopicService.selectTopic;
+		addQuestionCtrl.selectTopic = function(topicName){
+			//选中话题，取消提示
+			QuestionService.addQuestion.errorTopics = false;
+			TopicService.selectTopic(topicName);
+		};
 		
 		addQuestionCtrl.unselectTopic = TopicService.unselectTopic;
 		

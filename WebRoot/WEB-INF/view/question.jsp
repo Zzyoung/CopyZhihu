@@ -3,52 +3,36 @@
 <html lang="en" class="js flexbox no-touch cssanimations csstransforms csstransitions no-mobile"  ng-app="zhihu">
 <head>
 <meta charset="UTF-8">
-<title>最近有哪些好看的动漫新番？</title>
+<title>${question.name }</title>
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="styles/reset.css">
 <link rel="stylesheet" href="styles/index.css">
 </head>
 <body class="zhi">
 	<%@ include file="navigation.jsp" %>
-	<div ng-controller="QuestionController" class="zg-wrap zu-main question-page" id="zh-single-question-page"
-		data-urltoken="36767166">
-		<meta itemprop="isTopQuestion" content="false" />
-		<meta itemprop="visitsCount" content="1" />
+	<div ng-controller="QuestionController" class="zg-wrap zu-main question-page" id="zh-single-question-page" data-urltoken="36767166">
 		<div class="zu-main-content">
 			<div class="zu-main-content-inner with-indention-votebar">
 				<div class="zm-tag-editor zg-section">
 					<div class="zm-tag-editor-labels zg-clear">
-
-						<a class="zm-item-tag" href="/topic/19591985"
-							data-tip="t$b$19591985" data-token="19591985"
-							data-topicid="13908"> 动漫 </a> <a class="zm-item-tag"
-							href="/topic/19665348" data-tip="t$b$19665348"
-							data-token="19665348" data-topicid="38458"> 动漫推荐 </a> <a
-							href="javascript:;" class="zu-edit-button"><i
-							class="zu-edit-button-icon"></i>修改</a>
+						<a class="zm-item-tag" href="/topic/19591985" data-tip="t$b$19591985" data-token="19591985" data-topicid="13908"> 动漫 </a> 
+						<a class="zm-item-tag" href="/topic/19665348" data-tip="t$b$19665348" data-token="19665348" data-topicid="38458"> 动漫推荐 </a> 
+						<a href="javascript:;" class="zu-edit-button"><i class="zu-edit-button-icon"></i>修改</a>
 					</div>
 				</div>
 				<div id="zh-question-title" data-editable="true">
-
 					<h2 class="zm-item-title zm-editable-content">
-						最近有哪些好看的动漫新番？<a href="javascript:;" class="zu-edit-button"><i
-							class="zu-edit-button-icon"></i>修改</a>
+						最近有哪些好看的动漫新番？<a href="javascript:;" class="zu-edit-button"><i class="zu-edit-button-icon"></i>修改</a>
 					</h2>
 				</div>
-				<div id="zh-question-detail" class="zm-item-rich-text"
-					data-resourceid="6914051" data-action="/question/detail">
-
+				<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="6914051" data-action="/question/detail">
 					<div class="zm-editable-content">
-						热血冒险类型<a href="javascript:;" class="zu-edit-button"><i
-							class="zu-edit-button-icon"></i>修改</a>
+						热血冒险类型<a href="javascript:;" class="zu-edit-button"><i class="zu-edit-button-icon"></i>修改</a>
 					</div>
-
-
 				</div>
 				<div class="zm-item-meta zm-item-comment-el clearfix"
 					id="zh-question-meta-wrap">
 					<div class="zm-meta-panel">
-
 						<a href="#" name="report-question" class="report zg-right"> <i
 							class="z-icon-no-help"></i>举报</a> <a href="#" name="addcomment"
 							class="toggle-comment meta-item"> <i class="z-icon-comment"></i>添加评论

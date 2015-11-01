@@ -7,8 +7,14 @@
 		var service = {};
 		
 		service.feeds = [{
-			people:'小爝1',
-			avatarPicture:'images/173df7a79b5a5f003fd5445bf72da99d_m.jpg',
+			source:{
+				type:'people',
+				name:'小爝',
+				action:'回答了问题',
+				avatarPicture:'images/173df7a79b5a5f003fd5445bf72da99d_m.jpg',
+				time:'57 分钟前'
+			},
+			people:'小爝',
 			peopleDesc:'http://www.tuer.me',
 			answerTime:'57 分钟前',
 			question:'如何在前端技术面试中回答“你遇到过最有挑战的技术问题”？',
@@ -32,19 +38,19 @@
 				link:'http://www.zhihu.com/people/song-ying-3-25'
 			}],
 			comments:[{
-				name:'',
-				content:''
-			}],
+				author:'',
+				content:'',
+				voteCount:1
+			}]
+		},{
 			source:{
 				type:'people',
 				name:'小爝',
 				action:'回答了问题',
-				link:'',
-				time:'57 分钟前'
-			}
-		},{
+				avatarPicture:'images/173df7a79b5a5f003fd5445bf72da99d_m.jpg',
+				time:'1 小时前'
+			},
 			people:'小爝',
-			avatarPicture:'images/173df7a79b5a5f003fd5445bf72da99d_m.jpg',
 			peopleDesc:'http://www.tuer.me',
 			answerTime:'1 小时前',
 			question:'你所管理的手下是一群技术牛人，你如果给到压力他们反正也不怕找不到工作，觉得不爽就走，离职率暴涨怎么办？',
@@ -67,17 +73,15 @@
 				name:'王五',
 				link:'http://www.zhihu.com/people/song-ying-3-25'
 			}],
-			comments:[],
-			source:{
-				type:'people',
-				name:'小爝',
-				action:'回答了问题',
-				link:'',
-				time:'1 小时前'
-			}
+			comments:[]
 		},{
+			source:{
+				type:'topic',
+				topic:'电影',
+				avatarPicture:'images/a10e881801e4b057446928ef723dbe88_m.jpg',
+				hot:true
+			},
 			people:'Roc Lee',
-			avatarPicture:'images/a10e881801e4b057446928ef723dbe88_m.jpg',
 			peopleDesc:'微信公众号 anotherroclee',
 			answerTime:'1 小时前',
 			question:'为什么几乎所有好莱坞动画片的口型都与台词一致？',
@@ -103,15 +107,16 @@
 			comments:[{
 				name:'',
 				content:''
-			}],
-			source:{
-				type:'topic',
-				topic:'电影',
-				hot:true
-			}
+			}]
 		},{
+			source:{
+				type:'people',
+				name:'恶魔的奶爸Sam',
+				action:'赞同了回答',
+				avatarPicture:'images/a71e0ad8f6fbe604a9c60ea4aad7ff1f_m.png',
+				time:'1 小时前'
+			},
 			people:'陆仁贾',
-			avatarPicture:'images/a71e0ad8f6fbe604a9c60ea4aad7ff1f_m.png',
 			peopleDesc:'算我半个大V吧...三分之一也行... 六分之…',
 			answerTime:'1 小时前',
 			question:'BAT 中哪家公司消失对中国人影响最小？',
@@ -131,16 +136,14 @@
 			comments:[{
 				name:'winter',
 				content:'good'
-			}],
-			source:{
-				type:'people',
-				name:'恶魔的奶爸Sam',
-				action:'赞同了回答',
-				link:'',
-				time:'1 小时前'
-			}
+			}]
 		},{
-			avatarPicture:'images/1abb11bdd_m.jpg',
+			source:{
+				type:'topic',
+				topic:'职业规划',
+				avatarPicture:'images/1abb11bdd_m.jpg',
+				hot:false
+			},
 			question:'刚毕业，无处可逃无从下手?',
 			questionUrl:'',
 			unnamed:false,
@@ -154,15 +157,15 @@
 			comments:[{
 				name:'winter',
 				content:'good'
-			}],
+			}]
+		},{
 			source:{
 				type:'topic',
-				topic:'职业规划',
+				topic:'两性关系',
+				avatarPicture:'images/a77af6b1c79b56c415125a2a1b185b83_m.jpg',
 				hot:false
-			}
-		},{
+			},
 			people:'花吃了那女孩',
-			avatarPicture:'images/a77af6b1c79b56c415125a2a1b185b83_m.jpg',
 			peopleDesc:'渣渣大学汪，汪汪考研狗。',
 			answerTime:'1 小时前',
 			question:'为什么部分女人总喜欢说男人幼稚？',
@@ -182,15 +185,15 @@
 			comments:[{
 				name:'',
 				content:''
-			}],
+			}]
+		},{
 			source:{
 				type:'topic',
-				topic:'两性关系',
+				topic:'经济',
+				avatarPicture:'images/8186aa168_m.jpg',
 				hot:false
-			}
-		},{
+			},
 			people:'james xu',
-			avatarPicture:'images/8186aa168_m.jpg',
 			peopleDesc:'不务正业的石油工程师、前职业德州扑克牌手',
 			answerTime:'1 小时前',
 			question:'你期待的盛世是什么样子的？',
@@ -210,14 +213,14 @@
 			comments:[{
 				name:'',
 				content:''
-			}],
+			}]
+		},{
 			source:{
 				type:'topic',
-				topic:'经济',
+				topic:'职场',
+				avatarPicture:'images/386dc566a_m.jpg',
 				hot:false
-			}
-		},{
-			avatarPicture:'images/386dc566a_m.jpg',
+			},
 			question:'我到底要不要辞公务员？',
 			questionUrl:'',
 			voteCount:180,
@@ -231,15 +234,15 @@
 			comments:[{
 				name:'winter',
 				content:'good'
-			}],
+			}]
+		},{
 			source:{
 				type:'topic',
-				topic:'职场',
+				topic:'人文',
+				avatarPicture:'images/e6dafdb34_m.jpg',
 				hot:false
-			}
-		},{
+			},
 			people:'',
-			avatarPicture:'images/e6dafdb34_m.jpg',
 			peopleDesc:'',
 			answerTime:'',
 			question:'中国真的有很多穷人吗？',
@@ -259,15 +262,15 @@
 			comments:[{
 				name:'',
 				content:''
-			}],
+			}]
+		},{
 			source:{
 				type:'topic',
-				topic:'人文',
+				topic:'阅读',
+				avatarPicture:'images/3f30afdfc_m.jpg',
 				hot:false
-			}
-		},{
+			},
 			people:'Coke',
-			avatarPicture:'images/3f30afdfc_m.jpg',
 			peopleDesc:'以前是文科生的码农',
 			answerTime:'',
 			question:'有哪些书的结尾让你印象深刻？',
@@ -287,15 +290,15 @@
 			comments:[{
 				name:'',
 				content:''
-			}],
+			}]
+		},{
 			source:{
 				type:'topic',
-				topic:'阅读',
+				topic:'电子商务',
+				avatarPicture:'images/07af95234_m.jpg',
 				hot:false
-			}
-		},{
+			},			
 			people:'胡兄',
-			avatarPicture:'images/07af95234_m.jpg',
 			peopleDesc:'深圳一站式户外/户外用品租赁/户外店/户…',
 			answerTime:'',
 			question:'中国这几年，电商对实体店的冲击有多大？',
@@ -315,14 +318,14 @@
 			comments:[{
 				name:'',
 				content:''
-			}],
+			}]
+		},{
 			source:{
 				type:'topic',
-				topic:'电子商务',
+				topic:'健身',
+				avatarPicture:'images/5bda61313f8e3767edaa6134941e207b_m.jpg',
 				hot:false
-			}
-		},{
-			avatarPicture:'images/5bda61313f8e3767edaa6134941e207b_m.jpg',
+			},
 			question:'成年人的肩膀可以练的更宽吗？',
 			questionUrl:'',
 			voteCount:180,
@@ -336,12 +339,7 @@
 			comments:[{
 				name:'winter',
 				content:'good'
-			}],
-			source:{
-				type:'topic',
-				topic:'健身',
-				hot:false
-			}
+			}]
 		}];
 		
 		return service;

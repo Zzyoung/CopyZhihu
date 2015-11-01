@@ -39,6 +39,7 @@
 		
 		service.queryQuestion = {
 			query : function(questionName) {
+				service.addQuestion.errorName = false;
 				$http({
 					method : 'GET',
 					url : '/Zhihu/getQuestionNames',
@@ -71,7 +72,17 @@
 		
 		service.addQuestion = {
 				questionDesc : '',
-				inset : function(){
+				errorName:false,
+				errorTopics:false,
+				insert : function(){
+					if(service.queryQuestion.questionName.length<5){
+						this.errorName = true;
+						return;
+					}
+					if(TopicService.queryTopic.selectedTopics.length===0){
+						this.errorTopics = true;
+						return;
+					}
 					$http({
 						method : 'POST',
 						url : '/Zhihu/addQuestion',

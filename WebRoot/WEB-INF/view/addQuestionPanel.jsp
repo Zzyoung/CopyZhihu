@@ -24,9 +24,9 @@
 					<form class="js-add-question-form" ng-show="!addQuestionCtrl.queryQuestion.firstAsk">
 						<div class="zg-section-big clearfix">
 							<div id="zm-modal-dialog-info-wrapper"></div>
-							<div style="display: none;position: relative;" id="zm-modal-dialog-warnmsg-wrapper">
-								<div class="zm-modal-dialog-warnmsg zm-modal-dialog-guide-warn-message zg-r5px"></div>
-								<a title="关闭" href="javascript:;" class="zu-global-notify-close" style="display:none">x</a><span class="zm-modal-dialog-guide-title-msg"></span>
+							<div ng-show="addQuestionCtrl.addQuestion.errorName" style="position: relative;" id="zm-modal-dialog-warnmsg-wrapper">
+								<div class="zm-modal-dialog-warnmsg zm-modal-dialog-guide-warn-message zg-r5px">问题字数太少了吧</div>
+								<span class="zm-modal-dialog-guide-title-msg"></span>
 							</div>
 							<div class="zg-form-text-input add-question-title-form" style="position: relative;">
 								<textarea ng-change="addQuestionCtrl.queryQuestion.query(addQuestionCtrl.queryQuestion.questionName)" ng-model="addQuestionCtrl.queryQuestion.questionName" class="zg-editor-input zu-seamless-input-origin-element"
@@ -54,157 +54,6 @@
 									style="display: none;"></div>
 								<div class="zm-editable-editor-wrap no-toolbar" style="">
 									<div class="zm-editable-editor-outer">
-										<div class="zm-editable-toolbar-container goog-scrollfloater"
-											style="display: none;">
-											<div class="goog-toolbar goog-toolbar-horizontal"
-												role="toolbar" tabindex="-1"
-												style="-webkit-user-select: none;">
-												<div class="goog-inline-block goog-toolbar-button"
-													title="粗体 (ctrl+b)" role="button" aria-pressed="false"
-													id="+bold" style="-webkit-user-select: none;">
-													<div class="goog-inline-block goog-toolbar-button-outer-box"
-														style="-webkit-user-select: none;">
-														<div class="goog-inline-block goog-toolbar-button-inner-box"
-															style="-webkit-user-select: none;">
-															<div class="tr-icon tr-bold"
-																style="-webkit-user-select: none;"></div>
-														</div>
-													</div>
-												</div>
-												<div class="goog-inline-block goog-toolbar-button"
-													title="斜体 (ctrl+i)" role="button" aria-pressed="false"
-													id="+italic" style="-webkit-user-select: none;">
-													<div class="goog-inline-block goog-toolbar-button-outer-box"
-														style="-webkit-user-select: none;">
-														<div class="goog-inline-block goog-toolbar-button-inner-box"
-															style="-webkit-user-select: none;">
-															<div class="tr-icon tr-italic"
-																style="-webkit-user-select: none;"></div>
-														</div>
-													</div>
-												</div>
-												<div class="goog-inline-block goog-toolbar-button"
-													title="下划线 (ctrl+u)" role="button" aria-pressed="false"
-													id="+underline" style="-webkit-user-select: none;">
-													<div class="goog-inline-block goog-toolbar-button-outer-box"
-														style="-webkit-user-select: none;">
-														<div class="goog-inline-block goog-toolbar-button-inner-box"
-															style="-webkit-user-select: none;">
-															<div class="tr-icon tr-underline"
-																style="-webkit-user-select: none;"></div>
-														</div>
-													</div>
-												</div>
-												<div
-													class="goog-toolbar-separator goog-toolbar-separator-disabled goog-inline-block"
-													aria-disabled="true" role="separator" id=":7k"
-													style="-webkit-user-select: none;">&nbsp;</div>
-												<div class="goog-inline-block goog-toolbar-button"
-													title="引用内容" role="button" aria-pressed="false"
-													id="+blockquote" style="-webkit-user-select: none;">
-													<div class="goog-inline-block goog-toolbar-button-outer-box"
-														style="-webkit-user-select: none;">
-														<div class="goog-inline-block goog-toolbar-button-inner-box"
-															style="-webkit-user-select: none;">
-															<div class="tr-icon tr-blockquote"
-																style="-webkit-user-select: none;"></div>
-														</div>
-													</div>
-												</div>
-												<div class="goog-inline-block goog-toolbar-button"
-													title="插入代码" role="button" aria-pressed="false" id="+code"
-													style="-webkit-user-select: none;">
-													<div class="goog-inline-block goog-toolbar-button-outer-box"
-														style="-webkit-user-select: none;">
-														<div class="goog-inline-block goog-toolbar-button-inner-box"
-															style="-webkit-user-select: none;">
-															<div class="tr-icon tr-code"
-																style="-webkit-user-select: none;"></div>
-														</div>
-													</div>
-												</div>
-												<div class="goog-inline-block goog-toolbar-button"
-													title="有序列表" role="button" aria-pressed="false"
-													id="+insertOrderedList" style="-webkit-user-select: none;">
-													<div class="goog-inline-block goog-toolbar-button-outer-box"
-														style="-webkit-user-select: none;">
-														<div class="goog-inline-block goog-toolbar-button-inner-box"
-															style="-webkit-user-select: none;">
-															<div class="tr-icon tr-insertOrderedList"
-																style="-webkit-user-select: none;"></div>
-														</div>
-													</div>
-												</div>
-												<div class="goog-inline-block goog-toolbar-button"
-													title="无序列表" role="button" aria-pressed="false"
-													id="+insertUnorderedList" style="-webkit-user-select: none;">
-													<div class="goog-inline-block goog-toolbar-button-outer-box"
-														style="-webkit-user-select: none;">
-														<div class="goog-inline-block goog-toolbar-button-inner-box"
-															style="-webkit-user-select: none;">
-															<div class="tr-icon tr-insertUnorderedList"
-																style="-webkit-user-select: none;"></div>
-														</div>
-													</div>
-												</div>
-												<div class="goog-inline-block goog-toolbar-button"
-													title="插入公式" role="button" id="+equation"
-													style="-webkit-user-select: none;">
-													<div class="goog-inline-block goog-toolbar-button-outer-box"
-														style="-webkit-user-select: none;">
-														<div class="goog-inline-block goog-toolbar-button-inner-box"
-															style="-webkit-user-select: none;">
-															<div class="tr-icon tr-equation"
-																style="-webkit-user-select: none;"></div>
-														</div>
-													</div>
-												</div>
-												<div class="goog-toolbar-separator goog-toolbar-separator-disabled goog-inline-block"
-													aria-disabled="true" role="separator" id=":7l"
-													style="-webkit-user-select: none;">&nbsp;</div>
-												<div class="goog-inline-block goog-toolbar-button"
-													title="插入图片" role="button" id="image"
-													style="-webkit-user-select: none;">
-													<div class="goog-inline-block goog-toolbar-button-outer-box"
-														style="-webkit-user-select: none;">
-														<div class="goog-inline-block goog-toolbar-button-inner-box"
-															style="-webkit-user-select: none;">
-															<div class="tr-icon tr-image"
-																style="-webkit-user-select: none;"></div>
-														</div>
-													</div>
-												</div>
-												<div class="goog-inline-block goog-toolbar-button"
-													title="插入视频" role="button" id="video"
-													style="-webkit-user-select: none;">
-													<div class="goog-inline-block goog-toolbar-button-outer-box"
-														style="-webkit-user-select: none;">
-														<div class="goog-inline-block goog-toolbar-button-inner-box"
-															style="-webkit-user-select: none;">
-															<div class="tr-icon tr-video"
-																style="-webkit-user-select: none;"></div>
-														</div>
-													</div>
-												</div>
-												<div
-													class="goog-toolbar-separator goog-toolbar-separator-disabled goog-inline-block"
-													aria-disabled="true" role="separator" id=":7m"
-													style="-webkit-user-select: none;">&nbsp;</div>
-												<div class="goog-inline-block goog-toolbar-button"
-													title="清除格式" role="button" id="+removeFormat"
-													style="-webkit-user-select: none;">
-													<div class="goog-inline-block goog-toolbar-button-outer-box"
-														style="-webkit-user-select: none;">
-														<div class="goog-inline-block goog-toolbar-button-inner-box"
-															style="-webkit-user-select: none;">
-															<div class="tr-icon tr-removeFormat"
-																style="-webkit-user-select: none;"></div>
-														</div>
-													</div>
-												</div>
-												<div class="tr-spinner spinner-gray" style="display: none;"></div>
-											</div>
-										</div>
 										<div class="zm-editable-editor-field-wrap">
 											<textarea ng-model="addQuestionCtrl.addQuestion.questionDesc" class="zm-editable-editor-field-element editable" placeholder="问题背景、条件等详细信息"></textarea>
 											<div class="editable-dropzone">
@@ -225,8 +74,7 @@
 						</div>
 						<div class="zm-add-question-form-topic-wrap">
 							<div class="add-question-section-title">
-								<span class="zg-gray zg-right hidden-phone">话题越精准，越容易让相关领域专业人士看到你的问题</span>选择话题：<span
-									id="zh-question-form-tag-err" style="display: none;"></span>
+								<span class="zg-gray zg-right hidden-phone">话题越精准，越容易让相关领域专业人士看到你的问题</span>选择话题：<span ng-show="addQuestionCtrl.addQuestion.errorTopics" id="zh-question-form-tag-err">至少添加一个话题</span>
 							</div>
 							<div id="zh-question-suggest-topic-container" class="zm-tag-editor zg-section">
 								<div class="zm-tag-editor-editor zg-clear">

@@ -1,7 +1,7 @@
 <div ng-repeat="feed in mainCtrl.feeds" class="feed-item folding feed-item-hook" data-type="a">
 	<div class="feed-item-inner">
 		<div class="avatar">
-			<a title="小爝" class="zm-item-link-avatar" href="/people/xiao-jue-83"> <img ng-src="{{feed.avatarPicture}}" class="zm-item-img-avatar"> </a>
+			<a title="小爝" class="zm-item-link-avatar" href="/people/xiao-jue-83"> <img ng-src="{{feed.source.avatarPicture}}" class="zm-item-img-avatar"> </a>
 		</div>
 		<div class="feed-main">
 			<div ng-if="feed.source.type == 'people'" class="source">

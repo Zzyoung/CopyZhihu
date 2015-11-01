@@ -2575,3 +2575,40 @@ input[type=checkbox]{
 	background-position: -264px -103px;
 	background-color: #259;
 }
+.zg-r5px, .goog-tooltip{
+	border-radius:5px;
+}
+.zm-modal-dialog-guide-title, .zm-modal-dialog-guide-warn-message{
+	padding:5px 9px;
+	margin:0 0 15px;
+	position: relative;
+}
+.zm-modal-dialog-guide-warn-message{
+	background: none repeat scroll 0 0 #f8f6e2;
+	border:1px solid #ccc9ac!important;
+	margin: 0 0 15px!important;
+}
+.zm-modal-dialog-warnmsg{
+	margin:5px 0 5px 5px;
+	border-left: 3px solid #c3412f;
+	padding:0 0 0 10px;
+}
+#zm-modal-dialog-warnmsg-wrapper>.zm-modal-dialog-guide-title-spin, #zm-modal-dialog-warnmsg-wrapper>.zm-modal-dialog-guide-title-msg, .zm-modal-dialog-warnmsg-wrapper>.zm-modal-dialog-guide-title-spin, .zm-modal-dialog-warnmsg-wrapper>.zm-modal-dialog-guide-title-msg{
+	bottom:-10px;
+	z-index:1;
+	left:21px;
+}
+.zm-modal-dialog-guide-title-msg{
+	background: transparent url(../images/sprites.png) scroll no-repeat -227px -174px;
+	position: absolute;
+	bottom:11px;
+	left:20px;
+	width:16px;
+	height:11px;
+}
+.zh-add-question-form #zh-question-form-tag-err{
+	margin-left: 10px;
+	font-size:13px;
+	color:#c33;
+	font-weight: 400;
+}
