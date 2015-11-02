@@ -83,6 +83,7 @@ public class QuestionServiceImpl implements QuestionService {
 			feed.setVoteCount(answer.getVotes());
 			feed.setAnswer(answer.getContent());
 			feed.setUnnamed(answer.isUnnamed());
+			feed.setAnswerId(answer.getId());
 			User user = userMapper.getUserById(answer.getAuthorId());
 			feed.setPeople(user.getName());
 			feed.setPeopleDesc(user.getSummary());
@@ -92,11 +93,14 @@ public class QuestionServiceImpl implements QuestionService {
 			source.setTime(answer.getAnswerTime());
 			source.setType("people");
 			source.setAvatarPicture(user.getPhotoUrl());
+			source.setSourceUrl(user.getHomeUrl());
 			feed.setSource(source);
-			List<Comment> comments = commentMapper.getCommentsByAnswerId(answer.getId());
-			if (comments != null && comments.size() > 0) {
-				feed.setComments(comments);
-			}
+			int commentsCount = commentMapper.getCommentsCountByAnswerId(answer.getId());
+			feed.setCommentsCount(commentsCount);
+//			List<Comment> comments = commentMapper.getCommentsByAnswerId(answer.getId());
+//			if (comments != null && comments.size() > 0) {
+//				feed.setComments(comments);
+//			}
 			mainContents.add(feed);
 		}
 		return mainContents;

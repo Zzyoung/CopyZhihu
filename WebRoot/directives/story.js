@@ -6,8 +6,8 @@
 						'<span class="info-card">{{story.name}}</span>'+
 						'<img ng-src="{{story.photo}}" alt="MrToyy" />'+
 					  '</a>',
-			link: function($scope, iElm, iAttrs, controller) {
-				iElm.bind('mouseenter',function(){
+			link: function($scope, element, iAttrs, controller) {
+				element.bind('mouseenter',function(){
 					console.log('mouse enter!');
 				});
 			}

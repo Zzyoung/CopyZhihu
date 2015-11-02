@@ -8,7 +8,14 @@ public class User {
 	private String photoUrl;
 	private String description;
 	private String summary;
+	private String homeUrl;
 	
+	public String getHomeUrl() {
+		return homeUrl;
+	}
+	public void setHomeUrl(String homeUrl) {
+		this.homeUrl = homeUrl;
+	}
 	public String getSummary() {
 		return summary;
 	}

@@ -4,7 +4,9 @@
 			restrict:'A',
 			link:function($scope,element,attribute){
 				$timeout(function(){
-					element[0].innerHTML = element[0].firstChild.wholeText;
+					var text =  element[0].firstChild.innerHTML;
+					text = text.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+					element[0].firstChild.innerHTML = text;
 				},200);
 			}
 		};

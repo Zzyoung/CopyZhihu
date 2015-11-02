@@ -6,7 +6,15 @@
 		SELECT c.id ,c.author_id AS authorId, c.content, c.time, c.vote_count AS voteCount, 
 		c.replay_id AS replayId,u.name AS authorName,u.photo_url AS authorPhoto,u.home_url AS authorUrl
 		FROM COMMENT c,USER u
-		WHERE c.author_id = u.id and c.answer_id = #{id}
+		WHERE c.author_id = u.id and c.answer_id = #{id} order by c.time
 	</select>
 	
+	<insert id="insertCommentForAnswer" parameterType="com.zhihu.pojo.Comment">
+		insert into comment (author_id,content,time,vote_count,answer_id)
+		values(#{authorId},#{content},#{time},#{voteCount},#{answerId})
+	</insert>
+	
+	<select id="getCommentsCountByAnswerId" parameterType="int" resultType="int">
+		select count(*) from COMMENT WHERE answer_id = #{id}
+	</select>
 </mapper>

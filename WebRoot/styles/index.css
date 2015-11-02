@@ -1611,10 +1611,10 @@ img.avatar.avatar-xs{
 	color: #222;
 	min-height: 22px;
 }
-.zm-item-comment .zm-comment-ft{
+.zm-item-comment .zm-comment-foot{
 	font-size: 12px;
 }
-.zm-item-comment .zm-comment-hd, .zm-item-comment .zm-comment-ft{
+.zm-item-comment .zm-comment-head, .zm-item-comment .zm-comment-foot{
 	color: #999;
 }
 .zm-comment-op-link{
@@ -1699,6 +1699,7 @@ html.no-touch .zm-comment-op-link:hover{
 	border-radius: 3px;
 	box-shadow: 0 1px 3px rgba(0,0,0,.1) inset;
 	background-color: #fff;
+	width:492px;
 }
 .zm-command{
 	padding: 10px 0;

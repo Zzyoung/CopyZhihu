@@ -17,7 +17,7 @@
 	</select>
 	
 	<select id="getUserById" resultType="com.zhihu.pojo.User" parameterType="int">
-		SELECT id,NAME,LOGIN_NAME AS loginName, PASSWORD, photo_url as photoUrl, summary FROM USER 
+		SELECT id,NAME,LOGIN_NAME AS loginName, PASSWORD, photo_url as photoUrl, summary,home_url as homeUrl FROM USER 
 		where id = #{id}
 	</select>
 </mapper>

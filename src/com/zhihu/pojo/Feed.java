@@ -8,6 +8,7 @@ public class Feed {
 	private String people;//答题者
 	private String peopleDesc;//答题者简介
 	private Date answerTime;//答题时间
+	private Integer answerId;
 	private String question;//问题
 	private String questionUrl;//问题url
 	private String questionDesc;//问题描述
@@ -20,11 +21,26 @@ public class Feed {
 	private boolean answerExpanded = false;
 	private List<User> voters;//赞同者
 	private List<Comment> comments;//评论
+	private Integer commentsCount;
+	
+	public Integer getCommentsCount() {
+		return commentsCount;
+	}
+	public void setCommentsCount(Integer commentsCount) {
+		this.commentsCount = commentsCount;
+	}
 	public FeedSource getSource() {
 		return source;
 	}
 	public void setSource(FeedSource source) {
 		this.source = source;
+	}
+	
+	public Integer getAnswerId() {
+		return answerId;
+	}
+	public void setAnswerId(Integer answerId) {
+		this.answerId = answerId;
 	}
 	public String getPeople() {
 		return people;
