@@ -7,6 +7,7 @@ public class Feed {
 	private FeedSource source;//来源
 	private String people;//答题者
 	private String peopleDesc;//答题者简介
+	private Integer answerAuthorId;//答题者ID
 	private Date answerTime;//答题时间
 	private Integer answerId;
 	private String question;//问题
@@ -23,6 +24,13 @@ public class Feed {
 	private List<Comment> comments;//评论
 	private Integer commentsCount;
 	
+	
+	public Integer getAnswerAuthorId() {
+		return answerAuthorId;
+	}
+	public void setAnswerAuthorId(Integer answerAuthorId) {
+		this.answerAuthorId = answerAuthorId;
+	}
 	public Integer getCommentsCount() {
 		return commentsCount;
 	}

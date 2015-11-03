@@ -87,6 +87,7 @@ public class QuestionServiceImpl implements QuestionService {
 			User user = userMapper.getUserById(answer.getAuthorId());
 			feed.setPeople(user.getName());
 			feed.setPeopleDesc(user.getSummary());
+			feed.setAnswerAuthorId(answer.getAuthorId());
 			//设置消息来源
 			source.setAction("回答了问题");
 			source.setName(user.getName());

@@ -2,9 +2,9 @@
 	angular.module('zhihu').controller('LoginController', LoginController);
 
 	LoginController.$inject = [ '$location', 'AuthenticationService',
-			'FlashService', 'UserService' , '$scope' , 'ConstantService' ];
+			 'UserService' , '$scope' , 'ConstantService' ];
 
-	function LoginController($location, AuthenticationService, FlashService,
+	function LoginController($location, AuthenticationService, 
 			UserService, $scope, ConstantService) {
 		var vm = this, prompts;
 

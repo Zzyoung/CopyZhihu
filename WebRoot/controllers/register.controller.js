@@ -3,10 +3,10 @@
 			.controller('RegisterController', RegisterController);
 
 	RegisterController.$inject = [ 'UserService', '$location', '$rootScope',
-			'FlashService', '$scope' , '$timeout' ,'ConstantService'];
+			 '$scope' , '$timeout' ,'ConstantService'];
 
 	function RegisterController(UserService, $location, $rootScope,
-			FlashService , $scope , $timeout ,ConstantService ) {
+			 $scope , $timeout ,ConstantService ) {
 		var vm = this, prompts;
 		
 		vm.removePrompt = UserService.removePrompt;

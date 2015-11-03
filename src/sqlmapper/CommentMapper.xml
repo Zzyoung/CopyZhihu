@@ -3,18 +3,98 @@
 <mapper namespace="com.zhihu.dao.CommentMapper" >
 
 	<select id="getCommentsByAnswerId" parameterType="int" resultType="com.zhihu.pojo.Comment">
-		SELECT c.id ,c.author_id AS authorId, c.content, c.time, c.vote_count AS voteCount, 
-		c.replay_id AS replayId,u.name AS authorName,u.photo_url AS authorPhoto,u.home_url AS authorUrl
-		FROM COMMENT c,USER u
-		WHERE c.author_id = u.id and c.answer_id = #{id} order by c.time
+		SELECT * , uu.NAME AS replyName,uu.home_url AS replyUrl FROM (
+			SELECT c.id ,c.author_id AS authorId, c.content, c.time, c.vote_count AS voteCount, 
+			c.reply_id AS replyId,u.name AS authorName,u.photo_url AS authorPhoto,u.home_url AS authorUrl, c.answer_id AS answerId
+			FROM COMMENT c,USER u
+			WHERE c.author_id = u.id AND c.answer_id = #{id} ORDER BY c.time
+			) AS temp LEFT JOIN USER uu ON (SELECT author_id FROM COMMENT WHERE id = temp.replyId) = uu.id
 	</select>
 	
-	<insert id="insertCommentForAnswer" parameterType="com.zhihu.pojo.Comment">
-		insert into comment (author_id,content,time,vote_count,answer_id)
-		values(#{authorId},#{content},#{time},#{voteCount},#{answerId})
+	<insert id="insertComment" parameterType="com.zhihu.pojo.Comment">
+		insert into comment (
+		<trim suffixOverrides=",">
+			<if test="authorId != null">
+				author_id,
+			</if>
+			<if test="content != null">
+				content,
+			</if>
+			<if test="time != null">
+				time,
+			</if>
+			<if test="voteCount != null">
+				vote_count,
+			</if>
+			<if test="answerId != null">
+				answer_id,
+			</if>
+			<if test="replyId != null">
+				reply_id,
+			</if>
+			<if test="questionId != null">
+				question_id,
+			</if>
+		</trim>
+		)
+		values
+		(
+		<trim suffixOverrides=",">
+			<if test="authorId != null">
+				#{authorId},
+			</if>
+			<if test="content != null">
+				#{content},
+			</if>
+			<if test="time != null">
+				#{time},
+			</if>
+			<if test="voteCount != null">
+				#{voteCount},
+			</if>
+			<if test="answerId != null">
+				#{answerId},
+			</if>
+			<if test="replyId != null">
+				#{replyId},
+			</if>
+			<if test="questionId != null">
+				#{questionId},
+			</if>
+		</trim>
+		)
 	</insert>
 	
 	<select id="getCommentsCountByAnswerId" parameterType="int" resultType="int">
 		select count(*) from COMMENT WHERE answer_id = #{id}
+	</select>
+	
+	<update id="addVoteCount" parameterType="java.util.HashMap">
+		UPDATE COMMENT SET vote_count = vote_count + 1 WHERE id = #{commentId}
+	</update>	
+	
+	<update id="subVoteCount" parameterType="java.util.HashMap">
+		UPDATE COMMENT SET vote_count = vote_count - 1 WHERE id = #{commentId}
+	</update>	
+	
+	<insert id="insertUserCommentRelation" parameterType="com.zhihu.pojo.UserCommentRelation">
+		insert into user_comment_relation (user_id,action,comment_id,time)
+		values (#{userId},#{action},#{commentId},#{time})
+	</insert>
+	
+	<insert id="deleteUserCommentRelation" parameterType="com.zhihu.pojo.UserCommentRelation">
+		delete from user_comment_relation where user_id = #{userId} and comment_id = #{commentId} and action = #{action}
+	</insert>
+	
+	<select id="selectVoteCountByCommentId" parameterType="int" resultType="int">
+		select vote_count from comment where id=#{id}
+	</select>
+	
+	<select id="selectUserCountFromRelation" parameterType="com.zhihu.pojo.UserCommentRelation" resultType="int">
+		select count(*) from user_comment_relation where user_id = #{userId} and comment_id = #{commentId} and action = #{action}
+	</select>
+	
+	<select id="selectWhoLikeComment" parameterType="int" resultType="int">
+		SELECT user_id as userId FROM user_comment_relation WHERE comment_id = #{commentId}
 	</select>
 </mapper>

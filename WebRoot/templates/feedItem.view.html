@@ -116,6 +116,7 @@
 						<div class="zm-comment-box" data-count="31" ng-show="feed.isShowComments">
 							<!-- 三角箭头 -->
 							<i class="icon icon-spike zm-comment-bubble" style="display:inline;left:102px;"></i> <a href="" name="comment-0" class="zg-anchor-hidden"></a>
+							<!-- 评论列表 -->
 							<div class="zm-comment-list">
 								<div class="zm-item-comment" ng-repeat="comment in feed.comments">
 									<a class="zg-anchor-hidden"></a> 
@@ -125,20 +126,33 @@
 									<div class="zm-comment-content-wrap">
 										<div class="zm-comment-head">
 											<a data-tip="p$t$penny-lu-82" ng-href="/Zhihu{{comment.authorUrl}}" class="zg-link" title="{{comment.authorName}}">{{comment.authorName}}</a>
+											<span class="desc" ng-if="feed.answerAuthorId === comment.authorId">（作者）</span>
+											<span ng-if="comment.replyName" class="desc">回复 </span>
+											<a ng-if="comment.replyName" data-tip="p$t$gu-xiao-bai-68-52" href="{{comment.replyUrl}}" class="zg-link" title="{{comment.replyName}}">{{comment.replyName}}</a>
 										</div>
 										<div class="zm-comment-content">{{comment.content}}</div>
 										<div class="zm-comment-foot">
 											<span class="date">{{comment.time|date:'yyyy-MM-dd'}}</span> 
-											<a href="#" class="reply zm-comment-op-link" name="reply_comment"> 
+											<a href="#" class="reply zm-comment-op-link" ng-click="mainCtrl.openReplyBox(comment)"> 
 												<i class="zg-icon zg-icon-comment-reply"></i>回复 
 											</a> 
-											<a href="#" class="like zm-comment-op-link " name="like_comment"> 
+											<a ng-if="!mainCtrl.haveLiked(comment)" href="#" class="like zm-comment-op-link " ng-click="mainCtrl.likeComment(comment)"> 
 												<i class="zg-icon zg-icon-comment-like"></i>赞 
-											</a> 
+											</a>
+											<a ng-if="mainCtrl.haveLiked(comment)" href="#" class="like zm-comment-op-link " ng-click="mainCtrl.unlikeComment(comment)"> 
+												<i class="zg-icon zg-icon-comment-like"></i>取消赞 
+											</a>
 											<span ng-show="comment.voteCount>0" class="like-num  " data-tip="s$r$1 人觉得这个很赞"> <em>{{comment.voteCount}}</em>	<span>赞</span> </span> 
 											<a href="#" name="report" class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button" style="-webkit-user-select: none;">
 												<i class="zg-icon z-icon-no-help"></i>举报 
 											</a>
+										</div>
+										<div class="zm-comment-form zm-comment-box-ft expanded" style="padding:15px 0;" ng-show="comment.isReplying">
+											<input class="zm-comment-editable editable" ng-model="comment.replyContent" style="width:463px;" placeholder="写下你的评论…">
+											<div class="zm-command zg-clear">
+												<a href="#" class="zg-right zg-btn-blue" ng-click="mainCtrl.replyComment(comment,feed)">评论</a> <a href="#" ng-click="comment.isReplying = false;" class="zm-command-cancel">取消</a>
+											</div>
+											<div class="zm-comment-info"></div>
 										</div>
 									</div>
 								</div>
@@ -147,7 +161,7 @@
 							</div>
 							<div ng-click="feed.isAddingComment = true" ng-class="feed.isAddingComment?'zm-comment-form zm-comment-box-ft expanded':'zm-comment-form zm-comment-box-ft'">
 								<!-- <div class="zm-comment-editable editable" contenteditable="true"><p ng-if="!feed.isAddingComment" style="color:#999">写下你的评论…</p></div> -->
-								<input class="zm-comment-editable editable" ng-model="feed.newComment" placeholder="写下你的评论…">
+								<input class="zm-comment-editable editable" style="width:492px;" ng-model="feed.newComment" placeholder="写下你的评论…">
 								<div class="zm-command zg-clear" ng-show="feed.isAddingComment">
 									<a href="#" class="zg-right zg-btn-blue" ng-click="mainCtrl.addNewComment(feed)">评论</a> <a href="#" ng-click="mainCtrl.closeForm(feed,$event)" class="zm-command-cancel">取消</a>
 								</div>

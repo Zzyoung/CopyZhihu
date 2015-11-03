@@ -58,7 +58,7 @@ public class MainController {
 		comment.setContent(content);
 		comment.setVoteCount(0);
 		comment.setTime(new Date());
-		commentService.insertCommentForAnswer(comment );
+		commentService.insertComment(comment);
 		
 	}
 	
@@ -78,5 +78,88 @@ public class MainController {
 		response.getWriter().write(JSON.toJSONString(comments));
 	}
 	
+	@RequestMapping(value="replyComment",method = RequestMethod.POST)
+	public void replyComment(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		
+		String commentId = request.getParameter("id");
+		String content = request.getParameter("content");
+		String answerId = request.getParameter("answerId");
+		
+		if(Utils.isEmpty(commentId) || Utils.isEmpty(content) || Utils.isEmpty(answerId)){
+			return;
+		}
+		
+		content = new String(content.getBytes("ISO8859-1"),"UTF-8");
+		Comment comment = new Comment();
+		comment.setAuthorId(Integer.parseInt(request.getSession().getAttribute("id").toString()));
+		comment.setContent(content);
+		comment.setVoteCount(0);
+		comment.setAnswerId(Integer.parseInt(answerId));
+		comment.setReplyId(Integer.parseInt(commentId));
+		comment.setTime(new Date());
+		commentService.insertComment(comment);
+	}
 	
+	@RequestMapping(value="likeComment",method = RequestMethod.POST)
+	public void likeComment(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		
+		String commentId = request.getParameter("id");
+		if(Utils.isEmpty(commentId)){
+			return;
+		}
+		
+		int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
+		commentService.likeComment(Integer.parseInt(commentId),currentUserId);
+	}
+
+	@RequestMapping(value="unlikeComment",method = RequestMethod.POST)
+	public void unlikeComment(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		
+		String commentId = request.getParameter("id");
+		if(Utils.isEmpty(commentId)){
+			return;
+		}
+		
+		int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
+		commentService.unlikeComment(Integer.parseInt(commentId),currentUserId);
+	}
+	
+	@RequestMapping(value="getVoteCount",method = RequestMethod.GET)
+	public void getVoteCount(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		String commentId = request.getParameter("id");
+		if(Utils.isEmpty(commentId)){
+			return;
+		}
+		
+		int voteCount = commentService.selectVoteCountByCommentId(Integer.parseInt(commentId));
+		response.getWriter().write(JSON.toJSONString(voteCount));
+	}
+	
+	@RequestMapping(value="getVoterIds",method = RequestMethod.GET)
+	public void getVoterIds(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		String commentId = request.getParameter("id");
+		if(Utils.isEmpty(commentId)){
+			return;
+		}
+		
+		List<Integer> voterIds = commentService.getVoterIds(Integer.parseInt(commentId));
+		response.getWriter().write(JSON.toJSONString(voterIds));
+		
+	}
 }
+

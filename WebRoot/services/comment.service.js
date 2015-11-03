@@ -41,6 +41,72 @@
 			}).then(querySuccess, queryError);
 		};
 		
+		service.replyComment = function(content,commentId,answerId){
+			return $http({
+				method : 'POST',
+				url : '/Zhihu/replyComment',
+				params : {
+					'id' : commentId,
+					'content' : content,
+					'answerId' : answerId
+				},
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			}).then(querySuccess, queryError);
+		};
+		
+		service.likeComment = function(commentId){
+			return $http({
+				method : 'POST',
+				url : '/Zhihu/likeComment',
+				params : {
+					'id' : commentId
+				},
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			}).then(querySuccess, queryError);
+		};
+		
+		service.unlikeComment = function(commentId){
+			return $http({
+				method : 'POST',
+				url : '/Zhihu/unlikeComment',
+				params : {
+					'id' : commentId
+				},
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			}).then(querySuccess, queryError);
+		};
+		
+		service.getVoterIds = function(commentId){
+			return $http({
+				method : 'GET',
+				url : '/Zhihu/getVoterIds',
+				params : {
+					'id' : commentId
+				},
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			}).then(querySuccess, queryError);
+		};
+		
+		service.getVoteCount = function(commentId){
+			return $http({
+				method : 'GET',
+				url : '/Zhihu/getVoteCount',
+				params : {
+					'id' : commentId
+				},
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			}).then(querySuccess, queryError);
+		};
 		
 		return service;
 	}

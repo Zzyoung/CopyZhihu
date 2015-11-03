@@ -1,6 +1,7 @@
 package com.zhihu.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Comment {
 	private Integer id;
@@ -10,11 +11,32 @@ public class Comment {
 	private Integer authorId;
 	private String content;
 	private Integer voteCount;
-	private Integer replayId = 0;
+	private Integer replyId = 0;
+	private String replyName;
+	private String replyUrl;
 	private Integer answerId;
 	private Integer questionId;
 	private Date time;
+	private List<Integer> voterIds;
 	
+	public List<Integer> getVoterIds() {
+		return voterIds;
+	}
+	public void setVoterIds(List<Integer> voterIds) {
+		this.voterIds = voterIds;
+	}
+	public String getReplyName() {
+		return replyName;
+	}
+	public void setReplyName(String replyName) {
+		this.replyName = replyName;
+	}
+	public String getReplyUrl() {
+		return replyUrl;
+	}
+	public void setReplyUrl(String replyUrl) {
+		this.replyUrl = replyUrl;
+	}
 	public String getAuthorUrl() {
 		return authorUrl;
 	}
@@ -51,11 +73,12 @@ public class Comment {
 	public void setQuestionId(Integer questionId) {
 		this.questionId = questionId;
 	}
-	public Integer getReplayId() {
-		return replayId;
+	
+	public Integer getReplyId() {
+		return replyId;
 	}
-	public void setReplayId(Integer replayId) {
-		this.replayId = replayId;
+	public void setReplyId(Integer replyId) {
+		this.replyId = replyId;
 	}
 	public Integer getAuthorId() {
 		return authorId;

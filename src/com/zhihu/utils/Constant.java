@@ -8,4 +8,6 @@ public class Constant {
 	public static final int ERROR_CAPTCHA = 4;
 	
 	public static final String APP_CONTEXT = "/Zhihu";
+	
+	public static final int USER_LIKE_COMMENT = 1;
 }
