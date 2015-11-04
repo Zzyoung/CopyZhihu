@@ -156,8 +156,9 @@
 										</div>
 									</div>
 								</div>
-								<a href="javascript:;" class="load-more" ng-show="feed.comments&&feed.comments.length>6"> <span class="text">显示全部评论<img src="http://static.zhihu.com/static/img/spinner2.gif" class="spinner">
-								</span> </a>
+								<a href="javascript:;" ng-click="mainCtrl.getAllComments(feed)" class="load-more" ng-hide="feed.comments.length<10 || feed.loadAllComments"> 
+									<span class="text">显示全部评论</span> 
+								</a>
 							</div>
 							<div ng-click="feed.isAddingComment = true" ng-class="feed.isAddingComment?'zm-comment-form zm-comment-box-ft expanded':'zm-comment-form zm-comment-box-ft'">
 								<!-- <div class="zm-comment-editable editable" contenteditable="true"><p ng-if="!feed.isAddingComment" style="color:#999">写下你的评论…</p></div> -->

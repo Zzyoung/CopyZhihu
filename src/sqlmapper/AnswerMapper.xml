@@ -5,6 +5,12 @@
 	<select id="selectAnswerByQuestionId" parameterType="com.zhihu.pojo.Question" resultType="com.zhihu.pojo.Answer">
 		select id, author_id as authorId, content, answer_time as answerTime, question_id as questionId, MAX(votes) AS votes 
 		FROM answer
-		where question_id = #{id}
+		where question_id = #{id} limit 1
+	</select>
+	
+	<select id="selectAnswerListByQuestionId" parameterType="com.zhihu.pojo.Question" resultType="com.zhihu.pojo.Answer">
+		select id, author_id as authorId, content, answer_time as answerTime, question_id as questionId, MAX(votes) AS votes 
+		FROM answer
+		where question_id = #{id} 
 	</select>
 </mapper>

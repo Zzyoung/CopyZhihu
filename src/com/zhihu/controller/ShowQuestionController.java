@@ -45,4 +45,8 @@ public class ShowQuestionController {
 		
 	}
 	
+	@RequestMapping(value="getAnswerList",method = RequestMethod.GET)
+	public void getAnswerList(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception {
+		
+	}
 }

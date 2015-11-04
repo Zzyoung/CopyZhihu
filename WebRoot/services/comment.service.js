@@ -41,6 +41,19 @@
 			}).then(querySuccess, queryError);
 		};
 		
+		service.getAllCommentsByAnswerId = function(answerId){
+			return $http({
+				method : 'GET',
+				url : '/Zhihu/getAllComments',
+				params : {
+					'id' : answerId
+				},
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			}).then(querySuccess, queryError);
+		};
+		
 		service.replyComment = function(content,commentId,answerId){
 			return $http({
 				method : 'POST',

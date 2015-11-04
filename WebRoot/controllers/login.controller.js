@@ -7,7 +7,7 @@
 	function LoginController($location, AuthenticationService, 
 			UserService, $scope, ConstantService) {
 		var vm = this, prompts;
-
+		var randomKey = '2e5ds9a1f4w';
 		vm.removePrompt = UserService.removePrompt;
 		
 		$scope.removePromptByType = UserService.removePromptByType;
@@ -22,8 +22,9 @@
 			prompts = UserService.validate(vm.user, false);
 			$scope.prompts = prompts;
 			if (prompts.length === 0) {
-				console.log(vm.user.loginName, vm.user.password);
-				AuthenticationService.login(vm.user.loginName, vm.user.password,vm.user.captcha, function (response) {
+				var password = vm.user.password;
+				password = CryptoJS.PBKDF2(password, randomKey, { keySize: 512/32 }).toString();
+				AuthenticationService.login(vm.user.loginName, password,vm.user.captcha, function (response) {
 	                if (response.status>=200 && response.status < 300) {
 	                	if(response.data.errorCode === ConstantService.constant.UNKNOWN_LOGINNAME){
 	                		$scope.prompts = [{type : 'loginName',msg:'该帐号尚未注册知乎'}];
@@ -33,7 +34,7 @@
 	                		$scope.prompts = [{type : 'captcha',msg:'请输入正确的验证码'}];
 	                	}else{
 	                		var location = window.location;
-	                		AuthenticationService.setCredentials(vm.user.loginName, vm.user.password);
+	                		AuthenticationService.setCredentials(vm.user.loginName, password);
 	                		window.location = location.origin + ConstantService.ContextPath + "index";
 	                	}
 	                } else {

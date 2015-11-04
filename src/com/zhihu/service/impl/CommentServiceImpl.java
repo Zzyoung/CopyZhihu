@@ -24,7 +24,16 @@ public class CommentServiceImpl implements CommentService {
 		for (Comment comment : comments) {
 			comment.setVoterIds(commentMapper.selectWhoLikeComment(comment.getId()));
 		}
-		return commentMapper.getCommentsByAnswerId(id);
+		return comments;
+	}
+	
+	@Override
+	public List<Comment> getAllCommentsByAnswerId(int id) throws Exception {
+		List<Comment> comments = commentMapper.getAllCommentsByAnswerId(id);
+		for (Comment comment : comments) {
+			comment.setVoterIds(commentMapper.selectWhoLikeComment(comment.getId()));
+		}
+		return comments;
 	}
 	
 	@Override

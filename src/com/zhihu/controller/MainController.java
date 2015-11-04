@@ -72,9 +72,21 @@ public class MainController {
 		if(Utils.isEmpty(id)){
 			return;
 		}
-		
 		List<Comment> comments = commentService.getCommentsByAnswerId(Integer.parseInt(id));
+		response.getWriter().write(JSON.toJSONString(comments));
+	}
+	
+	@RequestMapping(value="getAllComments",method = RequestMethod.GET)
+	public void getAllComments(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
 		
+		String id = request.getParameter("id");
+		if(Utils.isEmpty(id)){
+			return;
+		}
+		List<Comment> comments = commentService.getAllCommentsByAnswerId(Integer.parseInt(id));
 		response.getWriter().write(JSON.toJSONString(comments));
 	}
 	

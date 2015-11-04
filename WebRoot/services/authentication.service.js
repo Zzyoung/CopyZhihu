@@ -8,9 +8,8 @@
 	function AuthenticationService($http, $cookieStore, $rootScope, $timeout,
 			UserService) {
 		var service = {};
-
+		
 		service.login = function(loginName, password,captcha, callback) {
-			console.log(loginName, password);
 			$http({
 				method : 'POST',
 				url : '/Zhihu/login/',

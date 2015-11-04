@@ -107,6 +107,7 @@ public class LoginController {
 			if(user == null){
 				response.getWriter().write("{\"errorCode\":"+Constant.UNKNOWN_LOGINNAME+",\"msg\":\"unknown loginName\"}");
 			}else{
+				logger.info("数据库中的密码：",user.getPassword());
 				if(password.equals(user.getPassword())){
 					//登录成功
 					logger.info(loginName+" 登录成功");

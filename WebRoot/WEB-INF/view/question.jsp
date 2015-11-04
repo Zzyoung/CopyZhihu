@@ -22,12 +22,12 @@
 				</div>
 				<div id="zh-question-title" data-editable="true">
 					<h2 class="zm-item-title zm-editable-content">
-						最近有哪些好看的动漫新番？<a href="javascript:;" class="zu-edit-button"><i class="zu-edit-button-icon"></i>修改</a>
+						${question.name }<a href="javascript:;" class="zu-edit-button"><i class="zu-edit-button-icon"></i>修改</a>
 					</h2>
 				</div>
 				<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="6914051" data-action="/question/detail">
 					<div class="zm-editable-content">
-						热血冒险类型<a href="javascript:;" class="zu-edit-button"><i class="zu-edit-button-icon"></i>修改</a>
+						${question.description }<a href="javascript:;" class="zu-edit-button"><i class="zu-edit-button-icon"></i>修改</a>
 					</div>
 				</div>
 				<div class="zm-item-meta zm-item-comment-el clearfix"

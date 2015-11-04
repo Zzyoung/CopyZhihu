@@ -9,6 +9,8 @@ import com.zhihu.pojo.UserCommentRelation;
 public interface CommentMapper {
 	List<Comment> getCommentsByAnswerId(int id) throws Exception;
 	
+	List<Comment> getAllCommentsByAnswerId(int id) throws Exception;
+	
 	int insertComment(Comment comment) throws Exception;
 	
 	int getCommentsCountByAnswerId(int id) throws Exception;

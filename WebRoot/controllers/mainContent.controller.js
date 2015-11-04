@@ -38,6 +38,13 @@
 			}
 		};
 		
+		mainCtrl.getAllComments = function(feed){
+			CommentService.getAllCommentsByAnswerId(feed.answerId).then(function(comments){
+				feed.comments = comments;
+				feed.loadAllComments = true;
+			});
+		};
+		
 		mainCtrl.expandAnswer = function(feed){
 			feed.answerExpanded = true;
 		};
