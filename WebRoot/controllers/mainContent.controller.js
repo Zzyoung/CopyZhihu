@@ -32,14 +32,14 @@
 			feed.isShowComments = !feed.isShowComments;
 			if(!feed.comments || feed.comments.length===0){
 				//根据answerId查询评论
-				CommentService.getCommentsByAnswerId(feed.answerId).then(function(comments){
+				CommentService.getCommentsByAnswerIdRequest(feed.answerId).then(function(comments){
 					feed.comments = comments;
 				});
 			}
 		};
 		
 		mainCtrl.getAllComments = function(feed){
-			CommentService.getAllCommentsByAnswerId(feed.answerId).then(function(comments){
+			CommentService.getCommentsByAnswerIdRequest(feed.answerId).then(function(comments){
 				feed.comments = comments;
 				feed.loadAllComments = true;
 			});
@@ -65,63 +65,17 @@
 			$event.preventDefault();
 		};
 		
-		mainCtrl.addNewComment = function(feed){
-			if(!feed.newComment || feed.newComment === ''){
-				return;
-			}
-			CommentService.addNewComment(feed.newComment,feed.answerId).then(function(){
-				//添加评论之后查出新的评论，显示在页面上
-				CommentService.getCommentsByAnswerId(feed.answerId).then(function(comments){
-					feed.comments = comments;
-					feed.commentsCount = comments.length;
-					feed.newComment = '';
-				});
-			});
-		};
+		mainCtrl.addNewComment = CommentService.addNewComment;
 		
-		mainCtrl.openReplyBox = function(comment){
-			comment.isReplying ? comment.isReplying = false : comment.isReplying = true;
-		};
+		mainCtrl.openReplyBox = CommentService.openReplyBox;
 		
-		mainCtrl.replyComment = function(comment,feed){
-			CommentService.replyComment(comment.replyContent, comment.id, feed.answerId).then(function(){
-				comment.isReplying = false;
-				comment.replyContent = "";
-				CommentService.getCommentsByAnswerId(feed.answerId).then(function(comments){
-					feed.comments = comments;
-					feed.commentsCount = comments.length;
-				});
-			});
-		};
+		mainCtrl.replyComment = CommentService.replyComment;
 		
-		mainCtrl.likeComment = function(comment){
-			CommentService.likeComment(comment.id).then(function(){
-				//获取已经赞过的人的id列表
-				CommentService.getVoterIds(comment.id).then(function(voterIds){
-					comment.voterIds = voterIds;
-				});
-				CommentService.getVoteCount(comment.id).then(function(voteCount){
-					comment.voteCount = voteCount;
-				});
-			});
-		};
+		mainCtrl.likeComment = CommentService.likeComment;
 		
-		mainCtrl.unlikeComment = function(comment){
-			CommentService.unlikeComment(comment.id).then(function(){
-				//获取已经赞过的人的id列表
-				CommentService.getVoterIds(comment.id).then(function(voterIds){
-					comment.voterIds = voterIds;
-				});
-				CommentService.getVoteCount(comment.id).then(function(voteCount){
-					comment.voteCount = voteCount;
-				});
-			});
-		};
+		mainCtrl.unlikeComment = CommentService.unlikeComment;
 		
-		mainCtrl.haveLiked = function(comment){
-			var currentUserId = $rootScope.globals.currentUser.id;
-			return comment.voterIds.indexOf(currentUserId) >= 0;
-		};
+		mainCtrl.haveLiked = CommentService.haveLiked;
 		
 		
 		

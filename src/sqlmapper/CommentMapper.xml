@@ -7,8 +7,8 @@
 			SELECT c.id ,c.author_id AS authorId, c.content, c.time, c.vote_count AS voteCount, 
 			c.reply_id AS replyId,u.name AS authorName,u.photo_url AS authorPhoto,u.home_url AS authorUrl, c.answer_id AS answerId
 			FROM COMMENT c,USER u
-			WHERE c.author_id = u.id AND c.answer_id = #{id} ORDER BY c.time LIMIT 10
-			) AS temp LEFT JOIN USER uu ON (SELECT author_id FROM COMMENT WHERE id = temp.replyId) = uu.id
+			WHERE c.author_id = u.id AND c.answer_id = #{id} LIMIT 10
+			) AS temp LEFT JOIN USER uu ON (SELECT author_id FROM COMMENT WHERE id = temp.replyId) = uu.id  ORDER BY time
 	</select>
 	
 	<select id="getAllCommentsByAnswerId" parameterType="int" resultType="com.zhihu.pojo.Comment">
@@ -16,8 +16,8 @@
 			SELECT c.id ,c.author_id AS authorId, c.content, c.time, c.vote_count AS voteCount, 
 			c.reply_id AS replyId,u.name AS authorName,u.photo_url AS authorPhoto,u.home_url AS authorUrl, c.answer_id AS answerId
 			FROM COMMENT c,USER u
-			WHERE c.author_id = u.id AND c.answer_id = #{id} ORDER BY c.time
-			) AS temp LEFT JOIN USER uu ON (SELECT author_id FROM COMMENT WHERE id = temp.replyId) = uu.id
+			WHERE c.author_id = u.id AND c.answer_id = #{id}
+			) AS temp LEFT JOIN USER uu ON (SELECT author_id FROM COMMENT WHERE id = temp.replyId) = uu.id  ORDER BY time
 	</select>
 	
 	<insert id="insertComment" parameterType="com.zhihu.pojo.Comment">

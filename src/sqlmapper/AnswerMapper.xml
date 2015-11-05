@@ -5,12 +5,17 @@
 	<select id="selectAnswerByQuestionId" parameterType="com.zhihu.pojo.Question" resultType="com.zhihu.pojo.Answer">
 		select id, author_id as authorId, content, answer_time as answerTime, question_id as questionId, MAX(votes) AS votes 
 		FROM answer
-		where question_id = #{id} limit 1
+		where question_id = #{id}
 	</select>
 	
 	<select id="selectAnswerListByQuestionId" parameterType="com.zhihu.pojo.Question" resultType="com.zhihu.pojo.Answer">
-		select id, author_id as authorId, content, answer_time as answerTime, question_id as questionId, MAX(votes) AS votes 
+		select id, author_id as authorId, content, answer_time as answerTime, question_id as questionId, votes 
 		FROM answer
 		where question_id = #{id} 
+	</select>
+	
+	<select id="selectWhoLikeAnswer" parameterType="int" resultType="com.zhihu.pojo.User">
+		SELECT id,NAME, photo_url AS photoUrl, summary,home_url AS homeUrl FROM USER 
+		WHERE id IN (SELECT user_id FROM user_answer_relation WHERE answer_id  = #{id}) limit 3
 	</select>
 </mapper>

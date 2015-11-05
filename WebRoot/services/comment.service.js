@@ -1,9 +1,9 @@
 (function(){
 	angular.module('zhihu').factory('CommentService',CommentService);
 	
-	CommentService.$inject = ['UtilsService', '$http', 'ConstantService'];
+	CommentService.$inject = ['UtilsService', '$http', 'ConstantService', '$rootScope'];
 	
-	function CommentService(UtilsService, $http, ConstantService){
+	function CommentService(UtilsService, $http, ConstantService, $rootScope){
 		var service = {};
 		
 		function querySuccess(response){
@@ -14,7 +14,7 @@
 			console.log('error');
 		}
 		
-		service.addNewComment = function(comment, answerId){
+		service.addNewCommentRequest = function(comment, answerId){
 			return $http({
 				method : 'POST',
 				url : '/Zhihu/addNewComment',
@@ -28,7 +28,8 @@
 			}).then(querySuccess, queryError);
 		};
 		
-		service.getCommentsByAnswerId = function(answerId){
+		service.getCommentsByAnswerIdRequest = function(answerId){
+			console.log('getCommentsByAnswerId',answerId);
 			return $http({
 				method : 'GET',
 				url : '/Zhihu/getComments',
@@ -41,7 +42,7 @@
 			}).then(querySuccess, queryError);
 		};
 		
-		service.getAllCommentsByAnswerId = function(answerId){
+		service.getAllCommentsByAnswerIdRequest = function(answerId){
 			return $http({
 				method : 'GET',
 				url : '/Zhihu/getAllComments',
@@ -54,7 +55,7 @@
 			}).then(querySuccess, queryError);
 		};
 		
-		service.replyComment = function(content,commentId,answerId){
+		service.replyCommentRequest = function(content,commentId,answerId){
 			return $http({
 				method : 'POST',
 				url : '/Zhihu/replyComment',
@@ -69,7 +70,7 @@
 			}).then(querySuccess, queryError);
 		};
 		
-		service.likeComment = function(commentId){
+		service.likeCommentRequest = function(commentId){
 			return $http({
 				method : 'POST',
 				url : '/Zhihu/likeComment',
@@ -82,7 +83,7 @@
 			}).then(querySuccess, queryError);
 		};
 		
-		service.unlikeComment = function(commentId){
+		service.unlikeCommentRequest = function(commentId){
 			return $http({
 				method : 'POST',
 				url : '/Zhihu/unlikeComment',
@@ -95,7 +96,7 @@
 			}).then(querySuccess, queryError);
 		};
 		
-		service.getVoterIds = function(commentId){
+		service.getVoterIdsRequest = function(commentId){
 			return $http({
 				method : 'GET',
 				url : '/Zhihu/getVoterIds',
@@ -108,7 +109,7 @@
 			}).then(querySuccess, queryError);
 		};
 		
-		service.getVoteCount = function(commentId){
+		service.getVoteCountRequest = function(commentId){
 			return $http({
 				method : 'GET',
 				url : '/Zhihu/getVoteCount',
@@ -119,6 +120,64 @@
 					'Content-Type' : 'application/x-www-form-urlencoded'
 				}
 			}).then(querySuccess, queryError);
+		};
+		//--------------------------------
+		service.addNewComment = function(feed){
+			if(!feed.newComment || feed.newComment === ''){
+				return;
+			}
+			service.addNewCommentRequest(feed.newComment,feed.answerId).then(function(){
+				//添加评论之后查出新的评论，显示在页面上
+				service.getCommentsByAnswerIdRequest(feed.answerId).then(function(comments){
+					feed.comments = comments;
+					feed.commentsCount = comments.length;
+					feed.newComment = '';
+				});
+			});
+		};
+		
+		service.openReplyBox = function(comment){
+			comment.isReplying ? comment.isReplying = false : comment.isReplying = true;
+		};
+		
+		service.replyComment = function(comment,feed){
+			service.replyCommentRequest(comment.replyContent, comment.id, feed.answerId).then(function(){
+				comment.isReplying = false;
+				comment.replyContent = "";
+				service.getCommentsByAnswerIdRequest(feed.answerId).then(function(comments){
+					feed.comments = comments;
+					feed.commentsCount = comments.length;
+				});
+			});
+		};
+		
+		service.likeComment = function(comment){
+			service.likeCommentRequest(comment.id).then(function(){
+				//获取已经赞过的人的id列表
+				service.getVoterIdsRequest(comment.id).then(function(voterIds){
+					comment.voterIds = voterIds;
+				});
+				service.getVoteCountRequest(comment.id).then(function(voteCount){
+					comment.voteCount = voteCount;
+				});
+			});
+		};
+		
+		service.unlikeComment = function(comment){
+			service.unlikeCommentRequest(comment.id).then(function(){
+				//获取已经赞过的人的id列表
+				service.getVoterIdsRequest(comment.id).then(function(voterIds){
+					comment.voterIds = voterIds;
+				});
+				service.getVoteCountRequest(comment.id).then(function(voteCount){
+					comment.voteCount = voteCount;
+				});
+			});
+		};
+		
+		service.haveLiked = function(comment){
+			var currentUserId = $rootScope.globals.currentUser.id;
+			return comment.voterIds.indexOf(currentUserId) >= 0;
 		};
 		
 		return service;

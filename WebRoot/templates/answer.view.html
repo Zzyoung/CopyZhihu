@@ -1,12 +1,8 @@
-<div ng-repeat="answer in ctrl.answers" tabindex="-1" class="zm-item-answer  zm-item-expanded"
-	data-aid="23052566" data-atoken="69082722" data-collapsed="0"
-	data-created="1445611949" data-deleted="0" data-helpful="1"
-	data-isowner="0" data-copyable="1">
-	<a class="zg-anchor-hidden" name="answer-23052566"></a>
+<div ng-repeat="answer in ctrl.answers" tabindex="-1" class="zm-item-answer  zm-item-expanded">
 	<div class="zm-votebar">
 		<button class="up" title="赞同">
 			<i class="icon vote-arrow"></i> <span class="label">赞同</span> <span
-				class="count">6</span>
+				class="count">{{answer.voters.length}}</span>
 		</button>
 		<button class="down" title="反对，不会显示你的姓名">
 			<i class="icon vote-arrow"></i> <span class="label">反对，不会显示你的姓名</span>
@@ -15,13 +11,15 @@
 	<div class="answer-head">
 		<div class="zm-item-answer-author-info">
 			<h3 class="zm-item-answer-author-wrap">
-				<a data-tip="p$t$w3cplus" class="zm-item-link-avatar" href="/people/w3cplus"> <img ng-src="{{answer.photo}}" class="zm-list-avatar" data-source="https://pic1.zhimg.com/eb7f2fe18_s.jpg"> </a>
-					<a data-tip="p$t$w3cplus" href="/people/w3cplus">{{answer.people}}</a>，
-					<strong title="前端码农" class="zu-question-my-bio">{{answer.peopleDesc}}</strong>
+				<a data-tip="p$t$w3cplus" class="zm-item-link-avatar" href="/people/w3cplus"> 
+					<img ng-src="{{answer.author.photoUrl}}" class="zm-list-avatar" data-source="images/eb7f2fe18_s.jpg"> 
+				</a>
+				<a data-tip="p$t$w3cplus" href="/people/w3cplus">{{answer.author.name}}</a>，
+				<strong title="{{answer.author.summary}}" class="zu-question-my-bio">{{answer.author.summary}}</strong>
 			</h3>
 		</div>
-		<div class="zm-item-vote-info " data-votecount="6">
-			<span class="voters"> 
+		<div class="zm-item-vote-info " ng-show="answer.voters.length>0">
+			<span class="voters" > 
 				<span class="user-block" ng-repeat="voter in answer.voters"><a data-tip="p$t$le-bu-zha-qia" href="http://www.zhihu.com/people/le-bu-zha-qia" class="zg-link" title="勒布吒卡">{{voter.name}}</a><span ng-hide="$last">、</span></span>
 			</span> <a href="javascript:;" class="more"> 等人赞同</a>
 		</div>
@@ -30,230 +28,79 @@
 		data-resourceid="6925675" data-action="/answer/content"
 		data-author-name="大漠"
 		data-entry-url="/question/36796143/answer/69082722">
-		<div class="zh-summary summary clearfix" style="display:none;">要和设计图一模一样，使用模拟表单吧。原生控件很难处理样式的，每个浏览器的渲染效果都不一样，仅CSS无法破解</div>
-
-
-		<div class="zm-editable-content clearfix">{{answer.content}}</div>
-
+		<div class="zh-summary summary clearfix" style="display:none;">{{answer.content}}</div>
+		<div formated-content class="zm-editable-content clearfix"><span>{{answer.content}}</span></div>
 	</div>
 	<a class="zg-anchor-hidden ac" name="23052566-comment"></a>
 	<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
 		<div class="zm-meta-panel">
-			<span class="answer-date-link-wrap"> <a
-				class="answer-date-link meta-item" target="_blank"
-				href="/question/36796143/answer/69082722">发布于 {{answer.answerTime}}</a> </span> <a
-				href="#" name="addcomment" class=" meta-item toggle-comment"> <i
-				class="z-icon-comment"></i>添加评论</a> <a href="#"
-				class="meta-item zu-autohide" name="thanks" data-thanked="false"><i
-				class="z-icon-thank"></i>感谢</a> <a href="#"
-				class="meta-item zu-autohide goog-inline-block goog-menu-button"
-				name="share" role="button" aria-expanded="false" tabindex="0"
-				aria-haspopup="true" style="-webkit-user-select: none;"><div
-					class="goog-inline-block goog-menu-button-outer-box">
-					<div class="goog-inline-block goog-menu-button-inner-box">
-						<div class="goog-inline-block goog-menu-button-caption">
-							<i class="z-icon-share"></i>分享
-						</div>
-						<div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div>
-					</div>
-				</div> </a> <a href="#" class="meta-item zu-autohide" name="favo"> <i
-				class="z-icon-collect"></i>收藏</a> <span class="zg-bull zu-autohide">•</span>
-
-			<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a> <span
-				class="zg-bull zu-autohide">•</span> <a href="#" name="report"
-				class="meta-item zu-autohide goog-inline-block goog-menu-button"
-				role="button" aria-expanded="false" tabindex="0"
-				aria-haspopup="true" style="-webkit-user-select: none;"><div
-					class="goog-inline-block goog-menu-button-outer-box">
-					<div class="goog-inline-block goog-menu-button-inner-box">
-						<div class="goog-inline-block goog-menu-button-caption">举报</div>
-						<div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div>
-					</div>
-				</div> </a> <span class="zg-bull">•</span> <a href="/terms#sec-licence-1"
-				target="_blank" class="meta-item copyright"> 作者保留权利 </a>
-
-
-
+			<span class="answer-date-link-wrap"> 
+				<a class="answer-date-link meta-item" target="_blank" href="/question/36796143/answer/69082722">发布于 {{answer.answerTime | date:'yyyy-MM-dd'}}</a> 
+			</span> 
+			<a href="#" ng-click="ctrl.toggleComments(answer)" class=" meta-item toggle-comment"><i class="z-icon-comment"></i>{{answer.isShowComments?'收起评论':answer.commentsCount===0?'添加评论':answer.commentsCount+' 条评论'}}</a> 
+			<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a> 
+			<a href="#" class="meta-item zu-autohide goog-inline-block goog-menu-button" tabindex="0"  style="-webkit-user-select: none;">
+				<i class="z-icon-share"></i>分享 &nbsp;
+			</a> 
+			<a href="#" class="meta-item zu-autohide" name="favo"> <i
+				class="z-icon-collect"></i>收藏</a> 
+			<span class="zg-bull zu-autohide">•</span>
+			<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a> 
+			<span class="zg-bull zu-autohide">•</span> 
+			<a href="#" name="report" class="meta-item zu-autohide goog-inline-block goog-menu-button" style="-webkit-user-select: none;">举报 &nbsp;</a> 
+			<span class="zg-bull">•</span> 
+			<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
 		</div>
-		<div class="zm-comment-box" data-count="4" style="display: none;">
-			<i class="icon icon-spike zm-comment-bubble"
-				style="display: inline; left: 140px;"></i> <a
-				class="zg-anchor-hidden" name="comment-0"></a>
+		<div class="zm-comment-box" ng-show="answer.isShowComments">
+			<i class="icon icon-spike zm-comment-bubble" style="display: inline; left: 140px;"></i> 
 			<div class="zm-comment-list">
-				<div class="zm-item-comment" data-id="100333962">
-					<a class="zg-anchor-hidden" name="comment-100333962"></a> <a
-						title="龙腾道默默地" data-tip="p$t$longtengdao"
-						class="zm-item-link-avatar" href="/people/longtengdao"> <img
-						src="https://pic3.zhimg.com/b52058d34ebf5633691693212e20805a_s.png"
-						class="zm-item-img-avatar"> </a>
+				<div class="zm-item-comment" ng-repeat="comment in answer.comments">
+					<a class="zg-anchor-hidden"></a> 
+					<a title="{{comment.authorName}}" data-tip="p$t$penny-lu-82" class="zm-item-link-avatar" ng-href="/Zhihu{{comment.authorUrl}}"> 
+						<img ng-src="{{comment.authorPhoto}}" class="zm-item-img-avatar"> 
+					</a>
 					<div class="zm-comment-content-wrap">
-						<div class="zm-comment-hd">
-							<a data-tip="p$t$longtengdao"
-								href="http://www.zhihu.com/people/longtengdao" class="zg-link"
-								title="龙腾道默默地">龙腾道默默地</a>
-
+						<div class="zm-comment-head">
+							<a data-tip="p$t$penny-lu-82" ng-href="/Zhihu{{comment.authorUrl}}" class="zg-link" title="{{comment.authorName}}">{{comment.authorName}}</a>
+							<span class="desc" ng-if="answer.answerAuthorId === comment.authorId">（作者）</span>
+							<span ng-if="comment.replyName" class="desc">回复 </span>
+							<a ng-if="comment.replyName" data-tip="p$t$gu-xiao-bai-68-52" href="{{comment.replyUrl}}" class="zg-link" title="{{comment.replyName}}">{{comment.replyName}}</a>
 						</div>
-						<div class="zm-comment-content">
-							lua的逻辑可以写得很重吗？求教怎么学习入门呀。mginx+lua可以达到和node.js一样吗？</div>
-						<div class="zm-comment-ft">
-							<span class="date">00:10</span> <a href="#"
-								class="reply zm-comment-op-link" name="reply_comment"> <i
-								class="zg-icon zg-icon-comment-reply"></i>回复</a> <a href="#"
-								class="like zm-comment-op-link " name="like_comment"> <i
-								class="zg-icon zg-icon-comment-like"></i>赞</a> <span
-								class="like-num  nil" data-tip="s$r$0 人觉得这个很赞"> <em>0</em>
-								<span>赞</span>
-							</span> <a href="#" name="report"
-								class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button"
-								role="button" aria-expanded="false" tabindex="0"
-								aria-haspopup="true" style="-webkit-user-select: none;"><div
-									class="goog-inline-block goog-menu-button-outer-box">
-									<div class="goog-inline-block goog-menu-button-inner-box">
-										<div class="goog-inline-block goog-menu-button-caption">
-											<i class="zg-icon z-icon-no-help"></i>举报
-										</div>
-										<div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div>
-									</div>
-								</div>
+						<div class="zm-comment-content">{{comment.content}}</div>
+						<div class="zm-comment-foot">
+							<span class="date">{{comment.time|date:'yyyy-MM-dd'}}</span> 
+							<a href="#" class="reply zm-comment-op-link" ng-click="ctrl.openReplyBox(comment)"> 
+								<i class="zg-icon zg-icon-comment-reply"></i>回复 
+							</a> 
+							<a ng-if="!ctrl.haveLiked(comment)" href="#" class="like zm-comment-op-link " ng-click="ctrl.likeComment(comment)"> 
+								<i class="zg-icon zg-icon-comment-like"></i>赞 
 							</a>
-
-
+							<a ng-if="ctrl.haveLiked(comment)" href="#" class="like zm-comment-op-link " ng-click="ctrl.unlikeComment(comment)"> 
+								<i class="zg-icon zg-icon-comment-like"></i>取消赞 
+							</a>
+							<span ng-show="comment.voteCount>0" class="like-num  " data-tip="s$r$1 人觉得这个很赞"> <em>{{comment.voteCount}}</em>	<span>赞</span> </span> 
+							<a href="#" name="report" class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button" style="-webkit-user-select: none;">
+								<i class="zg-icon z-icon-no-help"></i>举报 
+							</a>
+						</div>
+						<div class="zm-comment-form zm-comment-box-ft expanded" style="padding:15px 0;" ng-show="comment.isReplying">
+							<input class="zm-comment-editable editable" ng-model="comment.replyContent" style="width:463px;" placeholder="写下你的评论…">
+							<div class="zm-command zg-clear">
+								<a href="#" class="zg-right zg-btn-blue" ng-click="ctrl.replyComment(comment,answer)">评论</a> <a href="#" ng-click="comment.isReplying = false;" class="zm-command-cancel">取消</a>
+							</div>
+							<div class="zm-comment-info"></div>
 						</div>
 					</div>
 				</div>
-
-				<div class="zm-item-comment" data-id="100334106">
-					<a class="zg-anchor-hidden" name="comment-100334106"></a> <a
-						title="龙腾道默默地" data-tip="p$t$longtengdao"
-						class="zm-item-link-avatar" href="/people/longtengdao"> <img
-						src="https://pic3.zhimg.com/b52058d34ebf5633691693212e20805a_s.png"
-						class="zm-item-img-avatar"> </a>
-					<div class="zm-comment-content-wrap">
-						<div class="zm-comment-hd">
-							<a data-tip="p$t$longtengdao"
-								href="http://www.zhihu.com/people/longtengdao" class="zg-link"
-								title="龙腾道默默地">龙腾道默默地</a>
-
-						</div>
-						<div class="zm-comment-content">
-							另外求教用了node.js还有必要memcache吗？数据库直接放在一个变量里不就是内存数据库了…</div>
-						<div class="zm-comment-ft">
-							<span class="date">00:11</span> <a href="#"
-								class="reply zm-comment-op-link" name="reply_comment"> <i
-								class="zg-icon zg-icon-comment-reply"></i>回复</a> <a href="#"
-								class="like zm-comment-op-link " name="like_comment"> <i
-								class="zg-icon zg-icon-comment-like"></i>赞</a> <span
-								class="like-num  nil" data-tip="s$r$0 人觉得这个很赞"> <em>0</em>
-								<span>赞</span>
-							</span> <a href="#" name="report"
-								class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button"
-								role="button" aria-expanded="false" tabindex="0"
-								aria-haspopup="true" style="-webkit-user-select: none;"><div
-									class="goog-inline-block goog-menu-button-outer-box">
-									<div class="goog-inline-block goog-menu-button-inner-box">
-										<div class="goog-inline-block goog-menu-button-caption">
-											<i class="zg-icon z-icon-no-help"></i>举报
-										</div>
-										<div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div>
-									</div>
-								</div>
-							</a>
-
-
-						</div>
-					</div>
-				</div>
-
-				<div class="zm-item-comment" data-id="100334352">
-					<a class="zg-anchor-hidden" name="comment-100334352"></a> <a
-						title="朱涵俊" data-tip="p$t$zhu-han-jun-81"
-						class="zm-item-link-avatar" href="/people/zhu-han-jun-81"> <img
-						src="https://pic3.zhimg.com/90f7ac5ebc91d01a4e6e588f4642822e_s.jpg"
-						class="zm-item-img-avatar"> </a>
-					<div class="zm-comment-content-wrap">
-						<div class="zm-comment-hd">
-							<a data-tip="p$t$zhu-han-jun-81"
-								href="http://www.zhihu.com/people/zhu-han-jun-81"
-								class="zg-link" title="朱涵俊">朱涵俊</a><span class="desc">（作者）</span>
-							<span class="desc">回复 </span><a data-tip="p$t$longtengdao"
-								href="http://www.zhihu.com/people/longtengdao" class="zg-link"
-								title="龙腾道默默地">龙腾道默默地</a>
-						</div>
-						<div class="zm-comment-content">
-							个人觉得是绝配，目前测试比nodejs快一倍左右。lua就是写逻辑的，很多游戏脚本用lua。不过我觉得lua最很的使用场景还是跟nginx搭配。
-						</div>
-						<div class="zm-comment-ft">
-							<span class="date">00:13</span> <a href="#"
-								class="reply zm-comment-op-link" name="reply_comment"> <i
-								class="zg-icon zg-icon-comment-reply"></i>回复</a> <a href="#"
-								class="like zm-comment-op-link " name="like_comment"> <i
-								class="zg-icon zg-icon-comment-like"></i>赞</a> <span
-								class="like-num  nil" data-tip="s$r$0 人觉得这个很赞"> <em>0</em>
-								<span>赞</span>
-							</span> <a href="#" name="report"
-								class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button"
-								role="button" aria-expanded="false" tabindex="0"
-								aria-haspopup="true" style="-webkit-user-select: none;"><div
-									class="goog-inline-block goog-menu-button-outer-box">
-									<div class="goog-inline-block goog-menu-button-inner-box">
-										<div class="goog-inline-block goog-menu-button-caption">
-											<i class="zg-icon z-icon-no-help"></i>举报
-										</div>
-										<div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="zm-item-comment" data-id="100334526">
-					<a class="zg-anchor-hidden" name="comment-100334526"></a> <a
-						title="朱涵俊" data-tip="p$t$zhu-han-jun-81"
-						class="zm-item-link-avatar" href="/people/zhu-han-jun-81"> <img
-						src="https://pic3.zhimg.com/90f7ac5ebc91d01a4e6e588f4642822e_s.jpg"
-						class="zm-item-img-avatar"> </a>
-					<div class="zm-comment-content-wrap">
-						<div class="zm-comment-hd">
-							<a data-tip="p$t$zhu-han-jun-81"
-								href="http://www.zhihu.com/people/zhu-han-jun-81"
-								class="zg-link" title="朱涵俊">朱涵俊</a><span class="desc">（作者）</span>
-							<span class="desc">回复 </span><a data-tip="p$t$longtengdao"
-								href="http://www.zhihu.com/people/longtengdao" class="zg-link"
-								title="龙腾道默默地">龙腾道默默地</a>
-						</div>
-						<div class="zm-comment-content">
-							当然需要。nodejs有多个进程，每个进程数据是分离的，而memcache只有一份</div>
-						<div class="zm-comment-ft">
-							<span class="date">00:14</span> <a href="#"
-								class="reply zm-comment-op-link" name="reply_comment"> <i
-								class="zg-icon zg-icon-comment-reply"></i>回复</a> <a href="#"
-								class="like zm-comment-op-link " name="like_comment"> <i
-								class="zg-icon zg-icon-comment-like"></i>赞</a> <span
-								class="like-num  nil" data-tip="s$r$0 人觉得这个很赞"> <em>0</em>
-								<span>赞</span>
-							</span> <a href="#" name="report"
-								class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button"
-								role="button" aria-expanded="false" tabindex="0"
-								aria-haspopup="true" style="-webkit-user-select: none;"><div
-									class="goog-inline-block goog-menu-button-outer-box">
-									<div class="goog-inline-block goog-menu-button-inner-box">
-										<div class="goog-inline-block goog-menu-button-caption">
-											<i class="zg-icon z-icon-no-help"></i>举报
-										</div>
-										<div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
+				<a href="javascript:;" ng-click="ctrl.getAllComments(answer)" class="load-more" ng-hide="answer.comments.length<10 || answer.loadAllComments"> 
+					<span class="text">显示全部评论</span> 
+				</a>
 			</div>
-			<div class="zm-comment-form zm-comment-box-ft">
-				<div class="zm-comment-editable editable" contenteditable="true"><p style="color:#999">写下你的评论…</p></div>
-				<div class="zm-command zg-clear">
-					<a href="#" name="addnew" class="zg-right zg-btn-blue">评论</a> <a
-						href="#" name="closeform" class="zm-command-cancel">取消</a>
+			<div ng-click="answer.isAddingComment = true" ng-class="answer.isAddingComment?'zm-comment-form zm-comment-box-ft expanded':'zm-comment-form zm-comment-box-ft'">
+				<!-- <div class="zm-comment-editable editable" contenteditable="true"><p ng-if="!answer.isAddingComment" style="color:#999">写下你的评论…</p></div> -->
+				<input class="zm-comment-editable editable" style="width:492px;" ng-model="answer.newComment" placeholder="写下你的评论…">
+				<div class="zm-command zg-clear" ng-show="answer.isAddingComment">
+					<a href="#" class="zg-right zg-btn-blue" ng-click="ctrl.addNewComment(answer)">评论</a> <a href="#" ng-click="ctrl.closeForm(answer,$event)" class="zm-command-cancel">取消</a>
 				</div>
 				<div class="zm-comment-info"></div>
 			</div>

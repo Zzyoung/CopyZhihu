@@ -1,9 +1,11 @@
 package com.zhihu.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Answer {
 	private Integer id;
+	private Integer answerId;
 	private Integer authorId;
 	private String content;
 	private Date answerTime;
@@ -13,7 +15,34 @@ public class Answer {
 	private String oppose;
 	private String unhelpful;
 	private boolean unnamed;
+	private User author;
+	private List<User> voters;
+	private Integer commentsCount;
 	
+	public Integer getAnswerId() {
+		return answerId;
+	}
+	public void setAnswerId(Integer answerId) {
+		this.answerId = answerId;
+	}
+	public Integer getCommentsCount() {
+		return commentsCount;
+	}
+	public void setCommentsCount(Integer commentsCount) {
+		this.commentsCount = commentsCount;
+	}
+	public List<User> getVoters() {
+		return voters;
+	}
+	public void setVoters(List<User> voters) {
+		this.voters = voters;
+	}
+	public User getAuthor() {
+		return author;
+	}
+	public void setAuthor(User author) {
+		this.author = author;
+	}
 	public boolean isUnnamed() {
 		return unnamed;
 	}

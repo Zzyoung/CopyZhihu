@@ -1,5 +1,7 @@
 package com.zhihu.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,9 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.alibaba.fastjson.JSON;
+import com.zhihu.pojo.Answer;
 import com.zhihu.pojo.Question;
+import com.zhihu.service.AnswerService;
 import com.zhihu.service.QuestionService;
-import com.zhihu.service.TopicService;
 import com.zhihu.utils.Utils;
 
 @Controller("ShowQuestionController")
@@ -22,7 +26,7 @@ public class ShowQuestionController {
 	private QuestionService questionService;
 	
 	@Autowired
-	private TopicService topicService;
+	private AnswerService answerService;
 	
 	private final static Logger logger = LoggerFactory.getLogger(ShowQuestionController.class);
 	
@@ -47,6 +51,15 @@ public class ShowQuestionController {
 	
 	@RequestMapping(value="getAnswerList",method = RequestMethod.GET)
 	public void getAnswerList(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception {
-		
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		String questionId = request.getParameter("id");
+		logger.info("当前问题ID为："+questionId);
+		if(Utils.isEmpty(questionId)){
+			return;
+		}
+		List<Answer> answers = answerService.selectAnswerListByQuestionId(Integer.parseInt(questionId));
+		response.getWriter().write(JSON.toJSONString(answers));
 	}
 }

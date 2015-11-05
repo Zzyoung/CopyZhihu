@@ -105,7 +105,8 @@
 													data-tip="t$t$19591985" data-token="19591985"
 													data-topicid="13908"> 动漫 </a> 话题下有 36 个回答
 											</div>
-										</div></li>
+										</div>
+									</li>
 
 									<li class="person"><a data-tip="p$t$kagamichan"
 										class="zm-item-link-avatar" href="/people/kagamichan"
@@ -178,373 +179,9 @@
 													data-topicid="13908"> 动漫 </a> 话题下有 177 个回答
 											</div>
 										</div></li>
-
-									<li class="person" style="display:none"><a title="苏沉船"
-										data-tip="p$t$su-chen-chuan" class="zm-item-link-avatar"
-										href="/people/su-chen-chuan"> <img
-											src="images/touxiang.jpg"
-											class="zm-item-img-avatar"> </a>
-										<div class="content">
-
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="c93586c3a5ebf9e8bddf836184e8ad13"
-												data-type="recommended">邀请回答</button>
-
-											<div class="describe">
-												<a data-tip="p$t$su-chen-chuan"
-													href="http://www.zhihu.com/people/su-chen-chuan"
-													class="zg-link" title="苏沉船">苏沉船</a>
-											</div>
-											<div class="reason">
-												在 <a href="/people/su-chen-chuan/topic/19591985/answers"
-													data-tip="t$b$19591985" data-token="19591985"
-													data-topicid="13908"> 动漫 </a> 话题下有 95 个回答
-											</div>
-										</div></li>
-
-									<li class="person" style="display:none"><a title="蜗牛君"
-										data-tip="p$t$gua-niu-91-90" class="zm-item-link-avatar"
-										href="/people/gua-niu-91-90"> <img
-											src="images/touxiang.jpg"
-											class="zm-item-img-avatar"> </a>
-										<div class="content">
-
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="4940c884b087b53c8deef8dde7f09944"
-												data-type="recommended">邀请回答</button>
-
-											<div class="describe">
-												<a data-tip="p$t$gua-niu-91-90"
-													href="http://www.zhihu.com/people/gua-niu-91-90"
-													class="zg-link" title="蜗牛君">蜗牛君</a><span
-													class="bio hidden-phone" title="不入流吉他手\不务正业建筑男">，不入流吉他手\不务正业建筑男</span>
-											</div>
-											<div class="reason">
-												在 <a href="/people/gua-niu-91-90/topic/19665348/answers"
-													data-tip="t$b$19665348" data-token="19665348"
-													data-topicid="38458"> 动漫推荐 </a> 话题下有 5 个回答
-											</div>
-										</div></li>
-
-									<li class="person" style="display:none"><a title="目目大法好"
-										data-tip="p$t$wayne-tong" class="zm-item-link-avatar"
-										href="/people/wayne-tong"> <img
-											src="images/touxiang.jpg"
-											class="zm-item-img-avatar"> </a>
-										<div class="content">
-
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="c8708a6a4a669d2d077a9695686f739e"
-												data-type="recommended">邀请回答</button>
-
-											<div class="describe">
-												<a data-tip="p$t$wayne-tong"
-													href="http://www.zhihu.com/people/wayne-tong"
-													class="zg-link" title="目目大法好">目目大法好</a><span
-													class="bio hidden-phone" title="动画加漫画，就是动漫">，动画加漫画，就是动漫</span>
-											</div>
-											<div class="reason">
-												在 <a href="/people/wayne-tong/topic/19591985/answers"
-													data-tip="t$b$19591985" data-token="19591985"
-													data-topicid="13908"> 动漫 </a> 话题下有 206 个回答
-											</div>
-										</div></li>
-
-									<li class="person" style="display:none"><a
-										title="JX Consp" data-tip="p$t$JX-Consp"
-										class="zm-item-link-avatar" href="/people/JX-Consp"> <img
-											src="images/touxiang.jpg"
-											class="zm-item-img-avatar"> </a>
-										<div class="content">
-
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="ace55bee53f65086ccd880bf9c94018e"
-												data-type="recommended">邀请回答</button>
-
-											<div class="describe">
-												<a data-tip="p$t$JX-Consp"
-													href="http://www.zhihu.com/people/JX-Consp" class="zg-link"
-													title="JX Consp">JX Consp</a><span class="bio hidden-phone"
-													title="朱门酒肉臭，路有克苏鲁">，朱门酒肉臭，路有克苏鲁</span>
-											</div>
-											<div class="reason">
-												在 <a href="/people/JX-Consp/topic/19665348/answers"
-													data-tip="t$b$19665348" data-token="19665348"
-													data-topicid="38458"> 动漫推荐 </a> 话题下有 1 个回答
-											</div>
-										</div></li>
-
-									<li class="person" style="display:none"><a
-										title="queen red" data-tip="p$t$queen-red-76"
-										class="zm-item-link-avatar" href="/people/queen-red-76"> <img
-											src="images/touxiang.jpg"
-											class="zm-item-img-avatar"> </a>
-										<div class="content">
-
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="1a2f725bf1348e3278081f27923c724f"
-												data-type="recommended">邀请回答</button>
-
-											<div class="describe">
-												<a data-tip="p$t$queen-red-76"
-													href="http://www.zhihu.com/people/queen-red-76"
-													class="zg-link" title="queen red">queen red</a><span
-													class="bio hidden-phone" title="擅长话题是哆啦A梦">，擅长话题是哆啦A梦</span>
-											</div>
-											<div class="reason">
-												在 <a href="/people/queen-red-76/topic/19591985/answers"
-													data-tip="t$b$19591985" data-token="19591985"
-													data-topicid="13908"> 动漫 </a> 话题下有 38 个回答
-											</div>
-										</div></li>
-
-									<li class="person" style="display:none"><a title="范大凯"
-										data-tip="p$t$fcukdk" class="zm-item-link-avatar"
-										href="/people/fcukdk"> <img
-											src="images/touxiang.jpg"
-											class="zm-item-img-avatar"> </a>
-										<div class="content">
-
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="4f8ccd945f357116113895922095d4c5"
-												data-type="recommended">邀请回答</button>
-
-											<div class="describe">
-												<a data-tip="p$t$fcukdk"
-													href="http://www.zhihu.com/people/fcukdk" class="zg-link"
-													title="范大凯">范大凯</a><span class="bio hidden-phone"
-													title="友善度五星，资料完善度62%">，友善度五星，资料完善度62%</span>
-											</div>
-											<div class="reason">
-												在 <a href="/people/fcukdk/topic/19665348/answers"
-													data-tip="t$b$19665348" data-token="19665348"
-													data-topicid="38458"> 动漫推荐 </a> 话题下有 1 个回答
-											</div>
-										</div></li>
-
-									<li class="person" style="display:none"><a
-										title="Scottewanckigham" data-tip="p$t$klhscott"
-										class="zm-item-link-avatar" href="/people/klhscott"> <img
-											src="images/touxiang.jpg"
-											class="zm-item-img-avatar"> </a>
-										<div class="content">
-
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="412ce593bfa3aa7724c4ccbb5ed8153a"
-												data-type="recommended">邀请回答</button>
-
-											<div class="describe">
-												<a data-tip="p$t$klhscott"
-													href="http://www.zhihu.com/people/klhscott" class="zg-link"
-													title="Scottewanckigham">Scottewanckigham</a><span
-													class="bio hidden-phone" title="Cosmopolitan">，Cosmopolitan</span>
-											</div>
-											<div class="reason">
-												在 <a href="/people/klhscott/topic/19665348/answers"
-													data-tip="t$b$19665348" data-token="19665348"
-													data-topicid="38458"> 动漫推荐 </a> 话题下有 1 个回答
-											</div>
-										</div></li>
-
-									<li class="person" style="display:none"><a title="戴亦舒"
-										data-tip="p$t$dai-yi-shu" class="zm-item-link-avatar"
-										href="/people/dai-yi-shu"> <img
-											src="images/touxiang.jpg"
-											class="zm-item-img-avatar"> </a>
-										<div class="content">
-
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="aa7bd59f2309f8613b701908f5361111"
-												data-type="recommended">邀请回答</button>
-
-											<div class="describe">
-												<a data-tip="p$t$dai-yi-shu"
-													href="http://www.zhihu.com/people/dai-yi-shu"
-													class="zg-link" title="戴亦舒">戴亦舒</a><span
-													class="bio hidden-phone" title="足球/ACG/金融">，足球/ACG/金融</span>
-											</div>
-											<div class="reason">
-												在 <a href="/people/dai-yi-shu/topic/19591985/answers"
-													data-tip="t$b$19591985" data-token="19591985"
-													data-topicid="13908"> 动漫 </a> 话题下有 29 个回答
-											</div>
-										</div></li>
-
-									<li class="person" style="display:none"><a title="zecy"
-										data-tip="p$t$zecy" class="zm-item-link-avatar"
-										href="/people/zecy"> <img
-											src="images/touxiang.jpg"
-											class="zm-item-img-avatar"> </a>
-										<div class="content">
-
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="00c0e955b58805c94bd6983ec1a387c6"
-												data-type="recommended">邀请回答</button>
-
-											<div class="describe">
-												<a data-tip="p$t$zecy"
-													href="http://www.zhihu.com/people/zecy" class="zg-link"
-													title="zecy">zecy</a><span class="bio hidden-phone"
-													title="「动漫」问题请别问我，我只是动画宅">，「动漫」问题请别问我，我只是动画宅</span>
-											</div>
-											<div class="reason">
-												在 <a href="/people/zecy/topic/19591985/answers"
-													data-tip="t$b$19591985" data-token="19591985"
-													data-topicid="13908"> 动漫 </a> 话题下有 331 个回答
-											</div>
-										</div></li>
-
-									<li class="person" style="display:none"><a title="lushark"
-										data-tip="p$t$lushark" class="zm-item-link-avatar"
-										href="/people/lushark"> <img
-											src="images/touxiang.jpg"
-											class="zm-item-img-avatar"> </a>
-										<div class="content">
-
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="7a6e606c8d70f8c8a3edeb693eb62450"
-												data-type="recommended">邀请回答</button>
-
-											<div class="describe">
-												<a data-tip="p$t$lushark"
-													href="http://www.zhihu.com/people/lushark" class="zg-link"
-													title="lushark">lushark</a><span class="bio hidden-phone"
-													title="我不是你想的那种人。">，我不是你想的那种人。</span>
-											</div>
-											<div class="reason">
-												在 <a href="/people/lushark/topic/19591985/answers"
-													data-tip="t$b$19591985" data-token="19591985"
-													data-topicid="13908"> 动漫 </a> 话题下有 32 个回答
-											</div>
-										</div></li>
-
-									<li class="person" style="display:none"><a title="沂琳"
-										data-tip="p$t$irinwind" class="zm-item-link-avatar"
-										href="/people/irinwind"> <img
-											src="images/touxiang.jpg"
-											class="zm-item-img-avatar"> </a>
-										<div class="content">
-
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="c4a5f2c3ae963e6e07823c36443c335d"
-												data-type="recommended">邀请回答</button>
-
-											<div class="describe">
-												<a data-tip="p$t$irinwind"
-													href="http://www.zhihu.com/people/irinwind" class="zg-link"
-													title="沂琳">沂琳</a><span class="bio hidden-phone"
-													title="游戏策划 / 产品设计">，游戏策划 / 产品设计</span>
-											</div>
-											<div class="reason">
-												在 <a href="/people/irinwind/topic/19591985/answers"
-													data-tip="t$b$19591985" data-token="19591985"
-													data-topicid="13908"> 动漫 </a> 话题下有 39 个回答
-											</div>
-										</div></li>
-
-									<li class="person" style="display:none"><a title="赵欣"
-										data-tip="p$t$kqx1987" class="zm-item-link-avatar"
-										href="/people/kqx1987"> <img
-											src="images/touxiang.jpg"
-											class="zm-item-img-avatar"> </a>
-										<div class="content">
-
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="4647934a63817b6f7d1e92d7769a9845"
-												data-type="recommended">邀请回答</button>
-
-											<div class="describe">
-												<a data-tip="p$t$kqx1987"
-													href="http://www.zhihu.com/people/kqx1987" class="zg-link"
-													title="赵欣">赵欣</a><span class="bio hidden-phone"
-													title="地税征管 / 宅胖 / 且答且跑题">，地税征管 / 宅胖 / 且答且跑题</span>
-											</div>
-											<div class="reason">
-												在 <a href="/people/kqx1987/topic/19591985/answers"
-													data-tip="t$b$19591985" data-token="19591985"
-													data-topicid="13908"> 动漫 </a> 话题下有 43 个回答
-											</div>
-										</div></li>
-
-									<li class="person" style="display:none"><a title="丁勾"
-										data-tip="p$t$ding-gou" class="zm-item-link-avatar"
-										href="/people/ding-gou"> <img
-											src="images/touxiang.jpg"
-											class="zm-item-img-avatar"> </a>
-										<div class="content">
-
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="3f211b29914f9651c7dfa2fe4ab73ea3"
-												data-type="recommended">邀请回答</button>
-
-											<div class="describe">
-												<a data-tip="p$t$ding-gou"
-													href="http://www.zhihu.com/people/ding-gou" class="zg-link"
-													title="丁勾">丁勾</a><span class="bio hidden-phone"
-													title="死宅和射孔，没头脑和不高兴">，死宅和射孔，没头脑和不高兴</span>
-											</div>
-											<div class="reason">
-												在 <a href="/people/ding-gou/topic/19591985/answers"
-													data-tip="t$b$19591985" data-token="19591985"
-													data-topicid="13908"> 动漫 </a> 话题下有 11 个回答
-											</div>
-										</div></li>
-
-									<li class="person" style="display:none"><a title="重闱"
-										data-tip="p$t$li-feng-4-80" class="zm-item-link-avatar"
-										href="/people/li-feng-4-80"> <img
-											src="images/touxiang.jpg"
-											class="zm-item-img-avatar"> </a>
-										<div class="content">
-
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="100156670123af490ef847bcb3eee0a1"
-												data-type="recommended">邀请回答</button>
-
-											<div class="describe">
-												<a data-tip="p$t$li-feng-4-80"
-													href="http://www.zhihu.com/people/li-feng-4-80"
-													class="zg-link" title="重闱">重闱</a><span
-													class="bio hidden-phone" title="画师">，画师</span>
-											</div>
-											<div class="reason">
-												在 <a href="/people/li-feng-4-80/topic/19665348/answers"
-													data-tip="t$b$19665348" data-token="19665348"
-													data-topicid="38458"> 动漫推荐 </a> 话题下有 2 个回答
-											</div>
-										</div></li>
-
-									<li class="person" style="display:none"><a title="Sakura"
-										data-tip="p$t$sakura.moe" class="zm-item-link-avatar"
-										href="/people/sakura.moe"> <img
-											src="images/touxiang.jpg"
-											class="zm-item-img-avatar"> </a>
-										<div class="content">
-
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="88de38fc855cf1c99b02f3ba9caec11c"
-												data-type="recommended">邀请回答</button>
-
-											<div class="describe">
-												<a data-tip="p$t$sakura.moe"
-													href="http://www.zhihu.com/people/sakura.moe"
-													class="zg-link" title="Sakura">Sakura</a><span
-													class="bio hidden-phone" title="♡トマラシ♡">，♡トマラシ♡</span>
-											</div>
-											<div class="reason">
-												在 <a href="/people/sakura.moe/topic/19665348/answers"
-													data-tip="t$b$19665348" data-token="19665348"
-													data-topicid="38458"> 动漫推荐 </a> 话题下有 3 个回答
-											</div>
-										</div></li>
-
 								</ul>
-
 								<a class="js-more" href="#">更多推荐结果</a>
-
 							</div>
-
-
 						</div>
 					</div>
 				</div>
@@ -744,7 +381,7 @@
 		                    username: '<%= request.getAttribute("userName")%>'
 		                },
 		                currentQuestion:{
-		                	id:<%= request.getAttribute("questionId")%>
+		                	id:'${question.id }'
 		                }
 		            };
 				}
@@ -757,8 +394,9 @@
  	<script type="text/javascript" src="services/constant.service.js"></script>	
 	<script type="text/javascript" src="services/navigation.service.js"></script>
 	<script type="text/javascript" src="services/question.service.js"></script>
-	<script type="text/javascript" src="services/question.service.js"></script>
 	<script type="text/javascript" src="services/topic.service.js"></script>
+	<script type="text/javascript" src="services/answer.service.js"></script>
+	<script type="text/javascript" src="services/comment.service.js"></script>
 
 	<!-- controllers -->
 	<script type="text/javascript" src="controllers/navigation.controller.js"></script>
@@ -772,5 +410,6 @@
 	<script type="text/javascript" src="directives/queryQuestionResult.js"></script>
 	<script type="text/javascript" src="directives/queryTopic.js"></script>
 	<script type="text/javascript" src="directives/selectedQueryTopic.js"></script>
+	<script type="text/javascript" src="directives/formatedContent.js"></script>
 </body>
 </html>
