@@ -1,8 +1,7 @@
 <div ng-repeat="answer in ctrl.answers" tabindex="-1" class="zm-item-answer  zm-item-expanded">
 	<div class="zm-votebar">
 		<button class="up" title="赞同">
-			<i class="icon vote-arrow"></i> <span class="label">赞同</span> <span
-				class="count">{{answer.voters.length}}</span>
+			<i class="icon vote-arrow"></i> <span class="label">赞同</span> <span class="count">{{answer.voteCount}}</span>
 		</button>
 		<button class="down" title="反对，不会显示你的姓名">
 			<i class="icon vote-arrow"></i> <span class="label">反对，不会显示你的姓名</span>

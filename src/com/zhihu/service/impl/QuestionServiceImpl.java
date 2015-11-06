@@ -80,7 +80,7 @@ public class QuestionServiceImpl implements QuestionService {
 			feed.setQuestionDesc(question.getDescription());
 			Answer answer = answerMapper.selectAnswerByQuestionId(question);
 			feed.setAnswerTime(answer.getAnswerTime());
-			feed.setVoteCount(answer.getVotes());
+			feed.setVoteCount(answer.getVoteCount());
 			feed.setAnswer(answer.getContent());
 			feed.setUnnamed(answer.isUnnamed());
 			feed.setAnswerId(answer.getId());

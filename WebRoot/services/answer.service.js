@@ -27,6 +27,32 @@
 			}).then(querySuccess, queryError);
 		};
 		
+		service.likeAnswer = function(answerId){
+			return $http({
+				method : 'POST',
+				url : '/Zhihu/likeAnswer',
+				params : {
+					'id' : answerId
+				},
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			}).then(querySuccess, queryError);
+		};
+		
+		service.unlikeAnswer = function(answerId){
+			return $http({
+				method : 'POST',
+				url : '/Zhihu/unlikeAnswer',
+				params : {
+					'id' : answerId
+				},
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			}).then(querySuccess, queryError);
+		};
+		
 		return service;
 	}
 	

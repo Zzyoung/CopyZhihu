@@ -10,7 +10,7 @@ public class Answer {
 	private String content;
 	private Date answerTime;
 	private Integer questionId;
-	private Integer votes;
+	private Integer voteCount;
 	private String thanks;
 	private String oppose;
 	private String unhelpful;
@@ -79,11 +79,11 @@ public class Answer {
 	public void setQuestionId(Integer questionId) {
 		this.questionId = questionId;
 	}
-	public Integer getVotes() {
-		return votes;
+	public Integer getVoteCount() {
+		return voteCount;
 	}
-	public void setVotes(Integer votes) {
-		this.votes = votes;
+	public void setVoteCount(Integer voteCount) {
+		this.voteCount = voteCount;
 	}
 	public String getThanks() {
 		return thanks;

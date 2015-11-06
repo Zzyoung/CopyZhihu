@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.alibaba.fastjson.JSON;
 import com.zhihu.pojo.Comment;
 import com.zhihu.pojo.Feed;
+import com.zhihu.service.AnswerService;
 import com.zhihu.service.CommentService;
 import com.zhihu.service.QuestionService;
 import com.zhihu.utils.Utils;
@@ -29,6 +30,9 @@ public class MainController {
 	
 	@Autowired
 	private CommentService commentService;
+	
+	@Autowired
+	private AnswerService answerService;
 	
 	private final static Logger logger = LoggerFactory.getLogger(MainController.class);
 	
@@ -173,5 +177,21 @@ public class MainController {
 		response.getWriter().write(JSON.toJSONString(voterIds));
 		
 	}
+	
+	@RequestMapping(value="likeAnswer",method = RequestMethod.POST)
+	public void likeAnswer(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		String answerId = request.getParameter("id");
+		if(Utils.isEmpty(answerId)){
+			return;
+		}
+		
+		int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
+		answerService.likeAnswer(Integer.parseInt(answerId),currentUserId);
+		
+	}
+	
 }
 

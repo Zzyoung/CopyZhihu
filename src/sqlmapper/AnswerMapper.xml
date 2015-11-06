@@ -3,13 +3,13 @@
 <mapper namespace="com.zhihu.dao.AnswerMapper" >
 
 	<select id="selectAnswerByQuestionId" parameterType="com.zhihu.pojo.Question" resultType="com.zhihu.pojo.Answer">
-		select id, author_id as authorId, content, answer_time as answerTime, question_id as questionId, MAX(votes) AS votes 
+		select id, author_id as authorId, content, answer_time as answerTime, question_id as questionId, MAX(vote_count) AS voteCount 
 		FROM answer
 		where question_id = #{id}
 	</select>
 	
 	<select id="selectAnswerListByQuestionId" parameterType="com.zhihu.pojo.Question" resultType="com.zhihu.pojo.Answer">
-		select id, author_id as authorId, content, answer_time as answerTime, question_id as questionId, votes 
+		select id, author_id as authorId, content, answer_time as answerTime, question_id as questionId, vote_count AS voteCount 
 		FROM answer
 		where question_id = #{id} 
 	</select>
@@ -18,4 +18,21 @@
 		SELECT id,NAME, photo_url AS photoUrl, summary,home_url AS homeUrl FROM USER 
 		WHERE id IN (SELECT user_id FROM user_answer_relation WHERE answer_id  = #{id}) limit 3
 	</select>
+	
+	<insert id="insertUserAnswerRelation" parameterType="com.zhihu.pojo.UserAnswerRelation">
+		insert into user_answer_relation (user_id,action,answer_id,time)
+		values (#{userId},#{action},#{answerId},#{time})
+	</insert>
+	
+	<insert id="deleteUserAnswerRelation" parameterType="com.zhihu.pojo.UserAnswerRelation">
+		delete from user_answer_relation where user_id = #{userId} and answer_id = #{answerId} and action = #{action}
+	</insert>
+	
+	<update id="addVoteCount" parameterType="com.zhihu.pojo.UserAnswerRelation">
+		UPDATE answer SET vote_count = vote_count + 1 WHERE id = #{answerId}
+	</update>	
+	
+	<update id="subVoteCount" parameterType="com.zhihu.pojo.UserAnswerRelation">
+		UPDATE answer SET vote_count = vote_count - 1 WHERE id = #{answerId}
+	</update>	
 </mapper>
