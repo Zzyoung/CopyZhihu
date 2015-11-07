@@ -25,46 +25,46 @@
 				</div>
 				<div ng-if="!feed.withoutAnswer" class="entry-body ">
 					<div ng-click="mainCtrl.expandAnswer(feed)" class="zm-item-vote" ng-hide="feed.answerExpanded">
-						<a class="zm-item-vote-count" href="javascript:;" data-votecount="0">{{feed.voteCount}}</a>
+						<a class="zm-item-vote-count" href="javascript:;" data-votecount="0">{{feed.answer.voteCount}}</a>
 					</div>
 					<div class="zm-votebar" ng-show="feed.answerExpanded">
-						<button class="up" title="赞同">
-							<i class="icon vote-arrow"></i> <span class="label">赞同</span> <span class="count">{{feed.voteCount}}</span>
+						<button ng-class="feed.answer.relationWithCurrentUser == 1?'up pressed':'up'" title="赞同" ng-click="mainCtrl.toggleLikeAnswer(feed.answer)">
+							<i class="icon vote-arrow"></i> <span class="label">赞同</span> <span class="count">{{feed.answer.voteCount}}</span>
 						</button>
-						<button class="down" title="反对，不会显示你的姓名">
+						<button ng-class="feed.answer.relationWithCurrentUser == 2?'down pressed':'down'" title="反对，不会显示你的姓名" ng-click="mainCtrl.toggleOpposeAnswer(feed.answer)">
 							<i class="icon vote-arrow"></i> <span class="label">反对，不会显示你的姓名</span>
 						</button>
 					</div>
 					<div class="zm-item-answer-detail">
 						<!-- 答题者信息 -->
 						<div class="zm-item-answer-author-info">
-							<h3 ng-if="!feed.unnamed" class="zm-item-answer-author-wrap">
-								<a data-tip="p$t$xiao-jue-83" href="/people/xiao-jue-83">{{feed.people}}</a>，<strong title="{{feed.peopleDesc}}" class="zu-question-my-bio">{{feed.peopleDesc | hideDescription}}</strong>
+							<h3 ng-if="!feed.answer.unnamed" class="zm-item-answer-author-wrap">
+								<a data-tip="p$t$xiao-jue-83" href="{{feed.answer.author.homeUrl}}">{{feed.answer.author.name}}</a>，<strong title="{{feed.answer.author.summary}}" class="zu-question-my-bio">{{feed.answer.author.summary | hideDescription}}</strong>
 							</h3>
-							<h3 ng-if="feed.unnamed" class="zm-item-answer-author-wrap">
+							<h3 ng-if="feed.answer.unnamed" class="zm-item-answer-author-wrap">
 								<span >匿名用户</span>
 							</h3>
-							<a href="#" ng-show="feed.answerExpanded && feed.answer.length>=800" ng-click="mainCtrl.hideAnswer(feed)" class="collapse meta-item zg-right">
+							<a href="#" ng-show="feed.answerExpanded && feed.answer.content.length>=800" ng-click="mainCtrl.hideAnswer(feed)" class="collapse meta-item zg-right">
 								<i class="z-icon-fold"></i>收起 
 							</a>
 						</div>
 						<!-- 赞同者信息 -->
-						<div ng-if="feed.voters.length === 0" class="zm-item-vote-info empty"></div>
-						<div ng-if="feed.voters.length > 0 && feed.answerExpanded" class="zm-item-vote-info ">
+						<div ng-if="feed.answer.voters.length === 0" class="zm-item-vote-info empty"></div>
+						<div ng-if="feed.answer.voters.length > 0 && feed.answerExpanded" class="zm-item-vote-info ">
 							<span class="voters">
-								<span ng-repeat="voter in feed.voters" class="user-block"><a data-tip="p$t$song-ying-3-25" href="{{voter.link}}" class="zg-link" title="{{voter.name}}">{{voter.name}}</a><span ng-hide="$last">、</span></span>
+								<span ng-repeat="voter in feed.answer.voters" class="user-block"><a data-tip="p$t$song-ying-3-25" href="{{voter.link}}" class="zg-link" title="{{voter.name}}">{{voter.name}}</a><span ng-hide="$last">、</span></span>
 							</span>
 							<a href="javascript:;" class="more"> 等人赞同</a>
 						</div>
 						<!-- 答案信息 -->
 						<div ng-click="mainCtrl.expandAnswer(feed)" class="zm-item-rich-text" data-action="/answer/content">
 							<!-- 展开显示的全部答案 -->
-							<div formated-content ng-show="feed.answerExpanded" class="zm-editable-content"><span>{{feed.answer}}</span><span class="answer-date-link-wrap"><a class="answer-date-link meta-item" target="_blank" href="/question/36939553/answer/70002790">发布于 {{feed.answerTime|date:'yyyy-MM-dd'}}</a></span></div>
-							<textarea class="content hidden">{{feed.answer}}</textarea>
+							<div formated-content ng-show="feed.answerExpanded" class="zm-editable-content"><span>{{feed.answer.content}}</span><span class="answer-date-link-wrap"><a class="answer-date-link meta-item" target="_blank" href="/question/36939553/answer/70002790">发布于 {{feed.answer.answerTime|date:'yyyy-MM-dd'}}</a></span></div>
+							<textarea class="content hidden">{{feed.answer.content}}</textarea>
 							<!-- 答案简介 -->
 							<div ng-hide="feed.answerExpanded" class="zh-summary summary clearfix">
-								{{feed.answer | formatContent:'answer'}}
-								<a ng-if="feed.answer.length >= 145" href="/question/35471660/answer/63460518" class="toggle-expand">显示全部</a>
+								{{feed.answer.content | formatContent:'answer'}}
+								<a ng-if="feed.answer.content.length >= 145" href="/question/35471660/answer/63460518" class="toggle-expand">显示全部</a>
 							</div>
 						</div>
 					</div>
@@ -77,7 +77,7 @@
 								<i class="z-icon-follow"></i>关注问题 
 							</a>
 							<a href="#" ng-click="mainCtrl.toggleComments(feed)" class=" meta-item toggle-comment"> 
-								<i class="z-icon-comment"></i>{{feed.isShowComments?'收起评论':feed.commentsCount===0?'添加评论':feed.commentsCount+' 条评论'}}
+								<i class="z-icon-comment"></i>{{feed.isShowComments?'收起评论':feed.answer.commentsCount===0?'添加评论':feed.answer.commentsCount+' 条评论'}}
 							</a> 
 							<a href="#" ng-class="feed.answerExpanded || feed.isShowComments?'meta-item':'meta-item zu-autohide'" name="thanks" data-thanked="false"> 
 								<i class="z-icon-thank"></i>感谢 
@@ -126,7 +126,7 @@
 									<div class="zm-comment-content-wrap">
 										<div class="zm-comment-head">
 											<a data-tip="p$t$penny-lu-82" ng-href="/Zhihu{{comment.authorUrl}}" class="zg-link" title="{{comment.authorName}}">{{comment.authorName}}</a>
-											<span class="desc" ng-if="feed.answerAuthorId === comment.authorId">（作者）</span>
+											<span class="desc" ng-if="feed.answer.authorId === comment.authorId">（作者）</span>
 											<span ng-if="comment.replyName" class="desc">回复 </span>
 											<a ng-if="comment.replyName" data-tip="p$t$gu-xiao-bai-68-52" href="{{comment.replyUrl}}" class="zg-link" title="{{comment.replyName}}">{{comment.replyName}}</a>
 										</div>

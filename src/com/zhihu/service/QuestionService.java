@@ -13,5 +13,5 @@ public interface QuestionService {
 
 	Question selectQuestionById(String questionId) throws Exception;
 	
-	List<Feed> getMainContents() throws Exception;
+	List<Feed> getMainContents(int currentUserId) throws Exception;
 }

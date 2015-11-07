@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Answer {
 	private Integer id;
-	private Integer answerId;
 	private Integer authorId;
 	private String content;
 	private Date answerTime;
@@ -17,13 +16,14 @@ public class Answer {
 	private boolean unnamed;
 	private User author;
 	private List<User> voters;
+	private Integer relationWithCurrentUser;
 	private Integer commentsCount;
 	
-	public Integer getAnswerId() {
-		return answerId;
+	public Integer getRelationWithCurrentUser() {
+		return relationWithCurrentUser;
 	}
-	public void setAnswerId(Integer answerId) {
-		this.answerId = answerId;
+	public void setRelationWithCurrentUser(Integer relationWithCurrentUser) {
+		this.relationWithCurrentUser = relationWithCurrentUser;
 	}
 	public Integer getCommentsCount() {
 		return commentsCount;

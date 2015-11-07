@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.zhihu.pojo.Comment;
 import com.zhihu.pojo.Feed;
 import com.zhihu.service.AnswerService;
@@ -42,9 +43,11 @@ public class MainController {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
-		List<Feed> feeds = questionService.getMainContents();
+		int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
 		
-		String results = JSON.toJSONString(feeds);
+		List<Feed> feeds = questionService.getMainContents(currentUserId);
+		//关闭循环引用检测
+		String results = JSON.toJSONString(feeds,SerializerFeature.DisableCircularReferenceDetect);
 		response.getWriter().write(results);
 	}
 	
@@ -189,9 +192,81 @@ public class MainController {
 		}
 		
 		int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
-		answerService.likeAnswer(Integer.parseInt(answerId),currentUserId);
+		boolean isSuccess = answerService.likeAnswer(Integer.parseInt(answerId),currentUserId);
+		response.getWriter().write(JSON.toJSONString(isSuccess));
+	}
+	@RequestMapping(value="unlikeAnswer",method = RequestMethod.POST)
+	public void unlikeAnswer(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		String answerId = request.getParameter("id");
+		if(Utils.isEmpty(answerId)){
+			return;
+		}
 		
+		int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
+		boolean isSuccess = answerService.unlikeAnswer(Integer.parseInt(answerId),currentUserId);
+		response.getWriter().write(JSON.toJSONString(isSuccess));
 	}
 	
+	@RequestMapping(value="opposeAnswer",method = RequestMethod.POST)
+	public void opposeAnswer(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		String answerId = request.getParameter("id");
+		if(Utils.isEmpty(answerId)){
+			return;
+		}
+		
+		int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
+		boolean isSuccess = answerService.opposeAnswer(Integer.parseInt(answerId),currentUserId);
+		response.getWriter().write(JSON.toJSONString(isSuccess));
+	}
+	
+	@RequestMapping(value="unopposeAnswer",method = RequestMethod.POST)
+	public void unopposeAnswer(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		String answerId = request.getParameter("id");
+		if(Utils.isEmpty(answerId)){
+			return;
+		}
+		
+		int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
+		boolean isSuccess = answerService.unopposeAnswer(Integer.parseInt(answerId),currentUserId);
+		response.getWriter().write(JSON.toJSONString(isSuccess));
+	}
+	
+	@RequestMapping(value="getAnswerVoterIds",method = RequestMethod.GET)
+	public void getAnswerVoterIds(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		String answerId = request.getParameter("id");
+		if(Utils.isEmpty(answerId)){
+			return;
+		}
+		
+		List<Integer> voterIds = answerService.getVoterIds(Integer.parseInt(answerId));
+		response.getWriter().write(JSON.toJSONString(voterIds));
+	}
+	
+	@RequestMapping(value="getAnswerVoterCount",method = RequestMethod.GET)
+	public void getAnswerVoterCount(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		String answerId = request.getParameter("id");
+		if(Utils.isEmpty(answerId)){
+			return;
+		}
+		
+		List<Integer> voterIds = answerService.getVoterIds(Integer.parseInt(answerId));
+		int voterCount = voterIds.size();
+		response.getWriter().write(JSON.toJSONString(voterCount));
+	}
 }
 

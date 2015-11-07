@@ -273,6 +273,7 @@
 	<script type="text/javascript" src="services/question.service.js"></script>
 	<script type="text/javascript" src="services/topic.service.js"></script>
 	<script type="text/javascript" src="services/comment.service.js"></script>
+	<script type="text/javascript" src="services/answer.service.js"></script>
 	    
     <!-- controllers -->
     <script type="text/javascript" src="controllers/navigation.controller.js"></script>

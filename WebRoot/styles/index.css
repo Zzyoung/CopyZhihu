@@ -663,7 +663,7 @@ html.no-touch .zm-item-vote-count:hover{
 	color: #fff;
 	text-decoration: none;
 }
-.zm-votebar .up:hover,.zm-votebar .down:hover{
+.zm-votebar .up:hover,.zm-votebar .down:hover, .zm-votebar .up.pressed, .zm-votebar .down.pressed{
 	background: #698ebf;
 	color: #fff;
 	text-decoration: none;
@@ -687,14 +687,17 @@ html.no-touch .zm-item-vote-count:hover{
 	border-bottom-color:#698ebf;
 	border-top-stype:solid;
 }
-.zm-votebar .up:hover .vote-arrow{
+.zm-votebar .up:hover .vote-arrow,.zm-votebar .up.pressed .vote-arrow{
 	border-bottom-color:#fff;
 }
-.zm-votebar .down:hover .vote-arrow{
+.zm-votebar .down:hover .vote-arrow,.zm-votebar .down.pressed .vote-arrow{
 	border-top-color:#fff;
 }
 .zm-votebar .up{
 	height: 44px;
+}
+.zm-votebar .down{
+	margin-top: 5px;
 }
 .zm-votebar .vote-arrow{
 	width: 0;

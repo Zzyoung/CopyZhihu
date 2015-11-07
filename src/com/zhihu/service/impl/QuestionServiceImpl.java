@@ -20,6 +20,7 @@ import com.zhihu.pojo.Feed;
 import com.zhihu.pojo.FeedSourcePeople;
 import com.zhihu.pojo.Question;
 import com.zhihu.pojo.User;
+import com.zhihu.pojo.UserAnswerRelation;
 import com.zhihu.service.QuestionService;
 import com.zhihu.utils.Constant;
 @Service
@@ -69,7 +70,7 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public List<Feed> getMainContents() throws Exception {
+	public List<Feed> getMainContents(int currentUserId) throws Exception {
 		List<Question> hotQuestions = questionMapper.selectHotterQuestion();
 		List<Feed> mainContents = new ArrayList<Feed>();
 		for (Question question : hotQuestions) {
@@ -78,30 +79,33 @@ public class QuestionServiceImpl implements QuestionService {
 			feed.setQuestion(question.getName());
 			feed.setQuestionUrl(Constant.APP_CONTEXT+"/question?id="+question.getId());
 			feed.setQuestionDesc(question.getDescription());
+			//fill answer
 			Answer answer = answerMapper.selectAnswerByQuestionId(question);
-			feed.setAnswerTime(answer.getAnswerTime());
-			feed.setVoteCount(answer.getVoteCount());
-			feed.setAnswer(answer.getContent());
-			feed.setUnnamed(answer.isUnnamed());
-			feed.setAnswerId(answer.getId());
-			User user = userMapper.getUserById(answer.getAuthorId());
-			feed.setPeople(user.getName());
-			feed.setPeopleDesc(user.getSummary());
-			feed.setAnswerAuthorId(answer.getAuthorId());
-			//设置消息来源
+			UserAnswerRelation relation = new UserAnswerRelation();
+			relation.setAnswerId(answer.getId());
+			relation.setUserId(currentUserId);
+			Integer relationType = answerMapper.selectAnswerUserRelation(relation);
+			if(relationType==null){
+				relationType = Constant.DEFAULT_USER_ANSWER_RELATION;
+			}
+			answer.setRelationWithCurrentUser(relationType);
+			List<User> voters = answerMapper.selectWhoLikeAnswer(answer.getId());
+			answer.setVoters(voters);
+			answer.setVoteCount(voters.size());
+			User author = userMapper.getUserById(answer.getAuthorId());
+			author.setPassword("");
+			answer.setAuthor(author);
+			int commentsCount = commentMapper.getCommentsCountByAnswerId(answer.getId());
+			answer.setCommentsCount(commentsCount);
+			feed.setAnswer(answer);
+			//fill source
 			source.setAction("回答了问题");
-			source.setName(user.getName());
+			source.setName(author.getName());
 			source.setTime(answer.getAnswerTime());
 			source.setType("people");
-			source.setAvatarPicture(user.getPhotoUrl());
-			source.setSourceUrl(user.getHomeUrl());
+			source.setAvatarPicture(author.getPhotoUrl());
+			source.setSourceUrl(author.getHomeUrl());
 			feed.setSource(source);
-			int commentsCount = commentMapper.getCommentsCountByAnswerId(answer.getId());
-			feed.setCommentsCount(commentsCount);
-//			List<Comment> comments = commentMapper.getCommentsByAnswerId(answer.getId());
-//			if (comments != null && comments.size() > 0) {
-//				feed.setComments(comments);
-//			}
 			mainContents.add(feed);
 		}
 		return mainContents;

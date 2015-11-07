@@ -59,7 +59,8 @@ public class ShowQuestionController {
 		if(Utils.isEmpty(questionId)){
 			return;
 		}
-		List<Answer> answers = answerService.selectAnswerListByQuestionId(Integer.parseInt(questionId));
+		int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
+		List<Answer> answers = answerService.selectAnswerListByQuestionId(Integer.parseInt(questionId),currentUserId);
 		response.getWriter().write(JSON.toJSONString(answers));
 	}
 }

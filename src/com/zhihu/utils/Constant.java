@@ -11,6 +11,7 @@ public class Constant {
 	
 	public static final int USER_LIKE_COMMENT = 1;
 	
+	public static final int DEFAULT_USER_ANSWER_RELATION = 0;
 	public static final int USER_LIKE_ANSWER = 1;
 	public static final int USER_OPPOSE_ANSWER = 2;
 	

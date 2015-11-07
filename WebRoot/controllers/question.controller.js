@@ -2,9 +2,9 @@
 (function(){
 	angular.module('zhihu').controller('QuestionController',MainContentController);
 	
-	MainContentController.$inject = ['$scope', 'QuestionService', 'AnswerService', '$rootScope', 'CommentService'];
+	MainContentController.$inject = ['$scope', 'QuestionService', 'AnswerService', 'CommentService', '$rootScope'];
 	
-	function MainContentController($scope, QuestionService, AnswerService, $rootScope, CommentService){
+	function MainContentController($scope, QuestionService, AnswerService, CommentService, $rootScope){
 		$scope.ctrl = {};
 		
 		var ctrl = $scope.ctrl;
@@ -25,7 +25,6 @@
 		getAnswerList($rootScope.globals.currentQuestion.id);
 		
 		ctrl.toggleComments = function(answer){
-			console.log(123);
 			answer.isShowComments = !answer.isShowComments;
 			if(!answer.comments || answer.comments.length===0){
 				//根据answerId查询评论
@@ -53,6 +52,9 @@
 		
 		ctrl.haveLiked = CommentService.haveLiked;
 		
+		ctrl.toggleLikeAnswer = AnswerService.toggleLikeAnswer;
+		
+		ctrl.toggleOpposeAnswer = AnswerService.toggleOpposeAnswer;
 		
 	}
 	

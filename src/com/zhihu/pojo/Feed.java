@@ -5,68 +5,24 @@ import java.util.List;
 
 public class Feed {
 	private FeedSource source;//来源
-	private String people;//答题者
-	private String peopleDesc;//答题者简介
-	private Integer answerAuthorId;//答题者ID
-	private Date answerTime;//答题时间
-	private Integer answerId;
 	private String question;//问题
 	private String questionUrl;//问题url
 	private String questionDesc;//问题描述
 	private Integer voteCount;//答案赞同数量
-	private String answer;//答案
-	private boolean unnamed = false;//答题者是否匿名
+	private Answer answer;//答案
 	private boolean isShowComments = false;
 	private boolean isAddingComment = false;
 	private boolean hideQuestionDesc = true;
 	private boolean answerExpanded = false;
 	private List<User> voters;//赞同者
 	private List<Comment> comments;//评论
-	private Integer commentsCount;
 	
 	
-	public Integer getAnswerAuthorId() {
-		return answerAuthorId;
-	}
-	public void setAnswerAuthorId(Integer answerAuthorId) {
-		this.answerAuthorId = answerAuthorId;
-	}
-	public Integer getCommentsCount() {
-		return commentsCount;
-	}
-	public void setCommentsCount(Integer commentsCount) {
-		this.commentsCount = commentsCount;
-	}
 	public FeedSource getSource() {
 		return source;
 	}
 	public void setSource(FeedSource source) {
 		this.source = source;
-	}
-	
-	public Integer getAnswerId() {
-		return answerId;
-	}
-	public void setAnswerId(Integer answerId) {
-		this.answerId = answerId;
-	}
-	public String getPeople() {
-		return people;
-	}
-	public void setPeople(String people) {
-		this.people = people;
-	}
-	public String getPeopleDesc() {
-		return peopleDesc;
-	}
-	public void setPeopleDesc(String peopleDesc) {
-		this.peopleDesc = peopleDesc;
-	}
-	public Date getAnswerTime() {
-		return answerTime;
-	}
-	public void setAnswerTime(Date answerTime) {
-		this.answerTime = answerTime;
 	}
 	public String getQuestion() {
 		return question;
@@ -92,17 +48,11 @@ public class Feed {
 	public void setVoteCount(Integer voteCount) {
 		this.voteCount = voteCount;
 	}
-	public String getAnswer() {
+	public Answer getAnswer() {
 		return answer;
 	}
-	public void setAnswer(String answer) {
+	public void setAnswer(Answer answer) {
 		this.answer = answer;
-	}
-	public boolean isUnnamed() {
-		return unnamed;
-	}
-	public void setUnnamed(boolean unnamed) {
-		this.unnamed = unnamed;
 	}
 	public boolean isShowComments() {
 		return isShowComments;

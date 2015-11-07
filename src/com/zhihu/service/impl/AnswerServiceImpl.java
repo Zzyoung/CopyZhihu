@@ -1,7 +1,7 @@
 package com.zhihu.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.zhihu.controller.MainController;
 import com.zhihu.dao.AnswerMapper;
 import com.zhihu.dao.CommentMapper;
 import com.zhihu.dao.UserMapper;
@@ -33,16 +32,24 @@ public class AnswerServiceImpl implements AnswerService {
 	
 	private final static Logger logger = LoggerFactory.getLogger(AnswerServiceImpl.class);
 	@Override
-	public List<Answer> selectAnswerListByQuestionId(int id) throws Exception {
+	public List<Answer> selectAnswerListByQuestionId(int id,int currentUserId) throws Exception {
 		List<Answer> answers = mapper.selectAnswerListByQuestionId(id);
 		for (Answer answer : answers) {
-			User author = userMapper.getUserById(answer.getAuthorId());
-			author.setPassword("");
-			answer.setAuthor(author);
+			User user = userMapper.getUserById(answer.getAuthorId());
+			user.setPassword("");
+			answer.setAuthor(user);
 			List<User> voters = mapper.selectWhoLikeAnswer(answer.getId());
+			answer.setVoteCount(voters.size());
 			answer.setVoters(voters);
 			answer.setCommentsCount(commentMapper.getCommentsCountByAnswerId(answer.getId()));
-			answer.setAnswerId(answer.getId());
+			UserAnswerRelation relation = new UserAnswerRelation();
+			relation.setAnswerId(answer.getId());
+			relation.setUserId(currentUserId);
+			Integer relationType = mapper.selectAnswerUserRelation(relation);
+			if(relationType==null){
+				relationType = Constant.DEFAULT_USER_ANSWER_RELATION;
+			}
+			answer.setRelationWithCurrentUser(relationType);
 		}
 		return answers;
 	}
@@ -61,7 +68,6 @@ public class AnswerServiceImpl implements AnswerService {
 			relation.setAction(Constant.USER_LIKE_ANSWER);
 			relation.setTime(new Date());
 			mapper.insertUserAnswerRelation(relation);
-			mapper.addVoteCount(relation);
 		} catch (Exception e) {
 			logger.error("用户赞同答案时出错",e);
 			return false;
@@ -77,7 +83,6 @@ public class AnswerServiceImpl implements AnswerService {
 		relation.setAnswerId(answerId);
 		try{
 			mapper.deleteUserAnswerRelation(relation);
-			mapper.subVoteCount(relation);
 		}catch (Exception e){
 			logger.error("用户取消赞同答案时出错",e);
 			return false;
@@ -92,10 +97,7 @@ public class AnswerServiceImpl implements AnswerService {
 		relation.setUserId(userId);
 		relation.setAnswerId(answerId);
 		try{
-			int count = mapper.deleteUserAnswerRelation(relation);
-			if(count == 1){//如果该用户曾经赞同过，赞同数量-1
-				mapper.subVoteCount(relation);
-			}
+			mapper.deleteUserAnswerRelation(relation);
 			relation.setAction(Constant.USER_OPPOSE_ANSWER);
 			relation.setTime(new Date());
 			mapper.insertUserAnswerRelation(relation);
@@ -119,6 +121,16 @@ public class AnswerServiceImpl implements AnswerService {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public List<Integer> getVoterIds(int answerId) throws Exception {
+		List<User> voters = mapper.selectWhoLikeAnswer(answerId);
+		List<Integer> voterIds = new ArrayList<Integer>();
+		for (User voter : voters) {
+			voterIds.add(voter.getId());
+		}
+		return voterIds;
 	}
 
 }

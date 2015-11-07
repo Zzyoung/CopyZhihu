@@ -1,6 +1,5 @@
 package com.zhihu.dao;
 
-import java.util.HashMap;
 import java.util.List;
 
 import com.zhihu.pojo.Answer;
@@ -19,8 +18,6 @@ public interface AnswerMapper {
 	int insertUserAnswerRelation(UserAnswerRelation relation) throws Exception;
 	
 	int deleteUserAnswerRelation(UserAnswerRelation relation) throws Exception;
-	
-	int addVoteCount(UserAnswerRelation relation) throws Exception;
-	
-	int subVoteCount(UserAnswerRelation relation) throws Exception;
+
+	Integer selectAnswerUserRelation(UserAnswerRelation relation);
 }

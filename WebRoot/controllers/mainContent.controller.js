@@ -1,9 +1,9 @@
 (function(){
 	angular.module('zhihu').controller('MainContentController',MainContentController);
 	
-	MainContentController.$inject = ['$scope', 'MainContentService' ,'$compile', 'CommentService' ,'$rootScope'];
+	MainContentController.$inject = ['$scope', 'MainContentService' ,'$compile', 'CommentService' ,'$rootScope' ,'AnswerService'];
 	
-	function MainContentController($scope, MainContentService, $compile, CommentService, $rootScope){
+	function MainContentController($scope, MainContentService, $compile, CommentService, $rootScope, AnswerService){
 		$scope.mainCtrl = {};
 		
 		var mainCtrl = $scope.mainCtrl;
@@ -32,14 +32,14 @@
 			feed.isShowComments = !feed.isShowComments;
 			if(!feed.comments || feed.comments.length===0){
 				//根据answerId查询评论
-				CommentService.getCommentsByAnswerIdRequest(feed.answerId).then(function(comments){
+				CommentService.getCommentsByAnswerIdRequest(feed.answer.id).then(function(comments){
 					feed.comments = comments;
 				});
 			}
 		};
 		
 		mainCtrl.getAllComments = function(feed){
-			CommentService.getCommentsByAnswerIdRequest(feed.answerId).then(function(comments){
+			CommentService.getCommentsByAnswerIdRequest(feed.answer.id).then(function(comments){
 				feed.comments = comments;
 				feed.loadAllComments = true;
 			});
@@ -77,7 +77,9 @@
 		
 		mainCtrl.haveLiked = CommentService.haveLiked;
 		
+		mainCtrl.toggleLikeAnswer = AnswerService.toggleLikeAnswer;
 		
+		mainCtrl.toggleOpposeAnswer = AnswerService.toggleOpposeAnswer;
 		
 	}
 	
