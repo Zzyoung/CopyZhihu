@@ -20,4 +20,8 @@ public interface AnswerMapper {
 	int deleteUserAnswerRelation(UserAnswerRelation relation) throws Exception;
 
 	Integer selectAnswerUserRelation(UserAnswerRelation relation);
+
+	int insertAnswer(Answer answer) throws Exception;
+
+	int selectAnswerCountByAuthorAndQuestion(Answer answer);
 }

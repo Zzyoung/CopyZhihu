@@ -9,7 +9,19 @@
 		
 		var ctrl = $scope.ctrl;
 		
+		ctrl.currentQuestionId = $rootScope.globals.currentQuestion.id;
+		
+		ctrl.currentUserId = $rootScope.globals.currentUser.id;
+		
 		ctrl.answers = QuestionService.answers;
+		
+		ctrl.isAnswered = false;
+		function isAnsweredQuestion(questionId){
+			AnswerService.isAnsweredQuestion(questionId).then(function(flag){
+				ctrl.isAnswered = flag;
+			});
+		}
+		isAnsweredQuestion(ctrl.currentQuestionId);
 		
 		ctrl.showInvitePanel = false;
 		
@@ -22,7 +34,7 @@
 				ctrl.answers = answers;
 			});
 		}
-		getAnswerList($rootScope.globals.currentQuestion.id);
+		getAnswerList(ctrl.currentQuestionId);
 		
 		ctrl.toggleComments = function(answer){
 			answer.isShowComments = !answer.isShowComments;
@@ -55,6 +67,13 @@
 		ctrl.toggleLikeAnswer = AnswerService.toggleLikeAnswer;
 		
 		ctrl.toggleOpposeAnswer = AnswerService.toggleOpposeAnswer;
+		
+		ctrl.saveAnswer = function(questionId,answerContent){
+			AnswerService.addAnswer(questionId,answerContent).then(function(){
+				getAnswerList(ctrl.currentQuestionId);
+				ctrl.isAnswered = true;
+			});
+		};
 		
 	}
 	

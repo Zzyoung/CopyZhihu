@@ -31,4 +31,13 @@
 	<select id="selectAnswerUserRelation" parameterType="com.zhihu.pojo.UserAnswerRelation" resultType="java.lang.Integer">
 		select action from user_answer_relation where user_id = #{userId} and answer_id = #{answerId}
 	</select>
+	
+	<insert id="insertAnswer" parameterType="com.zhihu.pojo.Answer">
+		insert into answer (author_id,content,answer_time,question_id,unnamed) values
+		(#{authorId},#{content},#{answerTime},#{questionId},#{unnamed})
+	</insert>
+	
+	<select id="selectAnswerCountByAuthorAndQuestion" parameterType="com.zhihu.pojo.Answer" resultType="int">
+		select count(*) from answer where author_id = #{authorId} and question_id = #{questionId}
+	</select>
 </mapper>

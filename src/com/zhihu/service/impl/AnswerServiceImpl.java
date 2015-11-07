@@ -133,4 +133,28 @@ public class AnswerServiceImpl implements AnswerService {
 		return voterIds;
 	}
 
+	@Override
+	public boolean addAnswer(int questionId, int currentUserId, String answerContent) throws Exception {
+		Answer answer = new Answer();
+		answer.setAuthorId(currentUserId);
+		answer.setContent(answerContent);
+		answer.setQuestionId(questionId);
+		answer.setAnswerTime(new Date());
+		answer.setUnnamed(false);
+		if(isAnsweredQuestion(questionId, currentUserId)){
+			return false;
+		}
+		int result = mapper.insertAnswer(answer);
+		return result == 1;
+	}
+
+	@Override
+	public boolean isAnsweredQuestion(int questionId, int currentUserId)
+			throws Exception {
+		Answer answer = new Answer();
+		answer.setAuthorId(currentUserId);
+		answer.setQuestionId(questionId);
+		return mapper.selectAnswerCountByAuthorAndQuestion(answer) == 1;
+	}
+
 }

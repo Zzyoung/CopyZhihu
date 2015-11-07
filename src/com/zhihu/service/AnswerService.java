@@ -17,5 +17,9 @@ public interface AnswerService {
 	boolean unopposeAnswer(Integer answerId, int userId) throws Exception;
 
 	List<Integer> getVoterIds(int parseInt) throws Exception;
+
+	boolean addAnswer(int questionId, int currentUserId, String answer) throws Exception;
+
+	boolean isAnsweredQuestion(int parseInt, int currentUserId) throws Exception;
 	
 }

@@ -126,9 +126,9 @@
 			if(!feed.newComment || feed.newComment === ''){
 				return;
 			}
-			service.addNewCommentRequest(feed.newComment,feed.answerId).then(function(){
+			service.addNewCommentRequest(feed.newComment,feed.id).then(function(){
 				//添加评论之后查出新的评论，显示在页面上
-				service.getCommentsByAnswerIdRequest(feed.answerId).then(function(comments){
+				service.getCommentsByAnswerIdRequest(feed.id).then(function(comments){
 					feed.comments = comments;
 					feed.commentsCount = comments.length;
 					feed.newComment = '';

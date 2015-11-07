@@ -268,5 +268,37 @@ public class MainController {
 		int voterCount = voterIds.size();
 		response.getWriter().write(JSON.toJSONString(voterCount));
 	}
+	
+	@RequestMapping(value="addAnswer",method = RequestMethod.POST)
+	public void addAnswer(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		String questionId = request.getParameter("questionId");
+		if(Utils.isEmpty(questionId)){
+			return;
+		}
+		String answer = request.getParameter("answer");
+		answer = new String(answer.getBytes("ISO8859-1"),"UTF-8");
+		int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
+		
+		boolean isSuccess = answerService.addAnswer(Integer.parseInt(questionId),currentUserId,answer);
+		response.getWriter().write(JSON.toJSONString(isSuccess));
+	}
+	
+	
+	@RequestMapping(value="isAnsweredQuestion",method = RequestMethod.GET)
+	public void isAnsweredQuestion(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		String questionId = request.getParameter("questionId");
+		if(Utils.isEmpty(questionId)){
+			return;
+		}
+		int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
+		boolean isAnswered = answerService.isAnsweredQuestion(Integer.parseInt(questionId),currentUserId);
+		response.getWriter().write(JSON.toJSONString(isAnswered));
+	}
 }
 

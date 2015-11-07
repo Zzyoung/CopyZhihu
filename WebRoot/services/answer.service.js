@@ -108,6 +108,33 @@
 			}).then(querySuccess, queryError);
 		};
 		
+		service.addAnswer = function(questionId,answerContent){
+			return $http({
+				method : 'POST',
+				url : '/Zhihu/addAnswer',
+				params : {
+					'questionId' : questionId,
+					'answer' :answerContent
+				},
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			}).then(querySuccess, queryError);
+		};
+		
+		service.isAnsweredQuestion = function(questionId){
+			return $http({
+				method : 'GET',
+				url : '/Zhihu/isAnsweredQuestion',
+				params : {
+					'questionId' : questionId
+				},
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			}).then(querySuccess, queryError);
+		};
+		
 		service.toggleLikeAnswer = function(answer){
 			if(answer.relationWithCurrentUser == 1){
 				console.log('撤销赞同');
