@@ -51,6 +51,10 @@ public class LoginController {
 		newUser.setLoginName(loginName);
 		newUser.setName(name);
 		newUser.setPassword(password);
+		//目前不支持修改个人资料，启用默认样式
+		newUser.setHomeUrl("/people/tester");
+		newUser.setDescription("前端工程师");
+		newUser.setPhotoUrl("images/default.jpg");
 		
 		try {
 			if(!validateCaptcha(captcha, session)){
