@@ -84,7 +84,16 @@
 											<img src="images/spinner2.gif" alt="" class="noti-spinner">
 										</div>
 										<div class="zm-noti7-content-body">
-											<msg-content></msg-content>
+											<div ng-class="msg.unread ? 'zm-noti7-content-item unread':'zm-noti7-content-item'" ng-repeat="msg in ctrl.msgContents" data-notigroupname="ANSWER">
+												<span class="author-list">
+													<span class="user-block" ng-repeat="answer in msg.answers">
+														<span ng-show="answer.unnamed">匿名用户</span>
+														<a ng-hide="answer.unnamed" href="{{answer.link}}" class="zg-link" title="子柳">{{answer.name}}</a>
+														<span ng-hide="$last">、</span>
+													</span>
+													回答了问题 <a href="{{msg.questionUrl}}" class="question_link">{{msg.questionName}}</a>
+												</span>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -106,7 +115,23 @@
 												<div class="zm-noti7-content-head-item">
 													<span class="zg-gray-normal">这些人最近关注了你</span>
 												</div>
-												<user-content></user-content>
+												<div class="zm-noti7-content-item" data-notigroupname="FOLLOW" ng-repeat="user in ctrl.userContents">
+													<div class="zm-profile-section-item zg-clear no-hovercard">
+														<div class="zg-right">
+															<a ng-hide="{{user.followed}}" href="/follow" id="pf-65489132165498" class="zg-follow" data-follow="m:links">关注</a>
+															<a ng-show="{{user.followed}}" href="/unfollow" id="pf-65489132165498" class="zg-follow" data-follow="m:links">取消关注</a>
+														</div>
+														<a href="/people" class="zm-item-link-avatar" title="人名">
+															<img ng-src="{{user.photoUrl}}" alt="" class="zm-item-img-avatar">
+														</a>
+														<div class="zm-list-content-medium">
+															<a href="{{user.link}}" class="zg-link">{{user.name}}</a>
+															<div class="zg-gray-normal">
+																<span></span>
+															</div>
+														</div>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -125,7 +150,28 @@
 											<img src="images/spinner2.gif" alt="" class="noti-spinner">
 										</div>
 										<div class="zm-noti7-content-body">
-											<thanks-content></thanks-content>
+											<div class="zm-noti7-content-item" ng-repeat="thanks in ctrl.thanksContents" data-notigroupname="VOTE_THANK" data-type="upvote" data-count="10">
+												<span ng-if="thanks.type == 'VOTE_THANK'">{{ thanks.voteThanksCount | voteThank}}:
+													<a href="{{thanks.questionUrl}}" class="question_link">{{thanks.question}}</a> 来自
+													<span class="author-list">
+														<span class="user-block" ng-repeat="user in thanks.users">
+															<a href="{{user.link}}" class="zg-link">{{user.name}}</a>
+															<span ng-hide="$last">、</span>
+														</span>
+														等 {{thanks.users.length}} 人
+													</span>
+												</span>
+												<span ng-if="thanks.type == 'ACOMMENT_LIKE'" class="author-list">
+													<span class="user-block" ng-repeat="user in thanks.users">
+														<a href="{{user.link}}" class="zg-link">{{user.name}}</a>
+														<span ng-hide="$last">、</span>
+													</span>
+													觉得你在
+													<a href="{{thanks.questionUrl}}" class="question_link">{{thanks.question}}</a> 中 
+													<a href="{{thanks.answerLink}}" class="zg-link" title="唐潮">{{thanks.answer}}</a>
+													 的答案下评论很赞
+												</span>
+											</div>
 										</div>
 									</div>
 								</div>

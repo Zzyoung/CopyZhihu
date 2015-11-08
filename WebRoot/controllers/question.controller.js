@@ -75,6 +75,11 @@
 			});
 		};
 		
+		ctrl.updateAnswer = function(questionId,answerContent){
+			AnswerService.updateAnswer(questionId,answerContent).then(function(){
+//				getAnswerList(ctrl.currentQuestionId);
+			});
+		};
 	}
 	
 })();

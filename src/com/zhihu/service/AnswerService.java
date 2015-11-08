@@ -22,4 +22,5 @@ public interface AnswerService {
 
 	boolean isAnsweredQuestion(int parseInt, int currentUserId) throws Exception;
 	
+	boolean updateAnswer(int questionId,int userid,String answer) throws Exception;
 }

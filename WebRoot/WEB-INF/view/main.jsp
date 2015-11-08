@@ -281,9 +281,6 @@
     <script type="text/javascript" src="controllers/addQuestion.controller.js"></script>
     
 	<!-- directives -->
-	<script type="text/javascript" src="directives/msgContent.js"></script>
-	<script type="text/javascript" src="directives/userContent.js"></script>
-	<script type="text/javascript" src="directives/thanksContent.js"></script>
 	<script type="text/javascript" src="directives/feedItem.js"></script>
 	<script type="text/javascript" src="directives/formatedContent.js"></script>
 	<script type="text/javascript" src="directives/addQuestion.js"></script>

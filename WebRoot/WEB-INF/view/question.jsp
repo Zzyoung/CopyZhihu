@@ -309,7 +309,7 @@
 								</span>
 							</div>
 							<a ng-show="ctrl.isAnswered" cancel-edit class="zm-command-cancel" href="#">取消</a>
-							<a ng-show="ctrl.isAnswered" class="zg-r3px zg-btn-blue" href="#">发布</a>
+							<a ng-show="ctrl.isAnswered" class="zg-r3px zg-btn-blue" update-answer data-update="ctrl.updateAnswer" data-question="{{ctrl.currentQuestionId}}" href="#">发布</a>
 						</div>
 					</div>
 				</div>
@@ -465,7 +465,10 @@
 	<script type="text/javascript" src="directives/selectedQueryTopic.js"></script>
 	<script type="text/javascript" src="directives/formatedContent.js"></script>
 	<script type="text/javascript" src="directives/saveAnswer.js"></script>
+	<script type="text/javascript" src="directives/updateAnswer.js"></script>
 	<script type="text/javascript" src="directives/editAnswer.js"></script>
 	<script type="text/javascript" src="directives/cancelEdit.js"></script>
+	<!-- filter -->
+	<script type="text/javascript" src="filters/voteThank.filter.js"></script>
 </body>
 </html>

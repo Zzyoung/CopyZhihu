@@ -122,6 +122,20 @@
 			}).then(querySuccess, queryError);
 		};
 		
+		service.updateAnswer = function(questionId,answerContent){
+			return $http({
+				method : 'POST',
+				url : '/Zhihu/updateAnswer',
+				params : {
+					'questionId' : questionId,
+					'answer' :answerContent
+				},
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			}).then(querySuccess, queryError);
+		};
+		
 		service.isAnsweredQuestion = function(questionId){
 			return $http({
 				method : 'GET',

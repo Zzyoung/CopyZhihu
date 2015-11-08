@@ -22,7 +22,7 @@ import com.zhihu.utils.Constant;
 public class AnswerServiceImpl implements AnswerService {
 
 	@Autowired
-	private AnswerMapper mapper;
+	private AnswerMapper answerMapper;
 	
 	@Autowired 
 	private UserMapper userMapper;
@@ -33,19 +33,19 @@ public class AnswerServiceImpl implements AnswerService {
 	private final static Logger logger = LoggerFactory.getLogger(AnswerServiceImpl.class);
 	@Override
 	public List<Answer> selectAnswerListByQuestionId(int id,int currentUserId) throws Exception {
-		List<Answer> answers = mapper.selectAnswerListByQuestionId(id);
+		List<Answer> answers = answerMapper.selectAnswerListByQuestionId(id);
 		for (Answer answer : answers) {
 			User user = userMapper.getUserById(answer.getAuthorId());
 			user.setPassword("");
 			answer.setAuthor(user);
-			List<User> voters = mapper.selectWhoLikeAnswer(answer.getId());
+			List<User> voters = answerMapper.selectWhoLikeAnswer(answer.getId());
 			answer.setVoteCount(voters.size());
 			answer.setVoters(voters);
 			answer.setCommentsCount(commentMapper.getCommentsCountByAnswerId(answer.getId()));
 			UserAnswerRelation relation = new UserAnswerRelation();
 			relation.setAnswerId(answer.getId());
 			relation.setUserId(currentUserId);
-			Integer relationType = mapper.selectAnswerUserRelation(relation);
+			Integer relationType = answerMapper.selectAnswerUserRelation(relation);
 			if(relationType==null){
 				relationType = Constant.DEFAULT_USER_ANSWER_RELATION;
 			}
@@ -63,11 +63,11 @@ public class AnswerServiceImpl implements AnswerService {
 		relation.setAnswerId(answerId);
 		try {
 			//如果用户已经反对该答案，撤销反对
-			mapper.deleteUserAnswerRelation(relation);
+			answerMapper.deleteUserAnswerRelation(relation);
 			//赞成答案，添加user_answer_relation
 			relation.setAction(Constant.USER_LIKE_ANSWER);
 			relation.setTime(new Date());
-			mapper.insertUserAnswerRelation(relation);
+			answerMapper.insertUserAnswerRelation(relation);
 		} catch (Exception e) {
 			logger.error("用户赞同答案时出错",e);
 			return false;
@@ -82,7 +82,7 @@ public class AnswerServiceImpl implements AnswerService {
 		relation.setUserId(userId);
 		relation.setAnswerId(answerId);
 		try{
-			mapper.deleteUserAnswerRelation(relation);
+			answerMapper.deleteUserAnswerRelation(relation);
 		}catch (Exception e){
 			logger.error("用户取消赞同答案时出错",e);
 			return false;
@@ -97,10 +97,10 @@ public class AnswerServiceImpl implements AnswerService {
 		relation.setUserId(userId);
 		relation.setAnswerId(answerId);
 		try{
-			mapper.deleteUserAnswerRelation(relation);
+			answerMapper.deleteUserAnswerRelation(relation);
 			relation.setAction(Constant.USER_OPPOSE_ANSWER);
 			relation.setTime(new Date());
-			mapper.insertUserAnswerRelation(relation);
+			answerMapper.insertUserAnswerRelation(relation);
 		}catch (Exception e){
 			logger.error("用户反对同答案时出错",e);
 			return false;
@@ -115,7 +115,7 @@ public class AnswerServiceImpl implements AnswerService {
 		relation.setUserId(userId);
 		relation.setAnswerId(answerId);
 		try{
-			mapper.deleteUserAnswerRelation(relation);
+			answerMapper.deleteUserAnswerRelation(relation);
 		}catch (Exception e){
 			logger.error("用户撤销反对同答案时出错",e);
 			return false;
@@ -125,7 +125,7 @@ public class AnswerServiceImpl implements AnswerService {
 
 	@Override
 	public List<Integer> getVoterIds(int answerId) throws Exception {
-		List<User> voters = mapper.selectWhoLikeAnswer(answerId);
+		List<User> voters = answerMapper.selectWhoLikeAnswer(answerId);
 		List<Integer> voterIds = new ArrayList<Integer>();
 		for (User voter : voters) {
 			voterIds.add(voter.getId());
@@ -144,7 +144,7 @@ public class AnswerServiceImpl implements AnswerService {
 		if(isAnsweredQuestion(questionId, currentUserId)){
 			return false;
 		}
-		int result = mapper.insertAnswer(answer);
+		int result = answerMapper.insertAnswer(answer);
 		return result == 1;
 	}
 
@@ -154,7 +154,18 @@ public class AnswerServiceImpl implements AnswerService {
 		Answer answer = new Answer();
 		answer.setAuthorId(currentUserId);
 		answer.setQuestionId(questionId);
-		return mapper.selectAnswerCountByAuthorAndQuestion(answer) == 1;
+		return answerMapper.selectAnswerCountByAuthorAndQuestion(answer) == 1;
+	}
+
+	@Override
+	public boolean updateAnswer(int questionId, int currentUserId, String answerContent)
+			throws Exception {
+		Answer answer = new Answer();
+		answer.setAuthorId(currentUserId);
+		answer.setContent(answerContent);
+		answer.setQuestionId(questionId);
+		int result = answerMapper.updateAnswer(answer);
+		return result == 1;
 	}
 
 }

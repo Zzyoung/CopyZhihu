@@ -1,11 +1,14 @@
 <div ng-repeat="answer in ctrl.answers" tabindex="-1" class="zm-item-answer  zm-item-expanded">
-	<div class="zm-votebar">
+	<div class="zm-votebar" ng-if="answer.author.id !== ctrl.currentUserId">
 		<button ng-class="answer.relationWithCurrentUser == 1?'up pressed':'up'" title="赞同" ng-click="ctrl.toggleLikeAnswer(answer)">
 			<i class="icon vote-arrow"></i> <span class="label">赞同</span> <span class="count">{{answer.voteCount}}</span>
 		</button>
 		<button ng-class="answer.relationWithCurrentUser == 2?'down pressed':'down'" title="反对，不会显示你的姓名" ng-click="ctrl.toggleOpposeAnswer(answer)">
 			<i class="icon vote-arrow"></i> <span class="label">反对，不会显示你的姓名</span>
 		</button>
+	</div>
+	<div class="zm-item-vote" ng-if="answer.author.id === ctrl.currentUserId">
+		<a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;">{{answer.voteCount}}</a>
 	</div>
 	<div class="answer-head">
 		<div class="zm-item-answer-author-info">
@@ -26,7 +29,7 @@
 	<div class="zm-item-rich-text js-collapse-body">
 		<div class="zh-summary summary clearfix" style="display:none;">{{answer.content}}</div>
 		<div formated-content class="zm-editable-content clearfix"><span>{{answer.content}}</span>
-			<a href="javascript:;" class="zu-edit-button" edit-answer ng-show="{{answer.author.id === ctrl.currentUserId}}"><i class="zu-edit-button-icon"></i><span>修改</span></a>
+			<a href="javascript:;" class="zu-edit-button" edit-answer ng-if="answer.author.id === ctrl.currentUserId"><i class="zu-edit-button-icon"></i><span>修改</span></a>
 		</div>
 	</div>
 	<a class="zg-anchor-hidden ac" name="23052566-comment"></a>

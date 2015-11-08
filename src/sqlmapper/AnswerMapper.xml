@@ -40,4 +40,8 @@
 	<select id="selectAnswerCountByAuthorAndQuestion" parameterType="com.zhihu.pojo.Answer" resultType="int">
 		select count(*) from answer where author_id = #{authorId} and question_id = #{questionId}
 	</select>
+	
+	<update id="updateAnswer" parameterType="com.zhihu.pojo.Answer">
+		update answer set content = #{content} where author_id = #{authorId} and question_id = #{questionId}
+	</update>
 </mapper>

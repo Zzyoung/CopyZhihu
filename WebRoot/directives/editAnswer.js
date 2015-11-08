@@ -6,6 +6,7 @@
 			link:function(scope,element,attribute){
 				element.bind('click',function(){
 					var movedEditPanel = element[0].parentNode.nextSibling.nextSibling;
+					console.log(movedEditPanel);
 					if(movedEditPanel){
 						//已经移动过了，只需要设置显示状态
 						movedEditPanel.style.display = 'block';

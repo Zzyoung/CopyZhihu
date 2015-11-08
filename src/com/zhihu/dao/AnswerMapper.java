@@ -24,4 +24,6 @@ public interface AnswerMapper {
 	int insertAnswer(Answer answer) throws Exception;
 
 	int selectAnswerCountByAuthorAndQuestion(Answer answer);
+	
+	int updateAnswer(Answer answer) throws Exception;
 }
