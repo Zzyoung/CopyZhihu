@@ -63,4 +63,6 @@ public class ShowQuestionController {
 		List<Answer> answers = answerService.selectAnswerListByQuestionId(Integer.parseInt(questionId),currentUserId);
 		response.getWriter().write(JSON.toJSONString(answers));
 	}
+	
+	
 }

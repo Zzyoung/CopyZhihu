@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en" class="js flexbox no-touch cssanimations csstransforms csstransitions no-mobile">
+<html lang="en" class="no-touch">
 <head>
 	<meta charset="UTF-8">
 	<title>首页 - 知乎</title>
@@ -15,7 +15,6 @@
 			<div class="zu-main-content-inner">
 				<div class="zg-section" id="zh-home-list-title">
 					<i class="zg-icon zg-icon-feedlist"></i> 最新动态
-					<input type="hidden" id="is-topstory2">
 					<span class="zg-right zm-noti-cleaner-setting">
 						<a href="#" class="zg-link-gray-normal">
 							<i class="zg-icon zg-icon-settings"></i>设置
@@ -24,7 +23,7 @@
 				</div>
 				<div class="zu-main-feed-con navigable" id="zh-question-list">
 					<a href="javascript:;" class="zu-main-feed-fresh-button" id="zh-main-feed-fresh-button" style="display:none;"></a>
-					<div id="js-home-feed-list" class="zh-general-list topstory2 clearfix" data-init="{&quot;params&quot;: {}, &quot;nodename&quot;: &quot;TopStory2FeedList&quot;}">
+					<div id="js-home-feed-list" class="zh-general-list topstory2 clearfix">
 						<feed-item></feed-item>
 					</div>
                     <a href="javascript:;" load-more-feeds ng-hide="mainCtrl.isLoading" ng-click="mainCtrl.loadMoreContents()" class="zg-btn-white zg-r3px zu-button-more">更多</a>
@@ -42,122 +41,85 @@
 				</div>
 			</div>
 				<div class="zm-side-section">
-				<div class="zm-side-section-inner">
-				<div class="zm-side-nav-group">
-				<ul class="zm-side-nav" id="zg-sidebar-nav">
-				<li class="zm-side-nav-li">
-				<a class="zm-side-nav-link" href="/draft">
-				<i class="zg-icon zg-icon-sidenav-draft"></i>
-				我的草稿
-
-				</a>
-				</li>
-				<li class="zm-side-nav-li">
-				<a class="zm-side-nav-link" href="/collections">
-				<i class="zg-icon zg-icon-sidenav-fav"></i>
-				我的收藏
-
-				</a>
-				</li>
-				<li class="zm-side-nav-li">
-				<a class="zm-side-nav-link" href="/question/following">
-				<i class="zg-icon zg-icon-sidenav-follow"></i>
-				我关注的问题
-				</a>
-				</li>
-				<li class="zm-side-nav-li">
-				<a class="zm-side-nav-link" href="/question/invited">
-				<i class="zg-icon zg-icon-sidenav-invite"></i>
-				邀请我回答的问题
-
-				</a>
-				</li>
-				</ul>
-				</div>
-				<div class="zm-side-nav-group">
-				<ul class="zm-side-nav">
-				<li class="zm-side-nav-li">
-				<a class="zm-side-nav-link" href="/log/questions">
-				<i class="zg-icon zg-icon-sidenav-all"></i>
-				所有问题
-				</a>
-				</li>
-				<li class="zm-side-nav-li">
-				<a class="zm-side-nav-link" href="/topics">
-				<i class="zg-icon zg-icon-sidenav-plaza"></i>
-				话题广场
-				</a>
-				</li>
-				<li class="zm-side-nav-li rq3-publiceditlink" id="rq3-sidenav-link">
-				<a class="zm-side-nav-link" href="/watch">
-				<i class="zg-icon zg-icon-sidenav-publicedit"></i>
-				公共编辑动态
-				<span class="zg-num hidden">0</span>
-				</a>
-				</li>
-				<li class="zm-side-nav-li">
-				<a class="zm-side-nav-link z-ico-container" href="/community">
-				<i class="z-ico-community"></i>
-				社区服务中心
-				</a>
-				</li>
-				</ul>
-				</div>
-
-
-
-
-				</div>
+					<div class="zm-side-section-inner">
+						<div class="zm-side-nav-group">
+							<ul class="zm-side-nav" id="zg-sidebar-nav">
+								<li class="zm-side-nav-li">
+									<a class="zm-side-nav-link" href="/draft">
+										<i class="zg-icon zg-icon-sidenav-draft"></i>我的草稿
+									</a>
+								</li>
+								<li class="zm-side-nav-li">
+									<a class="zm-side-nav-link" href="/collections">
+										<i class="zg-icon zg-icon-sidenav-fav"></i>我的收藏
+									</a>
+								</li>
+								<li class="zm-side-nav-li">
+									<a class="zm-side-nav-link" href="/question/following">
+										<i class="zg-icon zg-icon-sidenav-follow"></i>我关注的问题
+									</a>
+								</li>
+								<li class="zm-side-nav-li">
+									<a class="zm-side-nav-link" href="/question/invited">
+										<i class="zg-icon zg-icon-sidenav-invite"></i>邀请我回答的问题
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="zm-side-nav-group">
+							<ul class="zm-side-nav">
+								<li class="zm-side-nav-li">
+									<a class="zm-side-nav-link" href="/log/questions">
+										<i class="zg-icon zg-icon-sidenav-all"></i>所有问题
+									</a>
+								</li>
+								<li class="zm-side-nav-li">
+									<a class="zm-side-nav-link" href="/topics">
+										<i class="zg-icon zg-icon-sidenav-plaza"></i>话题广场
+									</a>
+								</li>
+								<li class="zm-side-nav-li rq3-publiceditlink" id="rq3-sidenav-link">
+									<a class="zm-side-nav-link" href="/watch">
+										<i class="zg-icon zg-icon-sidenav-publicedit"></i>公共编辑动态
+										<span class="zg-num hidden">0</span>
+									</a>
+								</li>
+								<li class="zm-side-nav-li">
+									<a class="zm-side-nav-link z-ico-container" href="/community">
+										<i class="z-ico-community"></i>社区服务中心
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 				<div class="zm-side-section zm-side-list-content zm-side-pinned-topics zm-side-latest-roundtable">
 					<h3><a href="/roundtable" class="zg-link-litblue zg-right">查看全部 »</a>知乎圆桌</h3>
 					<ul class="zm-side-nav">
-
-					<li class="zm-side-nav-li zm-side-nav-roundtable">
-					<a class="photo zm-side-nav-link" href="/roundtable/anime">
-					<img class="avatar avatar-s" alt="动画电影动画人" data-tip="r$b$anime" src="images/80d998fcfa116c2b200bb9aa617d5064_s.png" srcset="images/80d998fcfa116c2b200bb9aa617d5064_xs.png 2x">
-					<span data-tip="r$t$anime">
-					动画电影动画人
-					</span>
-
-					<span class="zg-right side-roundtable-hint">还有 15 小时开始</span>
-
-					</a>
-
-					<a data-follow="rt:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-anime"><i class="z-icon-follow"></i>关注圆桌</a>
-
-					</li>
-
-					<li class="zm-side-nav-li zm-side-nav-roundtable">
-					<a class="photo zm-side-nav-link" href="/roundtable/urbanization">
-					<img class="avatar avatar-s" alt="离不开城市" data-tip="r$t$urbanization" src="images/00a7c1f7321a57fb0a5a069256494da7_s.png" srcset="images/00a7c1f7321a57fb0a5a069256494da7_xs.png 2x">
-					<span data-tip="r$b$urbanization">
-					离不开城市
-					</span>
-
-					<span class="zg-right side-roundtable-hint">还有 3 天结束</span>
-
-					</a>
-
-					<a data-follow="rt:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-urbanization"><i class="z-icon-follow"></i>关注圆桌</a>
-
-					</li>
-
-					<li class="zm-side-nav-li zm-side-nav-roundtable">
-					<a class="photo zm-side-nav-link" href="/roundtable/family">
-					<img class="avatar avatar-s" alt="以家的名义" data-tip="r$b$family" src="images/b9fc5eaea083bab81273f89f878adac5_s.png" srcset="images/b9fc5eaea083bab81273f89f878adac5_xs.png 2x">
-					<span data-tip="r$t$family">
-					以家的名义
-					</span>
-
-					<span class="zg-right side-roundtable-hint">还有 3 天结束</span>
-
-					</a>
-
-					<a data-follow="rt:link" class="follow-link zg-follow meta-item" href="javascript:;" id="sfb-family"><i class="z-icon-follow"></i>关注圆桌</a>
-
-					</li>
-
+						<li class="zm-side-nav-li zm-side-nav-roundtable">
+							<a class="photo zm-side-nav-link" href="/roundtable/anime">
+								<img class="avatar avatar-s" alt="动画电影动画人" data-tip="r$b$anime" src="images/80d998fcfa116c2b200bb9aa617d5064_s.png">
+								<span data-tip="r$t$anime">动画电影动画人</span>
+								<span class="zg-right side-roundtable-hint">还有 15 小时开始</span>
+							</a>
+							<a class="follow-link zg-follow meta-item" href="javascript:;"><i class="z-icon-follow"></i>关注圆桌</a>
+						</li>
+						<li class="zm-side-nav-li zm-side-nav-roundtable">
+							<a class="photo zm-side-nav-link" href="/roundtable/urbanization">
+								<img class="avatar avatar-s" alt="离不开城市" data-tip="r$t$urbanization" src="images/00a7c1f7321a57fb0a5a069256494da7_s.png" srcset="images/00a7c1f7321a57fb0a5a069256494da7_xs.png 2x">
+								<span data-tip="r$b$urbanization">离不开城市</span>
+								<span class="zg-right side-roundtable-hint">还有 3 天结束</span>
+							</a>
+							<a class="follow-link zg-follow meta-item" href="javascript:;"><i class="z-icon-follow"></i>关注圆桌</a>
+						</li>
+						<li class="zm-side-nav-li zm-side-nav-roundtable">
+							<a class="photo zm-side-nav-link" href="/roundtable/family">
+								<img class="avatar avatar-s" alt="以家的名义" data-tip="r$b$family" src="images/b9fc5eaea083bab81273f89f878adac5_s.png" srcset="images/b9fc5eaea083bab81273f89f878adac5_xs.png 2x">
+								<span data-tip="r$t$family">以家的名义</span>
+								<span class="zg-right side-roundtable-hint">还有 3 天结束</span>
+							</a>
+							<a class="follow-link zg-follow meta-item" href="javascript:;"><i class="z-icon-follow"></i>关注圆桌</a>
+						</li>
 					</ul>
 					</div>
 				<!---->
@@ -166,7 +128,7 @@
 						<div id="zh-trendings" class="zh-trendings"><ul></ul></div>
 					</div>
 				<!---->
-                    <div class="zm-side-section shameimaru-section" id="shameimaru-home-bottom-5aeee4c1b" data-location="home_bottom" data-id="5aeee4c1b">
+                    <div class="zm-side-section shameimaru-section" id="shameimaru-home-bottom-5aeee4c1b">
 						<div class="zm-side-section-inner">
 							<div class="zg-clear zh-shameimaru-5aeee4c1b">
 							    <a class="shameimaru-link" target="_blank" rel="nofollow" href="/shameimaru/click?id=5aeee4c1b&amp;location=home_bottom"></a>
@@ -179,16 +141,13 @@
 						<div class="zg-wrap clearfix">
 						<ul>
 							<li><a href="https://liukanshan.zhihu.com" target="_blank">刘看山</a></li>
-
 							<li><a href="/question/19581624" target="_blank">知乎指南</a></li>
 							<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
-
 							<li><a href="/app" target="_blank">移动应用</a></li>
 							<li><a href="/careers">加入知乎</a></li>
 							<li><a href="/terms" target="_blank">知乎协议</a></li>
 							<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
-						</ul>
-						<span class="copy">© 2015 知乎</span>
+						</ul><span class="copy">© 2015 知乎</span>
 						</div>
 					</div>	
 			
@@ -294,6 +253,10 @@
 	<script type="text/javascript" src="filters/voteThank.filter.js"></script>
 	<script type="text/javascript" src="filters/formatContent.filter.js"></script>
 	<script type="text/javascript" src="filters/hideDescription.filter.js"></script>
+	
+	<!-- animation -->
+	<script type="text/javascript" src="vendor/Utils.js"></script>
+	<script type="text/javascript" src="animation/animation.js"></script>
 	
 </body>
 </html>

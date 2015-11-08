@@ -1,5 +1,7 @@
 package com.zhihu.pojo;
 
+import java.util.List;
+
 public class Question {
 	private int id;
 	private String name;
@@ -9,6 +11,14 @@ public class Question {
 	private String topicNames;
 	private boolean unnamed;
 	private Integer answerCount;
+	private List<Topic> topics;
+	
+	public List<Topic> getTopics() {
+		return topics;
+	}
+	public void setTopics(List<Topic> topics) {
+		this.topics = topics;
+	}
 	public int getId() {
 		return id;
 	}

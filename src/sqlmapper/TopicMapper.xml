@@ -4,5 +4,8 @@
 	<select id="selectTopicsLikeName" parameterType="java.util.HashMap" resultType="com.zhihu.pojo.Topic">
 		SELECT NAME,photo_url as photoUrl FROM topic WHERE NAME LIKE '%${name}%' and name not in (${filter})
 	</select>
-
+	
+	<select id="selectTopicByName" parameterType="java.lang.String" resultType="com.zhihu.pojo.Topic">
+		SELECT id,NAME,photo_url as photoUrl FROM topic WHERE NAME = #{name}
+	</select>
 </mapper>

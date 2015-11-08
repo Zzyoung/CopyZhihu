@@ -82,11 +82,6 @@ a:link{
 	position: absolute;
 	right: 0;
 	top: 0;
-}
-.top-nav-profile{
-	position: absolute;
-	right: 0;
-	top: 0;
 	min-width: 120px;
 	z-index: 10;
 }
@@ -265,6 +260,7 @@ a:link{
 	left: 52px;
 	top: 48px;
 	border: 1px solid #ddd;
+	display:none;
 }
 .zu-top-nav-live-inner{
 	padding: 10px;
@@ -1197,9 +1193,6 @@ img.avatar.avatar-s{
 	width: auto;
 	border-top-color: #eee;
 }
-.zh-footer ul, .zh-footer li{
-	display: inline;
-}
 .zh-footer li{
 	list-style: none;
 }
@@ -1731,9 +1724,6 @@ html.no-touch .zm-comment-op-link:hover{
 	display: none;
 	padding-bottom: 0;
 }
-.top-nav-profile .zu-top-nav-userinfo{
-	
-}
 .open .top-nav-dropdown, html.no-touch .top-nav-profile:hover .top-nav-dropdown{
 	display:block;
 }
@@ -2253,9 +2243,6 @@ input[type=checkbox]{
 }
 .zh-footer ul, .zh-footer li{
 	display: inline;
-}
-.zh-footer ul{
-	float: right;
 }
 .zh-footer li{
 	list-style: none;

@@ -13,12 +13,14 @@ import com.alibaba.fastjson.JSON;
 import com.zhihu.dao.AnswerMapper;
 import com.zhihu.dao.CommentMapper;
 import com.zhihu.dao.QuestionMapper;
+import com.zhihu.dao.TopicMapper;
 import com.zhihu.dao.UserMapper;
 import com.zhihu.pojo.Answer;
 import com.zhihu.pojo.Comment;
 import com.zhihu.pojo.Feed;
 import com.zhihu.pojo.FeedSourcePeople;
 import com.zhihu.pojo.Question;
+import com.zhihu.pojo.Topic;
 import com.zhihu.pojo.User;
 import com.zhihu.pojo.UserAnswerRelation;
 import com.zhihu.service.QuestionService;
@@ -28,6 +30,9 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Autowired
 	private QuestionMapper questionMapper;
+	
+	@Autowired
+	private TopicMapper topicMapper;
 	
 	@Autowired
 	private AnswerMapper answerMapper;
@@ -66,7 +71,8 @@ public class QuestionServiceImpl implements QuestionService {
 	public Question selectQuestionById(String questionId) throws Exception {
 		HashMap<String, String> param = new HashMap<String,String>();
 		param.put("id", questionId);
-		return questionMapper.selectQuestionById(param);
+		Question question = questionMapper.selectQuestionById(param);
+		return question;
 	}
 
 	@Override

@@ -6,13 +6,13 @@
 	function NavigationSerivce(UtilsService){
 		var service = {};
 		
-		service.popup = {
+		/*service.popup = {
 			showTopNavLive:false
 		};
 		
 		service.toggle = function(){
 			service.popup.showTopNavLive = !service.popup.showTopNavLive;
-		};
+		};*/
 		
 		service.tabs = [{
 			name:'message',

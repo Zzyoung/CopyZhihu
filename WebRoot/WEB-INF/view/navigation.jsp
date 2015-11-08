@@ -9,29 +9,15 @@
 				<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count" data-count="0">2</span>
 			</a>
 			<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
-				<li>
-					<a href="/people/zhang-yang-07-01">
-					<i class="zg-icon zg-icon-dd-home"></i>我的主页
-					</a>
-				</li>
+				<li><a href="/people/zhang-yang-07-01"><i class="zg-icon zg-icon-dd-home"></i>我的主页</a></li>
 				<li>
 					<a href="/inbox">
 						<i class="zg-icon zg-icon-dd-pm"></i>私信
-						<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
-						style="visibility:hidden" data-count="0">
-						</span>
+						<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number" style="visibility:hidden" data-count="0"></span>
 					</a>
 				</li>
-				<li>
-					<a href="/settings">
-						<i class="zg-icon zg-icon-dd-settings"></i>设置
-					</a>
-				</li>
-				<li ng-click="ctrl.logout($event)">
-					<a>
-						<i class="zg-icon zg-icon-dd-logout"></i>退出
-					</a>
-				</li>
+				<li><a href="/settings"><i class="zg-icon zg-icon-dd-settings"></i>设置</a></li>
+				<li ng-click="ctrl.logout($event)"><a><i class="zg-icon zg-icon-dd-logout"></i>退出</a></li>
 			</ul>
 		</div>
 		<div id="zh-top-search" class="zu-top-search">
@@ -54,11 +40,11 @@
 				<li class="zu-top-nav-li " id="zh-top-nav-explore">
 					<a class="zu-top-nav-link" href="/explore">发现</a>
 				</li>
-				<li class="top-nav-noti zu-top-nav-li" ng-click="ctrl.toggle()">
+				<li class="top-nav-noti zu-top-nav-li">
 					<a class="zu-top-nav-link" href="" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息<span id="zh-top-nav-count" class="zu-top-nav-count zg-noti-number">1</span></a>
 				</li>
 			</ul>
-			<div ng-show="ctrl.popup.showTopNavLive" class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+			<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
 				<div class="zu-top-nav-live-inner zg-r5px">
 					<div class="zu-top-live-icon">&nbsp;</div>
 					<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">

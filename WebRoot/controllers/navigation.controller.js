@@ -10,7 +10,7 @@
 		
 		ctrl.popup = NavigationSerivce.popup;
 		
-		ctrl.toggle = NavigationSerivce.toggle;
+//		ctrl.toggle = NavigationSerivce.toggle;
 		
 		ctrl.tabs = NavigationSerivce.tabs;
 		

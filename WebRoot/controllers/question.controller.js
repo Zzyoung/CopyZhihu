@@ -13,6 +13,8 @@
 		
 		ctrl.currentUserId = $rootScope.globals.currentUser.id;
 		
+		ctrl.currentQuestionTopicNames = $rootScope.globals.currentQuestion.topicNames.split(',');
+		
 		ctrl.answers = QuestionService.answers;
 		
 		ctrl.isAnswered = false;

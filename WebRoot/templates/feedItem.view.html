@@ -24,10 +24,10 @@
 					<div formated-content ng-hide="feed.hideQuestionDesc" class="question-description zm-editable-content"><span>{{feed.questionDesc}}</span></div>
 				</div>
 				<div ng-if="!feed.withoutAnswer" class="entry-body ">
-					<div ng-click="mainCtrl.expandAnswer(feed)" class="zm-item-vote" ng-hide="feed.answerExpanded">
-						<a class="zm-item-vote-count" href="javascript:;" data-votecount="0">{{feed.answer.voteCount}}</a>
+					<div ng-click="mainCtrl.expandAnswer(feed)" class="zm-item-vote" ng-show="(!feed.answerExpanded) || feed.answer.author.id === mainCtrl.currentUserId">
+						<a class="zm-item-vote-count" href="javascript:;">{{feed.answer.voteCount}}</a>
 					</div>
-					<div class="zm-votebar" ng-show="feed.answerExpanded">
+					<div class="zm-votebar" ng-show="feed.answerExpanded && feed.answer.author.id !== mainCtrl.currentUserId">
 						<button ng-class="feed.answer.relationWithCurrentUser == 1?'up pressed':'up'" title="赞同" ng-click="mainCtrl.toggleLikeAnswer(feed.answer)">
 							<i class="icon vote-arrow"></i> <span class="label">赞同</span> <span class="count">{{feed.answer.voteCount}}</span>
 						</button>

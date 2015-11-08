@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en" class="js flexbox no-touch cssanimations csstransforms csstransitions no-mobile"  ng-app="zhihu">
+<html lang="en" class="no-touch"  ng-app="zhihu">
 <head>
 <meta charset="UTF-8">
 <title>${question.name }</title>
@@ -10,47 +10,44 @@
 </head>
 <body class="zhi">
 	<%@ include file="navigation.jsp" %>
-	<div ng-controller="QuestionController" class="zg-wrap zu-main question-page" id="zh-single-question-page" data-urltoken="36767166">
+	<div ng-controller="QuestionController" class="zg-wrap zu-main question-page" id="zh-single-question-page">
 		<div class="zu-main-content">
 			<div class="zu-main-content-inner with-indention-votebar">
 				<div class="zm-tag-editor zg-section">
 					<div class="zm-tag-editor-labels zg-clear">
-						<a class="zm-item-tag" href="/topic/19591985" data-tip="t$b$19591985" data-token="19591985" data-topicid="13908"> 动漫 </a> 
-						<a class="zm-item-tag" href="/topic/19665348" data-tip="t$b$19665348" data-token="19665348" data-topicid="38458"> 动漫推荐 </a> 
+						<a class="zm-item-tag" href="/topic/19591985" ng-repeat="topic in ctrl.currentQuestionTopicNames"> {{topic}} </a> 
 						<a href="javascript:;" class="zu-edit-button"><i class="zu-edit-button-icon"></i>修改</a>
 					</div>
 				</div>
-				<div id="zh-question-title" data-editable="true">
+				<div id="zh-question-title">
 					<h2 class="zm-item-title zm-editable-content">
 						${question.name }<a href="javascript:;" class="zu-edit-button"><i class="zu-edit-button-icon"></i>修改</a>
 					</h2>
 				</div>
-				<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="6914051" data-action="/question/detail">
+				<div id="zh-question-detail" class="zm-item-rich-text">
 					<div class="zm-editable-content">
 						${question.description }<a href="javascript:;" class="zu-edit-button"><i class="zu-edit-button-icon"></i>修改</a>
 					</div>
 				</div>
-				<div class="zm-item-meta zm-item-comment-el clearfix"
-					id="zh-question-meta-wrap">
+				<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
 					<div class="zm-meta-panel">
-						<a href="#" name="report-question" class="report zg-right"> <i
-							class="z-icon-no-help"></i>举报</a> <a href="#" name="addcomment"
-							class="toggle-comment meta-item"> <i class="z-icon-comment"></i>添加评论
-						</a> <a href="#" name="share" class="share meta-item"> <i
-							class="z-icon-share"></i>分享 </a> <span class="zg-bull">&bull;</span>
-						<a href="#" name="invite" class="meta-item" ng-click="ctrl.toggleInvitePanel()">{{ctrl.showInvitePanel?'收起邀请':'邀请回答'}}</a> <span
-							class="zg-bull">&bull;</span> <a href="#" name="remove"
-							class="meta-item">删除问题</a>
+						<a href="#" name="report-question" class="report zg-right"> <i class="z-icon-no-help"></i>举报</a> 
+						<a href="#" name="addcomment" class="toggle-comment meta-item"> <i class="z-icon-comment"></i>添加评论</a> 
+						<a href="#" name="share" class="share meta-item"> <i class="z-icon-share"></i>分享 </a> 
+						<span class="zg-bull">&bull;</span>
+						<a href="#" name="invite" class="meta-item" ng-click="ctrl.toggleInvitePanel()">{{ctrl.showInvitePanel?'收起邀请':'邀请回答'}}</a> 
+						<span class="zg-bull">&bull;</span> 
+						<a href="#" name="remove" class="meta-item">删除问题</a>
 					</div>
 					<div class="panel-container" ng-show="ctrl.showInvitePanel">
-						<div class="question-invite-panel" id="question-invite-panel" data-showsearch="true" style="display: block;">
+						<div class="question-invite-panel" id="question-invite-panel" style="display: block;">
 							<i class="icon icon-spike"></i>
 							<div class="invite-title">
-								<span class="input-wrapper"> <input type="text"
-									placeholder="搜索你想邀请的人" class="search-input zg-form-text-input"
-									data-tip="s$t$也可以搜索职业、公司等资料" aria-haspopup="true"
-									autocomplete="off" aria-label="搜索你想邀请的人"><i
-									class="zg-icon icon-magnify"></i></span><i class="spinner-gray"></i>
+								<span class="input-wrapper"> 
+									<input type="text" placeholder="搜索你想邀请的人" class="search-input zg-form-text-input" data-tip="s$t$也可以搜索职业、公司等资料" autocomplete="off" >
+									<i class="zg-icon icon-magnify"></i>
+								</span>
+								<i class="spinner-gray"></i>
 								<span class="invite-status"> 你可以邀请 6 人回答该问题 </span>
 							</div>
 							<div class="suggest-persons-wrapper">
@@ -70,91 +67,63 @@
 											</div>
 										</div>
 									</li>
-									<li class="person"><a title="王昊"
-										data-tip="p$t$xie-luo-99-67" class="zm-item-link-avatar"
-										href="/people/xie-luo-99-67"> <img
-											src="images/5b35a64aaa807dc2065d42bf24dc9d18_is.jpg"
-											class="zm-item-img-avatar"> </a>
+									<li class="person">
+										<a title="王昊" data-tip="p$t$xie-luo-99-67" class="zm-item-link-avatar" href="/people/xie-luo-99-67"> 
+											<img src="images/5b35a64aaa807dc2065d42bf24dc9d18_is.jpg" class="zm-item-img-avatar"> 
+										</a>
 										<div class="content">
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="192d15d051d9527e6ee50a802e4a2354"
-												data-type="recommended">邀请回答</button>
+											<button class="invite-button zg-btn zg-btn-green">邀请回答</button>
 											<div class="describe">
-												<a data-tip="p$t$xie-luo-99-67"
-													href="http://www.zhihu.com/people/xie-luo-99-67"
-													class="zg-link" title="王昊">王昊</a><span
-													class="bio hidden-phone" title="与君初相识，犹如故人归">，与君初相识，犹如故人归</span>
+												<a data-tip="p$t$xie-luo-99-67" href="http://www.zhihu.com/people/xie-luo-99-67" class="zg-link" title="王昊">王昊</a>
+												<span class="bio hidden-phone" title="与君初相识，犹如故人归">，与君初相识，犹如故人归</span>
 											</div>
 											<div class="reason">
-												在 <a href="/people/xie-luo-99-67/topic/19591985/answers"
-													data-tip="t$t$19591985" data-token="19591985"
-													data-topicid="13908"> 动漫 </a> 话题下有 36 个回答
+												在 <a href="/people/xie-luo-99-67/topic/19591985/answers" data-tip="t$t$19591985"> 动漫 </a> 话题下有 36 个回答
 											</div>
 										</div>
 									</li>
-									<li class="person"><a data-tip="p$t$kagamichan"
-										class="zm-item-link-avatar" href="/people/kagamichan"
-										data-original_title="明镜止水"> <img
-											src="images/379c55be0527f1eec3185fa5ef665ffa_is.jpg"
-											class="zm-item-img-avatar"> </a>
+									<li class="person">
+										<a data-tip="p$t$kagamichan" class="zm-item-link-avatar" href="/people/kagamichan"> 
+											<img src="images/379c55be0527f1eec3185fa5ef665ffa_is.jpg" class="zm-item-img-avatar"> 
+										</a>
 										<div class="content">
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="1731b489e3b25d5a94430388bde61d82"
-												data-type="recommended">邀请回答</button>
+											<button class="invite-button zg-btn zg-btn-green">邀请回答</button>
 											<div class="describe">
-												<a data-tip="p$t$kagamichan"
-													href="http://www.zhihu.com/people/kagamichan"
-													class="zg-link" title="明镜止水">明镜止水</a><span
-													class="bio hidden-phone" title="那个烤秋刀鱼的小姐姐，请到我的碗里来">，那个烤秋刀鱼的小姐姐，请到我的碗里来</span>
+												<a data-tip="p$t$kagamichan" href="http://www.zhihu.com/people/kagamichan" class="zg-link" title="明镜止水">明镜止水</a>
+												<span class="bio hidden-phone" title="那个烤秋刀鱼的小姐姐，请到我的碗里来">，那个烤秋刀鱼的小姐姐，请到我的碗里来</span>
 											</div>
 											<div class="reason">
-												在 <a href="/people/kagamichan/topic/19591985/answers"
-													data-tip="t$b$19591985" data-token="19591985"
-													data-topicid="13908"> 动漫 </a> 话题下有 159 个回答
+												在 <a href="/people/kagamichan/topic/19591985/answers" data-tip="t$b$19591985"> 动漫 </a> 话题下有 159 个回答
 											</div>
 										</div>
 									</li>
-									<li class="person"><a title="花菌子"
-										data-tip="p$t$hua-jun-zi-27" class="zm-item-link-avatar"
-										href="/people/hua-jun-zi-27"> <img
-											src="images/cca2c5f6670035553534903c4bc9ebed_is.jpg"
-											class="zm-item-img-avatar"> </a>
+									<li class="person">
+										<a title="花菌子" data-tip="p$t$hua-jun-zi-27" class="zm-item-link-avatar" href="/people/hua-jun-zi-27"> 
+											<img src="images/cca2c5f6670035553534903c4bc9ebed_is.jpg" class="zm-item-img-avatar"> 
+										</a>
 										<div class="content">
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="b634edcbc68c57df59ccb37174c9f29c"
-												data-type="recommended">邀请回答</button>
+											<button class="invite-button zg-btn zg-btn-green">邀请回答</button>
 											<div class="describe">
-												<a data-tip="p$t$hua-jun-zi-27"
-													href="http://www.zhihu.com/people/hua-jun-zi-27"
-													class="zg-link" title="花菌子">花菌子</a><span
-													class="bio hidden-phone" title="蘑菇">，蘑菇</span>
+												<a data-tip="p$t$hua-jun-zi-27" href="http://www.zhihu.com/people/hua-jun-zi-27" class="zg-link" title="花菌子">花菌子</a>
+												<span class="bio hidden-phone" title="蘑菇">，蘑菇</span>
 											</div>
 											<div class="reason">
-												在 <a href="/people/hua-jun-zi-27/topic/19665348/answers"
-													data-tip="t$b$19665348" data-token="19665348"
-													data-topicid="38458"> 动漫推荐 </a> 话题下有 1 个回答
+												在 <a href="/people/hua-jun-zi-27/topic/19665348/answers" data-tip="t$b$19665348"> 动漫推荐 </a> 话题下有 1 个回答
 											</div>
 										</div>
 									</li>
-									<li class="person"><a title="孟德尔"
-										data-tip="p$t$meng-de-er" class="zm-item-link-avatar"
-										href="/people/meng-de-er"> <img
-											src="images/8a0f51296_is.jpg"
-											class="zm-item-img-avatar"> </a>
+									<li class="person">
+										<a title="孟德尔" data-tip="p$t$meng-de-er" class="zm-item-link-avatar" href="/people/meng-de-er"> 
+											<img src="images/8a0f51296_is.jpg" class="zm-item-img-avatar"> 
+										</a>
 										<div class="content">
-											<button class="invite-button zg-btn zg-btn-green"
-												data-uid="5b4c4c40369aa3294b09f8e4bd715f23"
-												data-type="recommended">邀请回答</button>
+											<button class="invite-button zg-btn zg-btn-green">邀请回答</button>
 											<div class="describe">
-												<a data-tip="p$t$meng-de-er"
-													href="http://www.zhihu.com/people/meng-de-er"
-													class="zg-link" title="孟德尔">孟德尔</a><span
-													class="bio hidden-phone" title="不玩游戏的游戏迷">，不玩游戏的游戏迷</span>
+												<a data-tip="p$t$meng-de-er" href="http://www.zhihu.com/people/meng-de-er" class="zg-link" title="孟德尔">孟德尔</a>
+												<span class="bio hidden-phone" title="不玩游戏的游戏迷">，不玩游戏的游戏迷</span>
 											</div>
 											<div class="reason">
-												在 <a href="/people/meng-de-er/topic/19591985/answers"
-													data-tip="t$b$19591985" data-token="19591985"
-													data-topicid="13908"> 动漫 </a> 话题下有 177 个回答
+												在 <a href="/people/meng-de-er/topic/19591985/answers" data-tip="t$b$19591985"> 动漫 </a> 话题下有 177 个回答
 											</div>
 										</div>
 									</li>
@@ -164,7 +133,7 @@
 						</div>
 					</div>
 				</div>
-				<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper navigable" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;>.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 36767166, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}">
+				<div id="zh-question-answer-wrap" class="zh-question-answer-wrapper navigable" >
 					<answer></answer>
 				</div>
 				<a class="zg-btn-white zu-button-more" style="display: none;">更多</a>
@@ -322,7 +291,7 @@
 		<div class="zu-main-sidebar">
 			<div class="zm-side-section">
 				<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
-					<button class="follow-button zg-unfollow zg-btn-white" data-id="6914051">取消关注</button>
+					<button class="follow-button zg-unfollow zg-btn-white">取消关注</button>
 					<div class="zg-btn-white" id="zh-question-operation-menu">
 						<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
 					</div>
@@ -340,7 +309,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="zm-side-section shameimaru-section" id="shameimaru-question-up-e68c0213f" data-location="question_up" data-id="e68c0213f">
+			<div class="zm-side-section shameimaru-section" id="shameimaru-question-up-e68c0213f">
 					<div class="zm-side-section-inner">
 						<div class="zh-shameimaru">
 						    <a class="shameimaru-link" target="_blank" rel="nofollow" href="/shameimaru/click?id=e68c0213f&amp;location=question_up"></a>
@@ -409,7 +378,12 @@
 			<span class="copy">&copy; 2015 知乎</span>
 		</div>
 	</div>
-
+	<div class="zh-backtotop" style="opacity:1;">
+		<a href="javascript:;" class="btn-backtotop btn-action">
+			<div class="arrow"></div>
+			<div class="stick"></div>
+		</a>
+	</div>
 	<script src="vendor/jquery-2.0.3.min.js"></script>
 	<script src="vendor/angular.js"></script>
 	<script src="vendor/angular-route.js"></script>
@@ -434,7 +408,8 @@
 		                    username: '<%= request.getAttribute("userName")%>'
 		                },
 		                currentQuestion:{
-		                	id:'${question.id }'
+		                	id:'${question.id }',
+		                	topicNames:'${question.topicNames}'
 		                }
 		            };
 				}
@@ -470,5 +445,8 @@
 	<script type="text/javascript" src="directives/cancelEdit.js"></script>
 	<!-- filter -->
 	<script type="text/javascript" src="filters/voteThank.filter.js"></script>
+	<!-- animation -->
+	<script type="text/javascript" src="vendor/Utils.js"></script>
+	<script type="text/javascript" src="animation/animation.js"></script>
 </body>
 </html>

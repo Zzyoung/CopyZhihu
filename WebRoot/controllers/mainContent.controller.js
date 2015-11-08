@@ -8,6 +8,8 @@
 		
 		var mainCtrl = $scope.mainCtrl;
 		
+		mainCtrl.currentUserId = $rootScope.globals.currentUser.id;
+		
 		mainCtrl.compile = $compile;
 		mainCtrl.feeds = [];
 		mainCtrl.isLoading = false;
