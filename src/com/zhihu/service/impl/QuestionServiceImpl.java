@@ -25,6 +25,7 @@ import com.zhihu.pojo.User;
 import com.zhihu.pojo.UserAnswerRelation;
 import com.zhihu.service.QuestionService;
 import com.zhihu.utils.Constant;
+import com.zhihu.utils.Utils;
 @Service
 public class QuestionServiceImpl implements QuestionService {
 
@@ -59,6 +60,8 @@ public class QuestionServiceImpl implements QuestionService {
 	@Override
 	public int insertQuestion(Question question) {
 		try {
+			String desc = question.getDescription();
+			question.setDescription(Utils.filterBr(desc));
 			questionMapper.insertQuestion(question);
 			return question.getId(); 
 		} catch (Exception e) {

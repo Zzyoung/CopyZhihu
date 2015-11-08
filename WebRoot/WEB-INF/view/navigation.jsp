@@ -29,7 +29,7 @@
 			</form>
 			<button add-question class="zu-top-add-question" id="zu-top-add-question">提问</button>
 		</div>
-		<div id="zg-top-nav" class="zu-top-nav">
+		<nav class="zu-top-nav">
 			<ul class="zu-top-nav-ul zg-clear">
 				<li class="zu-top-nav-li current" id="zh-top-nav-home">
 					<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
@@ -44,11 +44,11 @@
 					<a class="zu-top-nav-link" href="" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息<span id="zh-top-nav-count" class="zu-top-nav-count zg-noti-number">1</span></a>
 				</li>
 			</ul>
-			<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+			<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new">
 				<div class="zu-top-nav-live-inner zg-r5px">
 					<div class="zu-top-live-icon">&nbsp;</div>
 					<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
-						<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+						<div class="zm-noti7-popup-tab-container clearfix">
 							<button ng-click="ctrl.clickTab(0)" ng-class="ctrl.getTabClass(0)">
 								<span class="icon">消息</span>
 							</button>
@@ -70,7 +70,7 @@
 											<img src="images/spinner2.gif" alt="" class="noti-spinner">
 										</div>
 										<div class="zm-noti7-content-body">
-											<div ng-class="msg.unread ? 'zm-noti7-content-item unread':'zm-noti7-content-item'" ng-repeat="msg in ctrl.msgContents" data-notigroupname="ANSWER">
+											<div ng-class="msg.unread ? 'zm-noti7-content-item unread':'zm-noti7-content-item'" ng-repeat="msg in ctrl.msgContents">
 												<span class="author-list">
 													<span class="user-block" ng-repeat="answer in msg.answers">
 														<span ng-show="answer.unnamed">匿名用户</span>
@@ -101,11 +101,11 @@
 												<div class="zm-noti7-content-head-item">
 													<span class="zg-gray-normal">这些人最近关注了你</span>
 												</div>
-												<div class="zm-noti7-content-item" data-notigroupname="FOLLOW" ng-repeat="user in ctrl.userContents">
+												<div class="zm-noti7-content-item" ng-repeat="user in ctrl.userContents">
 													<div class="zm-profile-section-item zg-clear no-hovercard">
 														<div class="zg-right">
-															<a ng-hide="{{user.followed}}" href="/follow" id="pf-65489132165498" class="zg-follow" data-follow="m:links">关注</a>
-															<a ng-show="{{user.followed}}" href="/unfollow" id="pf-65489132165498" class="zg-follow" data-follow="m:links">取消关注</a>
+															<a ng-hide="{{user.followed}}" href="/follow" class="zg-follow">关注</a>
+															<a ng-show="{{user.followed}}" href="/unfollow" class="zg-follow">取消关注</a>
 														</div>
 														<a href="/people" class="zm-item-link-avatar" title="人名">
 															<img ng-src="{{user.photoUrl}}" alt="" class="zm-item-img-avatar">
@@ -175,6 +175,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</nav>
 	</div>
 </div>

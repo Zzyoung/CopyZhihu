@@ -32,10 +32,10 @@
 		
 		mainCtrl.toggleComments = function(feed){
 			feed.isShowComments = !feed.isShowComments;
-			if(!feed.comments || feed.comments.length===0){
+			if(!feed.answer.comments || feed.answer.comments.length===0){
 				//根据answerId查询评论
 				CommentService.getCommentsByAnswerIdRequest(feed.answer.id).then(function(comments){
-					feed.comments = comments;
+					feed.answer.comments = comments;
 				});
 			}
 		};

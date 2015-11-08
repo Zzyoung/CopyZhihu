@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <div class="modal-dialog-bg"></div>
-	<div ng-controller="AddQuestionController" class="modal-wrapper" style="display:none;">
+	<div ng-controller="AddQuestionController" class="modal-wrapper">
 		<div class="modal-dialog absolute-position" style="width:550px;">
 			<div class="modal-dialog-title">
 				<span class="modal-dialog-title-text">提问</span>

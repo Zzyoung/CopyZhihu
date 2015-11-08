@@ -3,12 +3,12 @@
 <mapper namespace="com.zhihu.dao.QuestionMapper" >
 	<select id="selectQuestionsLikeName" parameterType="com.zhihu.pojo.Question" resultType="com.zhihu.pojo.Question">
 		select id,name,authod_id as authorId,followed,description,topic_ids as topicIds, unnamed
-		from question WHERE NAME LIKE '%${name}%'
+		from question WHERE NAME LIKE '%${name}%' limit 10
 	</select>
 	
 	<select id="selectQuestionNamesAndAnswerCounts" parameterType="com.zhihu.pojo.Question" resultType="com.zhihu.pojo.Question">
 		SELECT NAME,ifnull(answer_count,0) AS answerCount FROM question   
-		WHERE name LIKE '%${name}%'
+		WHERE name LIKE '%${name}%' limit 10
 	</select>
 	
 	<insert id="insertQuestion" useGeneratedKeys="true" keyProperty="id" parameterType="com.zhihu.pojo.Question">

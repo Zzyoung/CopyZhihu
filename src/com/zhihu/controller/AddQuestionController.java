@@ -105,7 +105,6 @@ public class AddQuestionController {
 			question.setId(questionId);
 			request.setAttribute("question", question);
 			logger.info("跳转到问题页面...");
-//			response.sendRedirect(request.getContextPath()+"/question?id="+questionId);
 			response.getWriter().write("{\"id\":"+questionId+"}");
 			return;
 		}

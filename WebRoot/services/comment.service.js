@@ -29,7 +29,6 @@
 		};
 		
 		service.getCommentsByAnswerIdRequest = function(answerId){
-			console.log('getCommentsByAnswerId',answerId);
 			return $http({
 				method : 'GET',
 				url : '/Zhihu/getComments',
@@ -122,16 +121,16 @@
 			}).then(querySuccess, queryError);
 		};
 		//--------------------------------
-		service.addNewComment = function(feed){
-			if(!feed.newComment || feed.newComment === ''){
+		service.addNewComment = function(answer){
+			if(!answer.newComment || answer.newComment === ''){
 				return;
 			}
-			service.addNewCommentRequest(feed.newComment,feed.id).then(function(){
+			service.addNewCommentRequest(answer.newComment,answer.id).then(function(){
 				//添加评论之后查出新的评论，显示在页面上
-				service.getCommentsByAnswerIdRequest(feed.id).then(function(comments){
-					feed.comments = comments;
-					feed.commentsCount = comments.length;
-					feed.newComment = '';
+				service.getCommentsByAnswerIdRequest(answer.id).then(function(comments){
+					answer.comments = comments;
+					answer.commentsCount = comments.length;
+					answer.newComment = '';
 				});
 			});
 		};
@@ -140,13 +139,13 @@
 			comment.isReplying ? comment.isReplying = false : comment.isReplying = true;
 		};
 		
-		service.replyComment = function(comment,feed){
-			service.replyCommentRequest(comment.replyContent, comment.id, feed.answerId).then(function(){
+		service.replyComment = function(comment,answer){
+			service.replyCommentRequest(comment.replyContent, comment.id, answer.id).then(function(){
 				comment.isReplying = false;
 				comment.replyContent = "";
-				service.getCommentsByAnswerIdRequest(feed.answerId).then(function(comments){
-					feed.comments = comments;
-					feed.commentsCount = comments.length;
+				service.getCommentsByAnswerIdRequest(answer.id).then(function(comments){
+					answer.comments = comments;
+					answer.commentsCount = comments.length;
 				});
 			});
 		};

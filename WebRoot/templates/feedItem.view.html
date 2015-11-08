@@ -59,13 +59,13 @@
 						<!-- 答案信息 -->
 						<div ng-click="mainCtrl.expandAnswer(feed)" class="zm-item-rich-text" data-action="/answer/content">
 							<!-- 展开显示的全部答案 -->
-							<div formated-content ng-show="feed.answerExpanded" class="zm-editable-content"><span>{{feed.answer.content}}</span><span class="answer-date-link-wrap"><a class="answer-date-link meta-item" target="_blank" href="/question/36939553/answer/70002790">发布于 {{feed.answer.answerTime|date:'yyyy-MM-dd'}}</a></span></div>
+							<article formated-content ng-show="feed.answerExpanded"><span>{{feed.answer.content}}</span><span class="answer-date-link-wrap"><a class="answer-date-link meta-item" target="_blank" href="/question/36939553/answer/70002790">发布于 {{feed.answer.answerTime|date:'yyyy-MM-dd'}}</a></span></article>
 							<textarea class="content hidden">{{feed.answer.content}}</textarea>
 							<!-- 答案简介 -->
-							<div ng-hide="feed.answerExpanded" class="zh-summary summary clearfix">
+							<p ng-hide="feed.answerExpanded" class="zh-summary summary clearfix">
 								{{feed.answer.content | formatContent:'answer'}}
-								<a ng-if="feed.answer.content.length >= 145" href="/question/35471660/answer/63460518" class="toggle-expand">显示全部</a>
-							</div>
+								<a ng-if="feed.answer.content.length >= 145" href="javascript:;" class="toggle-expand">显示全部</a>
+							</p>
 						</div>
 					</div>
 				</div>
@@ -100,11 +100,11 @@
 						</div>
 						<!-- 没有答案的推送 -->
 						<div ng-if="feed.withoutAnswer" class="zm-meta-panel">
-							<a data-follow="q:link" class="follow-link zg-follow meta-item"
-								href="javascript:;" id="sfb-6358254"><i
-								class="z-icon-follow"></i>关注问题</a> 
+							<a class="follow-link zg-follow meta-item" href="javascript:;">
+								<i class="z-icon-follow"></i>关注问题
+							</a> 
 							<a href="#" ng-click="mainCtrl.toggleComments(feed)" class="meta-item toggle-comment"> 
-								<i class="z-icon-comment"></i>{{feed.isShowComments?'收起评论':feed.commentsCount===0?'添加评论':feed.commentsCount+' 条评论'}}
+								<i class="z-icon-comment"></i>{{feed.isShowComments?'收起评论':feed.answer.commentsCount===0?'添加评论':feed.answer.commentsCount+' 条评论'}}
 							</a>
 							<span class="zg-bull">&bull;</span> 
 							<a href="/question/35379163" class="meta-item" target="_blank">{{feed.answerCount}} 个回答</a> 
@@ -113,12 +113,12 @@
 							</a>
 						</div>
 						<!-- 评论 -->
-						<div class="zm-comment-box" data-count="31" ng-show="feed.isShowComments">
+						<div class="zm-comment-box" ng-show="feed.isShowComments">
 							<!-- 三角箭头 -->
 							<i class="icon icon-spike zm-comment-bubble" style="display:inline;left:102px;"></i> <a href="" name="comment-0" class="zg-anchor-hidden"></a>
 							<!-- 评论列表 -->
 							<div class="zm-comment-list">
-								<div class="zm-item-comment" ng-repeat="comment in feed.comments">
+								<div class="zm-item-comment" ng-repeat="comment in feed.answer.comments">
 									<a class="zg-anchor-hidden"></a> 
 									<a title="{{comment.authorName}}" data-tip="p$t$penny-lu-82" class="zm-item-link-avatar" ng-href="/Zhihu{{comment.authorUrl}}"> 
 										<img ng-src="{{comment.authorPhoto}}" class="zm-item-img-avatar"> 
@@ -130,7 +130,7 @@
 											<span ng-if="comment.replyName" class="desc">回复 </span>
 											<a ng-if="comment.replyName" data-tip="p$t$gu-xiao-bai-68-52" href="{{comment.replyUrl}}" class="zg-link" title="{{comment.replyName}}">{{comment.replyName}}</a>
 										</div>
-										<div class="zm-comment-content">{{comment.content}}</div>
+										<article class="zm-comment-content">{{comment.content}}</article>
 										<div class="zm-comment-foot">
 											<span class="date">{{comment.time|date:'yyyy-MM-dd'}}</span> 
 											<a href="#" class="reply zm-comment-op-link" ng-click="mainCtrl.openReplyBox(comment)"> 
@@ -150,21 +150,21 @@
 										<div class="zm-comment-form zm-comment-box-ft expanded" style="padding:15px 0;" ng-show="comment.isReplying">
 											<input class="zm-comment-editable editable" ng-model="comment.replyContent" style="width:463px;" placeholder="写下你的评论…">
 											<div class="zm-command zg-clear">
-												<a href="#" class="zg-right zg-btn-blue" ng-click="mainCtrl.replyComment(comment,feed)">评论</a> <a href="#" ng-click="comment.isReplying = false;" class="zm-command-cancel">取消</a>
+												<a href="#" class="zg-right zg-btn-blue" ng-click="mainCtrl.replyComment(comment,feed.answer)">评论</a> <a href="#" ng-click="comment.isReplying = false;" class="zm-command-cancel">取消</a>
 											</div>
 											<div class="zm-comment-info"></div>
 										</div>
 									</div>
 								</div>
-								<a href="javascript:;" ng-click="mainCtrl.getAllComments(feed)" class="load-more" ng-hide="feed.comments.length<10 || feed.loadAllComments"> 
+								<a href="javascript:;" ng-click="mainCtrl.getAllComments(feed)" class="load-more" ng-hide="feed.answer.comments.length<10 || feed.loadAllComments"> 
 									<span class="text">显示全部评论</span> 
 								</a>
 							</div>
 							<div ng-click="feed.isAddingComment = true" ng-class="feed.isAddingComment?'zm-comment-form zm-comment-box-ft expanded':'zm-comment-form zm-comment-box-ft'">
 								<!-- <div class="zm-comment-editable editable" contenteditable="true"><p ng-if="!feed.isAddingComment" style="color:#999">写下你的评论…</p></div> -->
-								<input class="zm-comment-editable editable" style="width:492px;" ng-model="feed.newComment" placeholder="写下你的评论…">
+								<input class="zm-comment-editable editable" style="width:492px;" ng-model="feed.answer.newComment" placeholder="写下你的评论…">
 								<div class="zm-command zg-clear" ng-show="feed.isAddingComment">
-									<a href="#" class="zg-right zg-btn-blue" ng-click="mainCtrl.addNewComment(feed)">评论</a> <a href="#" ng-click="mainCtrl.closeForm(feed,$event)" class="zm-command-cancel">取消</a>
+									<a href="#" class="zg-right zg-btn-blue" ng-click="mainCtrl.addNewComment(feed.answer)">评论</a> <a href="#" ng-click="mainCtrl.closeForm(feed,$event)" class="zm-command-cancel">取消</a>
 								</div>
 								<div class="zm-comment-info"></div>
 							</div>

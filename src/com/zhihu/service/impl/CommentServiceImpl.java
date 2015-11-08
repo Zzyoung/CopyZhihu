@@ -12,6 +12,7 @@ import com.zhihu.pojo.Comment;
 import com.zhihu.pojo.UserCommentRelation;
 import com.zhihu.service.CommentService;
 import com.zhihu.utils.Constant;
+import com.zhihu.utils.Utils;
 @Service
 public class CommentServiceImpl implements CommentService {
 
@@ -43,6 +44,7 @@ public class CommentServiceImpl implements CommentService {
 	
 	@Override
 	public int insertComment(Comment comment) throws Exception {
+		comment.setContent(Utils.filterBr(comment.getContent()));
 		return commentMapper.insertComment(comment);
 	}
 

@@ -309,14 +309,6 @@
 					</div>
 				</div>
 			</div>
-			<div class="zm-side-section shameimaru-section" id="shameimaru-question-up-e68c0213f">
-					<div class="zm-side-section-inner">
-						<div class="zh-shameimaru">
-						    <a class="shameimaru-link" target="_blank" rel="nofollow" href="/shameimaru/click?id=e68c0213f&amp;location=question_up"></a>
-						    <a class="shameimaru-close z-ico-shameimaru-close" data-tip="s$b$不再显示" rel="nofollow"></a>
-						</div>
-					</div>
-				</div>
 			<div class="zm-side-section">
 				<div class="zm-side-section-inner">
 					<div id="zh-question-related-questions"
