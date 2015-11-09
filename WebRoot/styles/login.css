@@ -169,8 +169,8 @@ input[type="checkbox"]{
 	clear: both;
 }
 .bottom .inner-wrapper{
-	width: 740px;
-	margin: 0 auto;
+	/*width: 740px;
+	margin: 0 auto;*/
 	position: relative;
 }
 .bottom .stories{
@@ -276,19 +276,19 @@ input[type="checkbox"]{
 .bottom .single-story .single-story-inner .story-content-answer+.story-content-answer{
 	margin-top: 12px;
 }
-.footer{
+footer{
 	font-size: 12px;
 	text-align: center;
 	padding-bottom: 60px;
 }
-.footer span,.footer a{
+footer span,footer a{
 	color: #aebdc9;
 }
-.footer .links{
+footer .links{
 	display: inline-block;
 	text-shadow:0 1px 0 rgba(255,255,255,.8);
 }
-.footer .links .dot{
+footer .links .dot{
 	margin: 0 3px;
 }
 .icon-sign-ios,.icon-sign-android{
