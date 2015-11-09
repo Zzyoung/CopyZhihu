@@ -26,7 +26,7 @@ a{
 	margin-top: -62px;
 	left: -400px;
 }
-.inner-wrapper{
+.container{
 	margin: 0 auto;
 	width: 740px;
 }
@@ -168,7 +168,7 @@ input[type="checkbox"]{
 .clearfix:after{
 	clear: both;
 }
-.bottom .inner-wrapper{
+.bottom .container{
 	/*width: 740px;
 	margin: 0 auto;*/
 	position: relative;
