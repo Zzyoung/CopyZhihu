@@ -9,6 +9,8 @@
 			 $scope , $timeout ,ConstantService ) {
 		var vm = this, prompts;
 		
+		var randomKey = ConstantService.randomKey;
+		
 		vm.removePrompt = UserService.removePrompt;
 		
 		vm.timeStamp = +new Date();
@@ -23,6 +25,7 @@
 			prompts = UserService.validate(vm.user,true);
 			$scope.prompts = prompts;
 			if (prompts.length === 0) {
+				vm.user.password = CryptoJS.PBKDF2(vm.user.password, randomKey, { keySize: 512/32 }).toString();
 				UserService.Create(vm.user).then(function(response){
 					console.log(response);
 					if(response.status>=200 && response.status < 300){

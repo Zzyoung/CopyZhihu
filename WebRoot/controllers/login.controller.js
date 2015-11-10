@@ -7,7 +7,7 @@
 	function LoginController($location, AuthenticationService, 
 			UserService, $scope, ConstantService) {
 		var vm = this, prompts;
-		var randomKey = '2e5ds9a1f4w';
+		var randomKey = ConstantService.randomKey;
 		vm.removePrompt = UserService.removePrompt;
 		
 		$scope.removePromptByType = UserService.removePromptByType;

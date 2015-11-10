@@ -26,6 +26,8 @@
 			ERROR_CAPTCHA:4
 		};
 		
+		service.randomKey = '2e5ds9a1f4w';
+		
 		return service;
 	}
 })();

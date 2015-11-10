@@ -3,7 +3,8 @@
 <mapper namespace="com.zhihu.dao.UserMapper" >
 	
 	<insert id="insertUser" parameterType="com.zhihu.pojo.User">
-		INSERT INTO USER (NAME,LOGIN_NAME,PASSWORD) VALUES (#{name},'${loginName}',#{password})
+		INSERT INTO USER (NAME,LOGIN_NAME,PASSWORD,home_url,description,summary,photo_url)
+		VALUES (#{name},'${loginName}',#{password},#{homeUrl},#{description},#{summary},#{photoUrl})
 	</insert>
 	
 	<select id="getByLoginName" parameterType="com.zhihu.pojo.User" resultType="com.zhihu.pojo.User">
