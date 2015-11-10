@@ -151,6 +151,9 @@
 		};
 		
 		service.likeComment = function(comment){
+			if(comment.authorId == $rootScope.globals.currentUser.id){
+				return;
+			}
 			service.likeCommentRequest(comment.id).then(function(){
 				//获取已经赞过的人的id列表
 				service.getVoterIdsRequest(comment.id).then(function(voterIds){

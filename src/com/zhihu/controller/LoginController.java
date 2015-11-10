@@ -118,6 +118,8 @@ public class LoginController {
 				if(password.equals(user.getPassword())){
 					//登录成功
 					logger.info(loginName+" 登录成功");
+					request.getSession().setAttribute("loginName", loginName);
+					request.getSession().setAttribute("password", password);
 				}else{
 					response.getWriter().write("{\"errorCode\":"+Constant.ERROR_PASSWORD_LOGINNAME+",\"msg\":\"error password or loginName\"}");
 				}
@@ -142,7 +144,23 @@ public class LoginController {
 		String cookiePassword = null;
 		if(cookies==null || cookies.length==0){
 			logger.info("cookie为空，跳转到登录界面...");
-			response.sendRedirect(request.getContextPath()+"/index.html");
+			//火狐登陆时第一次请求不带cookie，改用session验证
+			String sessionLoginName = request.getSession().getAttribute("loginName").toString();
+			String sessionPassword = request.getSession().getAttribute("password").toString();
+			User user = userService.getByLoginName(sessionLoginName);
+			if(user != null && sessionPassword.equals(user.getPassword())){
+				request.getSession().removeAttribute("loginName");
+				request.getSession().removeAttribute("password");
+				request.setAttribute("id", user.getId());
+				request.setAttribute("photoUrl", user.getPhotoUrl());
+				request.setAttribute("userName", user.getName());
+				request.getSession().setAttribute("id", user.getId());
+				request.getSession().setAttribute("photoUrl", user.getPhotoUrl());
+				request.getSession().setAttribute("userName", user.getName());
+				request.getRequestDispatcher("/WEB-INF/view/main.jsp").forward(request, response);
+			}else{
+				response.sendRedirect(request.getContextPath()+"/index.html");
+			}
 			return;
 		}
 		for (int i = 0; i < cookies.length; i++) {

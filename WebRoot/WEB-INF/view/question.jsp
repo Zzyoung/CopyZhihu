@@ -356,20 +356,6 @@
 		<!-- 版权演示 -->
 	</div>
 	<%@ include file="addQuestionPanel.jsp" %>
-	<div id="zh-footer" class="zh-footer">
-		<div class="zg-wrap clearfix">
-			<ul>
-				<li><a href="https://liukanshan.zhihu.com" target="_blank">刘看山</a></li>
-				<li><a href="/question/19581624" target="_blank">知乎指南</a></li>
-				<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
-				<li><a href="/app" target="_blank">移动应用</a></li>
-				<li><a href="/careers">加入知乎</a></li>
-				<li><a href="/terms" target="_blank">知乎协议</a></li>
-				<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
-			</ul>
-			<span class="copy">&copy; 2015 知乎</span>
-		</div>
-	</div>
 	<div class="zh-backtotop" style="opacity:1;">
 		<a href="javascript:;" class="btn-backtotop btn-action">
 			<div class="arrow"></div>
