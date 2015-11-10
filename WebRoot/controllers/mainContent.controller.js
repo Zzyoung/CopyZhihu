@@ -40,10 +40,10 @@
 			}
 		};
 		
-		mainCtrl.getAllComments = function(feed){
-			CommentService.getCommentsByAnswerIdRequest(feed.answer.id).then(function(comments){
-				feed.comments = comments;
-				feed.loadAllComments = true;
+		mainCtrl.getAllComments = function(answer){
+			CommentService.getAllCommentsByAnswerIdRequest(answer.id).then(function(comments){
+				answer.comments = comments;
+				answer.loadAllComments = true;
 			});
 		};
 		

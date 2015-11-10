@@ -82,6 +82,13 @@
 //				getAnswerList(ctrl.currentQuestionId);
 			});
 		};
+		
+		ctrl.getAllComments = function(answer){
+			CommentService.getAllCommentsByAnswerIdRequest(answer.id).then(function(comments){
+				answer.comments = comments;
+				answer.loadAllComments = true;
+			});
+		};
 	}
 	
 })();

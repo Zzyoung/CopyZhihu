@@ -79,13 +79,13 @@
 							<a href="#" ng-click="mainCtrl.toggleComments(feed)" class=" meta-item toggle-comment"> 
 								<i class="z-icon-comment"></i>{{feed.isShowComments?'收起评论':feed.answer.commentsCount===0?'添加评论':feed.answer.commentsCount+' 条评论'}}
 							</a> 
-							<a href="#" ng-class="feed.answerExpanded || feed.isShowComments?'meta-item':'meta-item zu-autohide'" name="thanks" data-thanked="false"> 
+							<a href="#" ng-class="feed.answerExpanded || feed.isShowComments?'meta-item':'meta-item zu-autohide'"> 
 								<i class="z-icon-thank"></i>感谢 
 							</a> 
-							<a href="#" ng-class="feed.answerExpanded || feed.isShowComments?'meta-item':'meta-item zu-autohide'" name="share"> 
+							<a href="#" ng-class="feed.answerExpanded || feed.isShowComments?'meta-item':'meta-item zu-autohide'"> 
 								<i class="z-icon-share"></i>分享 
 							</a> 
-							<a href="#" ng-class="feed.answerExpanded || feed.isShowComments?'meta-item':'meta-item zu-autohide'" name="favo"> 
+							<a href="#" ng-class="feed.answerExpanded || feed.isShowComments?'meta-item':'meta-item zu-autohide'"> 
 								<i class="z-icon-collect"></i>收藏 
 							</a> 
 							<span ng-class="feed.answerExpanded || feed.isShowComments?'zg-bull':'zg-bull zu-autohide'">&bull;</span>
@@ -133,18 +133,21 @@
 										<article class="zm-comment-content">{{comment.content}}</article>
 										<div class="zm-comment-foot">
 											<span class="date">{{comment.time|date:'yyyy-MM-dd'}}</span> 
-											<a href="#" class="reply zm-comment-op-link" ng-click="mainCtrl.openReplyBox(comment)"> 
+											<a ng-if="mainCtrl.currentUserId !== comment.authorId" href="#" class="reply zm-comment-op-link" ng-click="mainCtrl.openReplyBox(comment)"> 
 												<i class="zg-icon zg-icon-comment-reply"></i>回复 
 											</a> 
-											<a ng-if="!mainCtrl.haveLiked(comment)" href="#" class="like zm-comment-op-link " ng-click="mainCtrl.likeComment(comment)"> 
+											<a ng-if="!mainCtrl.haveLiked(comment) && mainCtrl.currentUserId !== comment.authorId" href="#" class="like zm-comment-op-link " ng-click="mainCtrl.likeComment(comment)"> 
 												<i class="zg-icon zg-icon-comment-like"></i>赞 
 											</a>
-											<a ng-if="mainCtrl.haveLiked(comment)" href="#" class="like zm-comment-op-link " ng-click="mainCtrl.unlikeComment(comment)"> 
+											<a ng-if="mainCtrl.haveLiked(comment) && mainCtrl.currentUserId !== comment.authorId" href="#" class="like zm-comment-op-link " ng-click="mainCtrl.unlikeComment(comment)"> 
 												<i class="zg-icon zg-icon-comment-like"></i>取消赞 
 											</a>
 											<span ng-show="comment.voteCount>0" class="like-num  " data-tip="s$r$1 人觉得这个很赞"> <em>{{comment.voteCount}}</em>	<span>赞</span> </span> 
-											<a href="#" name="report" class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button" style="-webkit-user-select: none;">
+											<a ng-if="mainCtrl.currentUserId !== comment.authorId" href="#" class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button" style="-webkit-user-select: none;">
 												<i class="zg-icon z-icon-no-help"></i>举报 
+											</a>
+											<a ng-if="mainCtrl.currentUserId === comment.authorId" href="#" class="del zm-comment-op-link needsfocus">
+												<i class="zg-icon zg-icon-comment-del"></i>删除
 											</a>
 										</div>
 										<div class="zm-comment-form zm-comment-box-ft expanded" style="padding:15px 0;" ng-show="comment.isReplying">
@@ -156,7 +159,7 @@
 										</div>
 									</div>
 								</div>
-								<a href="javascript:;" ng-click="mainCtrl.getAllComments(feed)" class="load-more" ng-hide="feed.answer.comments.length<10 || feed.loadAllComments"> 
+								<a href="javascript:;" ng-click="mainCtrl.getAllComments(feed.answer)" class="load-more" ng-hide="feed.answer.comments.length<10 || feed.answer.loadAllComments"> 
 									<span class="text">显示全部评论</span> 
 								</a>
 							</div>

@@ -70,18 +70,21 @@
 						<div class="zm-comment-content">{{comment.content}}</div>
 						<div class="zm-comment-foot">
 							<span class="date">{{comment.time|date:'yyyy-MM-dd'}}</span> 
-							<a href="#" class="reply zm-comment-op-link" ng-click="ctrl.openReplyBox(comment)"> 
+							<a ng-if="ctrl.currentUserId !== comment.authorId" href="#" class="reply zm-comment-op-link" ng-click="ctrl.openReplyBox(comment)"> 
 								<i class="zg-icon zg-icon-comment-reply"></i>回复 
 							</a> 
-							<a ng-if="!ctrl.haveLiked(comment)" href="#" class="like zm-comment-op-link " ng-click="ctrl.likeComment(comment)"> 
+							<a ng-if="!ctrl.haveLiked(comment) && ctrl.currentUserId !== comment.authorId" href="#" class="like zm-comment-op-link " ng-click="ctrl.likeComment(comment)"> 
 								<i class="zg-icon zg-icon-comment-like"></i>赞 
 							</a>
-							<a ng-if="ctrl.haveLiked(comment)" href="#" class="like zm-comment-op-link " ng-click="ctrl.unlikeComment(comment)"> 
+							<a ng-if="ctrl.haveLiked(comment) && ctrl.currentUserId !== comment.authorId" href="#" class="like zm-comment-op-link " ng-click="ctrl.unlikeComment(comment)"> 
 								<i class="zg-icon zg-icon-comment-like"></i>取消赞 
 							</a>
-							<span ng-show="comment.voteCount>0" class="like-num  " data-tip="s$r$1 人觉得这个很赞"> <em>{{comment.voteCount}}</em>	<span>赞</span> </span> 
-							<a href="#" name="report" class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button" style="-webkit-user-select: none;">
+							<span ng-show="comment.voteCount>0" class="like-num" data-tip="s$r$1 人觉得这个很赞"> <em>{{comment.voteCount}}</em>	<span>赞</span> </span> 
+							<a ng-if="ctrl.currentUserId !== comment.authorId" href="#" name="report" class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button" style="-webkit-user-select: none;">
 								<i class="zg-icon z-icon-no-help"></i>举报 
+							</a>
+							<a ng-if="ctrl.currentUserId === comment.authorId" href="#" class="del zm-comment-op-link needsfocus">
+								<i class="zg-icon zg-icon-comment-del"></i>删除
 							</a>
 						</div>
 						<div class="zm-comment-form zm-comment-box-ft expanded" style="padding:15px 0;" ng-show="comment.isReplying">

@@ -1552,6 +1552,18 @@ html.no-touch a:hover>.zg-icon-comment-reply{
 .zm-comment-op-link .z-icon-no-help{
 	background-position: -71px -183px;
 }
+.zg-icon-comment-like, .zm-comment-op-link>.zg-icon{
+	margin-right: 5px;
+	width:11px;
+	height:11px;
+	vertical-align: -1px;
+}
+.zg-icon-comment-del{
+	background-position: -236px -92px;
+}
+a:hover>.zg-icon-comment-del{
+	background-position: -236px -79px;
+}
 .z-icon-no-help{
 	width:10px;
 	height: 10px;
