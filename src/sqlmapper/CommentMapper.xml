@@ -106,4 +106,8 @@
 	<select id="selectWhoLikeComment" parameterType="int" resultType="int">
 		SELECT user_id as userId FROM user_comment_relation WHERE comment_id = #{commentId}
 	</select>
+	
+	<delete id="deleteComment" parameterType="com.zhihu.pojo.Comment">
+		delete from comment where id = #{id} and author_id = #{authorId}
+	</delete>
 </mapper>

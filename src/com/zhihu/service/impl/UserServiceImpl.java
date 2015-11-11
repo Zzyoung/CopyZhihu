@@ -29,4 +29,9 @@ public class UserServiceImpl implements UserService {
 		return userMapper.findUserByLoginName(newUser);
 	}
 
+	@Override
+	public User getUserById(int currentUserId) throws Exception {
+		return userMapper.getUserById(currentUserId);
+	}
+
 }

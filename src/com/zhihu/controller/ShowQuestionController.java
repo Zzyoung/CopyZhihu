@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.alibaba.fastjson.JSON;
 import com.zhihu.pojo.Answer;
 import com.zhihu.pojo.Question;
+import com.zhihu.pojo.User;
 import com.zhihu.service.AnswerService;
 import com.zhihu.service.QuestionService;
+import com.zhihu.service.UserService;
 import com.zhihu.utils.Utils;
 
 @Controller("ShowQuestionController")
@@ -27,6 +29,9 @@ public class ShowQuestionController {
 	
 	@Autowired
 	private AnswerService answerService;
+	
+	@Autowired
+	private UserService userService;
 	
 	private final static Logger logger = LoggerFactory.getLogger(ShowQuestionController.class);
 	
@@ -44,6 +49,9 @@ public class ShowQuestionController {
 		}else{
 			Question question = questionService.selectQuestionById(questionId);
 			request.setAttribute("question", question);
+			int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
+			User user = userService.getUserById(currentUserId);
+			request.setAttribute("currentUser", user);
 			request.getRequestDispatcher("/WEB-INF/view/question.jsp").forward(request, response);
 		}
 		

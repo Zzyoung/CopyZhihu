@@ -146,13 +146,13 @@
 					</div>
 					<div id="editPanel" class="zm-editable-editor-wrap" ng-hide="ctrl.isAnswered">
 						<div class="zh-answer-form clearfix">
-							<a href="/people/zhang-yang-07-01" title="张阳" class="zm-item-link-avatar" data-tip="p$t$zhang-yang-07-01">
-								<img src="images/touxiang.jpg" class="zm-list-avatar">
+							<a href="${currentUser.homeUrl }" title="${currentUser.name }" class="zm-item-link-avatar" data-tip="p$t$zhang-yang-07-01">
+								<img src="${currentUser.photoUrl }" class="zm-list-avatar">
 							</a>
 							<div>
 								<div class="zu-answer-form-title">
-									<a href="/people/zhang-yang-07-01" title="张阳" data-tip="p$t$zhang-yang-07-01">张阳</a>
-									<span>，前端新手待修改
+									<a href="${currentUser.homeUrl }" title="${currentUser.name }" data-tip="p$t$zhang-yang-07-01">${currentUser.name }</a>
+									<span>，${currentUser.summary }
 										<a class="zu-edit-button" href="javascript:;">
 										<i class="zu-edit-button-icon"></i>修改话题经验</a>
 									</span>

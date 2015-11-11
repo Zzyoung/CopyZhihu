@@ -17,5 +17,7 @@ public interface CommentService {
 	
 	int selectVoteCountByCommentId(int id) throws Exception;
 
-	List<Integer> getVoterIds(int commentId)throws Exception;
+	List<Integer> getVoterIds(int commentId) throws Exception;
+
+	boolean deleteComment(int parseInt, int currentUserId) throws Exception;
 }

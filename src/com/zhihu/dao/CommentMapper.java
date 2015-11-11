@@ -28,4 +28,6 @@ public interface CommentMapper {
 	int selectUserCountFromRelation(UserCommentRelation relation) throws Exception;
 	
 	List<Integer> selectWhoLikeComment(int commentId) throws Exception;
+
+	int deleteComment(Comment comment)throws Exception;
 }

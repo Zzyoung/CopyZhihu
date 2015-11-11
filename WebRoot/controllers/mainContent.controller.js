@@ -83,6 +83,7 @@
 		
 		mainCtrl.toggleOpposeAnswer = AnswerService.toggleOpposeAnswer;
 		
+		mainCtrl.deleteComment = CommentService.deleteComment;
 	}
 	
 })();

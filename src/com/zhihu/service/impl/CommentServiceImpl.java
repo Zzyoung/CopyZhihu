@@ -97,5 +97,15 @@ public class CommentServiceImpl implements CommentService {
 		return commentMapper.selectVoteCountByCommentId(id);
 	}
 
+	@Override
+	public boolean deleteComment(int commentId, int currentUserId)
+			throws Exception {
+		Comment comment = new Comment();
+		comment.setId(commentId);
+		comment.setAuthorId(currentUserId);
+		int count = commentMapper.deleteComment(comment);
+		return count == 1;
+	}
+
 
 }

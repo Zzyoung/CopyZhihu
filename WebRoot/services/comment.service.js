@@ -11,7 +11,7 @@
 		}
 		
 		function queryError(){
-			console.log('error');
+			//do something here
 		}
 		
 		service.addNewCommentRequest = function(comment, answerId){
@@ -120,6 +120,19 @@
 				}
 			}).then(querySuccess, queryError);
 		};
+		
+		service.deleteCommentRequest = function(commentId){
+			return $http({
+				method : 'POST',
+				url : '/Zhihu/deleteComment',
+				params : {
+					'id' : commentId
+				},
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			}).then(querySuccess, queryError);
+		};
 		//--------------------------------
 		service.addNewComment = function(answer){
 			if(!answer.newComment || answer.newComment === ''){
@@ -180,6 +193,17 @@
 		service.haveLiked = function(comment){
 			var currentUserId = $rootScope.globals.currentUser.id;
 			return comment.voterIds.indexOf(currentUserId) >= 0;
+		};
+		
+		service.deleteComment = function(comment,answer){
+			service.deleteCommentRequest(comment.id).then(function(isSuccess){
+				if(isSuccess){
+					service.getCommentsByAnswerIdRequest(answer.id).then(function(comments){
+						answer.comments = comments;
+						answer.commentsCount = comments.length;
+					});
+				}
+			});
 		};
 		
 		return service;

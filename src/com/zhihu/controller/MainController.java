@@ -317,5 +317,21 @@ public class MainController {
 		boolean isSuccess = answerService.updateAnswer(Integer.parseInt(questionId),currentUserId,answer);
 		response.getWriter().write(JSON.toJSONString(isSuccess));
 	}
+	
+	@RequestMapping(value="deleteComment",method = RequestMethod.POST)
+	public void deleteComment(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		String commentId = request.getParameter("id");
+		if(Utils.isEmpty(commentId)){
+			return;
+		}
+		
+		int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
+		
+		boolean isSuccess = commentService.deleteComment(Integer.parseInt(commentId),currentUserId);
+		response.getWriter().write(JSON.toJSONString(isSuccess));
+	}
 }
 

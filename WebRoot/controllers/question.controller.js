@@ -70,6 +70,8 @@
 		
 		ctrl.toggleOpposeAnswer = AnswerService.toggleOpposeAnswer;
 		
+		ctrl.deleteComment = CommentService.deleteComment;
+		
 		ctrl.saveAnswer = function(questionId,answerContent){
 			AnswerService.addAnswer(questionId,answerContent).then(function(){
 				getAnswerList(ctrl.currentQuestionId);

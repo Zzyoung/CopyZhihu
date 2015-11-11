@@ -146,7 +146,7 @@
 											<a ng-if="mainCtrl.currentUserId !== comment.authorId" href="#" class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button" style="-webkit-user-select: none;">
 												<i class="zg-icon z-icon-no-help"></i>举报 
 											</a>
-											<a ng-if="mainCtrl.currentUserId === comment.authorId" href="#" class="del zm-comment-op-link needsfocus">
+											<a ng-click="mainCtrl.deleteComment(comment,feed.answer)" ng-if="mainCtrl.currentUserId === comment.authorId" href="#" class="del zm-comment-op-link needsfocus">
 												<i class="zg-icon zg-icon-comment-del"></i>删除
 											</a>
 										</div>

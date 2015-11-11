@@ -8,4 +8,6 @@ public interface UserService {
 	User getByLoginName(String loginName) throws Exception;
 
 	int findUserByLoginName(User newUser);
+
+	User getUserById(int currentUserId) throws Exception;
 }
