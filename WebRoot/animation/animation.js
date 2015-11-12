@@ -42,14 +42,123 @@
     return Class;
   };
 })();
+var Base = Class.extend({
+	init : function(config){
+		this._config = config;
+		this.bind();
+		this.render();
+	},
+	get : function(key){
+		return this._config[key];
+	},
+	set : function(key,value){
+		this._config[key] = value;
+	},
+	bind : function(){
+		//绑定事件
+	},
+	render : function(){
+		//渲染
+	},
+	destory : function(){
+		//销毁
+	},
+	//观察者模式
+	on : function(type, fn, context){
+		type = type || 'any';
+		fn = typeof fn === 'function' ? fn : context[fn];
+		
+		if(typeof this.subscribers[type] === 'undefined'){
+			this.subscribers[type] = [];
+		} 
+		this.subscribers[type].push({fn : fn, context : context || this});
+	},
+	off : function(type, fn, context){
+		this.visitSubscribers('unsubscribe', type, fn, context);
+	},
+	fire : function(type, publication) {
+		this.visitSubscribers('publish', type, publication);
+	},
+	visitSubscribers: function(action, type, arg, context){
+		var pubtype = type || 'any',
+			subscribers = this.subscribers[pubtype],
+			i,
+			count = subscribers ? subscribers.length : 0;
+		for(i = 0; i < count; i += 1){
+			if(action === 'publish'){
+				subscribers[i].fn.call(subscribers[i].context, arg);
+			} else {
+				if(subscribers[i].fn === arg && subscribers[i].context === context){
+					subscribers.splice(i, 1);
+				}
+			}
+		}
+	}
+});
+var Doc = Base.extend({
+	subscribers:{
+		any:[]
+	},
+	bind:function(){
+		var me = this;
+		window.onscroll = function(){
+			me.fire('scroll');
+		};
+	},
+	scrollToTop:function(){
+		var body = null;
+		body = document.body.scrollTop ? body = document.body : document.documentElement;
+		setTimeout(function(){
+			if (body.scrollTop < 200) {
+				body.scrollTop = 0;
+			}else{
+				body.scrollTop -= 200;
+			}
+			if (body.scrollTop>0) {
+				setTimeout(arguments.callee,30);
+			};
+		},30);
+	}
+});
+var BackToTop = Base.extend({
+	subscribers:{
+		any:[]
+	},
+	bind:function(){
+		var me = this;
+		this.get('button').onclick = function(){
+			me.fire('click');
+		};
+	},
+	toggle:function(){
+		if(Utils.getBodyScrollTop()>1200){
+			this.show();
+		}else{
+			this.hide();
+		}
+	},
+	hide:function(){
+		if(this.get('isShow')){
+			this.get('button').style.display = "none";
+			this.set('isShow',false);
+		}
+	},
+	show:function(){
+		if(!this.get('isShow')){
+			this.get('button').style.display = "block";
+			this.set('isShow',true);
+		}
+	}
+});
+
 window.onload = function(){
 	var timeout = null;
 	var msgBox = document.getElementById("zh-top-nav-count-wrap");
-	var buttons = document.querySelectorAll('.zm-noti7-popup-tab-item');
+	var buttons = document.querySelectorAll('.zm-notice-popup-tab-item');
 	var scrollPanels = document.querySelectorAll('.zh-scroller-inner');
 	var barContainers = document.querySelectorAll('.zh-scroller-bar-container');
 	var panel = document.getElementById("zh-top-nav-live-new");
-	var panels = document.querySelectorAll(".zm-noti7-content");
+	var panels = document.querySelectorAll(".zm-notice-content");
 	msgBox.onclick = function(event){
 		event = Utils.getEvent(event);
 		var panelStyle = Utils.getComputedStyle(panel);
@@ -215,111 +324,4 @@ window.onload = function(){
 	BackToTop.prototype.on('click','scrollToTop',doc);
 	Doc.prototype.on('scroll','toggle',backToTop);
 };
-var Base = Class.extend({
-	init : function(config){
-		this._config = config;
-		this.bind();
-		this.render();
-	},
-	get : function(key){
-		return this._config[key];
-	},
-	set : function(key,value){
-		this._config[key] = value;
-	},
-	bind : function(){
-		//绑定事件
-	},
-	render : function(){
-		//渲染
-	},
-	destory : function(){
-		//销毁
-	},
-	//观察者模式
-	on : function(type, fn, context){
-		type = type || 'any';
-		fn = typeof fn === 'function' ? fn : context[fn];
-		
-		if(typeof this.subscribers[type] === 'undefined'){
-			this.subscribers[type] = [];
-		} 
-		this.subscribers[type].push({fn : fn, context : context || this});
-	},
-	off : function(type, fn, context){
-		this.visitSubscribers('unsubscribe', type, fn, context);
-	},
-	fire : function(type, publication) {
-		this.visitSubscribers('publish', type, publication);
-	},
-	visitSubscribers: function(action, type, arg, context){
-		var pubtype = type || 'any',
-			subscribers = this.subscribers[pubtype],
-			i,
-			count = subscribers ? subscribers.length : 0;
-		for(i = 0; i < count; i += 1){
-			if(action === 'publish'){
-				subscribers[i].fn.call(subscribers[i].context, arg);
-			} else {
-				if(subscribers[i].fn === arg && subscribers[i].context === context){
-					subscribers.splice(i, 1);
-				}
-			}
-		}
-	}
-});
-var Doc = Base.extend({
-	subscribers:{
-		any:[]
-	},
-	bind:function(){
-		var me = this;
-		window.onscroll = function(){
-			me.fire('scroll');
-		};
-	},
-	scrollToTop:function(){
-		var body = null;
-		body = document.body.scrollTop ? body = document.body : document.documentElement;
-		setTimeout(function(){
-			if (body.scrollTop < 200) {
-				body.scrollTop = 0;
-			}else{
-				body.scrollTop -= 200;
-			}
-			if (body.scrollTop>0) {
-				setTimeout(arguments.callee,30);
-			};
-		},30);
-	}
-});
-var BackToTop = Base.extend({
-	subscribers:{
-		any:[]
-	},
-	bind:function(){
-		var me = this;
-		this.get('button').onclick = function(){
-			me.fire('click');
-		};
-	},
-	toggle:function(){
-		if(Utils.getBodyScrollTop()>1200){
-			this.show();
-		}else{
-			this.hide();
-		}
-	},
-	hide:function(){
-		if(this.get('isShow')){
-			this.get('button').style.display = "none";
-			this.set('isShow',false);
-		}
-	},
-	show:function(){
-		if(!this.get('isShow')){
-			this.get('button').style.display = "block";
-			this.set('isShow',true);
-		}
-	}
-});
+

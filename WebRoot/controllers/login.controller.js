@@ -35,7 +35,7 @@
 	                	}else{
 	                		var location = window.location;
 	                		AuthenticationService.setCredentials(vm.user.loginName, password);
-	                		window.location = location.origin + ConstantService.ContextPath + "index";
+	                		window.location = location.href.split(ConstantService.ContextPath)[0] + ConstantService.ContextPath + "index";
 	                	}
 	                } else {
 	                	

@@ -25,8 +25,8 @@
 			prompts = UserService.validate(vm.user,true);
 			$scope.prompts = prompts;
 			if (prompts.length === 0) {
-				vm.user.password = CryptoJS.PBKDF2(vm.user.password, randomKey, { keySize: 512/32 }).toString();
-				UserService.Create(vm.user).then(function(response){
+				var password = CryptoJS.PBKDF2(vm.user.password, randomKey, { keySize: 512/32 }).toString();
+				UserService.Create(vm.user,password).then(function(response){
 					console.log(response);
 					if(response.status>=200 && response.status < 300){
 						if(response.data.errorCode === ConstantService.constant.ERROR_USER_EXIST){

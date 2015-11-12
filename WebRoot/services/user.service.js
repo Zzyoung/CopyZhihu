@@ -6,11 +6,16 @@
 	function UserService($http, UtilsService, ConstantService) {
 		var service = {};
 
-		service.Create = function(user) {
+		service.Create = function(user,password) {
 			return $http({
 				method : 'POST',
 				url : '/Zhihu/register/',
-				data : $.param(user),
+				data : $.param({
+					name:user.name,
+					loginName:user.loginName,
+					password:password,
+					captcha:user.captcha
+				}),
 				headers : {
 					'Content-Type' : 'application/x-www-form-urlencoded'
 				}

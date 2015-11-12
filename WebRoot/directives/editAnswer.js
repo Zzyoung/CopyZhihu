@@ -1,6 +1,6 @@
 //修改答案
 (function(){
-	angular.module('zhihu').directive('editAnswer',function($compile){
+	angular.module('zhihu').directive('editAnswer',['UtilsService','$compile',function(UtilsService,$compile){
 		return {
 			restrict:'A',
 			link:function(scope,element,attribute){
@@ -15,7 +15,9 @@
 						var editPanel = document.getElementById('editPanel');
 						editPanel.removeAttribute('ng-hide');
 						editPanel.removeChild(editPanel.firstElementChild);
-						editPanel.classList.remove('ng-hide');
+						if(UtilsService.containClass(editPanel,'ng-hide')){
+							UtilsService.removeClass(editPanel,'ng-hide');
+						}
 						//复制答案
 						document.getElementById('answerEditor').innerHTML = element[0].parentNode.firstChild.innerHTML;
 						//重写clone方法
@@ -39,5 +41,5 @@
 				});
 			}
 		};
-	});
+	}]);
 })();

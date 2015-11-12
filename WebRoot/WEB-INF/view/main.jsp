@@ -24,7 +24,6 @@
 					</span>
 				</div>
 				<div class="zu-main-feed-con navigable" id="zh-question-list">
-					<a href="javascript:;" class="zu-main-feed-fresh-button" id="zh-main-feed-fresh-button" style="display:none;"></a>
 					<div id="js-home-feed-list" class="zh-general-list topstory2 clearfix">
 						<feed-item></feed-item>
 					</div>

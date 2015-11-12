@@ -145,10 +145,16 @@ public class LoginController {
 		if(cookies==null || cookies.length==0){
 			logger.info("cookie为空，跳转到登录界面...");
 			//火狐登陆时第一次请求不带cookie，改用session验证
-			String sessionLoginName = request.getSession().getAttribute("loginName").toString();
-			String sessionPassword = request.getSession().getAttribute("password").toString();
-			User user = userService.getByLoginName(sessionLoginName);
-			if(user != null && sessionPassword.equals(user.getPassword())){
+//			String sessionLoginName = request.getSession().getAttribute("loginName").toString();
+//			String sessionPassword = request.getSession().getAttribute("password").toString();
+			Object sessionLoginName = request.getSession().getAttribute("loginName");
+			Object sessionPassword = request.getSession().getAttribute("password");
+			if(sessionLoginName == null || sessionPassword == null){
+				response.sendRedirect(request.getContextPath()+"/index.html");
+				return;
+			}
+			User user = userService.getByLoginName(sessionLoginName.toString());
+			if(user != null && sessionPassword.toString().equals(user.getPassword())){
 				request.getSession().removeAttribute("loginName");
 				request.getSession().removeAttribute("password");
 				request.setAttribute("id", user.getId());

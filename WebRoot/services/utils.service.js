@@ -21,7 +21,7 @@
 		};
 		
 		service.removeItemFromArray = function(array,item){
-			return arr.filter(function(x){
+			return array.filter(function(x){
 				return x !== item;
 			});
 		};

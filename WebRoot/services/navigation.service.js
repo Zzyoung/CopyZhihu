@@ -16,15 +16,15 @@
 		
 		service.tabs = [{
 			name:'message',
-			cls:'zm-noti7-popup-tab-item message',
+			cls:'zm-notice-popup-tab-item message',
 			current:true
 		},{
 			name:'user',
-			cls:'zm-noti7-popup-tab-item user',
+			cls:'zm-notice-popup-tab-item user',
 			current:false
 		},{
 			name:'thanks',
-			cls:'zm-noti7-popup-tab-item thanks',
+			cls:'zm-notice-popup-tab-item thanks',
 			current:false
 		}];
 		

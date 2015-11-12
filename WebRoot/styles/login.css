@@ -113,6 +113,7 @@ input{
 	background-color: rgb(128,195,247);
 	border: 1px solid rgb(29,128,207);
 	color: #fff;
+	cursor: pointer;
 }
 .community-signup{
 	margin-top: 18px;
