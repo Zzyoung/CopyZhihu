@@ -43,13 +43,13 @@ public class ShowQuestionController {
 		request.setAttribute("id", request.getSession().getAttribute("id"));
 		request.setAttribute("photoUrl", request.getSession().getAttribute("photoUrl"));
 		request.setAttribute("userName", request.getSession().getAttribute("userName"));
+		int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
 		
-		if(Utils.isEmpty(questionId)){
+		if(Utils.isEmpty(questionId) || Utils.isEmpty(currentUserId+"")){
 			response.sendRedirect(request.getContextPath()+"/404.html");
 		}else{
 			Question question = questionService.selectQuestionById(questionId);
 			request.setAttribute("question", question);
-			int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
 			User user = userService.getUserById(currentUserId);
 			request.setAttribute("currentUser", user);
 			request.getRequestDispatcher("/WEB-INF/view/question.jsp").forward(request, response);

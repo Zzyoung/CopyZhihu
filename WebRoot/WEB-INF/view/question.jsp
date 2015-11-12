@@ -32,7 +32,7 @@
 				<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
 					<div class="zm-meta-panel">
 						<a href="#" name="report-question" class="report zg-right"> <i class="z-icon-no-help"></i>举报</a> 
-						<a href="#" name="addcomment" class="toggle-comment meta-item"> <i class="z-icon-comment"></i>添加评论</a> 
+						<a href="#" name="addcomment" class="meta-item"> <i class="z-icon-comment"></i>添加评论</a> 
 						<a href="#" name="share" class="share meta-item"> <i class="z-icon-share"></i>分享 </a> 
 						<span class="zg-bull">&bull;</span>
 						<a href="#" name="invite" class="meta-item" ng-click="ctrl.toggleInvitePanel()">{{ctrl.showInvitePanel?'收起邀请':'邀请回答'}}</a> 

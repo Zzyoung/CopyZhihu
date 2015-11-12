@@ -6,9 +6,6 @@ body,button {
 	color: #222;
 	font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
 }
-body, input, textarea, select, button{
-	word-wrap:break-word;
-}
 body.zhi{
 	padding-top: 46px;
 }
@@ -159,7 +156,7 @@ a:hover{
 	box-shadow: 0 1px 0 rgba(255,255,255,.1);
 	border: 1px solid rgba(0,0,0,.1);
 }
-html.no-touch .profile:hover .userinfo{
+.profile:hover .userinfo{
 	height: 46px;
 	background-color:#075fb6;
 	background-image:-webkit-linear-gradient(top,#055fb8,#095fb3);
@@ -244,12 +241,23 @@ html.no-touch .profile:hover .userinfo{
 	background-color: transparent;
 	background-position: 0px 50%;
 }
-.icon, .tr-icon, .tr-inline-icon, .zu-edit-button-icon, .zu-top-live-icon, .zh-global-backtotop, .zh-hovercard-arrow, .modal-dialog-title-close, .icon-external, .zg-icon, .zm-profile-icon, .zm-profile-header-icon, .icon-info, .icon-green-check, .icon-big-arrow-left, .icon-big-arrow-right, .icon-weibo, .icon-qzone, .icon-weibo-corner, .icon-big-white-sina, .icon-big-white-qq, .icon-big-white-mail, .icon-sign-arrow{
+.icon, .tr-icon, .tr-inline-icon, .zu-edit-button-icon, .zu-top-live-icon, .modal-dialog-title-close, .zg-icon{
 	background: url(../images/sprites.png) no-repeat;
 	vertical-align: middle;
 	width: 16px;
 	height: 16px;
 	display: inline-block;
+}
+.modal-dialog-title-close{
+	position: absolute;
+	top: 50%;
+	right: 3px;
+	width: 30px;
+	height: 30px;
+	margin-top: -15px;
+	text-indent: -9999px;
+	cursor: pointer;
+	background-position: -60px -53px;
 }
 .tr-icon{
 	opacity:.85;
@@ -266,11 +274,20 @@ html.no-touch .profile:hover .userinfo{
 	width:12px;
 	vertical-align: -3px;
 }
+.zu-notice-popup .zu-top-live-icon{
+	position: absolute;
+	left: 144px;
+	top:-12px;
+	width: 25px;
+	height: 15px;
+	background-position:-228px -186px;
+	z-index: 101;
+}
 .icon-magnify-q{
-	background-position: -239px -60px;
 	height: 15px;
 	width: 13px;
 	vertical-align: -4px;
+	background-position: -239px -60px;
 }
 .zu-top-add-question{
 	float: left;
@@ -348,20 +365,7 @@ nav{
 	box-shadow: 0 1px 4px rgba(0,0,0,.3);
 	margin: 0;
 }
-.zu-notice-popup .zu-top-live-icon{
-	left: 144px;
-	width: 25px;
-	background:url(../images/sprites.png) no-repeat -228px -186px;
-}
-.zh-hovercard-arrow, .zu-top-live-icon{
-	height: 15px;
-	width: 23px;
-	position: absolute;
-	z-index: 101;
-}
-.zu-top-live-icon{
-	top:-12px;
-}
+
 .zu-notice-popup .zm-notice-popup-tab-container{
 	outline: 0;
 }
@@ -662,10 +666,8 @@ nav{
 	overflow: hidden;
 	text-overflow:ellipsis;
 }
-.toggle-expand.btn-toggle-question-detail{
-	padding: 0;
-}
 a.toggle-expand.btn-toggle-question-detail{
+	padding: 0;
 	margin-bottom: 5px;
 	text-decoration: none;
 	color: #999;
@@ -719,7 +721,7 @@ a.toggle-expand.btn-toggle-question-detail span{
 	float: left;
 	margin-left: -48px;
 }
-html.no-touch .zm-item-vote-count:hover{
+.zm-item-vote-count:hover{
 	background: #698ebf;
 	color: #fff;
 	text-decoration: none;
@@ -817,7 +819,7 @@ a>.invisible{
 .zm-item-vote-info a{
 	color: inherit;
 }
-html.no-touch .zm-item-vote-info a:hover{
+.zm-item-vote-info a:hover{
 	color: #698ebf;
 }
 .entry-body .full-content, .zm-item-answer .zm-item-vote-info, .zm-item-feed .zm-item-vote-info{
@@ -969,22 +971,13 @@ i[class^=z-icon-], i[class*=" z-icon-"]{
 .zm-item-answer-author-info a.collapse{
 	margin-left: 10px;
 }
-.icon-external{
-	width: 7px;
-	height: 7px;
-	vertical-align: 0;
-	background-position: 0 -204px;
-}
-a.external>.icon-external{
-	margin-left: 4px;
-}
 .zg-btn-white.zu-button-more{
 	display: block;
 	font-size: 13px;
 	margin:20px 0;
 	padding: 5px 1px;
 }
-.zg-btn-blue, .zg-btn-green, .zg-btn-red, .zg-btn-white, .zg-btn-disabled{
+.zg-btn-blue, .zg-btn-green, .zg-btn-white{
 	font-size: 14px;
 	line-height: 1.7;
 	text-decoration: none!important;	
@@ -995,6 +988,26 @@ a.external>.icon-external{
 	border-radius: 3px;
 	white-space: nowrap;
 	box-sizing:border-box;
+}
+.zg-btn-blue{
+	background: #1472CF;
+	background-repeat: repeat-x;
+	text-shadow:0 -1px 0 rgba(0,0,0,.5);
+	border: 1px solid #0d6eb8;
+	color: #fff!important;
+	box-shadow: 0 1px 0 rgba(255,255,255,.2) inset,0 1px 0 rgba(0,0,0,.2);
+}
+.zg-btn-green{
+	background: #8ab923;
+	background-color: #9dcc4a;
+	background-image: -webkit-linear-gradient(top,#adda4d,#86b846);
+	background-repeat: repeat-x;
+	text-shadow: 0 1px 0 rgba(255,255,255,.3);
+	border:1px solid #6d8f29;
+	color:#3e5e00!important;
+	min-width:78px;
+	width:auto;
+	box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 1px 0 rgba(0,0,0,.2);
 }
 .zg-btn-white{
 	background: #f8f8f9;
@@ -1246,17 +1259,7 @@ html.modal-open .modal-wrapper .modal-dialog{
 	font-size: 15px;
 	font-weight: 700;
 }
-.modal-dialog-title-close{
-	position: absolute;
-	top: 50%;
-	right: 3px;
-	width: 30px;
-	height: 30px;
-	margin-top: -15px;
-	text-indent: -9999px;
-	cursor: pointer;
-	background-position: -60px -53px;
-}
+
 .modal-dialog-content{
 	padding: 0 15px;
 	margin: 17px 0;
@@ -1311,15 +1314,15 @@ html.modal-doc-overflow .modal-shifting{
 	position: relative;
 	right: 8.5px;
 }
-html.no-touch .zh-summary:hover a.toggle-expand{
+.zh-summary:hover a.toggle-expand{
 	text-decoration: none;
 	background-color: #eff6fa;
 }
 /*显示感谢、分享、收藏、没有帮助、举报*/
-html.no-touch .zm-profile-answer-page .zm-item:hover .zu-autohide, html.no-touch .feed-item:hover .zu-autohide{
+.zm-profile-answer-page .zm-item:hover .zu-autohide, html.no-touch .feed-item:hover .zu-autohide{
 	display: inline-block;
 }
-html.no-touch .meta-item:hover{
+.meta-item:hover{
 	color: #698ebf;
 }
 .zh-summary .inline-img{
@@ -1328,6 +1331,7 @@ html.no-touch .meta-item:hover{
 	max-height: 100px;
 	margin: 4px 10px 5px 0;
 }
+/*回到顶部按钮*/
 .zh-backtotop{
 	position: fixed;
 	bottom: 113px;
@@ -1366,13 +1370,13 @@ html.no-touch .meta-item:hover{
 	border-radius: 1px;
 	background-color: #aaa;
 }
-html.no-touch .zh-backtotop .btn-backtotop:hover{
+.zh-backtotop .btn-backtotop:hover{
 	background-color: #e2e2e2;
 }
-html.no-touch .zh-backtotop .btn-backtotop:hover .arrow{
+.zh-backtotop .btn-backtotop:hover .arrow{
 	border-bottom-color:#bbb;
 }
-html.no-touch .zh-backtotop .btn-backtotop:hover .stab, html.no-touch .zh-backtotop .btn-backtotop:hover .stick{
+.zh-backtotop .btn-backtotop:hover .stab, html.no-touch .zh-backtotop .btn-backtotop:hover .stick{
 	background-color: #bbb;
 }
 /* tooltip top*/
@@ -1468,7 +1472,6 @@ img.avatar.avatar-xs{
 	margin-top: 8px;
 	vertical-align: middle;
 }
-
 .popover.top .arrow{
 	bottom: 0;
 	left: 50%;
@@ -1530,7 +1533,7 @@ img.avatar.avatar-xs{
 	margin-left: 15px;
 	font-size: 13px;
 }
-.zg-btn-unfollow, .zg-btn-disabled{
+.zg-btn-unfollow{
 	background:#eee;
 	color: #888;
 	border: 1px solid #ddd;
@@ -1692,16 +1695,8 @@ html.no-touch .zm-comment-op-link:hover{
 	padding: 10px 0;
 	text-align: right;
 }
-.zm-command>.zg-btn-blue, .zm-command>.zg-btn-green, .zm-command>.zg-btn-white, .zm-command>.zg-btn-disabled{
+.zm-command>.zg-btn-blue, .zm-command>.zg-btn-green, .zm-command>.zg-btn-white{
 	vertical-align: baseline;
-}
-.zg-btn-blue{
-	background: #1472CF;
-	background-repeat: repeat-x;
-	text-shadow:0 -1px 0 rgba(0,0,0,.5);
-	border: 1px solid #0d6eb8;
-	color: #fff!important;
-	box-shadow: 0 1px 0 rgba(255,255,255,.2) inset,0 1px 0 rgba(0,0,0,.2);
 }
 .zm-command-cancel{
 	margin-right: 15px;
@@ -1716,8 +1711,6 @@ html.no-touch .zm-comment-op-link:hover{
 	display: none;
 	padding-bottom: 0;
 }
-
-
 .zg-icon-dd-home{
 	background-position:-6px -7px;
 }
@@ -2113,18 +2106,7 @@ input[type=checkbox]{
 	float: right;
 	padding:4px 10px;
 }
-.zg-btn-green, .zg-btn-follow{
-	background: #8ab923;
-	background-color: #9dcc4a;
-	background-image: -webkit-linear-gradient(top,#adda4d,#86b846);
-	background-repeat: repeat-x;
-	text-shadow: 0 1px 0 rgba(255,255,255,.3);
-	border:1px solid #6d8f29;
-	color:#3e5e00!important;
-	min-width:78px;
-	width:auto;
-	box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 1px 0 rgba(0,0,0,.2);
-}
+
 .question-invite-panel .suggest-persons .person .describe{
 	padding-right:12px;
 	line-height:1.2;

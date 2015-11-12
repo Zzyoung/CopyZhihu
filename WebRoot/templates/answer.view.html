@@ -13,16 +13,16 @@
 	<div class="answer-head">
 		<div class="zm-item-answer-author-info">
 			<h3 class="zm-item-answer-author-wrap">
-				<a data-tip="p$t$w3cplus" class="zm-item-link-avatar" href="/people/w3cplus"> 
-					<img ng-src="{{answer.author.photoUrl}}" class="zm-list-avatar" data-source="images/eb7f2fe18_s.jpg"> 
+				<a data-tip="p$t$w3cplus" class="zm-item-link-avatar" href="{{answer.author.homeUrl}}"> 
+					<img ng-src="{{answer.author.photoUrl}}" class="zm-list-avatar"> 
 				</a>
-				<a data-tip="p$t$w3cplus" href="/people/w3cplus">{{answer.author.name}}</a>，
+				<a data-tip="p$t$w3cplus" href="{{answer.author.homeUrl}}">{{answer.author.name}}</a>，
 				<strong title="{{answer.author.summary}}" class="zu-question-my-bio">{{answer.author.summary}}</strong>
 			</h3>
 		</div>
 		<div class="zm-item-vote-info " ng-show="answer.voters.length>0">
 			<span class="voters" > 
-				<span class="user-block" ng-repeat="voter in answer.voters"><a data-tip="p$t$le-bu-zha-qia" href="http://www.zhihu.com/people/le-bu-zha-qia" class="zg-link" title="勒布吒卡">{{voter.name}}</a><span ng-hide="$last">、</span></span>
+				<span class="user-block" ng-repeat="voter in answer.voters"><a data-tip="p$t$le-bu-zha-qia" href="http://www.zhihu.com/people/le-bu-zha-qia" class="zg-link" title="{{voter.name}}">{{voter.name}}</a><span ng-hide="$last">、</span></span>
 			</span> <a href="javascript:;" class="more"> 等人赞同</a>
 		</div>
 	</div>
@@ -43,14 +43,15 @@
 			<a href="#" class="meta-item zu-autohide goog-inline-block goog-menu-button" tabindex="0"  style="-webkit-user-select: none;">
 				<i class="z-icon-share"></i>分享 &nbsp;
 			</a> 
-			<a href="#" class="meta-item zu-autohide" name="favo"> <i
-				class="z-icon-collect"></i>收藏</a> 
+			<a href="#" class="meta-item zu-autohide" name="favo"> 
+				<i class="z-icon-collect"></i>收藏
+			</a> 
 			<span class="zg-bull zu-autohide">•</span>
 			<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a> 
 			<span class="zg-bull zu-autohide">•</span> 
-			<a href="#" name="report" class="meta-item zu-autohide goog-inline-block goog-menu-button" style="-webkit-user-select: none;">举报 &nbsp;</a> 
+			<a href="#" class="meta-item zu-autohide goog-inline-block goog-menu-button" style="-webkit-user-select: none;">举报 &nbsp;</a> 
 			<span class="zg-bull">•</span> 
-			<a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
+			<a href="#" target="_blank" class="meta-item copyright"> 作者保留权利 </a>
 		</div>
 		<div class="zm-comment-box" ng-show="answer.isShowComments">
 			<i class="icon icon-spike zm-comment-bubble" style="display: inline; left: 140px;"></i> 
@@ -83,7 +84,7 @@
 							<a ng-if="ctrl.currentUserId !== comment.authorId" href="#" name="report" class="report zm-comment-op-link needsfocus goog-inline-block goog-menu-button" style="-webkit-user-select: none;">
 								<i class="zg-icon z-icon-no-help"></i>举报 
 							</a>
-							<a ng-if="ctrl.currentUserId === comment.authorId" href="#" class="del zm-comment-op-link needsfocus">
+							<a ng-click="ctrl.deleteComment(comment,answer)" ng-if="ctrl.currentUserId === comment.authorId" href="#" class="del zm-comment-op-link needsfocus">
 								<i class="zg-icon zg-icon-comment-del"></i>删除
 							</a>
 						</div>
