@@ -238,9 +238,11 @@ var InnerPanel = Panel.extend({
 			this.get('scrollerBar').shadowHide();
 		}
 	},
-	scroll:function(){
+	scroll:function(modifiedY){
+		if(!modifiedY){
+			modifiedY = this.get('doc').get('eventClientY') - this.get('scrollerBar').get('oriClientY');
+		}
 		var scrollHeight = this.get('scrollPanel').scrollHeight;
-		var modifiedY = this.get('doc').get('eventClientY') - this.get('scrollerBar').get('oriClientY');
 		var oriPanelTop = this.get('oriPanelTop');
 		this.get('scrollPanel').scrollTop = oriPanelTop + parseInt((scrollHeight -300)/(296-this.get('scrollerBar').get('bar').offsetHeight)*modifiedY,10);
 	}
@@ -298,7 +300,6 @@ var ScrollerBar = Base.extend({
 				me.get('bar').onmouseout = null;
 				me.set('oriClientY',event.clientY);
 				me.set('oriOffsetTop',me.get('bar').offsetTop);
-				me.set('offsetTop',me.get('bar').offsetTop);
 				me.fire('mousedown');
 				Utils.stopPropagation(Utils.getEvent(event));
 			};
@@ -320,10 +321,13 @@ var ScrollerBar = Base.extend({
 			
 		})(me);
 	},
-	move : function(){
-		var modifiedY = this.get('doc').get('eventClientY') - this.get('oriClientY');
-		var oriOffsetTop = this.get('oriOffsetTop');
+	move : function(modifiedY){
+		if(!modifiedY){
+			modifiedY = this.get('doc').get('eventClientY') - this.get('oriClientY');
+		}
 		var offsetHeight = this.get('bar').offsetHeight;
+		var oriOffsetTop = this.get('oriOffsetTop');
+		this.shadowHide();
 		if(oriOffsetTop + modifiedY <=2){
 			this.get('bar').style.top = "2px";	
 		}else if(oriOffsetTop + modifiedY + offsetHeight >=298){
@@ -435,24 +439,37 @@ window.onload = function(){
 	//点击滚动条时绑定鼠标事件
 	msgScrollerBar.on('mousedown','bindMouseEvent',doc);
 	
-	function handleMsgPanelScroll(){
-		console.log('handel');
-		//显示bar
+	function handleMsgPanelWheel(event){
+		msgScrollerBar.clearShadowHide();
 		
-		var oriPanelTop = innerMsgPanel.get('scrollPanel').scrollTop;//oriPanelTop
-		var scrollHeight = innerMsgPanel.get('scrollPanel').scrollHeight;//totalHeight
-		var oriOffsetTop = msgScrollerBar.get('bar').offsetTop;//oriOffsetTop
+		var scrollHeight = innerMsgPanel.get('scrollPanel').scrollHeight;
+		var modefiedY =  (300 * 120/scrollHeight);
 		
+		msgScrollerBar.set('oriOffsetTop',msgScrollerBar.get('bar').offsetTop);
+		innerMsgPanel.set('oriPanelTop',innerMsgPanel.get('scrollPanel').scrollTop);
+		
+		if(Utils.getWheelDelta(event)<0){
+			//向下滚动
+			msgScrollerBar.move(modefiedY);
+			innerMsgPanel.scroll(modefiedY);
+		}else if(Utils.getWheelDelta(event)>0){
+			//向上滚动
+			msgScrollerBar.move(-modefiedY);
+			innerMsgPanel.scroll(-modefiedY);
+		}
+		Utils.preventDefault(event);
 	}
 	
 	innerMsgPanel.on('message-mouseover',function(){
-		Utils.addEventListener(document,"mousewheel",handleMsgPanelScroll);
-		Utils.addEventListener(document,"DOMMouseScroll",handleMsgPanelScroll);
+		(function () {
+			Utils.addEventListener(document,"mousewheel",handleMsgPanelWheel);
+			Utils.addEventListener(document,"DOMMouseScroll",handleMsgPanelWheel);
+		})();
 	});
 	
 	innerMsgPanel.on('message-mouseout',function(){
-		Utils.removeEventListener(document,"mousewheel",handleMsgPanelScroll);
-		Utils.removeEventListener(document,"DOMMouseScroll",handleMsgPanelScroll);
+		Utils.removeEventListener(document,"mousewheel",handleMsgPanelWheel);
+		Utils.removeEventListener(document,"DOMMouseScroll",handleMsgPanelWheel);
 	});
 	
 	var userTabBtn = new TabButton({
