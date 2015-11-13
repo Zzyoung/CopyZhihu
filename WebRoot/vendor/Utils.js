@@ -20,6 +20,9 @@ var Utils = {
 		if(element.classList){
 			element.classList.add(cls);
 		}else{
+			if(this.containsClass(element, cls)){
+				return;
+			}
 			var classList = element.className.split(/\s+/);
 			classList.push(cls);
 			element.className = classList.join(" ");
@@ -76,14 +79,6 @@ var Utils = {
 			return event.wheelDelta;
 		}else{
 			return -event.detail * 40;
-		}
-	},
-	hideBar:function(bar){
-		var opacity = Utils.getComputedStyle(bar).opacity;
-		bar.style.opacity = opacity - 0.07;
-		if(bar.style.opacity<=0.05){
-			bar.style.display = "none";
-			bar.style.opacity = 0.5;
 		}
 	},
 	calculateTop:function (self){

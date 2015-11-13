@@ -121,6 +121,23 @@ var Doc = Base.extend({
 				setTimeout(arguments.callee,30);
 			};
 		},30);
+	},
+	bindMouseEvent:function(){
+		var me = this;
+		document.onmousemove = function(event){
+			event = Utils.getEvent(event);
+			me.set('eventClientY',event.clientY);
+			if(me.get('isFireMouseMove')){
+				me.fire(me.get('current')+'-move');
+			}
+			Utils.preventDefault(event);
+		};
+		
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			me.set('isFireMouseMove',false);
+			me.fire(me.get('current')+'-up');
+		};
 	}
 });
 var BackToTop = Base.extend({
@@ -200,6 +217,32 @@ var InnerPanel = Panel.extend({
 		if(this.get('isShow')){
 			this.show();
 		}
+	},
+	bind:function(){
+		var me = this;
+		(function(me){
+			me.get('scrollPanel').onmouseover = function(){
+				me.fire(me.get('type')+'-mouseover');
+			};
+			
+			me.get('scrollPanel').onmouseout = function(){
+				me.fire(me.get('type')+'-mouseout');
+			};
+		})(me);
+	},
+	show:function(){
+		this.get('panel').style.display = "block";
+		this.set('isShow',true);
+		//初始化的时候还没有设置滚动条，不调用它的隐藏方法
+		if(this.get('scrollerBar')){
+			this.get('scrollerBar').shadowHide();
+		}
+	},
+	scroll:function(){
+		var scrollHeight = this.get('scrollPanel').scrollHeight;
+		var modifiedY = this.get('doc').get('eventClientY') - this.get('scrollerBar').get('oriClientY');
+		var oriPanelTop = this.get('oriPanelTop');
+		this.get('scrollPanel').scrollTop = oriPanelTop + parseInt((scrollHeight -300)/(296-this.get('scrollerBar').get('bar').offsetHeight)*modifiedY,10);
 	}
 });
 var TabButton = Base.extend({
@@ -228,34 +271,122 @@ var TabButton = Base.extend({
 	}
 });
 
-var scrollerBar = Base.extend({
+var ScrollerBar = Base.extend({
 	subscribers:{
 		any:[]
 	},
 	bind:function(){
 		me = this;
-		me.get('button').onclick = function(event){
-			me.fire(me.get('type')+'-click');
-			Utils.stopPropagation(Utils.getEvent(event));
-		};
+		(function(me){
+			me.get('bar').onmouseover = function(){
+				me.clearShadowHide();
+				me.show();
+				Utils.stopPropagation(Utils.getEvent(event));
+				
+				me.get('bar').onmouseout = function(){
+					event = Utils.getEvent(event);
+					if(event.relatedTarget == me.get('wrapper')){
+						return;
+					}
+					me.hide();
+					Utils.stopPropagation(Utils.getEvent(event));
+				};
+			};
+			
+			me.get('bar').onmousedown = function(event){
+				//按下鼠标拖动，由document的mouseup来控制隐藏
+				me.get('bar').onmouseout = null;
+				me.set('oriClientY',event.clientY);
+				me.set('oriOffsetTop',me.get('bar').offsetTop);
+				me.set('offsetTop',me.get('bar').offsetTop);
+				me.fire('mousedown');
+				Utils.stopPropagation(Utils.getEvent(event));
+			};
+			
+			me.get('wrapper').onmouseover = function(event){
+				me.clearShadowHide();
+				me.show();
+				Utils.stopPropagation(Utils.getEvent(event));
+				me.get('wrapper').onmouseout = function(event){
+					event = Utils.getEvent(event);
+					if(event.relatedTarget == me.get('bar')){
+						return;
+					}
+					
+					me.hide();
+					Utils.stopPropagation(Utils.getEvent(event));
+				};
+			};
+			
+		})(me);
+	},
+	move : function(){
+		var modifiedY = this.get('doc').get('eventClientY') - this.get('oriClientY');
+		var oriOffsetTop = this.get('oriOffsetTop');
+		var offsetHeight = this.get('bar').offsetHeight;
+		if(oriOffsetTop + modifiedY <=2){
+			this.get('bar').style.top = "2px";	
+		}else if(oriOffsetTop + modifiedY + offsetHeight >=298){
+			this.get('bar').style.top = 298 - offsetHeight + "px";
+		}else{
+			this.get('bar').style.top = oriOffsetTop + modifiedY + "px"; 
+		}
+	},
+	shadowHide:function(){
+		var me = this;
+		var i = 1;
+		this.clearShadowHide();
+		this.showBar();
+		var opacity = Utils.getComputedStyle(me.get('bar')).opacity;
+		setTimeout(function(){
+			me.set('interval',setTimeout(function(){
+				me.get('bar').style.opacity = opacity - 0.08 * i;
+				if(opacity - 0.08 * i <= 0){
+					me.get('bar').style.opacity = 0;
+				}else{
+					me.set('interval',setTimeout(arguments.callee,50));
+					i += 1;
+				}
+			},50));
+		}, this.get('delay'));
+	},
+	clearShadowHide : function(){
+		clearTimeout(this.get('interval'));
+	},
+	showBar:function(){
+		this.get('bar').style.display = "block";
+		this.get('bar').style.opacity = 0.6;
+	},
+	show:function(){
+		this.get('bar').style.display = "block";
+		this.get('bar').style.opacity = 0.6;
+		this.get('wrapper').style.display = "block";
+		this.get('wrapper').style.opacity = 0.2;
+	},
+	hide:function(){
+		this.shadowHide();
+		this.get('wrapper').style.opacity = 0;
 	}
 });
 window.onload = function(){
-	var doc = new Doc();
+	var doc = new Doc({
+		isFireMouseMove : true,
+		current : 'message'
+	});
 	var backToTop = new BackToTop({
-		button:document.querySelector('.zh-backtotop'),
-		isShow:false
+		button : document.querySelector('.zh-backtotop'),
+		isShow : false
 	});
 	//点击回到顶部按钮时调用文档的scrollToTop方法
-	backToTop.on('click','scrollToTop',doc);
+	backToTop.on('click', 'scrollToTop', doc);
 	//滚动文档的时候判断时候需要开关回到顶部按钮的显示
-	doc.on('scroll','toggle',backToTop);
+	doc.on('scroll', 'toggle', backToTop);
 	
 	var msgBox = new MsgBox({
-		button:document.getElementById("zh-top-nav-count-wrap")
+		button:document.getElementById('zh-top-nav-count-wrap')
 	});
 	var panel = new Panel({
-		panel:document.getElementById("zh-top-nav-live-new"),
+		panel:document.getElementById('zh-top-nav-live-new'),
 		isShow:false
 	});
 	//点击消息按钮时开关显示消息面板
@@ -264,26 +395,64 @@ window.onload = function(){
 	//点击消息面板外面时关闭面板
 	doc.on('click','hide',panel);
 	
-	//三个按钮和三个面板一一对应进行切换
-	var innerMsgPanel = new InnerPanel({
-		panel:document.getElementById("message-notice-content"),
-		isShow:true
-	});
-	
-	var innerUserPanel = new InnerPanel({
-		panel:document.getElementById("user-notice-content"),
-		isShow:false
-	});
-	
-	var innerThanksPanel = new InnerPanel({
-		panel:document.getElementById("thanks-notice-content"),
-		isShow:false
-	});
-	
+	//三个按钮、三个面板、三个滚动条一一对应进行切换
 	var messageTabBtn = new TabButton({
 		button : document.getElementById("message-tab"),
 		isCurrent : true,
 		type : 'message'
+	});
+	
+	var innerMsgPanel = new InnerPanel({
+		panel:document.getElementById('message-notice-content'),
+		scrollPanel:document.getElementById('message-notice-content').querySelector('.zh-scroller-inner'),
+		isShow:true,
+		type : 'message'
+	});
+	
+	var msgScrollerBar = new ScrollerBar({
+		bar : document.getElementById('message-notice-content').querySelector('.zh-scroller-bar'),
+		wrapper : document.getElementById('message-notice-content').querySelector('.zh-scroller-bar-container'),
+		delay : 500
+	});
+	
+	msgScrollerBar.set('doc',doc);
+	innerMsgPanel.set('doc',doc);
+	innerMsgPanel.set('scrollerBar', msgScrollerBar);
+	
+	//记录初始位置信息,设置关联关系
+	msgScrollerBar.on('mousedown',function(){
+		doc.set('isFireMouseMove',true);
+		doc.set('scrollerBar',msgScrollerBar);
+		
+		innerMsgPanel.set('oriPanelTop',innerMsgPanel.get('scrollPanel').scrollTop);
+		
+	});
+	//拖动滚动条，移动对应的面板
+	doc.on('message-move', msgScrollerBar.move, msgScrollerBar);
+	doc.on('message-move', innerMsgPanel.scroll, innerMsgPanel);
+	doc.on('message-up','hide',msgScrollerBar);
+	
+	//点击滚动条时绑定鼠标事件
+	msgScrollerBar.on('mousedown','bindMouseEvent',doc);
+	
+	function handleMsgPanelScroll(){
+		console.log('handel');
+		//显示bar
+		
+		var oriPanelTop = innerMsgPanel.get('scrollPanel').scrollTop;//oriPanelTop
+		var scrollHeight = innerMsgPanel.get('scrollPanel').scrollHeight;//totalHeight
+		var oriOffsetTop = msgScrollerBar.get('bar').offsetTop;//oriOffsetTop
+		
+	}
+	
+	innerMsgPanel.on('message-mouseover',function(){
+		Utils.addEventListener(document,"mousewheel",handleMsgPanelScroll);
+		Utils.addEventListener(document,"DOMMouseScroll",handleMsgPanelScroll);
+	});
+	
+	innerMsgPanel.on('message-mouseout',function(){
+		Utils.removeEventListener(document,"mousewheel",handleMsgPanelScroll);
+		Utils.removeEventListener(document,"DOMMouseScroll",handleMsgPanelScroll);
 	});
 	
 	var userTabBtn = new TabButton({
@@ -291,12 +460,74 @@ window.onload = function(){
 		isCurrent : false,
 		type : 'user'
 	});
+	
+	var innerUserPanel = new InnerPanel({
+		panel:document.getElementById('user-notice-content'),
+		scrollPanel:document.getElementById('user-notice-content').querySelector('.zh-scroller-inner'),
+		isShow:false,
+		type:'user'
+	});
+	
+	var userScrollerBar = new ScrollerBar({
+		bar : document.getElementById('user-notice-content').querySelector('.zh-scroller-bar'),
+		wrapper : document.getElementById('user-notice-content').querySelector('.zh-scroller-bar-container'),
+		delay : 500
+	});
+	
+	userScrollerBar.set('doc',doc);
+	innerUserPanel.set('doc',doc);
+	innerUserPanel.set('scrollerBar', userScrollerBar);
+	
+	userScrollerBar.on('mousedown',function(){
+		doc.set('isFireMouseMove',true);
+		doc.set('scrollerBar',userScrollerBar);
+		
+		innerUserPanel.set('oriPanelTop',innerUserPanel.get('scrollPanel').scrollTop);
+	});
+	doc.on('user-move', 'move', userScrollerBar);
+	doc.on('user-up','hide',userScrollerBar);
+	doc.on('user-move', 'scroll', innerUserPanel);
+	
+	userScrollerBar.on('mousedown','bindMouseEvent',doc);
+	
 	var thanksTabBtn = new TabButton({
 		button : document.getElementById("thanks-tab"),
 		isCurrent : false,
 		type : 'thanks'
 	});
 	
+	var innerThanksPanel = new InnerPanel({
+		panel:document.getElementById('thanks-notice-content'),
+		scrollPanel:document.getElementById('thanks-notice-content').querySelector('.zh-scroller-inner'),
+		isShow:false,
+		type:'thanks'
+	});
+	
+	var thanksScrollerBar = new ScrollerBar({
+		bar : document.getElementById('thanks-notice-content').querySelector('.zh-scroller-bar'),
+		wrapper : document.getElementById('thanks-notice-content').querySelector('.zh-scroller-bar-container'),
+		delay : 500
+	});
+	
+	thanksScrollerBar.set('doc',doc);
+	innerThanksPanel.set('doc',doc);
+	innerThanksPanel.set('scrollerBar', thanksScrollerBar);
+	
+	thanksScrollerBar.on('mousedown',function(){
+		doc.set('isFireMouseMove',true);
+		doc.set('scrollerBar',thanksScrollerBar);
+		
+		innerThanksPanel.set('oriPanelTop',innerThanksPanel.get('scrollPanel').scrollTop);
+	});
+	
+	doc.on('thanks-move', 'move', thanksScrollerBar);
+	doc.on('thanks-move', 'scroll', innerThanksPanel);
+	doc.on('thanks-up','hide',thanksScrollerBar);
+	
+	thanksScrollerBar.on('mousedown','bindMouseEvent',doc);
+	
+	
+	//设置按钮面板之间的关联显示
 	messageTabBtn.on('message-click',function(){
 		innerUserPanel.hide();
 		innerThanksPanel.hide();
@@ -304,6 +535,7 @@ window.onload = function(){
 		messageTabBtn.setCurrent();
 		userTabBtn.removeCurrent();
 		thanksTabBtn.removeCurrent();
+		doc.set('current','message');
 	});
 	
 	userTabBtn.on('user-click',function(){
@@ -313,6 +545,7 @@ window.onload = function(){
 		messageTabBtn.removeCurrent();
 		userTabBtn.setCurrent();
 		thanksTabBtn.removeCurrent();
+		doc.set('current','user');
 	});
 	
 	thanksTabBtn.on('thanks-click',function(){
@@ -322,6 +555,7 @@ window.onload = function(){
 		messageTabBtn.removeCurrent();
 		userTabBtn.removeCurrent();
 		thanksTabBtn.setCurrent();
+		doc.set('current','thanks');
 	});
 	
 	
