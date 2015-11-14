@@ -17,6 +17,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.zhihu.pojo.Comment;
 import com.zhihu.pojo.Feed;
+import com.zhihu.pojo.User;
 import com.zhihu.service.AnswerService;
 import com.zhihu.service.CommentService;
 import com.zhihu.service.QuestionService;
@@ -179,6 +180,20 @@ public class MainController {
 		List<Integer> voterIds = commentService.getVoterIds(Integer.parseInt(commentId));
 		response.getWriter().write(JSON.toJSONString(voterIds));
 		
+	}
+	
+	@RequestMapping(value="getLatest3Voter",method = RequestMethod.GET)
+	public void getLatest3Voter(HttpServletRequest request,HttpServletResponse response) throws NumberFormatException, Exception{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
+		String answerId = request.getParameter("id");
+		if(Utils.isEmpty(answerId)){
+			return;
+		}
+		
+		List<User> voters = answerService.getLatest3Voter(Integer.parseInt(answerId));
+		response.getWriter().write(JSON.toJSONString(voters));
 	}
 	
 	@RequestMapping(value="likeAnswer",method = RequestMethod.POST)

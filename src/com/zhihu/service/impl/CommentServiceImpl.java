@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.zhihu.dao.CommentMapper;
 import com.zhihu.pojo.Comment;
+import com.zhihu.pojo.User;
 import com.zhihu.pojo.UserCommentRelation;
 import com.zhihu.service.CommentService;
 import com.zhihu.utils.Constant;

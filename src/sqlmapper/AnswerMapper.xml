@@ -16,7 +16,7 @@
 	
 	<select id="selectWhoLikeAnswer" parameterType="int" resultType="com.zhihu.pojo.User">
 		SELECT id,NAME, photo_url AS photoUrl, summary,home_url AS homeUrl FROM USER 
-		WHERE id IN (SELECT user_id FROM user_answer_relation WHERE answer_id  = #{id} AND action = 1)
+		WHERE id IN (SELECT user_id FROM user_answer_relation WHERE answer_id  = #{id} AND action = 1 order by time)
 	</select>
 	
 	<insert id="insertUserAnswerRelation" parameterType="com.zhihu.pojo.UserAnswerRelation">

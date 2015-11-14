@@ -40,7 +40,11 @@ public class AnswerServiceImpl implements AnswerService {
 			answer.setAuthor(user);
 			List<User> voters = answerMapper.selectWhoLikeAnswer(answer.getId());
 			answer.setVoteCount(voters.size());
-			answer.setVoters(voters);
+			if(voters.size()>3){
+				answer.setVoters(voters.subList(0, 3));
+			}else{
+				answer.setVoters(voters);
+			}
 			answer.setCommentsCount(commentMapper.getCommentsCountByAnswerId(answer.getId()));
 			UserAnswerRelation relation = new UserAnswerRelation();
 			relation.setAnswerId(answer.getId());
@@ -166,6 +170,16 @@ public class AnswerServiceImpl implements AnswerService {
 		answer.setQuestionId(questionId);
 		int result = answerMapper.updateAnswer(answer);
 		return result == 1;
+	}
+
+	@Override
+	public List<User> getLatest3Voter(int commentId) throws Exception {
+		List<User> voters = answerMapper.selectWhoLikeAnswer(commentId);
+		if (voters.size()>3) {
+			return voters.subList(0, 3);
+		}else{
+			return voters;
+		}
 	}
 
 }

@@ -99,8 +99,12 @@ public class QuestionServiceImpl implements QuestionService {
 			}
 			answer.setRelationWithCurrentUser(relationType);
 			List<User> voters = answerMapper.selectWhoLikeAnswer(answer.getId());
-			answer.setVoters(voters);
 			answer.setVoteCount(voters.size());
+			if(voters.size()>3){
+				answer.setVoters(voters.subList(0, 3));
+			}else{
+				answer.setVoters(voters);
+			}
 			User author = userMapper.getUserById(answer.getAuthorId());
 			author.setPassword("");
 			answer.setAuthor(author);

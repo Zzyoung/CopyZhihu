@@ -13,7 +13,7 @@
 		}
 		
 		function queryError(){
-			console.log('error');
+			//do something here
 		}
 		
 		service.getAnswerList = function(questionId){
@@ -30,7 +30,6 @@
 		};
 		
 		service.likeAnswer = function(answerId){
-			console.log('likeAnswer',answerId);
 			return $http({
 				method : 'POST',
 				url : '/Zhihu/likeAnswer',
@@ -149,9 +148,21 @@
 			}).then(querySuccess, queryError);
 		};
 		
+		service.getLatest3Voter = function(answerId){
+			return $http({
+				method : 'GET',
+				url : '/Zhihu/getLatest3Voter',
+				params : {
+					'id' : answerId
+				},
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				}
+			}).then(querySuccess, queryError);
+		};
+		
 		service.toggleLikeAnswer = function(answer){
 			if(answer.relationWithCurrentUser == 1){
-				console.log('撤销赞同');
 				service.unlikeAnswer(answer.id).then(function(isSuccess){
 					if(isSuccess) {
 						answer.voters = answer.voters.filter(function(voter){
@@ -161,14 +172,19 @@
 						service.getAnswerVoterCount(answer.id).then(function(count){
 							answer.voteCount = count;
 						});
+						service.getLatest3Voter(answer.id).then(function(voters){
+							answer.voters = voters;
+						});
 					}
 				});
 			}else{
-				console.log('赞同');
 				service.likeAnswer(answer.id).then(function(isSuccess){
 					if(isSuccess) {
 						answer.relationWithCurrentUser = 1;
-						answer.voters.push({id:currentUserId,name:currentUserName});
+						answer.voters.unshift({id:currentUserId,name:currentUserName});
+						if(answer.voters.length>3){
+							answer.voters.length = 3;
+						}
 						service.getAnswerVoterCount(answer.id).then(function(count){
 							answer.voteCount = count;
 						});
@@ -179,18 +195,16 @@
 		
 		service.toggleOpposeAnswer = function(answer){
 			if(answer.relationWithCurrentUser == 2){
-				console.log('撤销反对');
 				service.unopposeAnswer(answer.id).then(function(isSuccess){
 					if(isSuccess) {
 						answer.relationWithCurrentUser = 0;
 					}
 				});
 			}else{
-				console.log('反对');
 				service.opposeAnswer(answer.id).then(function(isSuccess){
 					if(isSuccess) {
-						answer.voters = answer.voters.filter(function(voter){
-							return voter.id != currentUserId;
+						service.getLatest3Voter(answer.id).then(function(voters){
+							answer.voters = voters;
 						});
 						answer.relationWithCurrentUser = 2;
 						service.getAnswerVoterCount(answer.id).then(function(count){

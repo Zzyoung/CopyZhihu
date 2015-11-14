@@ -3,6 +3,7 @@ package com.zhihu.service;
 import java.util.List;
 
 import com.zhihu.pojo.Comment;
+import com.zhihu.pojo.User;
 
 public interface CommentService {
 	List<Comment> getCommentsByAnswerId(int id) throws Exception;
@@ -20,4 +21,5 @@ public interface CommentService {
 	List<Integer> getVoterIds(int commentId) throws Exception;
 
 	boolean deleteComment(int parseInt, int currentUserId) throws Exception;
+
 }

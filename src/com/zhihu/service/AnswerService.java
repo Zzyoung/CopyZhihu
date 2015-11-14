@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.zhihu.pojo.Answer;
 import com.zhihu.pojo.Question;
+import com.zhihu.pojo.User;
 
 public interface AnswerService {
 	List<Answer> selectAnswerListByQuestionId(int id,int currentUserId) throws Exception;
@@ -23,4 +24,6 @@ public interface AnswerService {
 	boolean isAnsweredQuestion(int parseInt, int currentUserId) throws Exception;
 	
 	boolean updateAnswer(int questionId,int userid,String answer) throws Exception;
+
+	List<User> getLatest3Voter(int parseInt) throws Exception;
 }

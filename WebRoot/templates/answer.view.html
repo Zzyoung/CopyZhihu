@@ -20,7 +20,7 @@
 				<strong title="{{answer.author.summary}}" class="zu-question-my-bio">{{answer.author.summary}}</strong>
 			</h3>
 		</div>
-		<div class="zm-item-vote-info " ng-show="answer.voters.length>0">
+		<div class="zm-item-vote-info " ng-show="answer.voteCount > 0">
 			<span class="voters" > 
 				<span class="user-block" ng-repeat="voter in answer.voters"><a data-tip="p$t$le-bu-zha-qia" href="http://www.zhihu.com/people/le-bu-zha-qia" class="zg-link" title="{{voter.name}}">{{voter.name}}</a><span ng-hide="$last">、</span></span>
 			</span> <a href="javascript:;" class="more"> 等人赞同</a>

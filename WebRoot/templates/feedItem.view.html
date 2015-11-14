@@ -49,10 +49,10 @@
 							</a>
 						</div>
 						<!-- 赞同者信息 -->
-						<div ng-if="feed.answer.voters.length === 0" class="zm-item-vote-info empty"></div>
-						<div ng-if="feed.answer.voters.length > 0 && feed.answerExpanded" class="zm-item-vote-info ">
+						<div ng-if="feed.answer.voteCount === 0" class="zm-item-vote-info empty"></div>
+						<div ng-if="feed.answer.voteCount > 0 && feed.answerExpanded" class="zm-item-vote-info ">
 							<span class="voters">
-								<span ng-repeat="voter in feed.answer.voters" class="user-block"><a data-tip="p$t$song-ying-3-25" href="{{voter.link}}" class="zg-link" title="{{voter.name}}">{{voter.name}}</a><span ng-hide="$last">、</span></span>
+								<span ng-repeat="voter in feed.answer.voters track by $index" class="user-block"><a data-tip="p$t$song-ying-3-25" href="{{voter.link}}" class="zg-link" title="{{voter.name}}">{{voter.name}}</a><span ng-hide="$last">、</span></span>
 							</span>
 							<a href="javascript:;" class="more"> 等人赞同</a>
 						</div>
