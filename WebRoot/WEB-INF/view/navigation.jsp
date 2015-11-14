@@ -41,7 +41,7 @@
 					<a class="zu-top-nav-link" href="/explore">发现</a>
 				</li>
 				<li class="top-nav-noti zu-top-nav-li">
-					<a class="zu-top-nav-link" href="#" id="zh-top-nav-count-wrap"><span class="mobi-arrow"></span>消息<span style="display:none;" id="zh-top-nav-count" class="zu-top-nav-count zg-noti-number">1</span></a>
+					<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap"><span class="mobi-arrow"></span>消息<span style="display:none;" id="zh-top-nav-count" class="zu-top-nav-count zg-noti-number">1</span></a>
 				</li>
 			</ul>
 			<div class="zu-top-nav-live zu-notice-popup zg-r5px no-hovercard" id="zh-top-nav-live-new">
