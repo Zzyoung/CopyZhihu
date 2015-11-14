@@ -2,7 +2,7 @@
 <configuration debug="true" scan="true" scanPeriod="30 seconds">
 
 	<!-- 日志存放的路径 ,默认为tomcat下面的logs -->
-	<!-- <property name="USER_HOME" value="${catalina.base}" /> -->
+	<property name="USER_HOME" value="${catalina.base}" />
 
 	<!-- 输出到窗口 -->
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
@@ -12,7 +12,7 @@
 	</appender>
 
 	<!-- 输出到文件 -->
-	<!-- <appender name="logfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="logfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			按天分文件夹存放 ，并压缩
 			<fileNamePattern>${USER_HOME}/zhi_logs/%d{yyyy-MM-dd}/log.%i.txt</fileNamePattern>
@@ -28,7 +28,7 @@
 			<pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n
 			</pattern>
 		</encoder>
-	</appender> -->
+	</appender>
 
 	<logger name="com.zhihu"/>
 	

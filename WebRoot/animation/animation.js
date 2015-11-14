@@ -253,7 +253,7 @@ var InnerPanel = Panel.extend({
 		var scrollHeight = this.get('scrollPanel').scrollHeight;
 		var offsetHeight = this.get('scrollPanel').offsetHeight;
 		var oriPanelTop = this.get('oriPanelTop');
-		this.get('scrollPanel').scrollTop = oriPanelTop + parseInt((scrollHeight - offsetHeight)/(this.get('scrollerBar').get('wrapper').offsetHeight - this.get('scrollerBar').get('bar').offsetHeight)*modifiedY,10);
+		this.get('scrollPanel').scrollTop = oriPanelTop + parseInt((scrollHeight - offsetHeight)/(this.get('scrollerBar').get('wrapper').offsetHeight - this.get('scrollerBar').get('bar').offsetHeight) *modifiedY,10);
 	},
 	calculateModifiedY:function(direction){
 		var scrollHeight = this.get('scrollPanel').scrollHeight;

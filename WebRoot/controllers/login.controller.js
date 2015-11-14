@@ -33,8 +33,10 @@
 	                	}else if (response.data.errorCode === ConstantService.constant.ERROR_CAPTCHA){
 	                		$scope.prompts = [{type : 'captcha',msg:'请输入正确的验证码'}];
 	                	}else{
+	                		console.log('登陆成功');
 	                		var location = window.location;
 	                		AuthenticationService.setCredentials(vm.user.loginName, password);
+	                		console.log(location.href.split(ConstantService.ContextPath)[0] + ConstantService.ContextPath + "index");
 	                		window.location = location.href.split(ConstantService.ContextPath)[0] + ConstantService.ContextPath + "index";
 	                	}
 	                } else {

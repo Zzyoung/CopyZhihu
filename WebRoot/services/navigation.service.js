@@ -108,7 +108,7 @@
 		}];
 		
 		service.userContents = [{
-			name:'userContent',
+			name:'张阳',
 			link:'http://www.zhihu.com/people/guairen',
 			photoUrl:'images/172039268a15b62905e14f6c18f3cc9a_m.jpg',
 			followed:false

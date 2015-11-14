@@ -142,32 +142,30 @@ public class LoginController {
 		Cookie[] cookies = request.getCookies();
 		String cookieLoginName = null;
 		String cookiePassword = null;
-		if(cookies==null || cookies.length==0){
-			logger.info("cookie为空，跳转到登录界面...");
-			//火狐登陆时第一次请求不带cookie，改用session验证
-//			String sessionLoginName = request.getSession().getAttribute("loginName").toString();
-//			String sessionPassword = request.getSession().getAttribute("password").toString();
-			Object sessionLoginName = request.getSession().getAttribute("loginName");
-			Object sessionPassword = request.getSession().getAttribute("password");
-			if(sessionLoginName == null || sessionPassword == null){
-				response.sendRedirect(request.getContextPath()+"/index.html");
-				return;
-			}
+		Object sessionLoginName = request.getSession().getAttribute("loginName");
+		Object sessionPassword = request.getSession().getAttribute("password");
+		logger.info("进入index控制器");
+		if(sessionPassword != null || sessionLoginName != null){
+			//火狐登陆时第一次登陆是cookie验证有问题，改用session验证
+			logger.info("session中的密码"+sessionPassword);
+			logger.info("session中的姓名"+sessionLoginName);
+			
 			User user = userService.getByLoginName(sessionLoginName.toString());
+			logger.info("session判断数据库密码："+user.getPassword());
 			if(user != null && sessionPassword.toString().equals(user.getPassword())){
 				request.getSession().removeAttribute("loginName");
 				request.getSession().removeAttribute("password");
-				request.setAttribute("id", user.getId());
-				request.setAttribute("photoUrl", user.getPhotoUrl());
-				request.setAttribute("userName", user.getName());
-				request.getSession().setAttribute("id", user.getId());
-				request.getSession().setAttribute("photoUrl", user.getPhotoUrl());
-				request.getSession().setAttribute("userName", user.getName());
+				setCredential(request, user);
 				request.getRequestDispatcher("/WEB-INF/view/main.jsp").forward(request, response);
 			}else{
+				logger.info("数据库密码和session密码不相等，返回");
 				response.sendRedirect(request.getContextPath()+"/index.html");
 			}
 			return;
+		}
+		if(cookies==null || cookies.length==0){
+			logger.info("cookie为空，跳转到登录界面...");
+			response.sendRedirect(request.getContextPath()+"/index.html");
 		}
 		for (int i = 0; i < cookies.length; i++) {
 			if(cookies[i].getName().equals("loginName")){
@@ -190,12 +188,7 @@ public class LoginController {
 		
 		User user = userService.getByLoginName(cookieLoginName);
 		if(user != null && cookiePassword.equals(user.getPassword())){
-			request.setAttribute("id", user.getId());
-			request.setAttribute("photoUrl", user.getPhotoUrl());
-			request.setAttribute("userName", user.getName());
-			request.getSession().setAttribute("id", user.getId());
-			request.getSession().setAttribute("photoUrl", user.getPhotoUrl());
-			request.getSession().setAttribute("userName", user.getName());
+			setCredential(request, user);
 			request.getRequestDispatcher("/WEB-INF/view/main.jsp").forward(request, response);
 		}else{
 			logger.info("cookie中的密码"+cookiePassword+"与数据库中的密码不同...");
@@ -203,11 +196,24 @@ public class LoginController {
 		}
 		
 	}
+
+	private void setCredential(HttpServletRequest request, User user) {
+		request.setAttribute("id", user.getId());
+		request.setAttribute("photoUrl", user.getPhotoUrl());
+		request.setAttribute("userName", user.getName());
+		request.getSession().setAttribute("id", user.getId());
+		request.getSession().setAttribute("photoUrl", user.getPhotoUrl());
+		request.getSession().setAttribute("userName", user.getName());
+	}
 	
 	@RequestMapping(value="/logout",method = RequestMethod.GET)
 	public void logout(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		//do something here
-		
+		request.getSession().removeAttribute("id");
+		request.getSession().removeAttribute("photoUrl");
+		request.getSession().removeAttribute("userName");
+		request.getSession().removeAttribute("loginName");
+		request.getSession().removeAttribute("password");
 		response.sendRedirect(request.getContextPath()+"/index.html");
 	}
 	

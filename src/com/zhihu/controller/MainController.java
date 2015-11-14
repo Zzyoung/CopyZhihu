@@ -281,6 +281,7 @@ public class MainController {
 		String answer = request.getParameter("answer");
 		answer = new String(answer.getBytes("ISO8859-1"),"UTF-8");
 		int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
+		logger.info("用户Id为["+currentUserId+"]的用户回答了ID为["+questionId+"]的问题，答案是："+answer);
 		
 		boolean isSuccess = answerService.addAnswer(Integer.parseInt(questionId),currentUserId,answer);
 		response.getWriter().write(JSON.toJSONString(isSuccess));
