@@ -7,7 +7,7 @@
 	</select>
 	
 	<select id="selectQuestionNamesAndAnswerCounts" parameterType="com.zhihu.pojo.Question" resultType="com.zhihu.pojo.Question">
-		SELECT NAME,ifnull(answer_count,0) AS answerCount FROM question   
+		SELECT id,NAME,ifnull(answer_count,0) AS answerCount FROM question   
 		WHERE name LIKE '%${name}%' limit 10
 	</select>
 	
