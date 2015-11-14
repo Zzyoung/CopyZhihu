@@ -123,43 +123,19 @@ var Doc = Base.extend({
 		},30);
 	},
 	bindMouseEvent:function(){
-		console.log('绑定鼠标移动事件到document上');
 		var me = this;
 		document.onmousemove = function(event){
 			event = Utils.getEvent(event);
 			me.set('eventClientY',event.clientY);
 			me.calculateModifiedY();
-			if(me.get('isFireMouseMove')){
-				me.fire(me.get('current')+'-move');
-			}
+			me.fire(me.get('current')+'-move');
 			Utils.preventDefault(event);
 		};
 		
 		document.onmouseup = function(){
 			document.onmousemove = null;
-			me.set('isFireMouseMove',false);
 			me.fire(me.get('current')+'-up');
 		};
-	},
-	handle:function(event){
-		var scrollerBar = this.get('scrollerBar');
-		var scrollerPanel = this.get('scrollPanel');
-		scrollerBar.clearShadowHide();
-		
-		scrollerBar.set('oriOffsetTop', scrollerBar.get('bar').offsetTop);
-		scrollerPanel.set('oriPanelTop', scrollerPanel.get('scrollPanel').scrollTop);
-		if(Utils.getWheelDelta(event)<0){
-			scrollerPanel.calculateModifiedY(1);
-			//向下滚动
-			scrollerBar.move();
-			scrollerPanel.scroll();
-		}else if(Utils.getWheelDelta(event)>0){
-			scrollerPanel.calculateModifiedY(-1);
-			//向上滚动
-			scrollerBar.move();
-			scrollerPanel.scroll();
-		}
-		Utils.preventDefault(event);
 	},
 	calculateModifiedY:function(){
 		var modifiedY = this.get('eventClientY') - this.get('scrollerBar').get('oriClientY');
@@ -260,7 +236,6 @@ var InnerPanel = Panel.extend({
 				Utils.stopPropagation(event);
 			};
 			
-			
 		})(me);
 	},
 	show:function(){
@@ -276,13 +251,18 @@ var InnerPanel = Panel.extend({
 			modifiedY = this.get('scrollerBar').get('modifiedY');
 		}
 		var scrollHeight = this.get('scrollPanel').scrollHeight;
+		var offsetHeight = this.get('scrollPanel').offsetHeight;
 		var oriPanelTop = this.get('oriPanelTop');
-		this.get('scrollPanel').scrollTop = oriPanelTop + parseInt((scrollHeight -300)/(296-this.get('scrollerBar').get('bar').offsetHeight)*modifiedY,10);
+		this.get('scrollPanel').scrollTop = oriPanelTop + parseInt((scrollHeight - offsetHeight)/(this.get('scrollerBar').get('wrapper').offsetHeight - this.get('scrollerBar').get('bar').offsetHeight)*modifiedY,10);
 	},
 	calculateModifiedY:function(direction){
 		var scrollHeight = this.get('scrollPanel').scrollHeight;
-		var modifiedY = direction * (300 * 120/scrollHeight);
+		var offsetHeight = this.get('scrollPanel').offsetHeight;
+		var modifiedY = direction * (offsetHeight * 120/scrollHeight);
 		this.get('scrollerBar').set('modifiedY',modifiedY);
+	},
+	saveOriPanelTop:function(){
+		this.set('oriPanelTop',this.get('scrollPanel').scrollTop);
 	}
 });
 var TabButton = Base.extend({
@@ -319,13 +299,13 @@ var ScrollerBar = Base.extend({
 		me = this;
 		(function(me){
 			me.get('wrapper').onclick = function(event){
-				console.log('click wrapper');
 				event = Utils.getEvent(event);
 				var	barHeight = me.get('bar').offsetHeight,
 					oriOffsetTop = me.get('bar').offsetTop,
 					modifiedY = event.clientY - Utils.calculateTop(me.get('wrapper')) - oriOffsetTop - barHeight / 2;
 				me.set('modifiedY',modifiedY);
-				me.set('oriOffsetTop',oriOffsetTop);
+//				me.set('oriOffsetTop',oriOffsetTop);
+				me.saveBarOriOffsetTop();
 				me.move();
 				me.fire(me.get('type')+'-wrapper-click');
 				Utils.stopPropagation(event);
@@ -337,7 +317,6 @@ var ScrollerBar = Base.extend({
 				Utils.stopPropagation(Utils.getEvent(event));
 				
 				me.get('bar').onmouseout = function(){
-					console.log('bar out le');
 					event = Utils.getEvent(event);
 					if(event.relatedTarget == me.get('wrapper')){
 						return;
@@ -349,11 +328,11 @@ var ScrollerBar = Base.extend({
 			
 			me.get('bar').onmousedown = function(event){
 				//按下鼠标拖动，由document的来控制隐藏
-				console.log('对着滚动条按下鼠标，记录当前的鼠标位置');
 				me.get('bar').onmouseout = null;
 				me.get('wrapper').onmouseout = null;
 				me.set('oriClientY',event.clientY);
-				me.set('oriOffsetTop',me.get('bar').offsetTop);
+//				me.set('oriOffsetTop',me.get('bar').offsetTop);
+				me.saveBarOriOffsetTop();
 				me.fire(me.get('type')+'-bar-mousedown');
 				Utils.stopPropagation(Utils.getEvent(event));
 			};
@@ -363,7 +342,6 @@ var ScrollerBar = Base.extend({
 				me.show();
 				Utils.stopPropagation(Utils.getEvent(event));
 				me.get('wrapper').onmouseout = function(event){
-					console.log('wrapper out le');
 					event = Utils.getEvent(event);
 					if(event.relatedTarget == me.get('bar')){
 						return;
@@ -376,20 +354,20 @@ var ScrollerBar = Base.extend({
 			
 		})(me);
 	},
-	move : function(modifiedY){
-		if(!modifiedY){
-			modifiedY = this.get('modifiedY');
-		}
-		var offsetHeight = this.get('bar').offsetHeight;
+	move : function(){
+		var	modifiedY = this.get('modifiedY');
+		var barOffsetHeight = this.get('bar').offsetHeight;
 		var oriOffsetTop = this.get('oriOffsetTop');
-		this.shadowHide();
+		
 		if(oriOffsetTop + modifiedY <= 2){
 			this.get('bar').style.top = "2px";	
-		}else if(oriOffsetTop + modifiedY + offsetHeight >=298){
-			this.get('bar').style.top = 298 - offsetHeight + "px";
+		}else if(oriOffsetTop + modifiedY + barOffsetHeight >=298){
+			this.get('bar').style.top = 298 - barOffsetHeight + "px";
 		}else{
 			this.get('bar').style.top = oriOffsetTop + modifiedY + "px"; 
 		}
+		
+		this.shadowHide();
 	},
 	shadowHide:function(){
 		var me = this;
@@ -403,8 +381,8 @@ var ScrollerBar = Base.extend({
 				if(opacity - 0.08 * i <= 0){
 					me.get('bar').style.opacity = 0;
 				}else{
-					me.set('interval',setTimeout(arguments.callee,50));
 					i += 1;
+					me.set('interval',setTimeout(arguments.callee,50));
 				}
 			},50));
 		}, this.get('delay'));
@@ -426,13 +404,44 @@ var ScrollerBar = Base.extend({
 	hide:function(){
 		this.shadowHide();
 		this.get('wrapper').style.opacity = 0;
+	},
+	saveBarOriOffsetTop:function(){
+		this.set('oriOffsetTop',this.get('bar').offsetTop);
 	}
 });
 window.onload = function(){
 	var doc = new Doc({
-		isFireMouseMove : true,
 		current : 'message'
 	});
+	
+	function handleWheel (event){
+		event = Utils.getEvent(event);
+		var scrollerBar = doc.get('scrollerBar');
+		var scrollerPanel = doc.get('scrollPanel');
+		scrollerBar.clearShadowHide();
+		
+		scrollerBar.saveBarOriOffsetTop();
+		scrollerPanel.saveOriPanelTop();
+		if(Utils.getWheelDelta(event)<0){
+			//向下滚动
+			scrollerPanel.calculateModifiedY(1);
+		}else if(Utils.getWheelDelta(event)>0){
+			//向上滚动
+			scrollerPanel.calculateModifiedY(-1);
+		}
+		scrollerBar.move();
+		scrollerPanel.scroll();
+		doc.fire('domWheel');
+		Utils.preventDefault(event);
+	};
+	
+	function bindWheelEvent(currentBar, currentPanel){
+		doc.set('scrollerBar', currentBar);
+		doc.set('scrollPanel', currentPanel);
+		Utils.addEventListener(document,"mousewheel",handleWheel);
+		Utils.addEventListener(document,"DOMMouseScroll",handleWheel);
+	}
+	
 	var backToTop = new BackToTop({
 		button : document.querySelector('.zh-backtotop'),
 		isShow : false
@@ -480,30 +489,17 @@ window.onload = function(){
 	
 	//记录初始位置信息,设置关联关系
 	msgScrollerBar.on('message-bar-mousedown',function(){
-		console.log('对着滚动条按下鼠标，将scrollerBar设置到doc中');
-		doc.set('isFireMouseMove',true);
 		doc.set('scrollerBar',msgScrollerBar);
 		
-		innerMsgPanel.set('oriPanelTop',innerMsgPanel.get('scrollPanel').scrollTop);
-		
+		innerMsgPanel.saveOriPanelTop();
 	});
 	//拖动滚动条，移动对应的面板
 	doc.on('message-move', msgScrollerBar.move, msgScrollerBar);
 	doc.on('message-move', innerMsgPanel.scroll, innerMsgPanel);
-	doc.on('message-up','hide',msgScrollerBar);
+	doc.on('message-up', 'hide', msgScrollerBar);
 	
 	//点击滚动条时绑定鼠标事件
-	msgScrollerBar.on('message-bar-mousedown','bindMouseEvent',doc);
-	
-	var bindHandle = doc.handle.bind(doc);
-	
-	function bindWheelEvent(currentBar, currentPanel){
-		console.log('bind');
-		doc.set('scrollerBar', currentBar);
-		doc.set('scrollPanel', currentPanel);
-		Utils.addEventListener(document,"mousewheel",bindHandle);
-		Utils.addEventListener(document,"DOMMouseScroll",bindHandle);
-	}
+	msgScrollerBar.on('message-bar-mousedown', 'bindMouseEvent', doc);
 	
 	//鼠标移入消息面板的时候绑定滚动事件
 	innerMsgPanel.on('message-panel-mouseenter',function(){
@@ -511,14 +507,12 @@ window.onload = function(){
 	});
 	
 	innerMsgPanel.on('message-panel-mouseout',function(){
-		console.log('remove');
-		Utils.removeEventListener(document,"mousewheel",bindHandle);
-		Utils.removeEventListener(document,"DOMMouseScroll",bindHandle);
+		Utils.removeEventListener(document,"mousewheel",handleWheel);
+		Utils.removeEventListener(document,"DOMMouseScroll",handleWheel);
 	});
 	
 	msgScrollerBar.on('message-wrapper-click',function(){
-		var oriPanelTop = innerMsgPanel.get('scrollPanel').scrollTop;
-		innerMsgPanel.set('oriPanelTop',oriPanelTop);
+		innerMsgPanel.saveOriPanelTop();
 		innerMsgPanel.scroll();
 	});
 	
@@ -542,36 +536,32 @@ window.onload = function(){
 		type:'user'
 	});
 	
-	userScrollerBar.set('doc',doc);
-	innerUserPanel.set('doc',doc);
 	innerUserPanel.set('scrollerBar', userScrollerBar);
 	
 	userScrollerBar.on('user-bar-mousedown',function(){
-		doc.set('isFireMouseMove',true);
-		doc.set('scrollerBar',userScrollerBar);
+		doc.set('isFireMouseMove', true);
+		doc.set('scrollerBar', userScrollerBar);
 		
-		innerUserPanel.set('oriPanelTop',innerUserPanel.get('scrollPanel').scrollTop);
+		innerUserPanel.saveOriPanelTop();
 	});
 	doc.on('user-move', 'move', userScrollerBar);
-	doc.on('user-up','hide',userScrollerBar);
+	doc.on('user-up', 'hide', userScrollerBar);
 	doc.on('user-move', 'scroll', innerUserPanel);
 	
-	userScrollerBar.on('user-bar-mousedown','bindMouseEvent',doc);
+	userScrollerBar.on('user-bar-mousedown', 'bindMouseEvent', doc);
 	
 	//鼠标移入消息面板的时候绑定滚动事件
-	innerMsgPanel.on('user-panel-mouseenter',function(){
-		bindWheelEvent(userScrollerBar,innerUserPanel);
+	innerMsgPanel.on('user-panel-mouseenter', function(){
+		bindWheelEvent(userScrollerBar, innerUserPanel);
 	});
 	
-	innerMsgPanel.on('user-panel-mouseout',function(){
-		console.log('remove');
-		Utils.removeEventListener(document,"mousewheel",bindHandle);
-		Utils.removeEventListener(document,"DOMMouseScroll",bindHandle);
+	innerMsgPanel.on('user-panel-mouseout', function(){
+		Utils.removeEventListener(document, "mousewheel", handleWheel);
+		Utils.removeEventListener(document, "DOMMouseScroll", handleWheel);
 	});
 	
 	userScrollerBar.on('user-wrapper-click',function(){
-		var oriPanelTop = innerUserPanel.get('scrollPanel').scrollTop;
-		innerUserPanel.set('oriPanelTop',oriPanelTop);
+		innerUserPanel.saveOriPanelTop();
 		innerUserPanel.scroll();
 	});
 	
@@ -582,10 +572,10 @@ window.onload = function(){
 	});
 	
 	var innerThanksPanel = new InnerPanel({
-		panel:document.getElementById('thanks-notice-content'),
-		scrollPanel:document.getElementById('thanks-notice-content').querySelector('.zh-scroller-inner'),
-		isShow:false,
-		type:'thanks'
+		panel : document.getElementById('thanks-notice-content'),
+		scrollPanel : document.getElementById('thanks-notice-content').querySelector('.zh-scroller-inner'),
+		isShow : false,
+		type : 'thanks'
 	});
 	
 	var thanksScrollerBar = new ScrollerBar({
@@ -595,37 +585,33 @@ window.onload = function(){
 		type : 'thanks'
 	});
 	
-	thanksScrollerBar.set('doc',doc);
-	innerThanksPanel.set('doc',doc);
 	innerThanksPanel.set('scrollerBar', thanksScrollerBar);
 	
-	thanksScrollerBar.on('thanks-bar-mousedown',function(){
-		doc.set('isFireMouseMove',true);
-		doc.set('scrollerBar',thanksScrollerBar);
+	thanksScrollerBar.on('thanks-bar-mousedown', function(){
+		doc.set('isFireMouseMove', true);
+		doc.set('scrollerBar', thanksScrollerBar);
 		
-		innerThanksPanel.set('oriPanelTop',innerThanksPanel.get('scrollPanel').scrollTop);
+		innerThanksPanel.saveOriPanelTop();
 	});
+	thanksScrollerBar.on('thanks-bar-mousedown', 'bindMouseEvent', doc);
 	
 	doc.on('thanks-move', 'move', thanksScrollerBar);
 	doc.on('thanks-move', 'scroll', innerThanksPanel);
-	doc.on('thanks-up','hide',thanksScrollerBar);
+	doc.on('thanks-up','hide', thanksScrollerBar);
 	
-	thanksScrollerBar.on('thanks-bar-mousedown','bindMouseEvent',doc);
 	
 	//鼠标移入消息面板的时候绑定滚动事件
-	innerThanksPanel.on('thanks-panel-mouseenter',function(){
-		bindWheelEvent(thanksScrollerBar,innerThanksPanel);
+	innerThanksPanel.on('thanks-panel-mouseenter', function(){
+		bindWheelEvent(thanksScrollerBar, innerThanksPanel);
 	});
 	
-	innerThanksPanel.on('thanks-panel-mouseout',function(){
-		console.log('remove');
-		Utils.removeEventListener(document,"mousewheel",bindHandle);
-		Utils.removeEventListener(document,"DOMMouseScroll",bindHandle);
+	innerThanksPanel.on('thanks-panel-mouseout', function(){
+		Utils.removeEventListener(document, "mousewheel", handleWheel);
+		Utils.removeEventListener(document, "DOMMouseScroll", handleWheel);
 	});
 	
 	thanksScrollerBar.on('thanks-wrapper-click',function(){
-		var oriPanelTop = innerThanksPanel.get('scrollPanel').scrollTop;
-		innerThanksPanel.set('oriPanelTop',oriPanelTop);
+		innerThanksPanel.saveOriPanelTop();
 		innerThanksPanel.scroll();
 	});
 	
@@ -659,171 +645,6 @@ window.onload = function(){
 		thanksTabBtn.setCurrent();
 		doc.set('current','thanks');
 	});
-	
-	
-	
-	var timeout = null;
-//	var msgBox = document.getElementById("zh-top-nav-count-wrap");
-	var buttons = document.querySelectorAll('.zm-notice-popup-tab-item');
-	var scrollPanels = document.querySelectorAll('.zh-scroller-inner');
-	var barContainers = document.querySelectorAll('.zh-scroller-bar-container');
-//	var panel = document.getElementById("zh-top-nav-live-new");
-	var panels = document.querySelectorAll(".zm-notice-content");
-//	msgBox.onclick = function(event){
-//		event = Utils.getEvent(event);
-//		var panelStyle = Utils.getComputedStyle(panel);
-//		if(panelStyle.display == "block"){
-//			panel.style.display = "none";
-//		}else if(panelStyle.display == "none"){
-//			panel.style.display = "block";
-//			//初始化滚动条长度
-//			for (var i = 0; i < scrollPanels.length; i++) {
-//				var scrollerBar = scrollPanels[i].parentNode.querySelector('.zh-scroller-bar');
-//				var height = scrollPanels[i].scrollHeight;
-//				scrollerBar.style.height = (300*296/height)+"px";
-//			};
-//		}
-//		Utils.preventDefault(event);
-//		Utils.stopPropagation(event);
-//	};
-//	document.onclick = function(event){
-//		event = Utils.getEvent(event);
-//		var panelStyle = Utils.getComputedStyle(panel);
-//		if(panelStyle.display == "block"){
-//			panel.style.display = "none";
-//		}
-//	};
-//	document.querySelector('#zh-top-nav-live-new').onclick = function (event) {
-//		event = Utils.getEvent(event);
-//		Utils.stopPropagation(event);
-//	};
-	function hideBarTimer(scrollerBar,delay){
-		clearTimeout(timeout);
-		timeout = setTimeout(function(){
-			Utils.hideBar(scrollerBar);
-			if(Utils.getComputedStyle(scrollerBar).display!=="none"){
-				timeout = setTimeout(arguments.callee,50);
-			}
-		},delay);
-	}
-	function showBar (scrollerBar) {
-		scrollerBar.style.opacity = 0.5;
-		scrollerBar.style.display = "block";
-	}
-	function showBarContainer (container) {
-		container.style.opacity = 0.2;
-	}
-
-//	for (var i = 0; i < buttons.length; i++) {
-//		(function(i){
-//			//三个小标签
-//			var scrollerBar = panels[i].querySelector('.zh-scroller-bar');
-//			buttons[i].onclick = function(event){
-//				//显示滚动条
-//				showBar(scrollerBar);
-//				hideBarTimer(scrollerBar,500);
-//				Utils.stopPropagation(event);
-//			};
-//			//显示面板
-//			var handler = function (event){
-//				event = Utils.getEvent(event);
-//				showBar(scrollerBar);
-//				var oriPanelTop = scrollPanels[i].scrollTop,
-//					totalHeight = scrollPanels[i].scrollHeight,
-//					oriOffsetTop = scrollerBar.offsetTop,
-//					addTop =  (300*120/totalHeight),
-//					subTop = (-1) * addTop;
-//				if(Utils.getWheelDelta(event)<0){
-//					//向下滚动
-//					scroll(oriOffsetTop,addTop,oriPanelTop,scrollPanels[i].scrollHeight);
-//				}else if(Utils.getWheelDelta(event)>0){
-//					//向上滚动
-//					scroll(oriOffsetTop,subTop,oriPanelTop,scrollPanels[i].scrollHeight);
-//				}
-//				hideBarTimer(scrollerBar,1200);
-//				Utils.preventDefault(event);
-//			};
-//			var scroll = function (oriOffsetTop,scrollClientY,oriPanelTop,totalHeight) {
-//				if(oriOffsetTop + scrollClientY <=2){
-//					scrollerBar.style.top = "2px";	
-//				}else if(oriOffsetTop + scrollClientY + scrollerBar.offsetHeight >=298){
-//					scrollerBar.style.top = 298-scrollerBar.offsetHeight+"px";
-//				}else{
-//					scrollerBar.style.top = oriOffsetTop + scrollClientY + "px"; 
-//				}
-//				scrollPanels[i].scrollTop =oriPanelTop + parseInt((totalHeight -300)/(296-scrollerBar.offsetHeight)*scrollClientY,10);
-//			};
-//			scrollPanels[i].onmouseover = function(){
-//				(function () {
-//					Utils.addEventListener(document,"mousewheel",handler);
-//					Utils.addEventListener(document,"DOMMouseScroll",handler);
-//				})();
-//			};
-//			scrollPanels[i].onmouseout = function(){
-//				Utils.removeEventListener(document,"mousewheel",handler);
-//				Utils.removeEventListener(document,"DOMMouseScroll",handler);
-//			};
-//
-//			//滚动条容器
-//			scrollerBar.onmouseover = function(){
-//				clearTimeout(timeout);
-//				showBarContainer(barContainers[i]);
-//				showBar(scrollerBar);
-//				scrollerBar.onmouseout = function () {
-//					barContainers[i].style.opacity = 0;
-//					hideBarTimer(scrollerBar,1200);
-//				};
-//			};
-//			scrollerBar.onmouseup = function(event){
-//				Utils.stopPropagation(Utils.getEvent(event));
-//				document.onmousemove = null;
-//			};
-//			scrollerBar.onmousedown = function(event){
-//				event = Utils.getEvent(event);
-//				var oriClientY = event.clientY,
-//					oriOffsetTop = scrollerBar.offsetTop,
-//					oriPanelTop = scrollPanels[i].scrollTop;
-//				//拖动滚动条
-//				document.onmousemove = function(e){
-//					clearTimeout(timeout);
-//					showBarContainer(barContainers[i]);
-//					showBar(scrollerBar);
-//					e = Utils.getEvent(e);
-//					var scrollClientY = e.clientY-oriClientY;
-//
-//					scroll(oriOffsetTop,scrollClientY,oriPanelTop,scrollPanels[i].scrollHeight);
-//				};
-//				//松开鼠标，取消事件
-//				document.onmouseup = function(event){
-//					this.onmousemove = null;
-//					barContainers[i].style.opacity = 0;
-//					hideBarTimer(scrollerBar,1200);
-//				};
-//				Utils.preventDefault(event);
-//			};
-//			barContainers[i].onclick = function(event){
-//				event = Utils.getEvent(event);
-//				var	barHeight = scrollerBar.offsetHeight,
-//					oriOffsetTop = scrollerBar.offsetTop,
-//					oriPanelTop = scrollPanels[i].scrollTop,
-//					scrollClientY = event.clientY - Utils.calculateTop(barContainers[i]) - oriOffsetTop - barHeight / 2;
-//
-//				scroll(oriOffsetTop,scrollClientY,oriPanelTop,scrollPanels[i].scrollHeight);
-//				Utils.stopPropagation(event);
-//			};
-//			
-//			barContainers[i].onmouseover = function () {
-//				clearTimeout(timeout);
-//				showBarContainer(barContainers[i]);
-//				showBar(scrollerBar);
-//				barContainers[i].onmouseout = function () {
-//					barContainers[i].style.opacity = 0;
-//					hideBarTimer(scrollerBar,1200);
-//				};
-//			};
-//
-//		})(i);
-//	};
 	
 };
 
