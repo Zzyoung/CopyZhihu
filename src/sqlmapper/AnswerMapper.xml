@@ -3,9 +3,9 @@
 <mapper namespace="com.zhihu.dao.AnswerMapper" >
 
 	<select id="selectAnswerByQuestionId" parameterType="com.zhihu.pojo.Question" resultType="com.zhihu.pojo.Answer">
-		select id, author_id as authorId, content, MAX(answer_time) as answerTime, question_id as questionId
+		select id, author_id as authorId, content, answer_time as answerTime, question_id as questionId
 		FROM answer
-		where question_id = #{id}
+		where question_id = #{id} ORDER BY RAND() LIMIT 1
 	</select>
 	
 	<select id="selectAnswerListByQuestionId" parameterType="com.zhihu.pojo.Question" resultType="com.zhihu.pojo.Answer">
