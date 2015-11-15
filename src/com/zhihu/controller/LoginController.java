@@ -166,7 +166,9 @@ public class LoginController {
 		if(cookies==null || cookies.length==0){
 			logger.info("cookie为空，跳转到登录界面...");
 			response.sendRedirect(request.getContextPath()+"/index.html");
+			return;
 		}
+		logger.info("cookies"+cookies.toString());
 		for (int i = 0; i < cookies.length; i++) {
 			if(cookies[i].getName().equals("loginName")){
 				cookieLoginName = URLDecoder.decode(cookies[i].getValue(),"UTF-8");
