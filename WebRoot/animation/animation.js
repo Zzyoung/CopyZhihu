@@ -1,3 +1,7 @@
+var CONSTANT = {
+		MIN_HEIGHT_TO_LOAD:1200,
+		ONCE_WHEEL_MOVE_RANGE:120
+};
 (function(){
   var initializing = false, fnTest = /xyz/.test(function(){xyz;}) ? /\b_super\b/ : /.*/;
  
@@ -153,7 +157,7 @@ var BackToTop = Base.extend({
 		};
 	},
 	toggle:function(){
-		if(Utils.getBodyScrollTop()>1200){
+		if(Utils.getBodyScrollTop() > CONSTANT.MIN_HEIGHT_TO_LOAD){
 			if(!this.get('isShow')){
 				this.show();
 			}
@@ -258,7 +262,7 @@ var InnerPanel = Panel.extend({
 	calculateModifiedY:function(direction){
 		var scrollHeight = this.get('scrollPanel').scrollHeight;
 		var offsetHeight = this.get('scrollPanel').offsetHeight;
-		var modifiedY = direction * (offsetHeight * 120/scrollHeight);
+		var modifiedY = direction * (offsetHeight * CONSTANT.ONCE_WHEEL_MOVE_RANGE/scrollHeight);
 		this.get('scrollerBar').set('modifiedY',modifiedY);
 	},
 	saveOriPanelTop:function(){
