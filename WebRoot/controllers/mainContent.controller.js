@@ -12,10 +12,11 @@
 		
 		mainCtrl.compile = $compile;
 		mainCtrl.feeds = [];
-		mainCtrl.isLoading = false;
+		mainCtrl.isLoading = true;
 		function loadMainContents(){
 			MainContentService.loadMainContents().then(function(feeds){
 				mainCtrl.feeds = feeds;
+				mainCtrl.isLoading = false;
 			});
 		}
 		loadMainContents();

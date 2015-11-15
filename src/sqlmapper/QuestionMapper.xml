@@ -7,8 +7,8 @@
 	</select>
 	
 	<select id="selectQuestionNamesAndAnswerCounts" parameterType="com.zhihu.pojo.Question" resultType="com.zhihu.pojo.Question">
-		SELECT id,NAME,ifnull(answer_count,0) AS answerCount FROM question   
-		WHERE name LIKE '%${name}%' limit 10
+		SELECT id,NAME,(SELECT COUNT(*) FROM answer WHERE question_id = q.id) AS answerCount FROM question q
+		WHERE NAME LIKE '%${name}%' LIMIT 10
 	</select>
 	
 	<insert id="insertQuestion" useGeneratedKeys="true" keyProperty="id" parameterType="com.zhihu.pojo.Question">

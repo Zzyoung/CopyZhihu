@@ -7,13 +7,15 @@
 		var service = {};
 		
 		function querySuccess(response){
-			var results = response.data;
+			var results = response.data || [];
 			if(results.length!=0 && results != 'error'){
-				results.unshift({name:'你想问的是不是：'});
+				results.unshift({name:'您想问的是不是：'});
 				results.push({name:'不是，我要提一个新问题 »'});
 				service.queryQuestion.results = results;
 			}else{
-				service.queryQuestion.results = [];
+				results.unshift({name:'您的问题还没有人提过'});
+				results.push({name:'去提一个新问题 »'});
+				service.queryQuestion.results = results;
 			}
 		}
 		

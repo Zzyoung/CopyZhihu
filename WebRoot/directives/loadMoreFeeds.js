@@ -8,7 +8,7 @@
 			},
 			link:function(scope,element,attribute){
 				$(window).on('scroll',function(event){
-					if($(document).scrollTop() + $(window).height() +30 > $(document).height()){
+					if($(document).scrollTop() + $(window).height() +20 > $(document).height()){
 						scope.loadMore();
 					};
 				});
