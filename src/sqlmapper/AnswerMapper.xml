@@ -29,7 +29,7 @@
 	</insert>
 	
 	<select id="selectAnswerUserRelation" parameterType="com.zhihu.pojo.UserAnswerRelation" resultType="java.lang.Integer">
-		select action from user_answer_relation where user_id = #{userId} and answer_id = #{answerId}
+		select action from user_answer_relation where user_id = #{userId} and answer_id = #{answerId} limit 1
 	</select>
 	
 	<insert id="insertAnswer" parameterType="com.zhihu.pojo.Answer">

@@ -90,6 +90,9 @@ public class QuestionServiceImpl implements QuestionService {
 			feed.setQuestionDesc(question.getDescription());
 			//fill answer
 			Answer answer = answerMapper.selectAnswerByQuestionId(question);
+			if(answer==null){
+				continue;
+			}
 			UserAnswerRelation relation = new UserAnswerRelation();
 			relation.setAnswerId(answer.getId());
 			relation.setUserId(currentUserId);

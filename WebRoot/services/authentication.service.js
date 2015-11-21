@@ -13,11 +13,7 @@
 			$http({
 				method : 'POST',
 				url : '/Zhihu/login/',
-				data : $.param({
-					loginName : loginName,
-					password : password,
-					captcha : captcha
-				}),
+				data : 'loginName=' + loginName + '&password=' + password + '&captcha=' + captcha,
 				headers : {
 					'Content-Type' : 'application/x-www-form-urlencoded'
 				}

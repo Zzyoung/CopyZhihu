@@ -10,12 +10,7 @@
 			return $http({
 				method : 'POST',
 				url : '/Zhihu/register/',
-				data : $.param({
-					name:user.name,
-					loginName:user.loginName,
-					password:password,
-					captcha:user.captcha
-				}),
+				data : 'name=' + user.name + '&loginName=' + user.loginName + '&password=' + password + '&captcha=' + user.captcha,
 				headers : {
 					'Content-Type' : 'application/x-www-form-urlencoded'
 				}

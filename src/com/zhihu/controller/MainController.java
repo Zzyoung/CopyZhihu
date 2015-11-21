@@ -45,11 +45,15 @@ public class MainController {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 		int currentUserId = Integer.parseInt(request.getSession().getAttribute("id").toString());
-		
-		List<Feed> feeds = questionService.getMainContents(currentUserId);
-		//关闭循环引用检测
-		String results = JSON.toJSONString(feeds,SerializerFeature.DisableCircularReferenceDetect);
-		response.getWriter().write(results);
+		try {
+			List<Feed> feeds = questionService.getMainContents(currentUserId);
+			//关闭循环引用检测
+			String results = JSON.toJSONString(feeds,SerializerFeature.DisableCircularReferenceDetect);
+			response.getWriter().write(results);
+			
+		} catch (Exception e) {
+			logger.error("获取主页内容出错",e);
+		}
 	}
 	
 	@RequestMapping(value="addNewComment",method = RequestMethod.POST)
