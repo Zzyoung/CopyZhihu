@@ -7,16 +7,17 @@ var cookieSession = require('cookie-session');
 // var mongoStore = require('connect-mongo')(express);
 var port = process.env.PORT || 3000;
 var app  = express();
-var dbUrl = 'mongodb://localhost/imooc';
+var dbUrl = 'mongodb://localhost/copyZhihu';
 
-mongoose.connect('mongodb://localhost/imooc');
+mongoose.Promise = global.Promise;
+mongoose.connect(dbUrl);
 
-app.set('views','./app/views/pages');//设置视图的根目录
-app.set('view engine', 'html');//设置模板引擎
+app.set('views','./public/views');//设置视图的根目录
+app.set('view engine', 'jade');//设置模板引擎
 app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(express.cookieParser());
 app.use(cookieSession({
-  'secret' : 'imooc'
+  'secret' : 'copyZhihu'
 }));
 
 if ('development' === app.get('env')) {
