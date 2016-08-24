@@ -49,8 +49,7 @@
 		ctrl.logout =function($event){
 			//清除cookie中的用户信息
 			AuthenticationService.clearCredentials();
-			var location = window.location;
-    		window.location = location.origin + ConstantService.ContextPath + 'logout';
+    		window.location.href = '/user/logout/';
 		};
 	};
 })();

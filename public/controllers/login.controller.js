@@ -33,7 +33,7 @@
                         }else{
                             console.log('登陆成功');
                             AuthenticationService.setCredentials(vm.user.loginName, password);
-                            window.location.herf = window.location.hostname+'/';
+                            window.location.href = '/';
                         }
                     } else {
                         

@@ -7,7 +7,7 @@ var cookieSession = require('cookie-session');
 // var mongoStore = require('connect-mongo')(express);
 var port = process.env.PORT || 3000;
 var app  = express();
-var dbUrl = 'mongodb://localhost/copyZhihu';
+var dbUrl = 'mongodb://127.0.0.1/copyZhihu';
 
 mongoose.Promise = global.Promise;
 mongoose.connect(dbUrl);

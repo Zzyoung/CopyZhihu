@@ -17,5 +17,6 @@ module.exports = function(app) {
   //User
   app.post('/user/register',User.register);
   app.post('/user/login',User.login);
+  app.get('/user/logout',User.logout);
 
 }

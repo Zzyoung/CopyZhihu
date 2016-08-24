@@ -4,7 +4,7 @@
     function ConstantService(){
         var service = {};
         
-        service.ContextPath = "/Zhihu/";
+        service.ContextPath = "/";
         
         service.messages = {
             invalidName:'姓名需在 2-10 个汉字之间',
