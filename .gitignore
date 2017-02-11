@@ -17,3 +17,5 @@ node_modules
 *.graffle
 bower_components
 .DS_Store
+
+WebRoot/WEB-INF/classes
